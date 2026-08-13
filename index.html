@@ -34,7 +34,7 @@
     header {
       width: 100%;
       background: white;
-      padding: 15px 20px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -51,24 +51,11 @@
     }
 
     .logo-img {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid var(--pink-main);
-    }
-
-    .logo-placeholder {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: var(--pink-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
+      border: 2px solid var(--pink-main);
     }
 
     .brand-name {
@@ -81,7 +68,7 @@
     .price-badge {
       background: var(--pink-soft);
       color: var(--pink-dark);
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
       font-weight: bold;
       font-size: 0.95rem;
@@ -93,30 +80,31 @@
       width: 90%;
       max-width: 450px;
       background: white;
-      margin: 20px 0;
-      padding: 20px;
+      margin: 18px 0;
+      padding: 18px;
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(248, 165, 194, 0.2);
       text-align: center;
     }
 
     .visualizer-title {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--pink-accent);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-weight: 600;
     }
 
     .bracelet-display {
-      min-height: 70px;
+      min-height: 75px;
       background-color: var(--pink-soft);
       border: 2px dashed var(--pink-main);
       border-radius: 12px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 5px;
+      justify-content: flex-start;
+      gap: 8px;
       padding: 10px;
       overflow-x: auto;
     }
@@ -125,6 +113,17 @@
       color: #aaa;
       font-size: 0.85rem;
       font-style: italic;
+      width: 100%;
+      text-align: center;
+    }
+
+    .mini-charm-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--pink-main);
+      flex-shrink: 0;
     }
 
     /* Redes sociales */
@@ -187,19 +186,18 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       border: 1px solid #fce4ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card-img {
       width: 100%;
-      height: 110px;
+      height: 120px;
       object-fit: cover;
       border-radius: 10px;
       background-color: var(--pink-soft);
       margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
     }
 
     .card-title {
@@ -207,6 +205,7 @@
       font-weight: 600;
       color: var(--text-color);
       margin-bottom: 4px;
+      text-transform: capitalize;
     }
 
     .card-price {
@@ -220,12 +219,17 @@
       background-color: var(--pink-main);
       color: white;
       border: none;
-      padding: 6px 12px;
+      padding: 8px 12px;
       border-radius: 15px;
       font-size: 0.8rem;
       font-weight: bold;
       cursor: pointer;
       width: 100%;
+      transition: background 0.2s;
+    }
+
+    .btn-add:active {
+      background-color: var(--pink-dark);
     }
 
     /* Botones de acción inferiores */
@@ -276,7 +280,7 @@
   <!-- Header -->
   <header>
     <div class="brand-container">
-      <div class="logo-placeholder" id="logoBox">C</div>
+      <img src="logo" alt="Cuoricino" class="logo-img" onerror="this.style.display='none'">
       <span class="brand-name">cuoricino</span>
     </div>
     <div class="price-badge" id="totalPrice">$0</div>
@@ -305,34 +309,68 @@
     <h2 class="section-title">Nuestra Colección</h2>
     <div class="catalog-grid">
 
-      <!-- Pulsera Base -->
+      <!-- Charms con tus imágenes subidas -->
       <div class="card">
-        <div class="card-img" id="img-base">✨</div>
-        <div class="card-title">Pulsera Base</div>
-        <div class="card-price">$10.000</div>
-        <button class="btn-add" onclick="addItem('Pulsera Base', 10000)">Agregar</button>
-      </div>
-
-      <!-- Dijes / Charms -->
-      <div class="card">
-        <div class="card-img" id="img-corazon">💖</div>
-        <div class="card-title">Charm Corazón</div>
+        <img src="atardecer" alt="Atardecer" class="card-img">
+        <div class="card-title">Charm Atardecer</div>
         <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Corazón', 6000)">Agregar</button>
+        <button class="btn-add" onclick="addItem('Charm Atardecer', 6000, 'atardecer')">Agregar</button>
       </div>
 
       <div class="card">
-        <div class="card-img" id="img-estrella">⭐</div>
-        <div class="card-title">Charm Estrella</div>
+        <img src="atardcer rosa" alt="Atardecer Rosa" class="card-img">
+        <div class="card-title">Charm Atardecer Rosa</div>
         <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Estrella', 6000)">Agregar</button>
+        <button class="btn-add" onclick="addItem('Charm Atardecer Rosa', 6000, 'atardcer rosa')">Agregar</button>
       </div>
 
       <div class="card">
-        <div class="card-img" id="img-flor">🌸</div>
-        <div class="card-title">Charm Flor</div>
+        <img src="camara" alt="Cámara" class="card-img">
+        <div class="card-title">Charm Cámara</div>
         <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Flor', 6000)">Agregar</button>
+        <button class="btn-add" onclick="addItem('Charm Cámara', 6000, 'camara')">Agregar</button>
+      </div>
+
+      <div class="card">
+        <img src="ibiza" alt="Ibiza" class="card-img">
+        <div class="card-title">Charm Ibiza</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Ibiza', 6000, 'ibiza')">Agregar</button>
+      </div>
+
+      <div class="card">
+        <img src="italia" alt="Italia" class="card-img">
+        <div class="card-title">Charm Italia</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Italia', 6000, 'italia')">Agregar</button>
+      </div>
+
+      <div class="card">
+        <img src="mar" alt="Mar" class="card-img">
+        <div class="card-title">Charm Mar</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Mar', 6000, 'mar')">Agregar</button>
+      </div>
+
+      <div class="card">
+        <img src="musica" alt="Música" class="card-img">
+        <div class="card-title">Charm Música</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Música', 6000, 'musica')">Agregar</button>
+      </div>
+
+      <div class="card">
+        <img src="ola" alt="Ola" class="card-img">
+        <div class="card-title">Charm Ola</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Ola', 6000, 'ola')">Agregar</button>
+      </div>
+
+      <div class="card">
+        <img src="spiderman" alt="Spiderman" class="card-img">
+        <div class="card-title">Charm Spiderman</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Spiderman', 6000, 'spiderman')">Agregar</button>
       </div>
 
     </div>
@@ -341,7 +379,7 @@
   <!-- Botones inferiores -->
   <div class="bottom-bar">
     <button class="action-btn btn-clear" onclick="clearItems()">Limpiar</button>
-    <button class="action-btn btn-view" onclick="alert('Tu pedido actual suma: ' + document.getElementById('totalPrice').innerText)">Visualizar</button>
+    <button class="action-btn btn-view" onclick="alert('Tu pedido suma un total de: ' + document.getElementById('totalPrice').innerText)">Visualizar</button>
     <a id="wspShareBtn" href="#" target="_blank" class="action-btn btn-share" onclick="prepareOrder(event)">Enviar Pedido</a>
   </div>
 
@@ -349,7 +387,7 @@
     let total = 0;
     let selectedItems = [];
 
-    function addItem(name, price) {
+    function addItem(name, price, imgSrc) {
       total += price;
       selectedItems.push(name);
       document.getElementById('totalPrice').innerText = '$' + total.toLocaleString('es-AR');
@@ -359,10 +397,11 @@
         display.innerHTML = '';
       }
       
-      const tag = document.createElement('span');
-      tag.style.cssText = 'background:white; padding:4px 8px; border-radius:10px; font-size:0.75rem; border:1px solid #f8a5c2; white-space:nowrap;';
-      tag.innerText = name;
-      display.appendChild(tag);
+      const miniImg = document.createElement('img');
+      miniImg.src = imgSrc;
+      miniImg.className = 'mini-charm-img';
+      miniImg.alt = name;
+      display.appendChild(miniImg);
     }
 
     function clearItems() {
@@ -378,7 +417,7 @@
         alert('Añadí algún producto antes de enviar tu pedido.');
         return;
       }
-      const text = "¡Hola! Armé mi pulsera Cuoricino con los siguientes ítems: " + selectedItems.join(", ") + ". Total: $" + total.toLocaleString('es-AR');
+      const text = "¡Hola! Armé mi pulsera Cuoricino con los siguientes dijes: " + selectedItems.join(", ") + ". Total: $" + total.toLocaleString('es-AR');
       const url = "https://wa.me/5493412651141?text=" + encodeURIComponent(text);
       document.getElementById('wspShareBtn').href = url;
     }
