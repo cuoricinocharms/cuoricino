@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuoricino - Pulseras Italianas</title>
+  <style>
+    :root {
+      --pink-soft: #fff0f5;
+      --pink-main: #f8a5c2;
+      --pink-dark: #d87093;
+      --pink-accent: #e77f9d;
+      --text-color: #4a4a4a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--pink-soft);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      background: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(216, 112, 147, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--pink-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--pink-dark);
+      letter-spacing: 1px;
+    }
+
+    .price-badge {
+      background: var(--pink-soft);
+      color: var(--pink-dark);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      border: 1px solid var(--pink-main);
+    }
+
+    /* Visualizador de la pulsera */
+    .visualizer-section {
+      width: 90%;
+      max-width: 450px;
+      background: white;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(248, 165, 194, 0.2);
+      text-align: center;
+    }
+
+    .visualizer-title {
+      font-size: 0.9rem;
+      color: var(--pink-accent);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .bracelet-display {
+      min-height: 70px;
+      background-color: var(--pink-soft);
+      border: 2px dashed var(--pink-main);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+      overflow-x: auto;
+    }
+
+    .empty-msg {
+      color: #aaa;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    /* Catálogo Grid */
+    .catalog-section {
+      width: 90%;
+      max-width: 450px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      color: var(--pink-dark);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid #fce4ec;
+      transition: transform 0.2s;
+    }
+
+    .card:active {
+      transform: scale(0.97);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 10px;
+      background-color: var(--pink-soft);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 4px;
+    }
+
+    .card-price {
+      font-size: 0.85rem;
+      color: var(--pink-dark);
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .btn-add {
+      background-color: var(--pink-main);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Botones de acción inferiores */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-around;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+      z-index: 100;
+    }
+
+    .action-btn {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-clear {
+      background-color: #f1f2f6;
+      color: #747d8c;
+    }
+
+    .btn-view {
+      background-color: var(--pink-soft);
+      color: var(--pink-dark);
+      border: 1px solid var(--pink-main);
+    }
+
+    .btn-share {
+      background-color: var(--pink-dark);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand-container">
+      <div class="logo-placeholder">C</div>
+      <span class="brand-name">cuoricino</span>
+    </div>
+    <div class="price-badge" id="totalPrice">$0</div>
+  </header>
+
+  <!-- Sección Visual (Pulsera armada) -->
+  <section class="visualizer-section">
+    <div class="visualizer-title">Tu pulsera Cuoricino</div>
+    <div class="bracelet-display" id="braceletDisplay">
+      <span class="empty-msg">Elegí productos abajo para armarla</span>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section class="catalog-section">
+    <h2 class="section-title">Nuestra Colección</h2>
+    <div class="catalog-grid">
+
+      <!-- Base -->
+      <div class="card">
+        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">✨</div>
+        <div class="card-title">Pulsera Base</div>
+        <div class="card-price">$10.000</div>
+        <button class="btn-add" onclick="addItem('Pulsera Base', 10000)">Agregar</button>
+      </div>
+
+      <!-- Dijes de muestra -->
+      <div class="card">
+        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">💖</div>
+        <div class="card-title">Charm Corazón</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Corazón', 6000)">Agregar</button>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">⭐</div>
+        <div class="card-title">Charm Estrella</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Estrella', 6000)">Agregar</button>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">🌸</div>
+        <div class="card-title">Charm Flor</div>
+        <div class="card-price">$6.000</div>
+        <button class="btn-add" onclick="addItem('Charm Flor', 6000)">Agregar</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Botones inferiores -->
+  <div class="bottom-bar">
+    <button class="action-btn btn-clear" onclick="clearItems()">Limpiar</button>
+    <button class="action-btn btn-view" onclick="alert('Vista previa del diseño')">Visualizar</button>
+    <button class="action-btn btn-share" onclick="shareDesign()">Compartir</button>
+  </div>
+
+  <script>
+    let total = 0;
+    let selectedItems = [];
+
+    function addItem(name, price) {
+      total += price;
+      selectedItems.push(name);
+      document.getElementById('totalPrice').innerText = '$' + total.toLocaleString('es-AR');
+      
+      const display = document.getElementById('braceletDisplay');
+      if (selectedItems.length === 1) {
+        display.innerHTML = '';
+      }
+      
+      const tag = document.createElement('span');
+      tag.style.cssText = 'background:white; padding:4px 8px; border-radius:10px; font-size:0.75rem; border:1px solid #f8a5c2; white-space:nowrap;';
+      tag.innerText = name;
+      display.appendChild(tag);
+    }
+
+    function clearItems() {
+      total = 0;
+      selectedItems = [];
+      document.getElementById('totalPrice').innerText = '$0';
+      document.getElementById('braceletDisplay').innerHTML = '<span class="empty-msg">Elegí productos abajo para armarla</span>';
+    }
+
+    function shareDesign() {
+      if (selectedItems.length === 0) {
+        alert('Añadí algún producto antes de compartir');
+        return;
+      }
+      alert('¡Diseño listo para compartir!');
+    }
+  </script>
+</body>
+</html>
