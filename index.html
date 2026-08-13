@@ -27,7 +27,7 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding-bottom: 80px;
+      padding-bottom: 90px;
     }
 
     /* Header */
@@ -48,6 +48,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--pink-main);
     }
 
     .logo-placeholder {
@@ -119,6 +127,40 @@
       font-style: italic;
     }
 
+    /* Redes sociales */
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      width: 90%;
+      max-width: 450px;
+      justify-content: center;
+    }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .btn-wsp {
+      background-color: #25d366;
+      color: white;
+    }
+
+    .btn-ig {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: white;
+    }
+
     /* Catálogo Grid */
     .catalog-section {
       width: 90%;
@@ -145,11 +187,6 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       border: 1px solid #fce4ec;
-      transition: transform 0.2s;
-    }
-
-    .card:active {
-      transform: scale(0.97);
     }
 
     .card-img {
@@ -159,6 +196,10 @@
       border-radius: 10px;
       background-color: var(--pink-soft);
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
     }
 
     .card-title {
@@ -208,9 +249,6 @@
       font-size: 0.85rem;
       font-weight: bold;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     .btn-clear {
@@ -227,6 +265,9 @@
     .btn-share {
       background-color: var(--pink-dark);
       color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
     }
   </style>
 </head>
@@ -235,7 +276,7 @@
   <!-- Header -->
   <header>
     <div class="brand-container">
-      <div class="logo-placeholder">C</div>
+      <div class="logo-placeholder" id="logoBox">C</div>
       <span class="brand-name">cuoricino</span>
     </div>
     <div class="price-badge" id="totalPrice">$0</div>
@@ -249,36 +290,46 @@
     </div>
   </section>
 
+  <!-- Botones a Redes / Contacto -->
+  <div class="social-links">
+    <a href="https://wa.me/5493412651141?text=¡Hola!%20Quiero%20consultar%20por%20una%20pulsera%20Cuoricino" target="_blank" class="social-btn btn-wsp">
+      💬 WhatsApp
+    </a>
+    <a href="https://instagram.com/cuoricino_charms" target="_blank" class="social-btn btn-ig">
+      📸 Instagram
+    </a>
+  </div>
+
   <!-- Catálogo -->
   <section class="catalog-section">
     <h2 class="section-title">Nuestra Colección</h2>
     <div class="catalog-grid">
 
-      <!-- Base -->
+      <!-- Pulsera Base -->
       <div class="card">
-        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">✨</div>
+        <div class="card-img" id="img-base">✨</div>
         <div class="card-title">Pulsera Base</div>
         <div class="card-price">$10.000</div>
         <button class="btn-add" onclick="addItem('Pulsera Base', 10000)">Agregar</button>
       </div>
 
-      <!-- Dijes de muestra -->
+      <!-- Dijes / Charms -->
       <div class="card">
-        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">💖</div>
+        <div class="card-img" id="img-corazon">💖</div>
         <div class="card-title">Charm Corazón</div>
         <div class="card-price">$6.000</div>
         <button class="btn-add" onclick="addItem('Charm Corazón', 6000)">Agregar</button>
       </div>
 
       <div class="card">
-        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">⭐</div>
+        <div class="card-img" id="img-estrella">⭐</div>
         <div class="card-title">Charm Estrella</div>
         <div class="card-price">$6.000</div>
         <button class="btn-add" onclick="addItem('Charm Estrella', 6000)">Agregar</button>
       </div>
 
       <div class="card">
-        <div class="card-img" style="display:flex;align-items:center;justify-content:center;color:#d87093;">🌸</div>
+        <div class="card-img" id="img-flor">🌸</div>
         <div class="card-title">Charm Flor</div>
         <div class="card-price">$6.000</div>
         <button class="btn-add" onclick="addItem('Charm Flor', 6000)">Agregar</button>
@@ -290,8 +341,8 @@
   <!-- Botones inferiores -->
   <div class="bottom-bar">
     <button class="action-btn btn-clear" onclick="clearItems()">Limpiar</button>
-    <button class="action-btn btn-view" onclick="alert('Vista previa del diseño')">Visualizar</button>
-    <button class="action-btn btn-share" onclick="shareDesign()">Compartir</button>
+    <button class="action-btn btn-view" onclick="alert('Tu pedido actual suma: ' + document.getElementById('totalPrice').innerText)">Visualizar</button>
+    <a id="wspShareBtn" href="#" target="_blank" class="action-btn btn-share" onclick="prepareOrder(event)">Enviar Pedido</a>
   </div>
 
   <script>
@@ -321,12 +372,15 @@
       document.getElementById('braceletDisplay').innerHTML = '<span class="empty-msg">Elegí productos abajo para armarla</span>';
     }
 
-    function shareDesign() {
+    function prepareOrder(e) {
       if (selectedItems.length === 0) {
-        alert('Añadí algún producto antes de compartir');
+        e.preventDefault();
+        alert('Añadí algún producto antes de enviar tu pedido.');
         return;
       }
-      alert('¡Diseño listo para compartir!');
+      const text = "¡Hola! Armé mi pulsera Cuoricino con los siguientes ítems: " + selectedItems.join(", ") + ". Total: $" + total.toLocaleString('es-AR');
+      const url = "https://wa.me/5493412651141?text=" + encodeURIComponent(text);
+      document.getElementById('wspShareBtn').href = url;
     }
   </script>
 </body>
