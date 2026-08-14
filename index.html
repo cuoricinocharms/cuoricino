@@ -10,7 +10,6 @@
       --pink-light: #ffdeeb;
       --pink-main: #f78da7;
       --pink-dark: #d63384;
-      --pink-deep: #a81c60;
       --gradient-brand: linear-gradient(135deg, #f78da7 0%, #d63384 100%);
       --gradient-btn: linear-gradient(135deg, #ff85a2 0%, #e05286 100%);
       --gradient-wsp: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
@@ -32,7 +31,7 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding-bottom: 110px;
+      padding-bottom: 90px;
     }
 
     /* Header */
@@ -52,16 +51,15 @@
     .brand-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .logo-img {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--pink-main);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .brand-name {
@@ -71,7 +69,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: 1px;
-      text-transform: lowercase;
     }
 
     .price-badge {
@@ -84,7 +81,6 @@
       border: 1px solid var(--pink-main);
     }
 
-    /* Contenedor principal de secciones */
     .container {
       width: 92%;
       max-width: 460px;
@@ -94,7 +90,7 @@
     .visualizer-section {
       background: white;
       margin: 18px 0;
-      padding: 18px 12px;
+      padding: 18px 10px;
       border-radius: 22px;
       box-shadow: 0 4px 18px rgba(214, 51, 132, 0.12);
       text-align: center;
@@ -110,13 +106,12 @@
       font-weight: 700;
     }
 
-    /* Contenedor de la pulsera continua */
     .bracelet-wrapper {
-      background: #fafafa;
+      background: #f7f7f7;
       border: 2px dashed var(--pink-main);
       border-radius: 16px;
-      padding: 15px 10px;
-      min-height: 85px;
+      padding: 18px 10px;
+      min-height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -127,138 +122,51 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 0px; /* Sin separación entre eslabones */
-      padding: 6px;
-      background: linear-gradient(180deg, #e0e0e0 0%, #ffffff 50%, #d5d5d5 100%);
-      border-radius: 6px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.15);
+      gap: 0px;
+      padding: 8px 10px;
+      background: linear-gradient(180deg, #d8d8d8 0%, #ffffff 50%, #c5c5c5 100%);
+      border-radius: 8px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.25), 0 5px 12px rgba(0,0,0,0.18);
     }
 
     .empty-msg {
       color: #999;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-style: italic;
       width: 100%;
       text-align: center;
     }
 
-    /* Eslabón/Charm encastrado */
     .bracelet-link {
-      height: 52px;
-      width: 44px;
+      height: 75px;
+      width: 62px;
       object-fit: cover;
       display: block;
       margin: 0;
       padding: 0;
-      border-left: 1px solid rgba(0,0,0,0.15);
-      border-right: 1px solid rgba(255,255,255,0.4);
-      box-shadow: 1px 0 2px rgba(0,0,0,0.1);
+      border-left: 1px solid rgba(0,0,0,0.2);
+      border-right: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 2px 0 3px rgba(0,0,0,0.15);
       flex-shrink: 0;
     }
 
     .bracelet-link:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
       border-left: none;
     }
 
     .bracelet-link:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
       border-right: none;
-    }
-
-    /* Resumen de Items Seleccionados */
-    .cart-summary {
-      background: white;
-      border-radius: 18px;
-      padding: 15px;
-      margin-bottom: 18px;
-      border: 1px solid var(--pink-light);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-
-    .cart-summary-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--pink-dark);
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-list {
-      list-style: none;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 4px 0;
-      border-bottom: 1px dashed #f0f0f0;
-    }
-
-    /* Formulario de Datos */
-    .form-section {
-      background: white;
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 22px;
-      border: 1px solid var(--pink-light);
-      box-shadow: 0 4px 15px rgba(214, 51, 132, 0.08);
-    }
-
-    .form-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--pink-dark);
-      margin-bottom: 12px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    .form-group {
-      margin-bottom: 12px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #555;
-      margin-bottom: 4px;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1.5px solid var(--pink-light);
-      font-size: 0.88rem;
-      outline: none;
-      transition: border-color 0.2s;
-      background: #fdfbfd;
-    }
-
-    .form-control:focus {
-      border-color: var(--pink-dark);
-      background: #fff;
-    }
-
-    .school-row {
-      display: flex;
-      gap: 10px;
     }
 
     /* Catálogo Grid */
     .section-title {
       font-size: 1.15rem;
       color: var(--pink-dark);
-      margin-bottom: 15px;
+      margin: 20px 0 15px 0;
       text-align: center;
       font-weight: 800;
     }
@@ -315,35 +223,66 @@
       cursor: pointer;
       width: 100%;
       box-shadow: 0 3px 8px rgba(224, 82, 134, 0.3);
-      transition: transform 0.1s;
     }
 
     .btn-add:active {
       transform: scale(0.96);
     }
 
-    /* Botones de Redes e Interactivos */
+    /* Resumen ubicado ABAJO */
+    .cart-summary {
+      background: white;
+      border-radius: 18px;
+      padding: 15px;
+      margin: 25px 0 15px 0;
+      border: 1px solid var(--pink-light);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .cart-summary-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--pink-dark);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cart-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed #f0f0f0;
+    }
+
+    /* Botones de Acción de Redes */
     .action-buttons {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 15px;
+      gap: 12px;
+      margin: 15px 0 30px 0;
     }
 
     .btn-action {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px;
-      border-radius: 16px;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 18px;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 800;
       color: white;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
 
     .btn-whatsapp {
@@ -361,7 +300,7 @@
       left: 0;
       right: 0;
       background: white;
-      padding: 10px 16px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -375,21 +314,21 @@
       border: none;
       padding: 10px 16px;
       border-radius: 14px;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
     }
 
     .btn-submit-main {
-      background: var(--gradient-brand);
+      background: var(--gradient-wsp);
       color: white;
       border: none;
-      padding: 11px 20px;
+      padding: 12px 22px;
       border-radius: 16px;
       font-size: 0.9rem;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     }
   </style>
 </head>
@@ -398,7 +337,7 @@
   <!-- Header -->
   <header>
     <div class="brand-container">
-      <img src="logo" alt="Cuoricino" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=C'">
+      <img src="logo" alt="Cuoricino" class="logo-img" onerror="this.style.display='none'">
       <span class="brand-name">cuoricino</span>
     </div>
     <div class="price-badge" id="totalPrice">$0</div>
@@ -406,68 +345,19 @@
 
   <div class="container">
 
-    <!-- Sección Visual (Pulsera armada) -->
+    <!-- Visualizador de Pulsera -->
     <section class="visualizer-section">
       <div class="visualizer-title">Tu pulsera Cuoricino</div>
       <div class="bracelet-wrapper">
         <div class="bracelet-chain" id="braceletDisplay">
-          <span class="empty-msg">Tocá en "Agregar" en los charms para armarla</span>
+          <span class="empty-msg">Tocá "+ Agregar" en los dijes para armarla</span>
         </div>
       </div>
     </section>
 
-    <!-- Resumen de Pedido -->
-    <div class="cart-summary" id="cartSummary" style="display: none;">
-      <div class="cart-summary-title">
-        <span>Resumen de tu pulsera</span>
-        <span id="itemCount" style="font-size: 0.8rem; font-weight: normal; color: #777;">0 dijes</span>
-      </div>
-      <ul class="cart-list" id="cartList"></ul>
-    </div>
-
-    <!-- Formulario Datos Cliente / Escuela -->
-    <section class="form-section">
-      <div class="form-title">Tus Datos para el Pedido</div>
-      
-      <div class="form-group">
-        <label>Nombre y Apellido *</label>
-        <input type="text" id="custName" class="form-control" placeholder="Ej: Sofía Martínez">
-      </div>
-
-      <div class="form-group">
-        <label>¿Sos de alguna escuela / colegio?</label>
-        <select id="isSchool" class="form-control" onchange="toggleSchoolFields()">
-          <option value="No">No / Pedido particular</option>
-          <option value="Sí">Sí, soy de escuela</option>
-        </select>
-      </div>
-
-      <div id="schoolFields" style="display: none;">
-        <div class="form-group">
-          <label>Nombre de la Escuela / Colegio</label>
-          <input type="text" id="schoolName" class="form-control" placeholder="Ej: San José">
-        </div>
-        <div class="school-row">
-          <div class="form-group" style="flex: 1;">
-            <label>Curso / Año</label>
-            <input type="text" id="schoolYear" class="form-control" placeholder="Ej: 5to">
-          </div>
-          <div class="form-group" style="flex: 1;">
-            <label>División / Turno</label>
-            <input type="text" id="schoolDiv" class="form-control" placeholder="Ej: B / Mañana">
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Notas / Aclaraciones (opcional)</label>
-        <input type="text" id="orderNotes" class="form-control" placeholder="Ej: El de la cámara va en el medio">
-      </div>
-    </section>
-
-    <!-- Catálogo -->
+    <!-- Catálogo de Dijes -->
     <section class="catalog-section">
-      <h2 class="section-title">Colección de Charms</h2>
+      <h2 class="section-title">Nuestros Charms</h2>
       <div class="catalog-grid">
 
         <div class="card">
@@ -536,33 +426,36 @@
       </div>
     </section>
 
-    <!-- Botones directos de contacto -->
-    <div class="action-buttons" style="margin-top: 25px; margin-bottom: 25px;">
-      <button class="btn-action btn-whatsapp" onclick="sendOrder('whatsapp')">
-        💬 Enviar Pedido por WhatsApp
+    <!-- Resumen abajo -->
+    <div class="cart-summary" id="cartSummary" style="display: none;">
+      <div class="cart-summary-title">
+        <span>Resumen de tu pulsera</span>
+        <span id="itemCount" style="font-weight: normal; color: #777;">0 dijes</span>
+      </div>
+      <ul class="cart-list" id="cartList"></ul>
+    </div>
+
+    <!-- Botones de Acción -->
+    <div class="action-buttons">
+      <button class="btn-action btn-whatsapp" onclick="sendWhatsApp()">
+        💬 Pedir por WhatsApp
       </button>
-      <button class="btn-action btn-instagram" onclick="sendOrder('instagram')">
-        📸 Consultar por Instagram
+      <button class="btn-action btn-instagram" onclick="openInstagram()">
+        📸 Ir al Instagram @cuoricino_charms
       </button>
     </div>
 
   </div>
 
-  <!-- Botones inferiores fijos -->
+  <!-- Barra inferior fija -->
   <div class="bottom-bar">
     <button class="btn-clear" onclick="clearItems()">Vaciar</button>
-    <button class="btn-submit-main" onclick="sendOrder('whatsapp')">Encargar ($<span id="bottomTotal">0</span>)</button>
+    <button class="btn-submit-main" onclick="sendWhatsApp()">Enviar Pedido ($<span id="bottomTotal">0</span>)</button>
   </div>
 
   <script>
     let total = 0;
     let selectedItems = [];
-
-    function toggleSchoolFields() {
-      const isSchool = document.getElementById('isSchool').value;
-      const schoolFields = document.getElementById('schoolFields');
-      schoolFields.style.display = (isSchool === 'Sí') ? 'block' : 'none';
-    }
 
     function addItem(name, price, imgSrc) {
       total += price;
@@ -577,15 +470,13 @@
     }
 
     function updateUI() {
-      // Precios
       const formattedTotal = total.toLocaleString('es-AR');
       document.getElementById('totalPrice').innerText = '$' + formattedTotal;
       document.getElementById('bottomTotal').innerText = formattedTotal;
 
-      // Cadena visual de pulsera
       const display = document.getElementById('braceletDisplay');
       if (selectedItems.length === 0) {
-        display.innerHTML = '<span class="empty-msg">Tocá en "Agregar" en los charms para armarla</span>';
+        display.innerHTML = '<span class="empty-msg">Tocá "+ Agregar" en los dijes para armarla</span>';
         document.getElementById('cartSummary').style.display = 'none';
       } else {
         display.innerHTML = '';
@@ -597,7 +488,6 @@
           display.appendChild(img);
         });
 
-        // Resumen agrupado por cantidades
         document.getElementById('cartSummary').style.display = 'block';
         document.getElementById('itemCount').innerText = selectedItems.length + ' dije(s)';
         
@@ -617,70 +507,42 @@
       }
     }
 
-    function generateOrderText() {
-      const name = document.getElementById('custName').value.trim();
-      const isSchool = document.getElementById('isSchool').value;
-      const schoolName = document.getElementById('schoolName').value.trim();
-      const schoolYear = document.getElementById('schoolYear').value.trim();
-      const schoolDiv = document.getElementById('schoolDiv').value.trim();
-      const notes = document.getElementById('orderNotes').value.trim();
-
+    function sendWhatsApp() {
       if (selectedItems.length === 0) {
-        alert('Por favor seleccioná al menos 1 dije para armar tu pulsera.');
-        return null;
+        alert('Por favor elegí al menos 1 dije para armar tu pulsera.');
+        return;
       }
 
-      if (!name) {
-        alert('Por favor ingresá tu Nombre y Apellido.');
-        document.getElementById('custName').focus();
-        return null;
-      }
-
-      // Conteo de items
       const counts = {};
       selectedItems.forEach(item => {
         counts[item.name] = (counts[item.name] || 0) + 1;
       });
 
-      let itemsFormatted = '';
+      let itemsText = '';
       for (const [itemName, qty] of Object.entries(counts)) {
-        itemsFormatted += `• ${qty}x ${itemName}\n`;
+        itemsText += `${qty}x ${itemName}, `;
       }
+      // Quitamos la última coma y espacio
+      itemsText = itemsText.slice(0, -2);
 
-      let text = `✨ *NUEVO PEDIDO CUORICINO* ✨\n\n`;
-      text += `👤 *Cliente:* ${name}\n`;
+      const totalQty = selectedItems.length;
+      const formattedTotal = total.toLocaleString('es-AR');
 
-      if (isSchool === 'Sí') {
-        text += `🏫 *Escuela:* ${schoolName || 'No especificada'}\n`;
-        text += `📚 *Curso/Div:* ${schoolYear || ''} ${schoolDiv || ''}\n`;
-      }
+      const message = `¡Holaa! 💗 Quiero encargar mi pulsera cuoricino ✨\n\n` +
+        `♡ Nombre y apellido:\n` +
+        `♡ Si sos de la escuela, indicá tu año y división:\n` +
+        `♡ Producto que quiero: Pulsera Italiana\n` +
+        `♡ Charms que elegí: ${itemsText}\n` +
+        `♡ Cantidad: ${totalQty} dije(s)\n` +
+        `♡ Total: $${formattedTotal}\n\n` +
+        `vi toda la información en la página, así que quería consultar por la disponibilidad y cómo puedo realizar la compra 💌\n` +
+        `¡graciasss! 🫶🏻`;
 
-      text += `\n📿 *DIJES DE LA PULSERA (${selectedItems.length} total):*\n${itemsFormatted}\n`;
-      text += `💰 *TOTAL:* $${total.toLocaleString('es-AR')}\n`;
-
-      if (notes) {
-        text += `\n📝 *Notas:* ${notes}\n`;
-      }
-
-      return text;
+      window.location.href = "https://api.whatsapp.com/send?phone=5493412651141&text=" + encodeURIComponent(message);
     }
 
-    function sendOrder(platform) {
-      const message = generateOrderText();
-      if (!message) return;
-
-      if (platform === 'whatsapp') {
-        const url = "https://wa.me/5493412651141?text=" + encodeURIComponent(message);
-        window.open(url, '_blank');
-      } else if (platform === 'instagram') {
-        // Copia el resumen al portapapeles y abre IG
-        navigator.clipboard.writeText(message).then(() => {
-          alert('¡Detalle del pedido copiado! Ahora te redirigimos a Instagram para que nos lo pegues por mensaje privado.');
-          window.open("https://instagram.com/cuoricino_charms", '_blank');
-        }).catch(() => {
-          window.open("https://instagram.com/cuoricino_charms", '_blank');
-        });
-      }
+    function openInstagram() {
+      window.location.href = "https://instagram.com/cuoricino_charms";
     }
   </script>
 </body>
