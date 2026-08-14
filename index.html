@@ -6,11 +6,16 @@
   <title>Cuoricino - Pulseras Italianas</title>
   <style>
     :root {
-      --pink-soft: #fff0f5;
-      --pink-main: #f8a5c2;
-      --pink-dark: #d87093;
-      --pink-accent: #e77f9d;
-      --text-color: #4a4a4a;
+      --pink-soft: #fff0f6;
+      --pink-light: #ffdeeb;
+      --pink-main: #f78da7;
+      --pink-dark: #d63384;
+      --pink-deep: #a81c60;
+      --gradient-brand: linear-gradient(135deg, #f78da7 0%, #d63384 100%);
+      --gradient-btn: linear-gradient(135deg, #ff85a2 0%, #e05286 100%);
+      --gradient-wsp: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      --gradient-ig: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      --text-color: #333333;
     }
 
     * {
@@ -27,7 +32,7 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding-bottom: 90px;
+      padding-bottom: 110px;
     }
 
     /* Header */
@@ -38,7 +43,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 10px rgba(216, 112, 147, 0.15);
+      box-shadow: 0 4px 15px rgba(214, 51, 132, 0.12);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -47,145 +52,230 @@
     .brand-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .logo-img {
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--pink-main);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .brand-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--pink-dark);
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       letter-spacing: 1px;
+      text-transform: lowercase;
     }
 
     .price-badge {
-      background: var(--pink-soft);
+      background: var(--pink-light);
       color: var(--pink-dark);
       padding: 6px 14px;
       border-radius: 20px;
-      font-weight: bold;
-      font-size: 0.95rem;
+      font-weight: 800;
+      font-size: 1rem;
       border: 1px solid var(--pink-main);
+    }
+
+    /* Contenedor principal de secciones */
+    .container {
+      width: 92%;
+      max-width: 460px;
     }
 
     /* Visualizador de la pulsera */
     .visualizer-section {
-      width: 90%;
-      max-width: 450px;
       background: white;
       margin: 18px 0;
-      padding: 18px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(248, 165, 194, 0.2);
+      padding: 18px 12px;
+      border-radius: 22px;
+      box-shadow: 0 4px 18px rgba(214, 51, 132, 0.12);
       text-align: center;
+      border: 1px solid var(--pink-light);
     }
 
     .visualizer-title {
       font-size: 0.85rem;
-      color: var(--pink-accent);
-      margin-bottom: 10px;
+      color: var(--pink-dark);
+      margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
+      letter-spacing: 1.2px;
+      font-weight: 700;
     }
 
-    .bracelet-display {
-      min-height: 75px;
-      background-color: var(--pink-soft);
+    /* Contenedor de la pulsera continua */
+    .bracelet-wrapper {
+      background: #fafafa;
       border: 2px dashed var(--pink-main);
-      border-radius: 12px;
+      border-radius: 16px;
+      padding: 15px 10px;
+      min-height: 85px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      gap: 8px;
-      padding: 10px;
+      justify-content: center;
       overflow-x: auto;
     }
 
+    .bracelet-chain {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0px; /* Sin separación entre eslabones */
+      padding: 6px;
+      background: linear-gradient(180deg, #e0e0e0 0%, #ffffff 50%, #d5d5d5 100%);
+      border-radius: 6px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.15);
+    }
+
     .empty-msg {
-      color: #aaa;
+      color: #999;
       font-size: 0.85rem;
       font-style: italic;
       width: 100%;
       text-align: center;
     }
 
-    .mini-charm-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
+    /* Eslabón/Charm encastrado */
+    .bracelet-link {
+      height: 52px;
+      width: 44px;
       object-fit: cover;
-      border: 1px solid var(--pink-main);
+      display: block;
+      margin: 0;
+      padding: 0;
+      border-left: 1px solid rgba(0,0,0,0.15);
+      border-right: 1px solid rgba(255,255,255,0.4);
+      box-shadow: 1px 0 2px rgba(0,0,0,0.1);
       flex-shrink: 0;
     }
 
-    /* Redes sociales */
-    .social-links {
+    .bracelet-link:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-left: none;
+    }
+
+    .bracelet-link:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-right: none;
+    }
+
+    /* Resumen de Items Seleccionados */
+    .cart-summary {
+      background: white;
+      border-radius: 18px;
+      padding: 15px;
+      margin-bottom: 18px;
+      border: 1px solid var(--pink-light);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .cart-summary-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--pink-dark);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px dashed #f0f0f0;
+    }
+
+    /* Formulario de Datos */
+    .form-section {
+      background: white;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 22px;
+      border: 1px solid var(--pink-light);
+      box-shadow: 0 4px 15px rgba(214, 51, 132, 0.08);
+    }
+
+    .form-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--pink-dark);
+      margin-bottom: 12px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--pink-light);
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fdfbfd;
+    }
+
+    .form-control:focus {
+      border-color: var(--pink-dark);
+      background: #fff;
+    }
+
+    .school-row {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
-      width: 90%;
-      max-width: 450px;
-      justify-content: center;
-    }
-
-    .social-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px;
-      border-radius: 15px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .btn-wsp {
-      background-color: #25d366;
-      color: white;
-    }
-
-    .btn-ig {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      color: white;
     }
 
     /* Catálogo Grid */
-    .catalog-section {
-      width: 90%;
-      max-width: 450px;
-    }
-
     .section-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--pink-dark);
       margin-bottom: 15px;
       text-align: center;
+      font-weight: 800;
     }
 
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      gap: 14px;
     }
 
     .card {
       background: white;
-      border-radius: 15px;
+      border-radius: 18px;
       padding: 12px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border: 1px solid #fce4ec;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--pink-light);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -195,83 +285,111 @@
       width: 100%;
       height: 120px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       background-color: var(--pink-soft);
       margin-bottom: 8px;
     }
 
     .card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       color: var(--text-color);
       margin-bottom: 4px;
-      text-transform: capitalize;
     }
 
     .card-price {
       font-size: 0.85rem;
       color: var(--pink-dark);
-      font-weight: bold;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
     .btn-add {
-      background-color: var(--pink-main);
+      background: var(--gradient-btn);
       color: white;
       border: none;
-      padding: 8px 12px;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: bold;
+      padding: 9px 12px;
+      border-radius: 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
       width: 100%;
-      transition: background 0.2s;
+      box-shadow: 0 3px 8px rgba(224, 82, 134, 0.3);
+      transition: transform 0.1s;
     }
 
     .btn-add:active {
-      background-color: var(--pink-dark);
+      transform: scale(0.96);
     }
 
-    /* Botones de acción inferiores */
+    /* Botones de Redes e Interactivos */
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-whatsapp {
+      background: var(--gradient-wsp);
+    }
+
+    .btn-instagram {
+      background: var(--gradient-ig);
+    }
+
+    /* Barra inferior fija */
     .bottom-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
       background: white;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-around;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-      z-index: 100;
-    }
-
-    .action-btn {
-      border: none;
       padding: 10px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+      z-index: 100;
     }
 
     .btn-clear {
       background-color: #f1f2f6;
-      color: #747d8c;
+      color: #666;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
     }
 
-    .btn-view {
-      background-color: var(--pink-soft);
-      color: var(--pink-dark);
-      border: 1px solid var(--pink-main);
-    }
-
-    .btn-share {
-      background-color: var(--pink-dark);
+    .btn-submit-main {
+      background: var(--gradient-brand);
       color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
     }
   </style>
 </head>
@@ -280,146 +398,289 @@
   <!-- Header -->
   <header>
     <div class="brand-container">
-      <img src="logo" alt="Cuoricino" class="logo-img" onerror="this.style.display='none'">
+      <img src="logo" alt="Cuoricino" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=C'">
       <span class="brand-name">cuoricino</span>
     </div>
     <div class="price-badge" id="totalPrice">$0</div>
   </header>
 
-  <!-- Sección Visual (Pulsera armada) -->
-  <section class="visualizer-section">
-    <div class="visualizer-title">Tu pulsera Cuoricino</div>
-    <div class="bracelet-display" id="braceletDisplay">
-      <span class="empty-msg">Elegí productos abajo para armarla</span>
-    </div>
-  </section>
+  <div class="container">
 
-  <!-- Botones a Redes / Contacto -->
-  <div class="social-links">
-    <a href="https://wa.me/5493412651141?text=¡Hola!%20Quiero%20consultar%20por%20una%20pulsera%20Cuoricino" target="_blank" class="social-btn btn-wsp">
-      💬 WhatsApp
-    </a>
-    <a href="https://instagram.com/cuoricino_charms" target="_blank" class="social-btn btn-ig">
-      📸 Instagram
-    </a>
+    <!-- Sección Visual (Pulsera armada) -->
+    <section class="visualizer-section">
+      <div class="visualizer-title">Tu pulsera Cuoricino</div>
+      <div class="bracelet-wrapper">
+        <div class="bracelet-chain" id="braceletDisplay">
+          <span class="empty-msg">Tocá en "Agregar" en los charms para armarla</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumen de Pedido -->
+    <div class="cart-summary" id="cartSummary" style="display: none;">
+      <div class="cart-summary-title">
+        <span>Resumen de tu pulsera</span>
+        <span id="itemCount" style="font-size: 0.8rem; font-weight: normal; color: #777;">0 dijes</span>
+      </div>
+      <ul class="cart-list" id="cartList"></ul>
+    </div>
+
+    <!-- Formulario Datos Cliente / Escuela -->
+    <section class="form-section">
+      <div class="form-title">Tus Datos para el Pedido</div>
+      
+      <div class="form-group">
+        <label>Nombre y Apellido *</label>
+        <input type="text" id="custName" class="form-control" placeholder="Ej: Sofía Martínez">
+      </div>
+
+      <div class="form-group">
+        <label>¿Sos de alguna escuela / colegio?</label>
+        <select id="isSchool" class="form-control" onchange="toggleSchoolFields()">
+          <option value="No">No / Pedido particular</option>
+          <option value="Sí">Sí, soy de escuela</option>
+        </select>
+      </div>
+
+      <div id="schoolFields" style="display: none;">
+        <div class="form-group">
+          <label>Nombre de la Escuela / Colegio</label>
+          <input type="text" id="schoolName" class="form-control" placeholder="Ej: San José">
+        </div>
+        <div class="school-row">
+          <div class="form-group" style="flex: 1;">
+            <label>Curso / Año</label>
+            <input type="text" id="schoolYear" class="form-control" placeholder="Ej: 5to">
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>División / Turno</label>
+            <input type="text" id="schoolDiv" class="form-control" placeholder="Ej: B / Mañana">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Notas / Aclaraciones (opcional)</label>
+        <input type="text" id="orderNotes" class="form-control" placeholder="Ej: El de la cámara va en el medio">
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="catalog-section">
+      <h2 class="section-title">Colección de Charms</h2>
+      <div class="catalog-grid">
+
+        <div class="card">
+          <img src="atardecer" alt="Atardecer" class="card-img">
+          <div class="card-title">Charm Atardecer</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Atardecer', 6000, 'atardecer')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="atardcer rosa" alt="Atardecer Rosa" class="card-img">
+          <div class="card-title">Charm Atardecer Rosa</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Atardecer Rosa', 6000, 'atardcer rosa')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="camara" alt="Cámara" class="card-img">
+          <div class="card-title">Charm Cámara</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Cámara', 6000, 'camara')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="ibiza" alt="Ibiza" class="card-img">
+          <div class="card-title">Charm Ibiza</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Ibiza', 6000, 'ibiza')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="italia" alt="Italia" class="card-img">
+          <div class="card-title">Charm Italia</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Italia', 6000, 'italia')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="mar" alt="Mar" class="card-img">
+          <div class="card-title">Charm Mar</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Mar', 6000, 'mar')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="musica" alt="Música" class="card-img">
+          <div class="card-title">Charm Música</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Música', 6000, 'musica')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="ola" alt="Ola" class="card-img">
+          <div class="card-title">Charm Ola</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Ola', 6000, 'ola')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="spiderman" alt="Spiderman" class="card-img">
+          <div class="card-title">Charm Spiderman</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Spiderman', 6000, 'spiderman')">+ Agregar</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Botones directos de contacto -->
+    <div class="action-buttons" style="margin-top: 25px; margin-bottom: 25px;">
+      <button class="btn-action btn-whatsapp" onclick="sendOrder('whatsapp')">
+        💬 Enviar Pedido por WhatsApp
+      </button>
+      <button class="btn-action btn-instagram" onclick="sendOrder('instagram')">
+        📸 Consultar por Instagram
+      </button>
+    </div>
+
   </div>
 
-  <!-- Catálogo -->
-  <section class="catalog-section">
-    <h2 class="section-title">Nuestra Colección</h2>
-    <div class="catalog-grid">
-
-      <!-- Charms con tus imágenes subidas -->
-      <div class="card">
-        <img src="atardecer" alt="Atardecer" class="card-img">
-        <div class="card-title">Charm Atardecer</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Atardecer', 6000, 'atardecer')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="atardcer rosa" alt="Atardecer Rosa" class="card-img">
-        <div class="card-title">Charm Atardecer Rosa</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Atardecer Rosa', 6000, 'atardcer rosa')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="camara" alt="Cámara" class="card-img">
-        <div class="card-title">Charm Cámara</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Cámara', 6000, 'camara')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="ibiza" alt="Ibiza" class="card-img">
-        <div class="card-title">Charm Ibiza</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Ibiza', 6000, 'ibiza')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="italia" alt="Italia" class="card-img">
-        <div class="card-title">Charm Italia</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Italia', 6000, 'italia')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="mar" alt="Mar" class="card-img">
-        <div class="card-title">Charm Mar</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Mar', 6000, 'mar')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="musica" alt="Música" class="card-img">
-        <div class="card-title">Charm Música</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Música', 6000, 'musica')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="ola" alt="Ola" class="card-img">
-        <div class="card-title">Charm Ola</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Ola', 6000, 'ola')">Agregar</button>
-      </div>
-
-      <div class="card">
-        <img src="spiderman" alt="Spiderman" class="card-img">
-        <div class="card-title">Charm Spiderman</div>
-        <div class="card-price">$6.000</div>
-        <button class="btn-add" onclick="addItem('Charm Spiderman', 6000, 'spiderman')">Agregar</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Botones inferiores -->
+  <!-- Botones inferiores fijos -->
   <div class="bottom-bar">
-    <button class="action-btn btn-clear" onclick="clearItems()">Limpiar</button>
-    <button class="action-btn btn-view" onclick="alert('Tu pedido suma un total de: ' + document.getElementById('totalPrice').innerText)">Visualizar</button>
-    <a id="wspShareBtn" href="#" target="_blank" class="action-btn btn-share" onclick="prepareOrder(event)">Enviar Pedido</a>
+    <button class="btn-clear" onclick="clearItems()">Vaciar</button>
+    <button class="btn-submit-main" onclick="sendOrder('whatsapp')">Encargar ($<span id="bottomTotal">0</span>)</button>
   </div>
 
   <script>
     let total = 0;
     let selectedItems = [];
 
+    function toggleSchoolFields() {
+      const isSchool = document.getElementById('isSchool').value;
+      const schoolFields = document.getElementById('schoolFields');
+      schoolFields.style.display = (isSchool === 'Sí') ? 'block' : 'none';
+    }
+
     function addItem(name, price, imgSrc) {
       total += price;
-      selectedItems.push(name);
-      document.getElementById('totalPrice').innerText = '$' + total.toLocaleString('es-AR');
-      
-      const display = document.getElementById('braceletDisplay');
-      if (selectedItems.length === 1) {
-        display.innerHTML = '';
-      }
-      
-      const miniImg = document.createElement('img');
-      miniImg.src = imgSrc;
-      miniImg.className = 'mini-charm-img';
-      miniImg.alt = name;
-      display.appendChild(miniImg);
+      selectedItems.push({ name: name, price: price, imgSrc: imgSrc });
+      updateUI();
     }
 
     function clearItems() {
       total = 0;
       selectedItems = [];
-      document.getElementById('totalPrice').innerText = '$0';
-      document.getElementById('braceletDisplay').innerHTML = '<span class="empty-msg">Elegí productos abajo para armarla</span>';
+      updateUI();
     }
 
-    function prepareOrder(e) {
+    function updateUI() {
+      // Precios
+      const formattedTotal = total.toLocaleString('es-AR');
+      document.getElementById('totalPrice').innerText = '$' + formattedTotal;
+      document.getElementById('bottomTotal').innerText = formattedTotal;
+
+      // Cadena visual de pulsera
+      const display = document.getElementById('braceletDisplay');
       if (selectedItems.length === 0) {
-        e.preventDefault();
-        alert('Añadí algún producto antes de enviar tu pedido.');
-        return;
+        display.innerHTML = '<span class="empty-msg">Tocá en "Agregar" en los charms para armarla</span>';
+        document.getElementById('cartSummary').style.display = 'none';
+      } else {
+        display.innerHTML = '';
+        selectedItems.forEach(item => {
+          const img = document.createElement('img');
+          img.src = item.imgSrc;
+          img.className = 'bracelet-link';
+          img.alt = item.name;
+          display.appendChild(img);
+        });
+
+        // Resumen agrupado por cantidades
+        document.getElementById('cartSummary').style.display = 'block';
+        document.getElementById('itemCount').innerText = selectedItems.length + ' dije(s)';
+        
+        const counts = {};
+        selectedItems.forEach(item => {
+          counts[item.name] = (counts[item.name] || 0) + 1;
+        });
+
+        const cartList = document.getElementById('cartList');
+        cartList.innerHTML = '';
+        for (const [name, qty] of Object.entries(counts)) {
+          const li = document.createElement('li');
+          li.className = 'cart-item';
+          li.innerHTML = `<span><strong>${qty}x</strong> ${name}</span><span>$${(qty * 6000).toLocaleString('es-AR')}</span>`;
+          cartList.appendChild(li);
+        }
       }
-      const text = "¡Hola! Armé mi pulsera Cuoricino con los siguientes dijes: " + selectedItems.join(", ") + ". Total: $" + total.toLocaleString('es-AR');
-      const url = "https://wa.me/5493412651141?text=" + encodeURIComponent(text);
-      document.getElementById('wspShareBtn').href = url;
+    }
+
+    function generateOrderText() {
+      const name = document.getElementById('custName').value.trim();
+      const isSchool = document.getElementById('isSchool').value;
+      const schoolName = document.getElementById('schoolName').value.trim();
+      const schoolYear = document.getElementById('schoolYear').value.trim();
+      const schoolDiv = document.getElementById('schoolDiv').value.trim();
+      const notes = document.getElementById('orderNotes').value.trim();
+
+      if (selectedItems.length === 0) {
+        alert('Por favor seleccioná al menos 1 dije para armar tu pulsera.');
+        return null;
+      }
+
+      if (!name) {
+        alert('Por favor ingresá tu Nombre y Apellido.');
+        document.getElementById('custName').focus();
+        return null;
+      }
+
+      // Conteo de items
+      const counts = {};
+      selectedItems.forEach(item => {
+        counts[item.name] = (counts[item.name] || 0) + 1;
+      });
+
+      let itemsFormatted = '';
+      for (const [itemName, qty] of Object.entries(counts)) {
+        itemsFormatted += `• ${qty}x ${itemName}\n`;
+      }
+
+      let text = `✨ *NUEVO PEDIDO CUORICINO* ✨\n\n`;
+      text += `👤 *Cliente:* ${name}\n`;
+
+      if (isSchool === 'Sí') {
+        text += `🏫 *Escuela:* ${schoolName || 'No especificada'}\n`;
+        text += `📚 *Curso/Div:* ${schoolYear || ''} ${schoolDiv || ''}\n`;
+      }
+
+      text += `\n📿 *DIJES DE LA PULSERA (${selectedItems.length} total):*\n${itemsFormatted}\n`;
+      text += `💰 *TOTAL:* $${total.toLocaleString('es-AR')}\n`;
+
+      if (notes) {
+        text += `\n📝 *Notas:* ${notes}\n`;
+      }
+
+      return text;
+    }
+
+    function sendOrder(platform) {
+      const message = generateOrderText();
+      if (!message) return;
+
+      if (platform === 'whatsapp') {
+        const url = "https://wa.me/5493412651141?text=" + encodeURIComponent(message);
+        window.open(url, '_blank');
+      } else if (platform === 'instagram') {
+        // Copia el resumen al portapapeles y abre IG
+        navigator.clipboard.writeText(message).then(() => {
+          alert('¡Detalle del pedido copiado! Ahora te redirigimos a Instagram para que nos lo pegues por mensaje privado.');
+          window.open("https://instagram.com/cuoricino_charms", '_blank');
+        }).catch(() => {
+          window.open("https://instagram.com/cuoricino_charms", '_blank');
+        });
+      }
     }
   </script>
 </body>
