@@ -25,7 +25,7 @@
     }
 
     body {
-      background-color: #fafafa;
+      background-color: var(--pink-soft);
       color: var(--text-color);
       display: flex;
       flex-direction: column;
@@ -82,50 +82,61 @@
     }
 
     .container {
-      width: 95%;
-      max-width: 480px;
+      width: 92%;
+      max-width: 460px;
     }
 
-    /* VISUALIZADOR ESTILO SATANA (PULSERA ITALIANA REAL) */
+    /* VISUALIZADOR REAL DE LA PULSERA */
     .visualizer-section {
       background: white;
-      margin: 20px 0;
-      padding: 25px 10px;
-      border-radius: 18px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      margin: 18px 0;
+      padding: 20px 10px;
+      border-radius: 22px;
+      box-shadow: 0 4px 18px rgba(214, 51, 132, 0.12);
       text-align: center;
-      position: relative;
+      border: 1px solid var(--pink-light);
     }
 
-    /* Riel/hilo de fondo donde encastran */
+    .visualizer-title {
+      font-size: 0.85rem;
+      color: var(--pink-dark);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+    }
+
     .bracelet-rail {
       position: relative;
-      background: #ffffff;
-      padding: 20px 5px;
-      min-height: 110px;
+      background: #fafafa;
+      border-radius: 14px;
+      padding: 25px 5px;
+      min-height: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow-x: auto;
+      border: 1px dashed var(--pink-main);
     }
 
+    /* Hilo plateado de fondo */
     .bracelet-rail::before {
       content: '';
       position: absolute;
       top: 50%;
       left: 0;
       right: 0;
-      height: 2px;
-      background: #b0b0b0;
+      height: 3px;
+      background: linear-gradient(90deg, #d8d8d8, #888, #d8d8d8);
       z-index: 1;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transform: translateY(-50%);
     }
 
     .bracelet-chain {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 6px;
+      gap: 0px; /* Completamente pegados */
       z-index: 2;
       padding: 0 10px;
     }
@@ -135,58 +146,43 @@
       font-size: 0.88rem;
       font-style: italic;
       z-index: 2;
-      background: white;
+      background: #fafafa;
       padding: 4px 12px;
-      border-radius: 10px;
     }
 
-    /* Cada Eslabón de Acero (Charm Individual) */
-    .charm-module {
-      width: 70px;
-      height: 60px;
-      background: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 50%, #afafaf 100%);
-      border: 2px solid #888;
-      border-radius: 6px;
-      padding: 4px;
-      box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 2px 3px 6px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Charm como eslabón directo */
+    .charm-link {
+      height: 80px; /* Tamaño grande y protagonista */
+      width: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 -2px; /* Superposición ligera para efecto encastre */
       flex-shrink: 0;
-      position: relative;
-    }
-
-    .charm-module img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 3px;
-      border: 1px solid #777;
+      filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25));
     }
 
     /* Catálogo Grid */
     .section-title {
-      font-size: 1.1rem;
-      color: #333;
-      margin: 15px 0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 1.15rem;
+      color: var(--pink-dark);
+      margin: 20px 0 15px 0;
+      text-align: center;
       font-weight: 800;
     }
 
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
 
     .card {
       background: white;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 12px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border: 1px solid #eee;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--pink-light);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -194,9 +190,9 @@
 
     .card-img {
       width: 100%;
-      height: 110px;
+      height: 120px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       background-color: var(--pink-soft);
       margin-bottom: 8px;
     }
@@ -220,11 +216,12 @@
       color: white;
       border: none;
       padding: 9px 12px;
-      border-radius: 12px;
+      border-radius: 14px;
       font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
       width: 100%;
+      box-shadow: 0 3px 8px rgba(224, 82, 134, 0.3);
     }
 
     .btn-add:active {
@@ -234,10 +231,11 @@
     /* Resumen abajo */
     .cart-summary {
       background: white;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 15px;
-      margin: 20px 0 15px 0;
+      margin: 25px 0 15px 0;
       border: 1px solid var(--pink-light);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
     .cart-summary-title {
@@ -276,13 +274,14 @@
       justify-content: center;
       gap: 10px;
       padding: 14px;
-      border-radius: 16px;
+      border-radius: 18px;
       text-decoration: none;
       font-size: 0.95rem;
       font-weight: 800;
       color: white;
       border: none;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
 
     .btn-whatsapp {
@@ -313,7 +312,7 @@
       color: #666;
       border: none;
       padding: 10px 16px;
-      border-radius: 12px;
+      border-radius: 14px;
       font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
@@ -324,10 +323,11 @@
       color: white;
       border: none;
       padding: 12px 22px;
-      border-radius: 14px;
+      border-radius: 16px;
       font-size: 0.9rem;
       font-weight: 800;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     }
   </style>
 </head>
@@ -344,18 +344,19 @@
 
   <div class="container">
 
-    <!-- Visualizador Tipo Italian Bracelet -->
+    <!-- Visualizador de Pulsera Armada -->
     <section class="visualizer-section">
+      <div class="visualizer-title">Tu pulsera Cuoricino</div>
       <div class="bracelet-rail">
         <div class="bracelet-chain" id="braceletDisplay">
-          <span class="empty-msg">Tocá en "Agregar" para armar tu pulsera</span>
+          <span class="empty-msg">Tocá en "+ Agregar" para armarla</span>
         </div>
       </div>
     </section>
 
     <!-- Catálogo de Dijes -->
     <section class="catalog-section">
-      <h2 class="section-title">Catálogo</h2>
+      <h2 class="section-title">Nuestros Charms</h2>
       <div class="catalog-grid">
 
         <div class="card">
@@ -474,20 +475,16 @@
 
       const display = document.getElementById('braceletDisplay');
       if (selectedItems.length === 0) {
-        display.innerHTML = '<span class="empty-msg">Tocá en "Agregar" para armar tu pulsera</span>';
+        display.innerHTML = '<span class="empty-msg">Tocá en "+ Agregar" para armarla</span>';
         document.getElementById('cartSummary').style.display = 'none';
       } else {
         display.innerHTML = '';
         selectedItems.forEach(item => {
-          const moduleDiv = document.createElement('div');
-          moduleDiv.className = 'charm-module';
-          
           const img = document.createElement('img');
           img.src = item.imgSrc;
+          img.className = 'charm-link';
           img.alt = item.name;
-
-          moduleDiv.appendChild(img);
-          display.appendChild(moduleDiv);
+          display.appendChild(img);
         });
 
         document.getElementById('cartSummary').style.display = 'block';
@@ -540,12 +537,11 @@
         `¡graciasss! 🫶🏻`;
 
       const phone = "5493412651141";
-      const wspUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(wspUrl, '_blank');
+      window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
     }
 
     function openInstagram() {
-      window.open("https://instagram.com/cuoricino_charms", '_blank');
+      window.location.href = "https://instagram.com/cuoricino_charms";
     }
   </script>
 </body>
