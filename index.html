@@ -46,13 +46,6 @@
       align-items: center;
       gap: 10px;
     }
-    .logo-img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--pink-main);
-    }
     .brand-name {
       font-size: 1.4rem;
       font-weight: 800;
@@ -96,8 +89,32 @@
     .visualizer-subtitle {
       font-size: 0.75rem;
       color: #999;
+      margin-bottom: 12px;
+    }
+    /* BOTONES DE CHARMS VACÍOS AL LADO DE LA PULSERA */
+    .quick-add-container {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
       margin-bottom: 15px;
     }
+    .btn-quick-add {
+      background: white;
+      border: 1px solid var(--pink-main);
+      color: var(--pink-dark);
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+    .btn-quick-add:active {
+      transform: scale(0.95);
+      background: var(--pink-light);
+    }
+
     .bracelet-rail {
       position: relative;
       background: linear-gradient(145deg, #fff8fb, #fff0f6);
@@ -372,6 +389,13 @@
     <section class="visualizer-section">
       <div class="visualizer-title">tu pulsera cuoricino ♡</div>
       <div class="visualizer-subtitle">elegí tus charms y mirá cómo queda</div>
+      
+      <!-- BOTONES RÁPIDOS DE CHARMS VACÍOS -->
+      <div class="quick-add-container">
+        <button class="btn-quick-add" onclick="addItem('Charm Vacío Plateado', 1000, 'IMG_0242.png')">+ Vacío Plateado ($1.000)</button>
+        <button class="btn-quick-add" onclick="addItem('Charm Vacío Dorado', 1000, 'IMG_0240.png')">+ Vacío Dorado ($1.000)</button>
+      </div>
+
       <div class="bracelet-rail">
         <div class="bracelet-chain" id="braceletDisplay">
           <span class="empty-msg">tocá “+ agregar” para armarla ✨</span>
@@ -414,6 +438,13 @@
         </div>
 
         <div class="card">
+          <img src="IMG_0236.png" alt="Italia" class="card-img">
+          <div class="card-title">Charm Italia</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Italia', 6000, 'IMG_0236.png')">+ Agregar</button>
+        </div>
+
+        <div class="card">
           <img src="IMG_0219.png" alt="Mar" class="card-img">
           <div class="card-title">Charm Mar</div>
           <div class="card-price">$6.000</div>
@@ -425,6 +456,13 @@
           <div class="card-title">Charm Música</div>
           <div class="card-price">$6.000</div>
           <button class="btn-add" onclick="addItem('Charm Música', 6000, 'IMG_0215.png')">+ Agregar</button>
+        </div>
+
+        <div class="card">
+          <img src="IMG_0216.png" alt="Ola" class="card-img">
+          <div class="card-title">Charm Ola</div>
+          <div class="card-price">$6.000</div>
+          <button class="btn-add" onclick="addItem('Charm Ola', 6000, 'IMG_0216.png')">+ Agregar</button>
         </div>
 
         <div class="card">
@@ -461,12 +499,12 @@
 
   <script>
     const BRACELET_PRICE = 10000;
-    const CHARM_PRICE = 6000;
     const MAX_CHARMS = 7;
     let selectedItems = [];
 
     function calculateTotal() {
-      return BRACELET_PRICE + (selectedItems.length * CHARM_PRICE);
+      const itemsTotal = selectedItems.reduce((sum, item) => sum + item.price, 0);
+      return BRACELET_PRICE + itemsTotal;
     }
 
     function addItem(name, price, imgSrc) {
@@ -533,20 +571,23 @@
 
       const counts = {};
       selectedItems.forEach(item => {
-        counts[item.name] = (counts[item.name] || 0) + 1;
+        if (!counts[item.name]) {
+          counts[item.name] = { qty: 0, price: item.price };
+        }
+        counts[item.name].qty += 1;
       });
 
       const cartList = document.getElementById('cartList');
       cartList.innerHTML = '';
-      Object.entries(counts).forEach(([name, qty]) => {
+      Object.entries(counts).forEach(([name, data]) => {
         const li = document.createElement('li');
         li.className = 'cart-item';
 
         const text = document.createElement('span');
-        text.innerHTML = `<strong>${qty}x</strong> ${name}`;
+        text.innerHTML = `<strong>${data.qty}x</strong> ${name}`;
 
         const price = document.createElement('span');
-        price.innerText = '$' + (qty * CHARM_PRICE).toLocaleString('es-AR');
+        price.innerText = '$' + (data.qty * data.price).toLocaleString('es-AR');
 
         li.appendChild(text);
         li.appendChild(price);
