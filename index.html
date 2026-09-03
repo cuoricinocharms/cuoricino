@@ -1,2407 +1,1837 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Cuoricino - Pulseras Italianas</title>
-
-  <style>
-
-    :root {
-      --pink-soft: #fff6f9;
-      --pink-light: #ffe4ed;
-      --pink-main: #f49ab3;
-      --pink-dark: #d65b82;
-      --pink-deep: #c94d75;
-      --text-color: #333333;
-      --text-light: #888888;
-
-      --gradient-brand: linear-gradient(
-        135deg,
-        #f49ab3 0%,
-        #d65b82 100%
-      );
-
-      --gradient-btn: linear-gradient(
-        135deg,
-        #f6a0b8 0%,
-        #d9678a 100%
-      );
-
-      --gradient-wsp: linear-gradient(
-        135deg,
-        #e9a5b9 0%,
-        #d65b82 100%
-      );
-    }
-
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-
-      font-family:
-        'Segoe UI',
-        Tahoma,
-        Geneva,
-        Verdana,
-        sans-serif;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-      background: var(--pink-soft);
-      color: var(--text-color);
-
-      min-height: 100vh;
-
-      padding-bottom: 105px;
-    }
-
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-
-      width: 100%;
-
-      background: rgba(255,255,255,0.97);
-
-      padding: 15px 20px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      box-shadow:
-        0 4px 18px rgba(214, 91, 130, 0.10);
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 100;
-
-      backdrop-filter: blur(10px);
-    }
-
-
-    .brand-name {
-
-      font-size: 1.5rem;
-
-      font-weight: 800;
-
-      color: var(--pink-dark);
-
-      letter-spacing: 1.5px;
-    }
-
-
-    .brand-subtitle {
-
-      font-size: 0.63rem;
-
-      color: #999;
-
-      letter-spacing: 1.4px;
-
-      margin-top: 2px;
-    }
-
-
-    .price-badge {
-
-      background: var(--pink-light);
-
-      color: var(--pink-dark);
-
-      padding: 7px 13px;
-
-      border-radius: 20px;
-
-      font-weight: 800;
-
-      font-size: 0.85rem;
-
-      border: 1px solid #f3c2d1;
-
-      white-space: nowrap;
-    }
-
-
-    .container {
-
-      width: 92%;
-
-      max-width: 460px;
-
-      margin: auto;
-    }
-
-
-    /* =========================
-       PORTADA
-    ========================= */
-
-    .hero {
-
-      text-align: center;
-
-      padding: 34px 10px 18px;
-    }
-
-
-    .hero-heart {
-
-      font-size: 1.6rem;
-
-      color: var(--pink-main);
-
-      margin-bottom: 8px;
-    }
-
-
-    .hero h1 {
-
-      font-size: 1.65rem;
-
-      color: #333;
-
-      margin-bottom: 8px;
-
-      font-weight: 800;
-
-      letter-spacing: -0.3px;
-    }
-
-
-    .hero p {
-
-      font-size: 0.84rem;
-
-      color: #8f8f8f;
-
-      line-height: 1.55;
-    }
-
-
-    /* =========================
-       VISUALIZADOR
-    ========================= */
-
-    .visualizer-section {
-
-      background: white;
-
-      margin: 15px 0 25px;
-
-      padding: 21px 10px;
-
-      border-radius: 23px;
-
-      box-shadow:
-        0 5px 20px rgba(214, 91, 130, 0.10);
-
-      text-align: center;
-
-      border: 1px solid var(--pink-light);
-    }
-
-
-    .visualizer-title {
-
-      font-size: 0.86rem;
-
-      color: var(--pink-dark);
-
-      margin-bottom: 5px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1.2px;
-
-      font-weight: 800;
-    }
-
-
-    .visualizer-subtitle {
-
-      font-size: 0.75rem;
-
-      color: #999;
-
-      margin-bottom: 15px;
-    }
-
-
-    /* =========================
-       CHARMS VACÍOS
-    ========================= */
-
-    .quick-add-container {
-
-      display: flex;
-
-      gap: 8px;
-
-      justify-content: center;
-
-      margin-bottom: 15px;
-
-      flex-wrap: wrap;
-    }
-
-
-    .btn-quick-add {
-
-      background: white;
-
-      border: 1px solid #e5afc1;
-
-      color: var(--pink-dark);
-
-      padding: 7px 11px;
-
-      border-radius: 13px;
-
-      font-size: 0.72rem;
-
-      font-weight: 700;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 2px 6px rgba(0,0,0,0.04);
-
-      transition: all 0.2s ease;
-    }
-
-
-    .btn-quick-add:hover {
-
-      background: var(--pink-light);
-
-      transform: translateY(-1px);
-    }
-
-
-    .btn-quick-add:active {
-
-      transform: scale(0.95);
-    }
-
-
-    /* =========================
-       PULSERA
-    ========================= */
-
-    .bracelet-rail {
-
-      position: relative;
-
-      background:
-        linear-gradient(
-          145deg,
-          #fffafa,
-          #fff1f6
-        );
-
-      border-radius: 16px;
-
-      padding: 28px 10px;
-
-      min-height: 125px;
-
-      display: flex;
-
-      align-items: center;
-
-      overflow-x: auto;
-
-      overflow-y: hidden;
-
-      border: 1px dashed var(--pink-main);
-
-      scrollbar-width: thin;
-
-      scrollbar-color:
-        #efb6c8 transparent;
-    }
-
-
-    .bracelet-rail::before {
-
-      content: '';
-
-      position: absolute;
-
-      left: 10px;
-
-      right: 10px;
-
-      top: 50%;
-
-      height: 7px;
-
-      transform: translateY(-50%);
-
-      background:
-        linear-gradient(
-          180deg,
-          #f8f8f8 0%,
-          #bdbdbd 45%,
-          #ffffff 60%,
-          #a8a8a8 100%
-        );
-
-      border-radius: 20px;
-
-      box-shadow:
-        0 2px 3px rgba(0,0,0,0.15),
-        inset 0 1px 1px rgba(255,255,255,0.9);
-
-      z-index: 1;
-    }
-
-
-    .bracelet-chain {
-
-      position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 1px;
-
-      z-index: 2;
-
-      padding: 0 14px;
-
-      min-width: max-content;
-    }
-
-
-    /* =========================
-       CHARMS
-    ========================= */
-
-    .charm-wrapper {
-
-      position: relative;
-
-      width: 62px;
-
-      height: 82px;
-
-      flex-shrink: 0;
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: flex-end;
-
-      cursor: pointer;
-    }
-
-
-    .charm-ring {
-
-      position: absolute;
-
-      top: 17px;
-
-      left: 50%;
-
-      width: 13px;
-
-      height: 13px;
-
-      border: 2px solid #999;
-
-      border-radius: 50%;
-
-      transform: translateX(-50%);
-
-      background: white;
-
-      z-index: 4;
-
-      box-shadow:
-        0 1px 2px rgba(0,0,0,0.18);
-    }
-
-
-    .charm-link {
-
-      width: 58px;
-
-      height: 70px;
-
-      object-fit: contain;
-
-      margin-top: 10px;
-
-      position: relative;
-
-      z-index: 3;
-
-      filter:
-        drop-shadow(
-          0 3px 4px rgba(0,0,0,0.18)
-        );
-
-      transition:
-        transform 0.15s ease,
-        filter 0.15s ease;
-    }
-
-
-    .charm-wrapper:hover .charm-link {
-
-      transform: translateY(-3px);
-
-      filter:
-        drop-shadow(
-          0 5px 6px rgba(0,0,0,0.20)
-        );
-    }
-
-
-    .charm-wrapper:active .charm-link {
-
-      transform: scale(0.92);
-    }
-
-
-    .delete-hint {
-
-      position: absolute;
-
-      bottom: -1px;
-
-      font-size: 0.55rem;
-
-      color: var(--pink-dark);
-
-      background: white;
-
-      padding: 2px 5px;
-
-      border-radius: 6px;
-
-      opacity: 0;
-
-      transition: opacity 0.2s;
-    }
-
-
-    .charm-wrapper:hover .delete-hint {
-
-      opacity: 1;
-    }
-
-
-    .empty-msg {
-
-      position: relative;
-
-      z-index: 4;
-
-      color: #999;
-
-      font-size: 0.84rem;
-
-      font-style: italic;
-
-      background:
-        rgba(255,255,255,0.95);
-
-      padding: 8px 12px;
-
-      border-radius: 12px;
-
-      margin: auto;
-    }
-
-
-    .charm-counter {
-
-      margin-top: 12px;
-
-      font-size: 0.78rem;
-
-      color: #888;
-    }
-
-
-    .charm-counter strong {
-
-      color: var(--pink-dark);
-    }
-
-
-    /* =========================
-       TÍTULOS
-    ========================= */
-
-    .section-title {
-
-      font-size: 1.18rem;
-
-      color: var(--pink-dark);
-
-      margin: 28px 0 16px;
-
-      text-align: center;
-
-      font-weight: 800;
-    }
-
-
-    /* =========================
-       CATÁLOGO
-    ========================= */
-
-    .catalog-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 13px;
-    }
-
-
-    .card {
-
-      background: white;
-
-      border-radius: 19px;
-
-      padding: 11px;
-
-      text-align: center;
-
-      box-shadow:
-        0 4px 12px rgba(0,0,0,0.045);
-
-      border:
-        1px solid var(--pink-light);
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-
-    .card:hover {
-
-      transform: translateY(-3px);
-
-      box-shadow:
-        0 8px 18px
-        rgba(214,91,130,0.10);
-    }
-
-
-    /* FONDO BLANCO DE LAS FOTOS */
-
-    .card-img {
-
-      width: 100%;
-
-      height: 120px;
-
-      object-fit: contain;
-
-      border-radius: 12px;
-
-      background: #ffffff;
-
-      margin-bottom: 8px;
-
-      padding: 4px;
-    }
-
-
-    .card-title {
-
-      font-size: 0.86rem;
-
-      font-weight: 700;
-
-      margin-bottom: 4px;
-
-      min-height: 34px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      line-height: 1.25;
-    }
-
-
-    .card-price {
-
-      font-size: 0.85rem;
-
-      color: var(--pink-dark);
-
-      font-weight: 800;
-
-      margin-bottom: 8px;
-    }
-
-
-    .btn-add {
-
-      background: var(--gradient-btn);
-
-      color: white;
-
-      border: none;
-
-      padding: 9px 12px;
-
-      border-radius: 14px;
-
-      font-size: 0.82rem;
-
-      font-weight: 700;
-
-      cursor: pointer;
-
-      width: 100%;
-
-      box-shadow:
-        0 3px 8px
-        rgba(214,91,130,0.25);
-
-      transition: all 0.2s ease;
-    }
-
-
-    .btn-add:hover {
-
-      transform: translateY(-1px);
-    }
-
-
-    .btn-add:active {
-
-      transform: scale(0.96);
-    }
-
-
-    /* =========================
-       CÓMO COMPRAR
-    ========================= */
-
-    .info-box {
-
-      background: white;
-
-      border:
-        1px solid var(--pink-light);
-
-      border-radius: 21px;
-
-      padding: 19px;
-
-      margin-top: 27px;
-
-      box-shadow:
-        0 4px 14px
-        rgba(0,0,0,0.04);
-    }
-
-
-    .info-title {
-
-      color: var(--pink-dark);
-
-      font-size: 1rem;
-
-      font-weight: 800;
-
-      text-align: center;
-
-      margin-bottom: 16px;
-    }
-
-
-    .info-item {
-
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 10px;
-
-      padding: 9px 0;
-
-      font-size: 0.78rem;
-
-      color: #666;
-
-      line-height: 1.45;
-    }
-
-
-    .info-number {
-
-      width: 26px;
-
-      height: 26px;
-
-      min-width: 26px;
-
-      border-radius: 50%;
-
-      background: var(--pink-light);
-
-      color: var(--pink-dark);
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 0.72rem;
-
-      font-weight: 800;
-    }
-
-
-    /* =========================
-       INSTAGRAM
-    ========================= */
-
-    .instagram-box {
-
-      background: #fff;
-
-      border:
-        1px solid var(--pink-light);
-
-      border-radius: 21px;
-
-      padding: 19px;
-
-      margin-top: 18px;
-
-      box-shadow:
-        0 4px 14px
-        rgba(0,0,0,0.04);
-    }
-
-
-    .instagram-title {
-
-      text-align: center;
-
-      color: var(--pink-dark);
-
-      font-size: 0.96rem;
-
-      font-weight: 800;
-
-      margin-bottom: 9px;
-    }
-
-
-    .instagram-text {
-
-      color: #777;
-
-      font-size: 0.78rem;
-
-      line-height: 1.5;
-
-      text-align: center;
-
-      margin-bottom: 12px;
-    }
-
-
-    .message-box {
-
-      background: var(--pink-soft);
-
-      border:
-        1px solid var(--pink-light);
-
-      border-radius: 13px;
-
-      padding: 11px;
-
-      font-size: 0.70rem;
-
-      color: #666;
-
-      line-height: 1.45;
-
-      white-space: pre-line;
-
-      max-height: 180px;
-
-      overflow-y: auto;
-
-      margin-bottom: 10px;
-    }
-
-
-    .copy-button {
-
-      width: 100%;
-
-      border: none;
-
-      background: var(--pink-light);
-
-      color: var(--pink-dark);
-
-      padding: 10px;
-
-      border-radius: 13px;
-
-      font-size: 0.8rem;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition: all 0.2s ease;
-    }
-
-
-    .copy-button:active {
-
-      transform: scale(0.97);
-    }
-
-
-    /* =========================
-       RESUMEN
-    ========================= */
-
-    .cart-summary {
-
-      background: white;
-
-      border-radius: 18px;
-
-      padding: 15px;
-
-      margin: 25px 0 15px;
-
-      border:
-        1px solid var(--pink-light);
-
-      box-shadow:
-        0 4px 12px rgba(0,0,0,0.04);
-    }
-
-
-    .cart-summary-title {
-
-      font-size: 0.9rem;
-
-      font-weight: 700;
-
-      color: var(--pink-dark);
-
-      margin-bottom: 10px;
-
-      display: flex;
-
-      justify-content: space-between;
-    }
-
-
-    .cart-list {
-
-      list-style: none;
-
-      font-size: 0.85rem;
-
-      color: #555;
-    }
-
-
-    .cart-item {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      padding: 7px 0;
-
-      border-bottom:
-        1px dashed #f0f0f0;
-    }
-
-
-    /* =========================
-       BOTONES FINALES
-    ========================= */
-
-    .action-buttons {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 11px;
-
-      margin: 20px 0 30px;
-    }
-
-
-    .btn-action {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 10px;
-
-      padding: 14px;
-
-      border-radius: 18px;
-
-      text-decoration: none;
-
-      font-size: 0.93rem;
-
-      font-weight: 800;
-
-      color: white;
-
-      border: none;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 4px 12px
-        rgba(214,91,130,0.20);
-
-      transition:
-        transform 0.2s ease;
-    }
-
-
-    .btn-action:active {
-
-      transform: scale(0.97);
-    }
-
-
-    .btn-whatsapp {
-
-      background: var(--gradient-wsp);
-    }
-
-
-    .btn-instagram {
-
-      background:
-        linear-gradient(
-          135deg,
-          #ed9eb7,
-          #d75c85
-        );
-    }
-
-
-    /* =========================
-       BARRA INFERIOR
-    ========================= */
-
-    .bottom-bar {
-
-      position: fixed;
-
-      bottom: 0;
-
-      left: 0;
-
-      right: 0;
-
-      background:
-        rgba(255,255,255,0.97);
-
-      padding: 11px 16px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 10px;
-
-      box-shadow:
-        0 -4px 15px
-        rgba(0,0,0,0.08);
-
-      z-index: 100;
-
-      backdrop-filter: blur(10px);
-    }
-
-
-    .btn-clear {
-
-      background: #f5f0f2;
-
-      color: #777;
-
-      border: none;
-
-      padding: 10px 15px;
-
-      border-radius: 14px;
-
-      font-size: 0.82rem;
-
-      font-weight: 700;
-
-      cursor: pointer;
-    }
-
-
-    .btn-submit-main {
-
-      background:
-        linear-gradient(
-          135deg,
-          #eda0b7,
-          #d65b82
-        );
-
-      color: white;
-
-      border: none;
-
-      padding: 12px 20px;
-
-      border-radius: 16px;
-
-      font-size: 0.88rem;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 4px 12px
-        rgba(214,91,130,0.25);
-
-      flex: 1;
-
-      max-width: 230px;
-    }
-
-
-    /* =========================
-       CELULARES CHICOS
-    ========================= */
-
-    @media (max-width: 380px) {
-
-      .container {
-        width: 94%;
-      }
-
-
-      .brand-name {
-        font-size: 1.32rem;
-      }
-
-
-      .brand-subtitle {
-        font-size: 0.58rem;
-      }
-
-
-      .price-badge {
-        font-size: 0.76rem;
-
-        padding:
-          6px 9px;
-      }
-
-
-      .hero {
-        padding-top: 27px;
-      }
-
-
-      .hero h1 {
-        font-size: 1.48rem;
-      }
-
-
-      .catalog-grid {
-        gap: 9px;
-      }
-
-
-      .card {
-        padding: 9px;
-      }
-
-
-      .card-img {
-        height: 105px;
-      }
-
-
-      .card-title {
-        font-size: 0.8rem;
-      }
-
-
-      .btn-add {
-        font-size: 0.76rem;
-        padding: 8px 6px;
-      }
-
-
-      .btn-submit-main {
-        padding:
-          11px 13px;
-
-        font-size: 0.8rem;
-      }
-
-
-      .btn-clear {
-        padding:
-          10px 12px;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuoricino - Pulseras Italianas</title>
+<style>
+:root {
+  --pink-soft: #fff6f9;
+  --pink-light: #ffe4ed;
+  --pink-main: #f49ab3;
+  --pink-dark: #d65b82;
+  --pink-deep: #c94d75;
+  --text-color: #333;
+  --text-light: #888;
+  --white: #fff;
+  --gradient-btn:
+    linear-gradient(135deg,#f6a0b8,#d9678a);
+  --gradient-wsp:
+    linear-gradient(135deg,#e9a5b9,#d65b82);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--pink-soft);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding-bottom: 105px;
+}
+button {
+  font-family: inherit;
+}
+.container {
+  width: 92%;
+  max-width: 650px;
+  margin: auto;
+}
+/* =========================
+   HEADER
+========================= */
+header {
+  width: 100%;
+  background: rgba(255,255,255,.97);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 18px rgba(214,91,130,.10);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--pink-dark);
+  letter-spacing: 1.5px;
+}
+.brand-subtitle {
+  font-size: .63rem;
+  color: #999;
+  letter-spacing: 1.4px;
+  margin-top: 2px;
+}
+.price-badge {
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: .85rem;
+  border: 1px solid #f3c2d1;
+  white-space: nowrap;
+}
+/* =========================
+   HERO
+========================= */
+.hero {
+  text-align: center;
+  padding: 34px 10px 20px;
+}
+.hero-heart {
+  font-size: 1.6rem;
+  color: var(--pink-main);
+  margin-bottom: 8px;
+}
+.hero h1 {
+  font-size: 1.65rem;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+.hero p {
+  font-size: .84rem;
+  color: #8f8f8f;
+  line-height: 1.55;
+}
+/* =========================
+   PASOS
+========================= */
+.step {
+  background: white;
+  border: 1px solid var(--pink-light);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.035);
+}
+.step-title {
+  font-size: .9rem;
+  font-weight: 800;
+  color: var(--pink-dark);
+  margin-bottom: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-number {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  font-weight: 800;
+}
+.options {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+.color-options {
+  grid-template-columns: repeat(3,1fr);
+}
+.option {
+  border: 1px solid #edc2cf;
+  background: #fff;
+  color: var(--pink-dark);
+  padding: 11px 7px;
+  border-radius: 13px;
+  font-size: .76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
+.option small {
+  display: block;
+  color: #999;
+  font-weight: 500;
+  margin-top: 3px;
+}
+.option.active {
+  background: var(--pink-dark);
+  color: white;
+  border-color: var(--pink-dark);
+}
+.option.active small {
+  color: #ffeaf0;
+}
+/* =========================
+   VISUALIZADOR
+========================= */
+.visualizer {
+  background: white;
+  border-radius: 23px;
+  padding: 21px 10px;
+  margin: 20px 0 28px;
+  border: 1px solid var(--pink-light);
+  box-shadow: 0 5px 20px rgba(214,91,130,.10);
+  text-align: center;
+}
+.visualizer-title {
+  font-size: .86rem;
+  color: var(--pink-dark);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.visualizer-subtitle {
+  font-size: .75rem;
+  color: #999;
+  margin-bottom: 18px;
+}
+.bracelet-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 22px 5px 38px;
+  scrollbar-width: thin;
+}
+.bracelet {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-width: 100%;
+  padding: 0 15px;
+  min-height: 115px;
+}
+/* CADENA */
+.bracelet::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 8px;
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      180deg,
+      #fafafa 0%,
+      #a9a9a9 45%,
+      #fff 60%,
+      #888 100%
+    );
+  box-shadow: 0 2px 3px rgba(0,0,0,.15);
+  z-index: 1;
+}
+.bracelet.gold::before {
+  background:
+    linear-gradient(
+      180deg,
+      #fff5b0 0%,
+      #c99b22 45%,
+      #ffe99a 60%,
+      #a97b13 100%
+    );
+}
+.bracelet.mixed::before {
+  background:
+    linear-gradient(
+      90deg,
+      #aaa 0 33%,
+      #d4ad3c 33% 66%,
+      #aaa 66% 100%
+    );
+}
+/* =========================
+   SLOT
+========================= */
+.slot {
+  position: relative;
+  width: 61px;
+  height: 105px;
+  flex-shrink: 0;
+  z-index: 3;
+  cursor: grab;
+  border-radius: 12px;
+  transition: .15s;
+  touch-action: manipulation;
+}
+.slot.dragging {
+  opacity: .45;
+  transform: scale(.95);
+}
+.slot.drag-over {
+  background: rgba(244,154,179,.15);
+}
+.slot-ring {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%);
+  border: 2px solid #999;
+  border-radius: 50%;
+  background: white;
+  z-index: 5;
+}
+.slot img {
+  position: absolute;
+  width: 54px;
+  height: 72px;
+  object-fit: contain;
+  left: 3.5px;
+  top: 31px;
+  z-index: 4;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,.18));
+  transition: .2s;
+}
+.slot:hover img {
+  transform: translateY(-3px);
+}
+.slot.empty img {
+  opacity: .65;
+}
+.slot-number {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .53rem;
+  color: #aaa;
+  white-space: nowrap;
+}
+/* =========================
+   MENÚ DEL CHARM
+========================= */
+.charm-menu {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 390px;
+  background: white;
+  border: 1px solid var(--pink-light);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.18);
+  z-index: 500;
+  display: none;
+}
+.charm-menu.show {
+  display: block;
+}
+.charm-menu-title {
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--pink-dark);
+  margin-bottom: 12px;
+}
+.menu-buttons {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 7px;
+}
+.menu-btn {
+  border: none;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  padding: 10px 5px;
+  border-radius: 12px;
+  font-size: .7rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.menu-btn.delete {
+  background: #f8eeee;
+  color: #a85b5b;
+}
+.menu-close {
+  width: 100%;
+  border: none;
+  background: #f5f2f3;
+  color: #777;
+  padding: 9px;
+  border-radius: 12px;
+  margin-top: 8px;
+  font-weight: 700;
+}
+/* =========================
+   CONTADOR
+========================= */
+.counter {
+  font-size: .78rem;
+  color: #888;
+  margin-top: 7px;
+}
+.counter strong {
+  color: var(--pink-dark);
+}
+/* =========================
+   CATALOGO
+========================= */
+.section-title {
+  font-size: 1.18rem;
+  color: var(--pink-dark);
+  margin: 28px 0 16px;
+  text-align: center;
+  font-weight: 800;
+}
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 13px;
+}
+.card {
+  background: white;
+  border-radius: 19px;
+  padding: 11px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.045);
+  border: 1px solid var(--pink-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: white;
+  margin-bottom: 8px;
+  padding: 4px;
+}
+.card-title {
+  font-size: .86rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-price {
+  font-size: .85rem;
+  color: var(--pink-dark);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.btn-add {
+  background: var(--gradient-btn);
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 14px;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* =========================
+   PERSONALIZADO
+========================= */
+.custom-card {
+  grid-column: 1 / -1;
+  background: #fff;
+  border: 1px dashed #e3aabd;
+  border-radius: 19px;
+  padding: 18px;
+  text-align: center;
+}
+.custom-card h3 {
+  color: var(--pink-dark);
+  margin-bottom: 7px;
+}
+.custom-card p {
+  font-size: .76rem;
+  color: #888;
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+.custom-card input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px;
+  border: 1px solid #ead6dc;
+  border-radius: 10px;
+}
+/* =========================
+   RESUMEN
+========================= */
+.cart-summary {
+  background: white;
+  border-radius: 18px;
+  padding: 15px;
+  margin: 25px 0 15px;
+  border: 1px solid var(--pink-light);
+}
+.cart-summary-title {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--pink-dark);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px dashed #eee;
+  font-size: .8rem;
+}
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--pink-dark);
+}
+/* =========================
+   PERSONALIZADO
+========================= */
+.custom-button {
+  width: 100%;
+  border: none;
+  background: var(--gradient-btn);
+  color: white;
+  padding: 10px;
+  border-radius: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+/* =========================
+   INFORMACIÓN
+========================= */
+.info-box {
+  background: white;
+  border: 1px solid var(--pink-light);
+  border-radius: 21px;
+  padding: 19px;
+  margin-top: 27px;
+}
+.info-title {
+  color: var(--pink-dark);
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  font-size: .78rem;
+  color: #666;
+  line-height: 1.45;
+}
+.info-number {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 50%;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .72rem;
+  font-weight: 800;
+}
+/* =========================
+   INSTAGRAM
+========================= */
+.instagram-box {
+  background: white;
+  border: 1px solid var(--pink-light);
+  border-radius: 21px;
+  padding: 19px;
+  margin-top: 18px;
+}
+.instagram-title {
+  text-align: center;
+  color: var(--pink-dark);
+  font-size: .96rem;
+  font-weight: 800;
+  margin-bottom: 9px;
+}
+.instagram-text {
+  color: #777;
+  font-size: .78rem;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.message-box {
+  background: var(--pink-soft);
+  border: 1px solid var(--pink-light);
+  border-radius: 13px;
+  padding: 11px;
+  font-size: .70rem;
+  color: #666;
+  line-height: 1.45;
+  white-space: pre-line;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+.copy-button {
+  width: 100%;
+  border: none;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  padding: 10px;
+  border-radius: 13px;
+  font-size: .8rem;
+  font-weight: 800;
+}
+/* =========================
+   BOTONES
+========================= */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin: 20px 0 30px;
+}
+.btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  font-size: .93rem;
+  font-weight: 800;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.btn-whatsapp {
+  background: var(--gradient-wsp);
+}
+.btn-instagram {
+  background: linear-gradient(135deg,#ed9eb7,#d75c85);
+}
+/* =========================
+   BARRA INFERIOR
+========================= */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,.97);
+  padding: 11px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 -4px 15px rgba(0,0,0,.08);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.btn-clear {
+  background: #f5f0f2;
+  color: #777;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 14px;
+  font-size: .82rem;
+  font-weight: 700;
+}
+.btn-submit-main {
+  background: linear-gradient(135deg,#eda0b7,#d65b82);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 16px;
+  font-size: .88rem;
+  font-weight: 800;
+  flex: 1;
+  max-width: 230px;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:420px) {
+  .options {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .color-options {
+    grid-template-columns: repeat(3,1fr);
+  }
+  .catalog-grid {
+    gap: 9px;
+  }
+  .card {
+    padding: 9px;
+  }
+  .card-img {
+    height: 105px;
+  }
+  .card-title {
+    font-size: .8rem;
+  }
+  .btn-add {
+    font-size: .76rem;
+  }
+}
+</style>
 </head>
-
-
 <body>
-
-
-  <!-- =========================
-       HEADER
-  ========================= -->
-
-  <header>
-
-    <div>
-
-      <div class="brand-name">
-        cuoricino ♡
-      </div>
-
-      <div class="brand-subtitle">
-        con amore, vicino al cuore
-      </div>
-
+<header>
+  <div>
+    <div class="brand-name">cuoricino ♡</div>
+    <div class="brand-subtitle">
+      con amore, vicino al cuore
     </div>
-
-
-    <div
-      class="price-badge"
-      id="totalPrice"
+  </div>
+  <div class="price-badge" id="totalPrice">
+    $10.000
+  </div>
+</header>
+<div class="container">
+<!-- =========================
+     HERO
+========================= -->
+<section class="hero">
+  <div class="hero-heart">♡</div>
+  <h1>creá tu pulsera</h1>
+  <p>
+    elegí el talle, el color y después<br>
+    armala charm por charm ✨
+  </p>
+</section>
+<!-- =========================
+     PASO 1 — TALLE
+========================= -->
+<section class="step">
+  <div class="step-title">
+    <div class="step-number">1</div>
+    elegí el talle de tu pulsera
+  </div>
+  <div class="options">
+    <button
+      class="option"
+      onclick="selectSize('xs',14,this)"
     >
+      xs
+      <small>14 charms</small>
+    </button>
+    <button
+      class="option"
+      onclick="selectSize('s',16,this)"
+    >
+      s
+      <small>16 charms</small>
+    </button>
+    <button
+      class="option"
+      onclick="selectSize('m',18,this)"
+    >
+      m
+      <small>18 charms</small>
+    </button>
+    <button
+      class="option"
+      onclick="selectSize('l',19,this)"
+    >
+      l
+      <small>19 charms</small>
+    </button>
+  </div>
+</section>
+<!-- =========================
+     PASO 2 — COLOR
+========================= -->
+<section class="step">
+  <div class="step-title">
+    <div class="step-number">2</div>
+    elegí el color de tu pulsera
+  </div>
+  <div class="options color-options">
+    <button
+      class="option"
+      onclick="selectColor('silver',this)"
+    >
+      🤍 plateada
+    </button>
+    <button
+      class="option"
+      onclick="selectColor('gold',this)"
+    >
+      💛 dorada
+    </button>
+    <button
+      class="option"
+      onclick="selectColor('mixed',this)"
+    >
+      ✨ intercalada
+    </button>
+  </div>
+</section>
+<!-- =========================
+     VISUALIZADOR
+========================= -->
+<section class="visualizer">
+  <div class="visualizer-title">
+    tu pulsera cuoricino ♡
+  </div>
+  <div
+    class="visualizer-subtitle"
+    id="visualizerSubtitle"
+  >
+    primero elegí un talle
+  </div>
+  <div class="bracelet-scroll">
+    <div
+      class="bracelet"
+      id="braceletDisplay"
+    >
+      <span class="empty-msg">
+        elegí un talle para comenzar ✨
+      </span>
+    </div>
+  </div>
+  <div class="counter">
+    <strong id="filledCount">0</strong>
+    charms elegidos ·
+    <strong id="emptyCount">0</strong>
+    espacios vacíos
+  </div>
+</section>
+<!-- =========================
+     CATALOGO
+========================= -->
+<h2 class="section-title">
+  agregá tus charms ✨
+</h2>
+<div class="catalog-grid">
+  <div class="card">
+    <img src="IMG_0214.png"
+         class="card-img"
+         alt="Charm Atardecer">
+    <div class="card-title">
+      Charm Atardecer
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Atardecer',
+        6000,
+        'IMG_0214.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0221.png"
+         class="card-img"
+         alt="Charm Atardecer Rosa">
+    <div class="card-title">
+      Charm Atardecer Rosa
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Atardecer Rosa',
+        6000,
+        'IMG_0221.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0218.png"
+         class="card-img"
+         alt="Charm Cámara">
+    <div class="card-title">
+      Charm Cámara
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Cámara',
+        6000,
+        'IMG_0218.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0220.png"
+         class="card-img"
+         alt="Charm Ibiza">
+    <div class="card-title">
+      Charm Ibiza
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Ibiza',
+        6000,
+        'IMG_0220.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0236.png"
+         class="card-img"
+         alt="Charm Italia">
+    <div class="card-title">
+      Charm Italia
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Italia',
+        6000,
+        'IMG_0236.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0219.png"
+         class="card-img"
+         alt="Charm Mar">
+    <div class="card-title">
+      Charm Mar
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Mar',
+        6000,
+        'IMG_0219.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0215.png"
+         class="card-img"
+         alt="Charm Música">
+    <div class="card-title">
+      Charm Música
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Música',
+        6000,
+        'IMG_0215.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0216.png"
+         class="card-img"
+         alt="Charm Ola">
+    <div class="card-title">
+      Charm Ola
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Ola',
+        6000,
+        'IMG_0216.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <div class="card">
+    <img src="IMG_0217.png"
+         class="card-img"
+         alt="Charm Spiderman">
+    <div class="card-title">
+      Charm Spiderman
+    </div>
+    <div class="card-price">$6.000</div>
+    <button
+      class="btn-add"
+      onclick="addCharm(
+        'Charm Spiderman',
+        6000,
+        'IMG_0217.png'
+      )"
+    >
+      + agregar
+    </button>
+  </div>
+  <!-- PERSONALIZADO -->
+  <div class="custom-card">
+    <h3>♡ charm personalizado</h3>
+    <p>
+      subí una imagen y agregá un charm
+      diseñado especialmente para vos.
+    </p>
+    <input
+      type="text"
+      id="customName"
+      placeholder="nombre del charm"
+    >
+    <input
+      type="file"
+      id="customImage"
+      accept="image/*"
+    >
+    <button
+      class="custom-button"
+      onclick="addCustomCharm()"
+    >
+      + agregar personalizado · $6.000
+    </button>
+  </div>
+</div>
+<!-- =========================
+     RESUMEN
+========================= -->
+<section
+  class="cart-summary"
+  id="cartSummary"
+  style="display:none;"
+>
+  <div class="cart-summary-title">
+    <span>tu pulsera ♡</span>
+    <span id="summaryCount">
+      0 charms
+    </span>
+  </div>
+  <div id="cartList"></div>
+  <div class="total-row">
+    <span>total</span>
+    <span id="summaryTotal">
       $10.000
-    </div>
-
-  </header>
-
-
-  <div class="container">
-
-
-    <!-- =========================
-         PORTADA
-    ========================= -->
-
-    <section class="hero">
-
-      <div class="hero-heart">
-        ♡
-      </div>
-
-      <h1>
-        Creá tu pulsera
-      </h1>
-
-      <p>
-        Elegí tus charms favoritos y armá<br>
-        una pulsera única para vos ✨
-      </p>
-
-    </section>
-
-
-    <!-- =========================
-         VISUALIZADOR
-    ========================= -->
-
-    <section class="visualizer-section">
-
-      <div class="visualizer-title">
-        Tu pulsera cuoricino ♡
-      </div>
-
-      <div class="visualizer-subtitle">
-        Elegí tus charms y mirá cómo queda
-      </div>
-
-
-      <!-- CHARMS VACÍOS -->
-
-      <div class="quick-add-container">
-
-        <button
-          class="btn-quick-add"
-          onclick="addItem(
-            'Charm Vacío Plateado',
-            1000,
-            'IMG_0242.png'
-          )"
-        >
-          + Vacío plateado · $1.000
-        </button>
-
-
-        <button
-          class="btn-quick-add"
-          onclick="addItem(
-            'Charm Vacío Dorado',
-            1000,
-            'IMG_0240.png'
-          )"
-        >
-          + Vacío dorado · $1.000
-        </button>
-
-      </div>
-
-
-      <!-- PULSERA -->
-
-      <div class="bracelet-rail">
-
-        <div
-          class="bracelet-chain"
-          id="braceletDisplay"
-        >
-
-          <span class="empty-msg">
-            Tocá “+ agregar” para armarla ✨
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="charm-counter">
-
-        <strong id="itemCount">
-          0
-        </strong>
-
-        charms agregados
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CATÁLOGO
-    ========================= -->
-
-    <section>
-
-      <h2 class="section-title">
-        Nuestros charms ✨
-      </h2>
-
-
-      <div class="catalog-grid">
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0214.png"
-            alt="Charm Atardecer"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Atardecer
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Atardecer',
-              6000,
-              'IMG_0214.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0221.png"
-            alt="Charm Atardecer Rosa"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Atardecer Rosa
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Atardecer Rosa',
-              6000,
-              'IMG_0221.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0218.png"
-            alt="Charm Cámara"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Cámara
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Cámara',
-              6000,
-              'IMG_0218.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0220.png"
-            alt="Charm Ibiza"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Ibiza
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Ibiza',
-              6000,
-              'IMG_0220.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0236.png"
-            alt="Charm Italia"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Italia
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Italia',
-              6000,
-              'IMG_0236.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0219.png"
-            alt="Charm Mar"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Mar
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Mar',
-              6000,
-              'IMG_0219.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0215.png"
-            alt="Charm Música"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Música
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Música',
-              6000,
-              'IMG_0215.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0216.png"
-            alt="Charm Ola"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Ola
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Ola',
-              6000,
-              'IMG_0216.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <img
-            src="IMG_0217.png"
-            alt="Charm Spiderman"
-            class="card-img"
-          >
-
-          <div class="card-title">
-            Charm Spiderman
-          </div>
-
-          <div class="card-price">
-            $6.000
-          </div>
-
-          <button
-            class="btn-add"
-            onclick="addItem(
-              'Charm Spiderman',
-              6000,
-              'IMG_0217.png'
-            )"
-          >
-            + Agregar
-          </button>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CÓMO COMPRAR
-    ========================= -->
-
-    <section class="info-box">
-
-      <div class="info-title">
-        ¿Cómo comprar? ♡
-      </div>
-
-
-      <div class="info-item">
-
-        <div class="info-number">
-          1
-        </div>
-
-        <div>
-          Elegí la pulsera y los charms que más te gusten.
-        </div>
-
-      </div>
-
-
-      <div class="info-item">
-
-        <div class="info-number">
-          2
-        </div>
-
-        <div>
-          Si querés comprar por <strong>WhatsApp</strong>, tocá
-          <strong>“Finalizar mi pedido”</strong>. Se abrirá
-          automáticamente WhatsApp con tu pedido listo para enviar.
-        </div>
-
-      </div>
-
-
-      <div class="info-item">
-
-        <div class="info-number">
-          3
-        </div>
-
-        <div>
-          Si preferís comprar por <strong>Instagram</strong>, abajo
-          vas a encontrar el mensaje listo para copiar. Tocá
-          <strong>“Copiar mensaje”</strong> y después
-          <strong>“Ir a Instagram”</strong> para enviarlo por mensaje privado.
-        </div>
-
-      </div>
-
-
-    </section>
-
-
-    <!-- =========================
-         INSTAGRAM
-    ========================= -->
-
-    <section class="instagram-box">
-
-      <div class="instagram-title">
-        ¿Querés comprar por Instagram? ♡
-      </div>
-
-
-      <div class="instagram-text">
-
-        Copiá este mensaje y después tocá
-        <strong>“Ir a Instagram”</strong> para enviárnoslo por privado.
-
-      </div>
-
-
-      <div
-        class="message-box"
-        id="instagramMessage"
-      >
-        ¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
-
-♡ Nombre y apellido:
-♡ Si sos de la escuela, indicá tu año y división:
-♡ Producto que quiero: pulsera italiana
-
-♡ Charms que elegí:
-Elegí tus charms arriba para que aparezcan acá.
-
-♡ Cantidad:
-♡ Total:
-
-Vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
-
-¡Graciasss! 🫶🏻
-      </div>
-
-
-      <button
-        class="copy-button"
-        onclick="copyInstagramMessage()"
-        id="copyButton"
-      >
-        📋 Copiar mensaje
-      </button>
-
-    </section>
-
-
-    <!-- =========================
-         RESUMEN
-    ========================= -->
-
-    <div
-      class="cart-summary"
-      id="cartSummary"
-      style="display:none;"
-    >
-
-      <div class="cart-summary-title">
-
-        <span>
-          Tu pulsera
-        </span>
-
-        <span
-          id="summaryCount"
-          style="
-            font-weight:normal;
-            color:#777;
-          "
-        >
-          0 charms
-        </span>
-
-      </div>
-
-
-      <ul
-        class="cart-list"
-        id="cartList"
-      ></ul>
-
-    </div>
-
-
-    <!-- =========================
-         BOTONES FINALES
-    ========================= -->
-
-    <div class="action-buttons">
-
-      <button
-        class="btn-action btn-whatsapp"
-        onclick="sendWhatsApp()"
-      >
-        💌 Finalizar mi pedido
-      </button>
-
-
-      <button
-        class="btn-action btn-instagram"
-        onclick="openInstagram()"
-      >
-        📸 Ir a Instagram
-      </button>
-
-    </div>
-
+    </span>
   </div>
-
-
-  <!-- =========================
-       BARRA INFERIOR
-  ========================= -->
-
-  <div class="bottom-bar">
-
-    <button
-      class="btn-clear"
-      onclick="clearItems()"
-    >
-      Vaciar
-    </button>
-
-
-    <button
-      class="btn-submit-main"
-      onclick="sendWhatsApp()"
-    >
-      💌 Finalizar
-      ($<span id="bottomTotal">10.000</span>)
-    </button>
-
+</section>
+<!-- =========================
+     INSTAGRAM
+========================= -->
+<section class="instagram-box">
+  <div class="instagram-title">
+    ¿querés comprar por instagram? ♡
   </div>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
-  <script>
-
-    const BRACELET_PRICE = 10000;
-
-    let selectedItems = [];
-
-
-    /* =========================
-       CALCULAR TOTAL
-    ========================= */
-
-    function calculateTotal() {
-
-      const itemsTotal =
-        selectedItems.reduce(
-          (sum, item) =>
-            sum + item.price,
-          0
-        );
-
-      return BRACELET_PRICE + itemsTotal;
-    }
-
-
-    /* =========================
-       AGREGAR CHARMS
-    ========================= */
-
-    function addItem(
+  <div class="instagram-text">
+    copiá el mensaje y mandanoslo por privado.
+  </div>
+  <div
+    class="message-box"
+    id="instagramMessage"
+  >
+  </div>
+  <button
+    class="copy-button"
+    onclick="copyInstagramMessage()"
+    id="copyButton"
+  >
+    📋 copiar mensaje
+  </button>
+</section>
+<!-- =========================
+     BOTONES
+========================= -->
+<div class="action-buttons">
+  <button
+    class="btn-action btn-whatsapp"
+    onclick="sendWhatsApp()"
+  >
+    💌 finalizar por whatsapp
+  </button>
+  <button
+    class="btn-action btn-instagram"
+    onclick="openInstagram()"
+  >
+    📸 ir a instagram
+  </button>
+</div>
+</div>
+<!-- =========================
+     MENÚ MÓVIL
+========================= -->
+<div
+  class="charm-menu"
+  id="charmMenu"
+>
+  <div
+    class="charm-menu-title"
+    id="menuTitle"
+  >
+    charm
+  </div>
+  <div class="menu-buttons">
+    <button
+      class="menu-btn"
+      onclick="startMoveMode()"
+    >
+      ↔ mover
+    </button>
+    <button
+      class="menu-btn"
+      onclick="removeSelected()"
+    >
+      🗑 eliminar
+    </button>
+    <button
+      class="menu-btn"
+      onclick="replaceSelected()"
+    >
+      ✨ reemplazar
+    </button>
+  </div>
+  <button
+    class="menu-close"
+    onclick="closeCharmMenu()"
+  >
+    cerrar
+  </button>
+</div>
+<!-- =========================
+     BARRA INFERIOR
+========================= -->
+<div class="bottom-bar">
+  <button
+    class="btn-clear"
+    onclick="clearBracelet()"
+  >
+    vaciar
+  </button>
+  <button
+    class="btn-submit-main"
+    onclick="sendWhatsApp()"
+  >
+    💌 finalizar
+    ($<span id="bottomTotal">10.000</span>)
+  </button>
+</div>
+<script>
+/* =====================================================
+   CONFIGURACIÓN
+===================================================== */
+const BRACELET_PRICE = 10000;
+const EMPTY_PRICE = 1000;
+const EMPTY_SILVER = {
+  name: 'Charm vacío plateado',
+  price: EMPTY_PRICE,
+  img: 'IMG_0242.png',
+  empty: true
+};
+let selectedSize = null;
+let capacity = 0;
+let braceletColor = 'silver';
+let slots = [];
+let selectedSlotIndex = null;
+let movingMode = false;
+let draggedIndex = null;
+/* =====================================================
+   SELECCIONAR TALLE
+===================================================== */
+function selectSize(size, number, button) {
+  selectedSize = size;
+  capacity = number;
+  document
+    .querySelectorAll(
+      '.step:first-of-type .option'
+    )
+    .forEach(btn =>
+      btn.classList.remove('active')
+    );
+  button.classList.add('active');
+  /*
+    Cada vez que se cambia el talle,
+    se reconstruye la pulsera con
+    exactamente la cantidad de espacios.
+  */
+  slots = [];
+  for(let i = 0; i < capacity; i++) {
+    slots.push({
+      ...EMPTY_SILVER
+    });
+  }
+  closeCharmMenu();
+  updateUI();
+}
+/* =====================================================
+   COLOR
+===================================================== */
+function selectColor(color, button) {
+  braceletColor = color;
+  document
+    .querySelectorAll(
+      '.color-options .option'
+    )
+    .forEach(btn =>
+      btn.classList.remove('active')
+    );
+  button.classList.add('active');
+  updateUI();
+}
+/* =====================================================
+   AGREGAR CHARM
+===================================================== */
+function addCharm(name, price, img) {
+  if(!selectedSize) {
+    alert(
+      'primero elegí el talle de tu pulsera ♡'
+    );
+    return;
+  }
+  const newCharm = {
+    name: name,
+    price: price,
+    img: img,
+    empty: false
+  };
+  /*
+    Busca el primer espacio vacío.
+  */
+  const emptyIndex =
+    slots.findIndex(
+      slot => slot.empty
+    );
+  if(emptyIndex !== -1) {
+    slots[emptyIndex] = newCharm;
+  } else {
+    /*
+      Si todos los espacios están ocupados,
+      se agrega automáticamente un espacio
+      extra que tiene precio de $1.000.
+    */
+    slots.push({
+      ...EMPTY_SILVER
+    });
+    /*
+      El nuevo charm ocupa ese espacio.
+    */
+    slots[slots.length - 1] = newCharm;
+  }
+  closeCharmMenu();
+  updateUI();
+}
+/* =====================================================
+   PERSONALIZADO
+===================================================== */
+function addCustomCharm() {
+  if(!selectedSize) {
+    alert(
+      'primero elegí el talle de tu pulsera ♡'
+    );
+    return;
+  }
+  const name =
+    document
+      .getElementById('customName')
+      .value
+      .trim();
+  const file =
+    document
+      .getElementById('customImage')
+      .files[0];
+  if(!name || !file) {
+    alert(
+      'poné un nombre y elegí una imagen ♡'
+    );
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    addCharm(
       name,
-      price,
-      imgSrc
-    ) {
-
-      selectedItems.push({
-
-        name: name,
-
-        price: price,
-
-        imgSrc: imgSrc
-
-      });
-
-      updateUI();
-    }
-
-
-    /* =========================
-       ELIMINAR CHARM
-    ========================= */
-
-    function removeItem(index) {
-
-      selectedItems.splice(
-        index,
-        1
-      );
-
-      updateUI();
-    }
-
-
-    /* =========================
-       VACIAR
-    ========================= */
-
-    function clearItems() {
-
-      selectedItems = [];
-
-      updateUI();
-    }
-
-
-    /* =========================
-       ACTUALIZAR PÁGINA
-    ========================= */
-
-    function updateUI() {
-
-      const total =
-        calculateTotal();
-
-
-      const formattedTotal =
-        total.toLocaleString(
-          'es-AR'
-        );
-
-
-      document.getElementById(
-        'totalPrice'
-      ).innerText =
-        '$' + formattedTotal;
-
-
-      document.getElementById(
-        'bottomTotal'
-      ).innerText =
-        formattedTotal;
-
-
-      document.getElementById(
-        'itemCount'
-      ).innerText =
-        selectedItems.length;
-
-
-      document.getElementById(
-        'summaryCount'
-      ).innerText =
-        selectedItems.length +
-        (
-          selectedItems.length === 1
-            ? ' charm'
-            : ' charms'
-        );
-
-
-      const display =
-        document.getElementById(
-          'braceletDisplay'
-        );
-
-
-      /* SI NO HAY CHARMS */
-
-      if (
-        selectedItems.length === 0
-      ) {
-
-        display.innerHTML =
-          '<span class="empty-msg">Tocá “+ agregar” para armarla ✨</span>';
-
-
-        document.getElementById(
-          'cartSummary'
-        ).style.display =
-          'none';
-
-        updateInstagramMessage();
-
-        return;
-      }
-
-
-      /* MOSTRAR CHARMS */
-
-      display.innerHTML = '';
-
-
-      selectedItems.forEach(
-        (item, index) => {
-
-          const wrapper =
-            document.createElement(
-              'div'
-            );
-
-
-          wrapper.className =
-            'charm-wrapper';
-
-
-          wrapper.title =
-            'Tocá para eliminar';
-
-
-          wrapper.onclick =
-            () =>
-              removeItem(index);
-
-
-          const ring =
-            document.createElement(
-              'div'
-            );
-
-
-          ring.className =
-            'charm-ring';
-
-
-          const img =
-            document.createElement(
-              'img'
-            );
-
-
-          img.src =
-            item.imgSrc;
-
-
-          img.className =
-            'charm-link';
-
-
-          img.alt =
-            item.name;
-
-
-          const hint =
-            document.createElement(
-              'span'
-            );
-
-
-          hint.className =
-            'delete-hint';
-
-
-          hint.innerText =
-            'eliminar';
-
-
-          wrapper.appendChild(
-            ring
-          );
-
-
-          wrapper.appendChild(
-            img
-          );
-
-
-          wrapper.appendChild(
-            hint
-          );
-
-
-          display.appendChild(
-            wrapper
-          );
-
-        }
-      );
-
-
-      document.getElementById(
-        'cartSummary'
-      ).style.display =
-        'block';
-
-
-      /* RESUMEN */
-
-      const counts = {};
-
-
-      selectedItems.forEach(
-        item => {
-
-          if (
-            !counts[item.name]
-          ) {
-
-            counts[item.name] = {
-
-              qty: 0,
-
-              price:
-                item.price
-
-            };
-
-          }
-
-
-          counts[item.name].qty += 1;
-
-        }
-      );
-
-
-      const cartList =
-        document.getElementById(
-          'cartList'
-        );
-
-
-      cartList.innerHTML = '';
-
-
-      Object.entries(
-        counts
-      ).forEach(
-        ([name, data]) => {
-
-          const li =
-            document.createElement(
-              'li'
-            );
-
-
-          li.className =
-            'cart-item';
-
-
-          const text =
-            document.createElement(
-              'span'
-            );
-
-
-          text.innerHTML =
-            `<strong>${data.qty}x</strong> ${name}`;
-
-
-          const price =
-            document.createElement(
-              'span'
-            );
-
-
-          price.innerText =
-            '$' +
-            (
-              data.qty *
-              data.price
-            ).toLocaleString(
-              'es-AR'
-            );
-
-
-          li.appendChild(
-            text
-          );
-
-
-          li.appendChild(
-            price
-          );
-
-
-          cartList.appendChild(
-            li
-          );
-
-        }
-      );
-
-
-      updateInstagramMessage();
-
-    }
-
-
-    /* =========================
-       CREAR MENSAJE
-       INSTAGRAM
-    ========================= */
-
-    function createOrderMessage() {
-
-      const counts = {};
-
-
-      selectedItems.forEach(
-        item => {
-
-          counts[item.name] =
-            (
-              counts[item.name] || 0
-            ) + 1;
-
-        }
-      );
-
-
-      let itemsText = '';
-
-
-      Object.entries(
-        counts
-      ).forEach(
-        ([itemName, qty]) => {
-
-          itemsText +=
-            `${qty}x ${itemName}\n`;
-
-        }
-      );
-
-
-      const total =
-        calculateTotal();
-
-
-      const formattedTotal =
-        total.toLocaleString(
-          'es-AR'
-        );
-
-
-      const totalQty =
-        selectedItems.length;
-
-
-      return `¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
-
-♡ Nombre y apellido:
-♡ Si sos de la escuela, indicá tu año y división:
-♡ Producto que quiero: pulsera italiana
-
-♡ Charms que elegí:
-${itemsText}
-♡ Cantidad: ${totalQty} charm${totalQty === 1 ? '' : 's'}
-♡ Total: $${formattedTotal}
-
-Vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
-
-¡Graciasss! 🫶🏻`;
-
-    }
-
-
-    /* =========================
-       ACTUALIZAR MENSAJE IG
-    ========================= */
-
-    function updateInstagramMessage() {
-
-      const messageBox =
-        document.getElementById(
-          'instagramMessage'
-        );
-
-
-      if (
-        selectedItems.length === 0
-      ) {
-
-        messageBox.innerText =
-`¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
-
-♡ Nombre y apellido:
-♡ Si sos de la escuela, indicá tu año y división:
-♡ Producto que quiero: pulsera italiana
-
-♡ Charms que elegí:
-Elegí tus charms arriba para que aparezcan acá.
-
-♡ Cantidad:
-♡ Total:
-
-Vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
-
-¡Graciasss! 🫶🏻`;
-
-        return;
-      }
-
-
-      messageBox.innerText =
-        createOrderMessage();
-
-    }
-
-
-    /* =========================
-       COPIAR MENSAJE INSTAGRAM
-    ========================= */
-
-    function copyInstagramMessage() {
-
-      const message =
-        createOrderMessage();
-
-
-      navigator.clipboard
-        .writeText(message)
-        .then(() => {
-
-          const button =
-            document.getElementById(
-              'copyButton'
-            );
-
-
-          const originalText =
-            button.innerText;
-
-
-          button.innerText =
-            '✓ Mensaje copiado';
-
-
-          setTimeout(
-            () => {
-
-              button.innerText =
-                originalText;
-
-            },
-            1800
-          );
-
-        })
-        .catch(() => {
-
-          alert(
-            'No se pudo copiar el mensaje. Mantené presionado el texto para copiarlo 💗'
-          );
-
-        });
-
-    }
-
-
-    /* =========================
-       WHATSAPP
-    ========================= */
-
-    function sendWhatsApp() {
-
-      if (
-        selectedItems.length === 0
-      ) {
-
-        alert(
-          'Primero elegí al menos 1 charm para armar tu pulsera 💗'
-        );
-
-        return;
-      }
-
-
-      const message =
-        createOrderMessage();
-
-
-      const phone =
-        "5493412651141";
-
-
-      window.location.href =
-        `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-
-    }
-
-
-    /* =========================
-       INSTAGRAM
-       SOLO ABRE INSTAGRAM
-    ========================= */
-
-    function openInstagram() {
-
-      window.location.href =
-        "https://instagram.com/cuoricino_charms";
-
-    }
-
-
-    /* =========================
-       INICIAR
-    ========================= */
-
+      6000,
+      e.target.result
+    );
+    document.getElementById(
+      'customName'
+    ).value = '';
+    document.getElementById(
+      'customImage'
+    ).value = '';
+  };
+  reader.readAsDataURL(file);
+}
+/* =====================================================
+   ELIMINAR
+===================================================== */
+function removeSlot(index) {
+  /*
+    Al eliminar un charm, se elimina
+    ese espacio de la pulsera.
+  */
+  slots.splice(index,1);
+  selectedSlotIndex = null;
+  closeCharmMenu();
+  updateUI();
+}
+function removeSelected() {
+  if(selectedSlotIndex === null)
+    return;
+  removeSlot(selectedSlotIndex);
+}
+/* =====================================================
+   TOCAR CHARM
+===================================================== */
+function openCharmMenu(index) {
+  selectedSlotIndex = index;
+  movingMode = false;
+  const slot = slots[index];
+  document.getElementById(
+    'menuTitle'
+  ).innerText =
+    slot.name;
+  document
+    .getElementById('charmMenu')
+    .classList.add('show');
+}
+function closeCharmMenu() {
+  selectedSlotIndex = null;
+  movingMode = false;
+  document
+    .getElementById('charmMenu')
+    .classList.remove('show');
+}
+/* =====================================================
+   MODO MOVER
+===================================================== */
+function startMoveMode() {
+  if(selectedSlotIndex === null)
+    return;
+  movingMode = true;
+  document.getElementById(
+    'menuTitle'
+  ).innerText =
+    'tocá otro lugar para mover el charm ♡';
+}
+/* =====================================================
+   REEMPLAZAR
+===================================================== */
+function replaceSelected() {
+  if(selectedSlotIndex === null)
+    return;
+  closeCharmMenu();
+  document
+    .querySelector('.section-title')
+    .scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    });
+  alert(
+    'elegí un charm del catálogo y va a reemplazar el seleccionado ♡'
+  );
+  replacementMode = true;
+}
+let replacementMode = false;
+/* =====================================================
+   AGREGAR / REEMPLAZAR DESDE CATÁLOGO
+===================================================== */
+function addCharm(name, price, img) {
+  if(!selectedSize) {
+    alert(
+      'primero elegí el talle de tu pulsera ♡'
+    );
+    return;
+  }
+  const newCharm = {
+    name: name,
+    price: price,
+    img: img,
+    empty: false
+  };
+  /*
+    Si estamos reemplazando,
+    reemplazamos exactamente ese espacio.
+  */
+  if(
+    replacementMode &&
+    selectedSlotIndex !== null
+  ) {
+    slots[selectedSlotIndex] =
+      newCharm;
+    replacementMode = false;
+    selectedSlotIndex = null;
     updateUI();
-
-  </script>
-
+    return;
+  }
+  /*
+    Funcionamiento normal:
+    buscamos un vacío.
+  */
+  const emptyIndex =
+    slots.findIndex(
+      slot => slot.empty
+    );
+  if(emptyIndex !== -1) {
+    slots[emptyIndex] =
+      newCharm;
+  } else {
+    /*
+      No quedan espacios:
+      se agrega automáticamente
+      un espacio extra.
+    */
+    slots.push(newCharm);
+  }
+  closeCharmMenu();
+  updateUI();
+}
+/* =====================================================
+   DRAG & DROP
+===================================================== */
+function dragStart(index, event) {
+  draggedIndex = index;
+  event.dataTransfer.effectAllowed =
+    'move';
+  event.dataTransfer.setData(
+    'text/plain',
+    index
+  );
+  event.currentTarget.classList.add(
+    'dragging'
+  );
+}
+function dragEnd(event) {
+  event.currentTarget.classList.remove(
+    'dragging'
+  );
+  draggedIndex = null;
+  document
+    .querySelectorAll('.slot')
+    .forEach(slot =>
+      slot.classList.remove(
+        'drag-over'
+      )
+    );
+}
+function allowDrop(event) {
+  event.preventDefault();
+  event.currentTarget.classList.add(
+    'drag-over'
+  );
+}
+function dropSlot(index,event) {
+  event.preventDefault();
+  document
+    .querySelectorAll('.slot')
+    .forEach(slot =>
+      slot.classList.remove(
+        'drag-over'
+      )
+    );
+  if(
+    draggedIndex === null ||
+    draggedIndex === index
+  )
+    return;
+  /*
+    INTERCAMBIAR POSICIONES.
+    ejemplo:
+    vacío - cámara - italia - mar
+    mar → primer lugar
+    mar - cámara - italia - vacío
+  */
+  const temp =
+    slots[draggedIndex];
+  slots[draggedIndex] =
+    slots[index];
+  slots[index] =
+    temp;
+  updateUI();
+}
+/* =====================================================
+   TOQUE PARA MOVER EN CELULAR
+===================================================== */
+function handleSlotClick(index) {
+  /*
+    Si estamos en modo mover,
+    el charm seleccionado se intercambia
+    con el nuevo lugar tocado.
+  */
+  if(
+    movingMode &&
+    selectedSlotIndex !== null
+  ) {
+    const temp =
+      slots[selectedSlotIndex];
+    slots[selectedSlotIndex] =
+      slots[index];
+    slots[index] =
+      temp;
+    closeCharmMenu();
+    updateUI();
+    return;
+  }
+  openCharmMenu(index);
+}
+/* =====================================================
+   RENDER PULSERA
+===================================================== */
+function renderBracelet() {
+  const display =
+    document.getElementById(
+      'braceletDisplay'
+    );
+  display.innerHTML = '';
+  if(!selectedSize) {
+    display.innerHTML =
+      `<span class="empty-msg">
+        elegí un talle para comenzar ✨
+      </span>`;
+    return;
+  }
+  display.className =
+    'bracelet ' +
+    (
+      braceletColor === 'gold'
+        ? 'gold'
+        : braceletColor === 'mixed'
+          ? 'mixed'
+          : ''
+    );
+  slots.forEach(
+    (slot,index) => {
+      const wrapper =
+        document.createElement(
+          'div'
+        );
+      wrapper.className =
+        'slot';
+      wrapper.draggable = true;
+      wrapper.dataset.index =
+        index;
+      wrapper.addEventListener(
+        'dragstart',
+        e =>
+          dragStart(index,e)
+      );
+      wrapper.addEventListener(
+        'dragend',
+        dragEnd
+      );
+      wrapper.addEventListener(
+        'dragover',
+        allowDrop
+      );
+      wrapper.addEventListener(
+        'drop',
+        e =>
+          dropSlot(index,e)
+      );
+      wrapper.addEventListener(
+        'click',
+        () =>
+          handleSlotClick(index)
+      );
+      const number =
+        document.createElement(
+          'div'
+        );
+      number.className =
+        'slot-number';
+      number.innerText =
+        `${index + 1}`;
+      const ring =
+        document.createElement(
+          'div'
+        );
+      ring.className =
+        'slot-ring';
+      const img =
+        document.createElement(
+          'img'
+        );
+      img.src =
+        slot.img;
+      img.alt =
+        slot.name;
+      if(slot.empty) {
+        wrapper.classList.add(
+          'empty'
+        );
+      }
+      wrapper.appendChild(number);
+      wrapper.appendChild(ring);
+      wrapper.appendChild(img);
+      display.appendChild(wrapper);
+    }
+  );
+}
+/* =====================================================
+   TOTAL
+===================================================== */
+function calculateTotal() {
+  let total =
+    BRACELET_PRICE;
+  slots.forEach(
+    slot =>
+      total += slot.price
+  );
+  return total;
+}
+/* =====================================================
+   ACTUALIZAR UI
+===================================================== */
+function updateUI() {
+  renderBracelet();
+  const filled =
+    slots.filter(
+      slot => !slot.empty
+    ).length;
+  const empty =
+    slots.filter(
+      slot => slot.empty
+    ).length;
+  document.getElementById(
+    'filledCount'
+  ).innerText =
+    filled;
+  document.getElementById(
+    'emptyCount'
+  ).innerText =
+    empty;
+  const total =
+    calculateTotal();
+  const formatted =
+    total.toLocaleString(
+      'es-AR'
+    );
+  document.getElementById(
+    'totalPrice'
+  ).innerText =
+    '$' + formatted;
+  document.getElementById(
+    'bottomTotal'
+  ).innerText =
+    formatted;
+  document.getElementById(
+    'summaryTotal'
+  ).innerText =
+    '$' + formatted;
+  if(selectedSize) {
+    document.getElementById(
+      'visualizerSubtitle'
+    ).innerText =
+      `talle ${selectedSize.toUpperCase()} · ${capacity} espacios · ${getColorName()}`;
+  } else {
+    document.getElementById(
+      'visualizerSubtitle'
+    ).innerText =
+      'primero elegí un talle';
+  }
+  updateSummary();
+  updateInstagramMessage();
+}
+/* =====================================================
+   COLOR
+===================================================== */
+function getColorName() {
+  if(braceletColor === 'gold')
+    return 'pulsera dorada ✨';
+  if(braceletColor === 'mixed')
+    return 'pulsera intercalada ✨';
+  return 'pulsera plateada ♡';
+}
+/* =====================================================
+   RESUMEN
+===================================================== */
+function updateSummary() {
+  const summary =
+    document.getElementById(
+      'cartSummary'
+    );
+  const list =
+    document.getElementById(
+      'cartList'
+    );
+  if(!selectedSize) {
+    summary.style.display =
+      'none';
+    return;
+  }
+  summary.style.display =
+    'block';
+  document.getElementById(
+    'summaryCount'
+  ).innerText =
+    `${slots.length} espacios`;
+  list.innerHTML = '';
+  slots.forEach(
+    (slot,index) => {
+      const row =
+        document.createElement(
+          'div'
+        );
+      row.className =
+        'cart-item';
+      row.innerHTML = `
+        <span>
+          <strong>${index + 1}.</strong>
+          ${slot.name}
+        </span>
+        <span>
+          $${slot.price.toLocaleString('es-AR')}
+        </span>
+      `;
+      list.appendChild(row);
+    }
+  );
+}
+/* =====================================================
+   MENSAJE
+===================================================== */
+function createOrderMessage() {
+  let charmsText = '';
+  slots.forEach(
+    (slot,index) => {
+      charmsText +=
+        `${index + 1}. ${slot.name}`;
+      if(slot.empty) {
+        charmsText +=
+          ' · vacío · $1.000';
+      }
+      charmsText += '\n';
+    }
+  );
+  const total =
+    calculateTotal();
+  return `¡Holaa! 💗 quiero hacer una compra en Cuoricino ✨
+♡ talle: ${selectedSize ? selectedSize.toUpperCase() : '-'}
+♡ capacidad: ${capacity} charms
+♡ pulsera: ${getColorName()}
+♡ charms elegidos:
+${charmsText}
+♡ total de espacios: ${slots.length}
+♡ total: $${total.toLocaleString('es-AR')}
+vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
+¡graciasss! 🫶🏻`;
+}
+/* =====================================================
+   INSTAGRAM
+===================================================== */
+function updateInstagramMessage() {
+  const box =
+    document.getElementById(
+      'instagramMessage'
+    );
+  if(!selectedSize) {
+    box.innerText =
+`¡Holaa! 💗 quiero hacer una compra en Cuoricino ✨
+♡ talle:
+♡ pulsera:
+♡ charms que elegí:
+primero elegí el talle para armar tu pulsera ♡`;
+    return;
+  }
+  box.innerText =
+    createOrderMessage();
+}
+function copyInstagramMessage() {
+  const message =
+    createOrderMessage();
+  navigator.clipboard
+    .writeText(message)
+    .then(() => {
+      const button =
+        document.getElementById(
+          'copyButton'
+        );
+      const old =
+        button.innerText;
+      button.innerText =
+        '✓ mensaje copiado';
+      setTimeout(
+        () => {
+          button.innerText = old;
+        },
+        1800
+      );
+    })
+    .catch(() => {
+      alert(
+        'no se pudo copiar. mantené presionado el mensaje para copiarlo ♡'
+      );
+    });
+}
+/* =====================================================
+   WHATSAPP
+===================================================== */
+function sendWhatsApp() {
+  if(!selectedSize) {
+    alert(
+      'primero elegí el talle de tu pulsera ♡'
+    );
+    return;
+  }
+  const message =
+    createOrderMessage();
+  const phone =
+    '5493412651141';
+  window.location.href =
+    `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+}
+/* =====================================================
+   INSTAGRAM
+===================================================== */
+function openInstagram() {
+  window.location.href =
+    'https://instagram.com/cuoricino_charms';
+}
+/* =====================================================
+   VACIAR
+===================================================== */
+function clearBracelet() {
+  if(!selectedSize) {
+    return;
+  }
+  /*
+    vuelve a dejar exactamente
+    los espacios correspondientes
+    al talle elegido.
+  */
+  slots = [];
+  for(let i = 0; i < capacity; i++) {
+    slots.push({
+      ...EMPTY_SILVER
+    });
+  }
+  closeCharmMenu();
+  updateUI();
+}
+/* =====================================================
+   INICIO
+===================================================== */
+updateUI();
+</script>
 </body>
 </html>
