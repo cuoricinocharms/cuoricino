@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cuoricino - Pulseras Italianas</title>
+
 <style>
 :root {
   --pink-soft: #fff6f9;
@@ -14,37 +15,46 @@
   --text-color: #333;
   --text-light: #888;
   --white: #fff;
+
   --gradient-btn:
     linear-gradient(135deg,#f6a0b8,#d9678a);
+
   --gradient-wsp:
     linear-gradient(135deg,#e9a5b9,#d65b82);
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   background: var(--pink-soft);
   color: var(--text-color);
   min-height: 100vh;
   padding-bottom: 105px;
 }
+
 button {
   font-family: inherit;
 }
+
 .container {
   width: 92%;
   max-width: 650px;
   margin: auto;
 }
+
 /* =========================
    HEADER
 ========================= */
+
 header {
   width: 100%;
   background: rgba(255,255,255,.97);
@@ -58,18 +68,21 @@ header {
   z-index: 100;
   backdrop-filter: blur(10px);
 }
+
 .brand-name {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--pink-dark);
   letter-spacing: 1.5px;
 }
+
 .brand-subtitle {
   font-size: .63rem;
   color: #999;
   letter-spacing: 1.4px;
   margin-top: 2px;
 }
+
 .price-badge {
   background: var(--pink-light);
   color: var(--pink-dark);
@@ -80,31 +93,38 @@ header {
   border: 1px solid #f3c2d1;
   white-space: nowrap;
 }
+
 /* =========================
    HERO
 ========================= */
+
 .hero {
   text-align: center;
   padding: 34px 10px 20px;
 }
+
 .hero-heart {
   font-size: 1.6rem;
   color: var(--pink-main);
   margin-bottom: 8px;
 }
+
 .hero h1 {
   font-size: 1.65rem;
   margin-bottom: 8px;
   font-weight: 800;
 }
+
 .hero p {
   font-size: .84rem;
   color: #8f8f8f;
   line-height: 1.55;
 }
+
 /* =========================
    PASOS
 ========================= */
+
 .step {
   background: white;
   border: 1px solid var(--pink-light);
@@ -113,6 +133,7 @@ header {
   margin-bottom: 14px;
   box-shadow: 0 4px 14px rgba(0,0,0,.035);
 }
+
 .step-title {
   font-size: .9rem;
   font-weight: 800;
@@ -122,6 +143,7 @@ header {
   align-items: center;
   gap: 8px;
 }
+
 .step-number {
   width: 27px;
   height: 27px;
@@ -135,14 +157,17 @@ header {
   font-size: .75rem;
   font-weight: 800;
 }
+
 .options {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 8px;
 }
+
 .color-options {
   grid-template-columns: repeat(3,1fr);
 }
+
 .option {
   border: 1px solid #edc2cf;
   background: #fff;
@@ -154,23 +179,28 @@ header {
   cursor: pointer;
   transition: .2s;
 }
+
 .option small {
   display: block;
   color: #999;
   font-weight: 500;
   margin-top: 3px;
 }
+
 .option.active {
   background: var(--pink-dark);
   color: white;
   border-color: var(--pink-dark);
 }
+
 .option.active small {
   color: #ffeaf0;
 }
+
 /* =========================
    VISUALIZADOR
 ========================= */
+
 .visualizer {
   background: white;
   border-radius: 23px;
@@ -180,6 +210,7 @@ header {
   box-shadow: 0 5px 20px rgba(214,91,130,.10);
   text-align: center;
 }
+
 .visualizer-title {
   font-size: .86rem;
   color: var(--pink-dark);
@@ -188,11 +219,13 @@ header {
   font-weight: 800;
   margin-bottom: 5px;
 }
+
 .visualizer-subtitle {
   font-size: .75rem;
   color: #999;
   margin-bottom: 18px;
 }
+
 .bracelet-scroll {
   width: 100%;
   overflow-x: auto;
@@ -200,6 +233,7 @@ header {
   padding: 22px 5px 38px;
   scrollbar-width: thin;
 }
+
 .bracelet {
   position: relative;
   display: flex;
@@ -209,7 +243,12 @@ header {
   padding: 0 15px;
   min-height: 115px;
 }
-/* CADENA */
+
+/* =========================
+   CADENA
+   LA CADENA NO CAMBIA DE COLOR
+========================= */
+
 .bracelet::before {
   content: "";
   position: absolute;
@@ -219,6 +258,7 @@ header {
   transform: translateY(-50%);
   height: 8px;
   border-radius: 20px;
+
   background:
     linear-gradient(
       180deg,
@@ -227,31 +267,15 @@ header {
       #fff 60%,
       #888 100%
     );
+
   box-shadow: 0 2px 3px rgba(0,0,0,.15);
   z-index: 1;
 }
-.bracelet.gold::before {
-  background:
-    linear-gradient(
-      180deg,
-      #fff5b0 0%,
-      #c99b22 45%,
-      #ffe99a 60%,
-      #a97b13 100%
-    );
-}
-.bracelet.mixed::before {
-  background:
-    linear-gradient(
-      90deg,
-      #aaa 0 33%,
-      #d4ad3c 33% 66%,
-      #aaa 66% 100%
-    );
-}
+
 /* =========================
    SLOT
 ========================= */
+
 .slot {
   position: relative;
   width: 61px;
@@ -263,13 +287,16 @@ header {
   transition: .15s;
   touch-action: manipulation;
 }
+
 .slot.dragging {
   opacity: .45;
   transform: scale(.95);
 }
+
 .slot.drag-over {
   background: rgba(244,154,179,.15);
 }
+
 .slot-ring {
   position: absolute;
   top: 20px;
@@ -282,6 +309,7 @@ header {
   background: white;
   z-index: 5;
 }
+
 .slot img {
   position: absolute;
   width: 54px;
@@ -293,12 +321,15 @@ header {
   filter: drop-shadow(0 3px 4px rgba(0,0,0,.18));
   transition: .2s;
 }
+
 .slot:hover img {
   transform: translateY(-3px);
 }
+
 .slot.empty img {
-  opacity: .65;
+  opacity: .72;
 }
+
 .slot-number {
   position: absolute;
   top: -7px;
@@ -308,9 +339,11 @@ header {
   color: #aaa;
   white-space: nowrap;
 }
+
 /* =========================
    MENÚ DEL CHARM
 ========================= */
+
 .charm-menu {
   position: fixed;
   left: 50%;
@@ -326,9 +359,11 @@ header {
   z-index: 500;
   display: none;
 }
+
 .charm-menu.show {
   display: block;
 }
+
 .charm-menu-title {
   text-align: center;
   font-size: .85rem;
@@ -336,11 +371,13 @@ header {
   color: var(--pink-dark);
   margin-bottom: 12px;
 }
+
 .menu-buttons {
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 7px;
 }
+
 .menu-btn {
   border: none;
   background: var(--pink-light);
@@ -351,10 +388,12 @@ header {
   font-weight: 800;
   cursor: pointer;
 }
+
 .menu-btn.delete {
   background: #f8eeee;
   color: #a85b5b;
 }
+
 .menu-close {
   width: 100%;
   border: none;
@@ -365,20 +404,25 @@ header {
   margin-top: 8px;
   font-weight: 700;
 }
+
 /* =========================
    CONTADOR
 ========================= */
+
 .counter {
   font-size: .78rem;
   color: #888;
   margin-top: 7px;
 }
+
 .counter strong {
   color: var(--pink-dark);
 }
+
 /* =========================
    CATALOGO
 ========================= */
+
 .section-title {
   font-size: 1.18rem;
   color: var(--pink-dark);
@@ -386,11 +430,13 @@ header {
   text-align: center;
   font-weight: 800;
 }
+
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 13px;
 }
+
 .card {
   background: white;
   border-radius: 19px;
@@ -402,6 +448,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .card-img {
   width: 100%;
   height: 120px;
@@ -411,6 +458,7 @@ header {
   margin-bottom: 8px;
   padding: 4px;
 }
+
 .card-title {
   font-size: .86rem;
   font-weight: 700;
@@ -420,12 +468,14 @@ header {
   align-items: center;
   justify-content: center;
 }
+
 .card-price {
   font-size: .85rem;
   color: var(--pink-dark);
   font-weight: 800;
   margin-bottom: 8px;
 }
+
 .btn-add {
   background: var(--gradient-btn);
   color: white;
@@ -436,37 +486,11 @@ header {
   font-weight: 700;
   cursor: pointer;
 }
-/* =========================
-   PERSONALIZADO
-========================= */
-.custom-card {
-  grid-column: 1 / -1;
-  background: #fff;
-  border: 1px dashed #e3aabd;
-  border-radius: 19px;
-  padding: 18px;
-  text-align: center;
-}
-.custom-card h3 {
-  color: var(--pink-dark);
-  margin-bottom: 7px;
-}
-.custom-card p {
-  font-size: .76rem;
-  color: #888;
-  margin-bottom: 12px;
-  line-height: 1.45;
-}
-.custom-card input {
-  width: 100%;
-  margin-bottom: 8px;
-  padding: 10px;
-  border: 1px solid #ead6dc;
-  border-radius: 10px;
-}
+
 /* =========================
    RESUMEN
 ========================= */
+
 .cart-summary {
   background: white;
   border-radius: 18px;
@@ -474,6 +498,7 @@ header {
   margin: 25px 0 15px;
   border: 1px solid var(--pink-light);
 }
+
 .cart-summary-title {
   font-size: .9rem;
   font-weight: 700;
@@ -482,6 +507,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -490,6 +516,7 @@ header {
   border-bottom: 1px dashed #eee;
   font-size: .8rem;
 }
+
 .total-row {
   display: flex;
   justify-content: space-between;
@@ -498,22 +525,11 @@ header {
   font-weight: 800;
   color: var(--pink-dark);
 }
-/* =========================
-   PERSONALIZADO
-========================= */
-.custom-button {
-  width: 100%;
-  border: none;
-  background: var(--gradient-btn);
-  color: white;
-  padding: 10px;
-  border-radius: 13px;
-  font-weight: 800;
-  cursor: pointer;
-}
+
 /* =========================
    INFORMACIÓN
 ========================= */
+
 .info-box {
   background: white;
   border: 1px solid var(--pink-light);
@@ -521,6 +537,7 @@ header {
   padding: 19px;
   margin-top: 27px;
 }
+
 .info-title {
   color: var(--pink-dark);
   font-size: 1rem;
@@ -528,6 +545,7 @@ header {
   text-align: center;
   margin-bottom: 16px;
 }
+
 .info-item {
   display: flex;
   align-items: flex-start;
@@ -537,6 +555,7 @@ header {
   color: #666;
   line-height: 1.45;
 }
+
 .info-number {
   width: 26px;
   height: 26px;
@@ -550,9 +569,11 @@ header {
   font-size: .72rem;
   font-weight: 800;
 }
+
 /* =========================
    INSTAGRAM
 ========================= */
+
 .instagram-box {
   background: white;
   border: 1px solid var(--pink-light);
@@ -560,6 +581,7 @@ header {
   padding: 19px;
   margin-top: 18px;
 }
+
 .instagram-title {
   text-align: center;
   color: var(--pink-dark);
@@ -567,6 +589,7 @@ header {
   font-weight: 800;
   margin-bottom: 9px;
 }
+
 .instagram-text {
   color: #777;
   font-size: .78rem;
@@ -574,6 +597,7 @@ header {
   text-align: center;
   margin-bottom: 12px;
 }
+
 .message-box {
   background: var(--pink-soft);
   border: 1px solid var(--pink-light);
@@ -587,6 +611,7 @@ header {
   overflow-y: auto;
   margin-bottom: 10px;
 }
+
 .copy-button {
   width: 100%;
   border: none;
@@ -597,15 +622,18 @@ header {
   font-size: .8rem;
   font-weight: 800;
 }
+
 /* =========================
    BOTONES
 ========================= */
+
 .action-buttons {
   display: flex;
   flex-direction: column;
   gap: 11px;
   margin: 20px 0 30px;
 }
+
 .btn-action {
   display: flex;
   align-items: center;
@@ -619,15 +647,19 @@ header {
   border: none;
   cursor: pointer;
 }
+
 .btn-whatsapp {
   background: var(--gradient-wsp);
 }
+
 .btn-instagram {
   background: linear-gradient(135deg,#ed9eb7,#d75c85);
 }
+
 /* =========================
    BARRA INFERIOR
 ========================= */
+
 .bottom-bar {
   position: fixed;
   bottom: 0;
@@ -643,6 +675,7 @@ header {
   z-index: 100;
   backdrop-filter: blur(10px);
 }
+
 .btn-clear {
   background: #f5f0f2;
   color: #777;
@@ -651,7 +684,9 @@ header {
   border-radius: 14px;
   font-size: .82rem;
   font-weight: 700;
+  cursor: pointer;
 }
+
 .btn-submit-main {
   background: linear-gradient(135deg,#eda0b7,#d65b82);
   color: white;
@@ -662,68 +697,94 @@ header {
   font-weight: 800;
   flex: 1;
   max-width: 230px;
+  cursor: pointer;
 }
+
 /* =========================
    RESPONSIVE
 ========================= */
+
 @media(max-width:420px) {
+
   .options {
     grid-template-columns: repeat(2,1fr);
   }
+
   .color-options {
     grid-template-columns: repeat(3,1fr);
   }
+
   .catalog-grid {
     gap: 9px;
   }
+
   .card {
     padding: 9px;
   }
+
   .card-img {
     height: 105px;
   }
+
   .card-title {
     font-size: .8rem;
   }
+
   .btn-add {
     font-size: .76rem;
   }
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <div>
     <div class="brand-name">cuoricino ♡</div>
+
     <div class="brand-subtitle">
       con amore, vicino al cuore
     </div>
   </div>
+
   <div class="price-badge" id="totalPrice">
     $10.000
   </div>
 </header>
+
 <div class="container">
+
 <!-- =========================
      HERO
 ========================= -->
+
 <section class="hero">
+
   <div class="hero-heart">♡</div>
+
   <h1>creá tu pulsera</h1>
+
   <p>
     elegí el talle, el color y después<br>
     armala charm por charm ✨
   </p>
+
 </section>
+
 <!-- =========================
      PASO 1 — TALLE
 ========================= -->
+
 <section class="step">
+
   <div class="step-title">
     <div class="step-number">1</div>
     elegí el talle de tu pulsera
   </div>
+
   <div class="options">
+
     <button
       class="option"
       onclick="selectSize('xs',14,this)"
@@ -731,6 +792,7 @@ header {
       xs
       <small>14 charms</small>
     </button>
+
     <button
       class="option"
       onclick="selectSize('s',16,this)"
@@ -738,6 +800,7 @@ header {
       s
       <small>16 charms</small>
     </button>
+
     <button
       class="option"
       onclick="selectSize('m',18,this)"
@@ -745,58 +808,76 @@ header {
       m
       <small>18 charms</small>
     </button>
+
     <button
       class="option"
-      onclick="selectSize('l',19,this)"
+      onclick="selectSize('l',20,this)"
     >
       l
-      <small>19 charms</small>
+      <small>20 charms</small>
     </button>
+
   </div>
+
 </section>
+
 <!-- =========================
      PASO 2 — COLOR
 ========================= -->
+
 <section class="step">
+
   <div class="step-title">
     <div class="step-number">2</div>
     elegí el color de tu pulsera
   </div>
+
   <div class="options color-options">
+
     <button
       class="option"
       onclick="selectColor('silver',this)"
     >
       🤍 plateada
     </button>
+
     <button
       class="option"
       onclick="selectColor('gold',this)"
     >
       💛 dorada
     </button>
+
     <button
       class="option"
       onclick="selectColor('mixed',this)"
     >
       ✨ intercalada
     </button>
+
   </div>
+
 </section>
+
 <!-- =========================
      VISUALIZADOR
 ========================= -->
+
 <section class="visualizer">
+
   <div class="visualizer-title">
     tu pulsera cuoricino ♡
   </div>
+
   <div
     class="visualizer-subtitle"
     id="visualizerSubtitle"
   >
     primero elegí un talle
   </div>
+
   <div class="bracelet-scroll">
+
     <div
       class="bracelet"
       id="braceletDisplay"
@@ -805,29 +886,47 @@ header {
         elegí un talle para comenzar ✨
       </span>
     </div>
+
   </div>
+
   <div class="counter">
+
     <strong id="filledCount">0</strong>
     charms elegidos ·
+
     <strong id="emptyCount">0</strong>
     espacios vacíos
+
   </div>
+
 </section>
+
 <!-- =========================
      CATALOGO
 ========================= -->
+
 <h2 class="section-title">
   agregá tus charms ✨
 </h2>
+
 <div class="catalog-grid">
+
   <div class="card">
-    <img src="IMG_0214.png"
-         class="card-img"
-         alt="Charm Atardecer">
+
+    <img
+      src="IMG_0214.png"
+      class="card-img"
+      alt="Charm Atardecer"
+    >
+
     <div class="card-title">
       Charm Atardecer
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -838,15 +937,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0221.png"
-         class="card-img"
-         alt="Charm Atardecer Rosa">
+
+    <img
+      src="IMG_0221.png"
+      class="card-img"
+      alt="Charm Atardecer Rosa"
+    >
+
     <div class="card-title">
       Charm Atardecer Rosa
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -857,15 +967,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0218.png"
-         class="card-img"
-         alt="Charm Cámara">
+
+    <img
+      src="IMG_0218.png"
+      class="card-img"
+      alt="Charm Cámara"
+    >
+
     <div class="card-title">
       Charm Cámara
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -876,15 +997,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0220.png"
-         class="card-img"
-         alt="Charm Ibiza">
+
+    <img
+      src="IMG_0220.png"
+      class="card-img"
+      alt="Charm Ibiza"
+    >
+
     <div class="card-title">
       Charm Ibiza
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -895,15 +1027,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0236.png"
-         class="card-img"
-         alt="Charm Italia">
+
+    <img
+      src="IMG_0236.png"
+      class="card-img"
+      alt="Charm Italia"
+    >
+
     <div class="card-title">
       Charm Italia
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -914,15 +1057,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0219.png"
-         class="card-img"
-         alt="Charm Mar">
+
+    <img
+      src="IMG_0219.png"
+      class="card-img"
+      alt="Charm Mar"
+    >
+
     <div class="card-title">
       Charm Mar
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -933,15 +1087,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0215.png"
-         class="card-img"
-         alt="Charm Música">
+
+    <img
+      src="IMG_0215.png"
+      class="card-img"
+      alt="Charm Música"
+    >
+
     <div class="card-title">
       Charm Música
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -952,15 +1117,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0216.png"
-         class="card-img"
-         alt="Charm Ola">
+
+    <img
+      src="IMG_0216.png"
+      class="card-img"
+      alt="Charm Ola"
+    >
+
     <div class="card-title">
       Charm Ola
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -971,15 +1147,26 @@ header {
     >
       + agregar
     </button>
+
   </div>
+
+
   <div class="card">
-    <img src="IMG_0217.png"
-         class="card-img"
-         alt="Charm Spiderman">
+
+    <img
+      src="IMG_0217.png"
+      class="card-img"
+      alt="Charm Spiderman"
+    >
+
     <div class="card-title">
       Charm Spiderman
     </div>
-    <div class="card-price">$6.000</div>
+
+    <div class="card-price">
+      $6.000
+    </div>
+
     <button
       class="btn-add"
       onclick="addCharm(
@@ -990,69 +1177,68 @@ header {
     >
       + agregar
     </button>
+
   </div>
-  <!-- PERSONALIZADO -->
-  <div class="custom-card">
-    <h3>♡ charm personalizado</h3>
-    <p>
-      subí una imagen y agregá un charm
-      diseñado especialmente para vos.
-    </p>
-    <input
-      type="text"
-      id="customName"
-      placeholder="nombre del charm"
-    >
-    <input
-      type="file"
-      id="customImage"
-      accept="image/*"
-    >
-    <button
-      class="custom-button"
-      onclick="addCustomCharm()"
-    >
-      + agregar personalizado · $6.000
-    </button>
-  </div>
+
 </div>
+
 <!-- =========================
      RESUMEN
 ========================= -->
+
 <section
   class="cart-summary"
   id="cartSummary"
   style="display:none;"
 >
+
   <div class="cart-summary-title">
-    <span>tu pulsera ♡</span>
+
+    <span>
+      tu pulsera ♡
+    </span>
+
     <span id="summaryCount">
       0 charms
     </span>
+
   </div>
+
   <div id="cartList"></div>
+
   <div class="total-row">
-    <span>total</span>
+
+    <span>
+      total
+    </span>
+
     <span id="summaryTotal">
       $10.000
     </span>
+
   </div>
+
 </section>
+
 <!-- =========================
      INSTAGRAM
 ========================= -->
+
 <section class="instagram-box">
+
   <div class="instagram-title">
     ¿querés comprar por instagram? ♡
   </div>
+
   <div class="instagram-text">
     copiá el mensaje y mandanoslo por privado.
   </div>
+
   <div
     class="message-box"
     id="instagramMessage"
-  >
-  </div>
+  ></div>
+
   <button
     class="copy-button"
     onclick="copyInstagramMessage()"
@@ -1060,75 +1246,96 @@ header {
   >
     📋 copiar mensaje
   </button>
+
 </section>
+
 <!-- =========================
      BOTONES
 ========================= -->
+
 <div class="action-buttons">
+
   <button
     class="btn-action btn-whatsapp"
     onclick="sendWhatsApp()"
   >
     💌 finalizar por whatsapp
   </button>
+
   <button
     class="btn-action btn-instagram"
     onclick="openInstagram()"
   >
     📸 ir a instagram
   </button>
+
 </div>
+
 </div>
+
 <!-- =========================
      MENÚ MÓVIL
 ========================= -->
+
 <div
   class="charm-menu"
   id="charmMenu"
 >
+
   <div
     class="charm-menu-title"
     id="menuTitle"
   >
     charm
   </div>
+
   <div class="menu-buttons">
+
     <button
       class="menu-btn"
       onclick="startMoveMode()"
     >
       ↔ mover
     </button>
+
     <button
-      class="menu-btn"
+      class="menu-btn delete"
       onclick="removeSelected()"
     >
       🗑 eliminar
     </button>
+
     <button
       class="menu-btn"
       onclick="replaceSelected()"
     >
       ✨ reemplazar
     </button>
+
   </div>
+
   <button
     class="menu-close"
     onclick="closeCharmMenu()"
   >
     cerrar
   </button>
+
 </div>
+
 <!-- =========================
      BARRA INFERIOR
 ========================= -->
+
 <div class="bottom-bar">
+
   <button
     class="btn-clear"
     onclick="clearBracelet()"
   >
     vaciar
   </button>
+
   <button
     class="btn-submit-main"
     onclick="sendWhatsApp()"
@@ -1136,702 +1343,1364 @@ header {
     💌 finalizar
     ($<span id="bottomTotal">10.000</span>)
   </button>
+
 </div>
+
 <script>
+
 /* =====================================================
    CONFIGURACIÓN
 ===================================================== */
+
 const BRACELET_PRICE = 10000;
-const EMPTY_PRICE = 1000;
-const EMPTY_SILVER = {
-  name: 'Charm vacío plateado',
-  price: EMPTY_PRICE,
-  img: 'IMG_0242.png',
-  empty: true
-};
+const EXTRA_SPACE_PRICE = 1000;
+const MAX_CAPACITY = 20;
+
+/* IMÁGENES DE LOS ESPACIOS VACÍOS */
+
+const EMPTY_SILVER_IMG = 'IMG_0242.png';
+const EMPTY_GOLD_IMG = 'IMG_0240.png';
+
+
 let selectedSize = null;
 let capacity = 0;
-let braceletColor = 'silver';
+
+let braceletColor = null;
+
 let slots = [];
+
 let selectedSlotIndex = null;
+
 let movingMode = false;
+
+let replacementMode = false;
+
 let draggedIndex = null;
+
+
+/* =====================================================
+   CREAR CHARMS VACÍOS
+===================================================== */
+
+function createEmptySlot(index) {
+
+  let image = EMPTY_SILVER_IMG;
+
+  if(braceletColor === 'gold') {
+
+    image = EMPTY_GOLD_IMG;
+
+  }
+
+  else if(braceletColor === 'mixed') {
+
+    image =
+      index % 2 === 0
+        ? EMPTY_SILVER_IMG
+        : EMPTY_GOLD_IMG;
+
+  }
+
+  return {
+
+    name: 'Charm vacío',
+
+    price: 0,
+
+    img: image,
+
+    empty: true
+
+  };
+
+}
+
+
+/* =====================================================
+   ACTUALIZAR IMÁGENES DE LOS ESPACIOS VACÍOS
+===================================================== */
+
+function updateEmptyCharmImages() {
+
+  slots.forEach((slot,index) => {
+
+    if(slot.empty) {
+
+      if(braceletColor === 'gold') {
+
+        slot.img = EMPTY_GOLD_IMG;
+
+      }
+
+      else if(braceletColor === 'mixed') {
+
+        slot.img =
+          index % 2 === 0
+            ? EMPTY_SILVER_IMG
+            : EMPTY_GOLD_IMG;
+
+      }
+
+      else {
+
+        slot.img = EMPTY_SILVER_IMG;
+
+      }
+
+    }
+
+  });
+
+}
+
+
 /* =====================================================
    SELECCIONAR TALLE
 ===================================================== */
+
 function selectSize(size, number, button) {
+
   selectedSize = size;
-  capacity = number;
+
+  capacity = Math.min(
+    number,
+    MAX_CAPACITY
+  );
+
+
+  /*
+    Al elegir otro talle,
+    se desmarca automáticamente
+    el talle anterior.
+  */
+
   document
     .querySelectorAll(
       '.step:first-of-type .option'
     )
-    .forEach(btn =>
-      btn.classList.remove('active')
-    );
-  button.classList.add('active');
-  /*
-    Cada vez que se cambia el talle,
-    se reconstruye la pulsera con
-    exactamente la cantidad de espacios.
-  */
-  slots = [];
-  for(let i = 0; i < capacity; i++) {
-    slots.push({
-      ...EMPTY_SILVER
+    .forEach(btn => {
+
+      btn.classList.remove('active');
+
     });
+
+
+  button.classList.add('active');
+
+
+  /*
+    La pulsera empieza exactamente
+    con la cantidad de espacios
+    correspondientes al talle.
+  */
+
+  slots = [];
+
+  for(let i = 0; i < capacity; i++) {
+
+    slots.push(
+      createEmptySlot(i)
+    );
+
   }
+
+
+  replacementMode = false;
+
   closeCharmMenu();
+
   updateUI();
+
 }
+
+
 /* =====================================================
-   COLOR
+   SELECCIONAR COLOR
 ===================================================== */
+
 function selectColor(color, button) {
+
   braceletColor = color;
+
+
+  /*
+    Se desmarca automáticamente
+    el color anterior.
+  */
+
   document
     .querySelectorAll(
       '.color-options .option'
     )
-    .forEach(btn =>
-      btn.classList.remove('active')
-    );
+    .forEach(btn => {
+
+      btn.classList.remove('active');
+
+    });
+
+
   button.classList.add('active');
+
+
+  /*
+    SOLAMENTE cambian los charms vacíos.
+
+    Los charms del catálogo conservan
+    sus propias imágenes.
+  */
+
+  updateEmptyCharmImages();
+
   updateUI();
+
 }
+
+
 /* =====================================================
    AGREGAR CHARM
 ===================================================== */
+
 function addCharm(name, price, img) {
+
   if(!selectedSize) {
+
     alert(
       'primero elegí el talle de tu pulsera ♡'
     );
+
     return;
+
   }
+
+
   const newCharm = {
+
     name: name,
+
     price: price,
+
     img: img,
+
     empty: false
+
   };
+
+
   /*
-    Busca el primer espacio vacío.
+    REEMPLAZAR
+
+    Si se activó "reemplazar",
+    el nuevo charm ocupa EXACTAMENTE
+    el lugar seleccionado.
+
+    No agrega un espacio nuevo.
   */
-  const emptyIndex =
-    slots.findIndex(
-      slot => slot.empty
-    );
-  if(emptyIndex !== -1) {
-    slots[emptyIndex] = newCharm;
-  } else {
-    /*
-      Si todos los espacios están ocupados,
-      se agrega automáticamente un espacio
-      extra que tiene precio de $1.000.
-    */
-    slots.push({
-      ...EMPTY_SILVER
-    });
-    /*
-      El nuevo charm ocupa ese espacio.
-    */
-    slots[slots.length - 1] = newCharm;
-  }
-  closeCharmMenu();
-  updateUI();
-}
-/* =====================================================
-   PERSONALIZADO
-===================================================== */
-function addCustomCharm() {
-  if(!selectedSize) {
-    alert(
-      'primero elegí el talle de tu pulsera ♡'
-    );
-    return;
-  }
-  const name =
-    document
-      .getElementById('customName')
-      .value
-      .trim();
-  const file =
-    document
-      .getElementById('customImage')
-      .files[0];
-  if(!name || !file) {
-    alert(
-      'poné un nombre y elegí una imagen ♡'
-    );
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    addCharm(
-      name,
-      6000,
-      e.target.result
-    );
-    document.getElementById(
-      'customName'
-    ).value = '';
-    document.getElementById(
-      'customImage'
-    ).value = '';
-  };
-  reader.readAsDataURL(file);
-}
-/* =====================================================
-   ELIMINAR
-===================================================== */
-function removeSlot(index) {
-  /*
-    Al eliminar un charm, se elimina
-    ese espacio de la pulsera.
-  */
-  slots.splice(index,1);
-  selectedSlotIndex = null;
-  closeCharmMenu();
-  updateUI();
-}
-function removeSelected() {
-  if(selectedSlotIndex === null)
-    return;
-  removeSlot(selectedSlotIndex);
-}
-/* =====================================================
-   TOCAR CHARM
-===================================================== */
-function openCharmMenu(index) {
-  selectedSlotIndex = index;
-  movingMode = false;
-  const slot = slots[index];
-  document.getElementById(
-    'menuTitle'
-  ).innerText =
-    slot.name;
-  document
-    .getElementById('charmMenu')
-    .classList.add('show');
-}
-function closeCharmMenu() {
-  selectedSlotIndex = null;
-  movingMode = false;
-  document
-    .getElementById('charmMenu')
-    .classList.remove('show');
-}
-/* =====================================================
-   MODO MOVER
-===================================================== */
-function startMoveMode() {
-  if(selectedSlotIndex === null)
-    return;
-  movingMode = true;
-  document.getElementById(
-    'menuTitle'
-  ).innerText =
-    'tocá otro lugar para mover el charm ♡';
-}
-/* =====================================================
-   REEMPLAZAR
-===================================================== */
-function replaceSelected() {
-  if(selectedSlotIndex === null)
-    return;
-  closeCharmMenu();
-  document
-    .querySelector('.section-title')
-    .scrollIntoView({
-      behavior:'smooth',
-      block:'start'
-    });
-  alert(
-    'elegí un charm del catálogo y va a reemplazar el seleccionado ♡'
-  );
-  replacementMode = true;
-}
-let replacementMode = false;
-/* =====================================================
-   AGREGAR / REEMPLAZAR DESDE CATÁLOGO
-===================================================== */
-function addCharm(name, price, img) {
-  if(!selectedSize) {
-    alert(
-      'primero elegí el talle de tu pulsera ♡'
-    );
-    return;
-  }
-  const newCharm = {
-    name: name,
-    price: price,
-    img: img,
-    empty: false
-  };
-  /*
-    Si estamos reemplazando,
-    reemplazamos exactamente ese espacio.
-  */
+
   if(
     replacementMode &&
     selectedSlotIndex !== null
   ) {
+
     slots[selectedSlotIndex] =
       newCharm;
+
     replacementMode = false;
+
     selectedSlotIndex = null;
+
+    closeCharmMenu();
+
     updateUI();
+
     return;
+
   }
+
+
   /*
-    Funcionamiento normal:
-    buscamos un vacío.
+    AGREGAR NORMAL
+
+    Primero busca un espacio vacío.
   */
+
   const emptyIndex =
     slots.findIndex(
       slot => slot.empty
     );
+
+
   if(emptyIndex !== -1) {
+
     slots[emptyIndex] =
       newCharm;
-  } else {
-    /*
-      No quedan espacios:
-      se agrega automáticamente
-      un espacio extra.
-    */
-    slots.push(newCharm);
+
   }
+
+  else {
+
+    /*
+      Si ya se llenaron todos los espacios
+      del talle, se agrega UN espacio extra.
+
+      Ese espacio extra suma $1.000
+      al precio final.
+    */
+
+    if(slots.length >= MAX_CAPACITY) {
+
+      alert(
+        'llegaste al máximo de 20 charms ♡'
+      );
+
+      return;
+
+    }
+
+
+    slots.push(newCharm);
+
+  }
+
+
   closeCharmMenu();
+
   updateUI();
+
 }
+
+
+/* =====================================================
+   ELIMINAR ESPACIO / CHARM
+===================================================== */
+
+function removeSlot(index) {
+
+  /*
+    Al eliminar, el espacio desaparece.
+  */
+
+  slots.splice(index,1);
+
+  selectedSlotIndex = null;
+
+  replacementMode = false;
+
+  closeCharmMenu();
+
+  updateUI();
+
+}
+
+
+function removeSelected() {
+
+  if(selectedSlotIndex === null) {
+
+    return;
+
+  }
+
+  removeSlot(selectedSlotIndex);
+
+}
+
+
+/* =====================================================
+   TOCAR CHARM
+===================================================== */
+
+function openCharmMenu(index) {
+
+  selectedSlotIndex = index;
+
+  movingMode = false;
+
+  const slot = slots[index];
+
+
+  document.getElementById(
+    'menuTitle'
+  ).innerText =
+    slot.empty
+      ? 'espacio vacío'
+      : slot.name;
+
+
+  document
+    .getElementById('charmMenu')
+    .classList.add('show');
+
+}
+
+
+function closeCharmMenu() {
+
+  selectedSlotIndex = null;
+
+  movingMode = false;
+
+  document
+    .getElementById('charmMenu')
+    .classList.remove('show');
+
+}
+
+
+/* =====================================================
+   MODO MOVER
+===================================================== */
+
+function startMoveMode() {
+
+  if(selectedSlotIndex === null) {
+
+    return;
+
+  }
+
+
+  movingMode = true;
+
+
+  document.getElementById(
+    'menuTitle'
+  ).innerText =
+    'tocá otro lugar para mover el charm ♡';
+
+}
+
+
+/* =====================================================
+   REEMPLAZAR
+===================================================== */
+
+function replaceSelected() {
+
+  if(selectedSlotIndex === null) {
+
+    return;
+
+  }
+
+
+  replacementMode = true;
+
+  movingMode = false;
+
+
+  document
+    .getElementById('charmMenu')
+    .classList.remove('show');
+
+
+  document
+    .querySelector('.section-title')
+    .scrollIntoView({
+
+      behavior:'smooth',
+
+      block:'start'
+
+    });
+
+
+  setTimeout(() => {
+
+    alert(
+      'elegí un charm del catálogo y va a reemplazar el seleccionado ♡'
+    );
+
+  },300);
+
+}
+
+
 /* =====================================================
    DRAG & DROP
 ===================================================== */
-function dragStart(index, event) {
+
+function dragStart(index,event) {
+
   draggedIndex = index;
+
   event.dataTransfer.effectAllowed =
     'move';
+
   event.dataTransfer.setData(
     'text/plain',
     index
   );
+
   event.currentTarget.classList.add(
     'dragging'
   );
+
 }
+
+
 function dragEnd(event) {
+
   event.currentTarget.classList.remove(
     'dragging'
   );
+
   draggedIndex = null;
+
+
   document
     .querySelectorAll('.slot')
-    .forEach(slot =>
+    .forEach(slot => {
+
       slot.classList.remove(
         'drag-over'
-      )
-    );
+      );
+
+    });
+
 }
+
+
 function allowDrop(event) {
+
   event.preventDefault();
+
   event.currentTarget.classList.add(
     'drag-over'
   );
+
 }
+
+
 function dropSlot(index,event) {
+
   event.preventDefault();
+
+
   document
     .querySelectorAll('.slot')
-    .forEach(slot =>
+    .forEach(slot => {
+
       slot.classList.remove(
         'drag-over'
-      )
-    );
+      );
+
+    });
+
+
   if(
     draggedIndex === null ||
     draggedIndex === index
-  )
+  ) {
+
     return;
-  /*
-    INTERCAMBIAR POSICIONES.
-    ejemplo:
-    vacío - cámara - italia - mar
-    mar → primer lugar
-    mar - cámara - italia - vacío
-  */
+
+  }
+
+
   const temp =
     slots[draggedIndex];
+
+
   slots[draggedIndex] =
     slots[index];
+
+
   slots[index] =
     temp;
+
+
+  /*
+    Después de mover, si hay intercalada,
+    se mantienen los vacíos según
+    su posición actual.
+  */
+
+  updateEmptyCharmImages();
+
   updateUI();
+
 }
+
+
 /* =====================================================
    TOQUE PARA MOVER EN CELULAR
 ===================================================== */
+
 function handleSlotClick(index) {
-  /*
-    Si estamos en modo mover,
-    el charm seleccionado se intercambia
-    con el nuevo lugar tocado.
-  */
+
   if(
     movingMode &&
     selectedSlotIndex !== null
   ) {
+
     const temp =
       slots[selectedSlotIndex];
+
+
     slots[selectedSlotIndex] =
       slots[index];
+
+
     slots[index] =
       temp;
-    closeCharmMenu();
+
+
+    movingMode = false;
+
+    selectedSlotIndex = null;
+
+    updateEmptyCharmImages();
+
     updateUI();
+
     return;
+
   }
+
+
   openCharmMenu(index);
+
 }
+
+
 /* =====================================================
-   RENDER PULSERA
+   RENDERIZAR PULSERA
 ===================================================== */
+
 function renderBracelet() {
+
   const display =
     document.getElementById(
       'braceletDisplay'
     );
+
+
   display.innerHTML = '';
+
+
   if(!selectedSize) {
+
     display.innerHTML =
       `<span class="empty-msg">
         elegí un talle para comenzar ✨
       </span>`;
+
     return;
+
   }
+
+
+  /*
+    La cadena SIEMPRE mantiene
+    el mismo color.
+  */
+
   display.className =
-    'bracelet ' +
-    (
-      braceletColor === 'gold'
-        ? 'gold'
-        : braceletColor === 'mixed'
-          ? 'mixed'
-          : ''
-    );
+    'bracelet';
+
+
   slots.forEach(
     (slot,index) => {
+
       const wrapper =
         document.createElement(
           'div'
         );
+
+
       wrapper.className =
         'slot';
+
+
       wrapper.draggable = true;
+
+
       wrapper.dataset.index =
         index;
+
+
       wrapper.addEventListener(
         'dragstart',
         e =>
           dragStart(index,e)
       );
+
+
       wrapper.addEventListener(
         'dragend',
         dragEnd
       );
+
+
       wrapper.addEventListener(
         'dragover',
         allowDrop
       );
+
+
       wrapper.addEventListener(
         'drop',
         e =>
           dropSlot(index,e)
       );
+
+
       wrapper.addEventListener(
         'click',
         () =>
           handleSlotClick(index)
       );
+
+
       const number =
         document.createElement(
           'div'
         );
+
+
       number.className =
         'slot-number';
+
+
       number.innerText =
         `${index + 1}`;
+
+
       const ring =
         document.createElement(
           'div'
         );
+
+
       ring.className =
         'slot-ring';
+
+
       const img =
         document.createElement(
           'img'
         );
+
+
       img.src =
         slot.img;
+
+
       img.alt =
         slot.name;
+
+
       if(slot.empty) {
+
         wrapper.classList.add(
           'empty'
         );
+
       }
+
+
       wrapper.appendChild(number);
+
       wrapper.appendChild(ring);
+
       wrapper.appendChild(img);
+
       display.appendChild(wrapper);
+
     }
   );
+
 }
+
+
 /* =====================================================
    TOTAL
 ===================================================== */
+
 function calculateTotal() {
+
+  /*
+    $10.000 corresponde al talle 14.
+
+    Los espacios que forman parte
+    del talle elegido están incluidos
+    en el precio.
+
+    Cada espacio adicional por encima
+    del talle elegido suma $1.000.
+  */
+
   let total =
     BRACELET_PRICE;
-  slots.forEach(
-    slot =>
-      total += slot.price
-  );
+
+
+  const extraSpaces =
+    Math.max(
+      0,
+      slots.length - capacity
+    );
+
+
+  total +=
+    extraSpaces *
+    EXTRA_SPACE_PRICE;
+
+
+  /*
+    Cada charm elegido del catálogo
+    se suma aparte.
+  */
+
+  slots.forEach(slot => {
+
+    if(!slot.empty) {
+
+      total += slot.price;
+
+    }
+
+  });
+
+
   return total;
+
 }
+
+
 /* =====================================================
    ACTUALIZAR UI
 ===================================================== */
+
 function updateUI() {
+
+  updateEmptyCharmImages();
+
   renderBracelet();
+
+
   const filled =
     slots.filter(
       slot => !slot.empty
     ).length;
+
+
   const empty =
     slots.filter(
       slot => slot.empty
     ).length;
+
+
   document.getElementById(
     'filledCount'
   ).innerText =
     filled;
+
+
   document.getElementById(
     'emptyCount'
   ).innerText =
     empty;
+
+
   const total =
     calculateTotal();
+
+
   const formatted =
     total.toLocaleString(
       'es-AR'
     );
+
+
   document.getElementById(
     'totalPrice'
   ).innerText =
     '$' + formatted;
+
+
   document.getElementById(
     'bottomTotal'
   ).innerText =
     formatted;
+
+
   document.getElementById(
     'summaryTotal'
   ).innerText =
     '$' + formatted;
+
+
   if(selectedSize) {
+
     document.getElementById(
       'visualizerSubtitle'
     ).innerText =
       `talle ${selectedSize.toUpperCase()} · ${capacity} espacios · ${getColorName()}`;
-  } else {
+
+  }
+
+  else {
+
     document.getElementById(
       'visualizerSubtitle'
     ).innerText =
       'primero elegí un talle';
+
   }
+
+
   updateSummary();
+
   updateInstagramMessage();
+
 }
+
+
 /* =====================================================
    COLOR
 ===================================================== */
+
 function getColorName() {
-  if(braceletColor === 'gold')
+
+  if(braceletColor === 'gold') {
+
     return 'pulsera dorada ✨';
-  if(braceletColor === 'mixed')
+
+  }
+
+
+  if(braceletColor === 'mixed') {
+
     return 'pulsera intercalada ✨';
-  return 'pulsera plateada ♡';
+
+  }
+
+
+  if(braceletColor === 'silver') {
+
+    return 'pulsera plateada ♡';
+
+  }
+
+
+  return '-';
+
 }
+
+
 /* =====================================================
    RESUMEN
 ===================================================== */
+
 function updateSummary() {
+
   const summary =
     document.getElementById(
       'cartSummary'
     );
+
+
   const list =
     document.getElementById(
       'cartList'
     );
+
+
   if(!selectedSize) {
+
     summary.style.display =
       'none';
+
     return;
+
   }
+
+
   summary.style.display =
     'block';
+
+
   document.getElementById(
     'summaryCount'
   ).innerText =
     `${slots.length} espacios`;
+
+
   list.innerHTML = '';
+
+
   slots.forEach(
     (slot,index) => {
+
       const row =
         document.createElement(
           'div'
         );
+
+
       row.className =
         'cart-item';
+
+
+      let priceText = '';
+
+
+      /*
+        Los espacios incluidos
+        no suman dinero.
+
+        Los espacios adicionales
+        sí cuestan $1.000.
+      */
+
+      if(slot.empty) {
+
+        if(index >= capacity) {
+
+          priceText =
+            '$1.000';
+
+        }
+
+        else {
+
+          priceText =
+            'incluido';
+
+        }
+
+      }
+
+      else {
+
+        priceText =
+          '$' +
+          slot.price.toLocaleString(
+            'es-AR'
+          );
+
+      }
+
+
       row.innerHTML = `
         <span>
           <strong>${index + 1}.</strong>
-          ${slot.name}
+          ${slot.empty ? 'Charm vacío' : slot.name}
         </span>
+
         <span>
-          $${slot.price.toLocaleString('es-AR')}
+          ${priceText}
         </span>
       `;
+
+
       list.appendChild(row);
+
     }
   );
+
+
+  /*
+    Si existen espacios extra,
+    mostramos también su información.
+  */
+
+  const extraSpaces =
+    Math.max(
+      0,
+      slots.length - capacity
+    );
+
+
+  if(extraSpaces > 0) {
+
+    const extraRow =
+      document.createElement(
+        'div'
+      );
+
+
+    extraRow.className =
+      'cart-item';
+
+
+    extraRow.innerHTML = `
+      <span>
+        espacios extra
+      </span>
+
+      <span>
+        $${(
+          extraSpaces *
+          EXTRA_SPACE_PRICE
+        ).toLocaleString('es-AR')}
+      </span>
+    `;
+
+
+    list.appendChild(extraRow);
+
+  }
+
 }
+
+
 /* =====================================================
-   MENSAJE
+   MENSAJE DE PEDIDO
 ===================================================== */
+
 function createOrderMessage() {
+
   let charmsText = '';
+
+
   slots.forEach(
     (slot,index) => {
+
       charmsText +=
-        `${index + 1}. ${slot.name}`;
+        `${index + 1}. `;
+
+
       if(slot.empty) {
+
         charmsText +=
-          ' · vacío · $1.000';
+          'Charm vacío';
+
       }
+
+      else {
+
+        charmsText +=
+          slot.name;
+
+      }
+
+
       charmsText += '\n';
+
     }
   );
+
+
+  const extraSpaces =
+    Math.max(
+      0,
+      slots.length - capacity
+    );
+
+
   const total =
     calculateTotal();
+
+
   return `¡Holaa! 💗 quiero hacer una compra en Cuoricino ✨
-♡ talle: ${selectedSize ? selectedSize.toUpperCase() : '-'}
+
+♡ talle: ${
+    selectedSize
+      ? selectedSize.toUpperCase()
+      : '-'
+  }
+
 ♡ capacidad: ${capacity} charms
+
 ♡ pulsera: ${getColorName()}
+
 ♡ charms elegidos:
 ${charmsText}
 ♡ total de espacios: ${slots.length}
+
+♡ espacios extra: ${extraSpaces}
+
 ♡ total: $${total.toLocaleString('es-AR')}
+
 vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
+
 ¡graciasss! 🫶🏻`;
+
 }
+
+
 /* =====================================================
    INSTAGRAM
 ===================================================== */
+
 function updateInstagramMessage() {
+
   const box =
     document.getElementById(
       'instagramMessage'
     );
+
+
   if(!selectedSize) {
+
     box.innerText =
 `¡Holaa! 💗 quiero hacer una compra en Cuoricino ✨
 ♡ talle:
 ♡ pulsera:
 ♡ charms que elegí:
+
 primero elegí el talle para armar tu pulsera ♡`;
+
     return;
+
   }
+
+
   box.innerText =
     createOrderMessage();
+
 }
+
+
+/* =====================================================
+   COPIAR MENSAJE
+===================================================== */
+
 function copyInstagramMessage() {
+
   const message =
     createOrderMessage();
+
+
   navigator.clipboard
     .writeText(message)
     .then(() => {
+
       const button =
         document.getElementById(
           'copyButton'
         );
+
+
       const old =
         button.innerText;
+
+
       button.innerText =
         '✓ mensaje copiado';
+
+
       setTimeout(
         () => {
-          button.innerText = old;
+
+          button.innerText =
+            old;
+
         },
         1800
       );
+
     })
+
+
     .catch(() => {
+
       alert(
         'no se pudo copiar. mantené presionado el mensaje para copiarlo ♡'
       );
+
     });
+
 }
+
+
 /* =====================================================
    WHATSAPP
 ===================================================== */
+
 function sendWhatsApp() {
+
   if(!selectedSize) {
+
     alert(
       'primero elegí el talle de tu pulsera ♡'
     );
+
     return;
+
   }
+
+
   const message =
     createOrderMessage();
+
+
   const phone =
     '5493412651141';
+
+
   window.location.href =
     `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+
 }
+
+
 /* =====================================================
    INSTAGRAM
 ===================================================== */
+
 function openInstagram() {
+
   window.location.href =
     'https://instagram.com/cuoricino_charms';
+
 }
+
+
 /* =====================================================
-   VACIAR
+   VACIAR PULSERA
 ===================================================== */
+
 function clearBracelet() {
+
   if(!selectedSize) {
+
     return;
+
   }
+
+
   /*
-    vuelve a dejar exactamente
-    los espacios correspondientes
-    al talle elegido.
+    Volvemos exactamente al talle elegido.
+
+    Ejemplo:
+    talle XS = 14 espacios.
+    talle S = 16 espacios.
+    talle M = 18 espacios.
+    talle L = 20 espacios.
+
+    Todos vuelven a estar vacíos.
   */
+
   slots = [];
+
+
   for(let i = 0; i < capacity; i++) {
-    slots.push({
-      ...EMPTY_SILVER
-    });
+
+    slots.push(
+      createEmptySlot(i)
+    );
+
   }
+
+
+  replacementMode = false;
+
   closeCharmMenu();
+
   updateUI();
+
 }
+
+
 /* =====================================================
    INICIO
 ===================================================== */
+
 updateUI();
+
 </script>
+
 </body>
 </html>
