@@ -16,11 +16,8 @@
   --text-light: #888;
   --white: #fff;
 
-  --gradient-btn:
-    linear-gradient(135deg,#f6a0b8,#d9678a);
-
-  --gradient-wsp:
-    linear-gradient(135deg,#e9a5b9,#d65b82);
+  --gradient-btn: linear-gradient(135deg,#f6a0b8,#d9678a);
+  --gradient-wsp: linear-gradient(135deg,#e9a5b9,#d65b82);
 }
 
 * {
@@ -177,7 +174,7 @@ header {
   font-size: .76rem;
   font-weight: 800;
   cursor: pointer;
-  transition: .2s;
+  transition: background .2s, color .2s, border-color .2s;
 }
 
 .option small {
@@ -188,13 +185,13 @@ header {
 }
 
 .option.active {
-  background: var(--pink-dark);
-  color: white;
-  border-color: var(--pink-dark);
+  background: var(--pink-dark) !important;
+  color: white !important;
+  border-color: var(--pink-dark) !important;
 }
 
 .option.active small {
-  color: #ffeaf0;
+  color: #ffeaf0 !important;
 }
 
 /* =========================
@@ -244,11 +241,6 @@ header {
   min-height: 115px;
 }
 
-/* =========================
-   CADENA
-   LA CADENA NO CAMBIA DE COLOR
-========================= */
-
 .bracelet::before {
   content: "";
   position: absolute;
@@ -259,17 +251,24 @@ header {
   height: 8px;
   border-radius: 20px;
 
-  background:
-    linear-gradient(
-      180deg,
-      #fafafa 0%,
-      #a9a9a9 45%,
-      #fff 60%,
-      #888 100%
-    );
+  background: linear-gradient(
+    180deg,
+    #fafafa 0%,
+    #a9a9a9 45%,
+    #fff 60%,
+    #888 100%
+  );
 
   box-shadow: 0 2px 3px rgba(0,0,0,.15);
   z-index: 1;
+}
+
+.empty-msg {
+  width: 100%;
+  text-align: center;
+  font-size: .85rem;
+  color: #aaa;
+  padding: 20px 0;
 }
 
 /* =========================
@@ -295,6 +294,11 @@ header {
 
 .slot.drag-over {
   background: rgba(244,154,179,.15);
+}
+
+.slot.replacement-target {
+  outline: 2px dashed var(--pink-dark);
+  background: rgba(244,154,179,.12);
 }
 
 .slot-ring {
@@ -327,7 +331,7 @@ header {
 }
 
 .slot.empty img {
-  opacity: .72;
+  opacity: .85;
 }
 
 .slot-number {
@@ -403,6 +407,7 @@ header {
   border-radius: 12px;
   margin-top: 8px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 /* =========================
@@ -420,7 +425,7 @@ header {
 }
 
 /* =========================
-   CATALOGO
+   CATÁLOGO
 ========================= */
 
 .section-title {
@@ -527,50 +532,6 @@ header {
 }
 
 /* =========================
-   INFORMACIÓN
-========================= */
-
-.info-box {
-  background: white;
-  border: 1px solid var(--pink-light);
-  border-radius: 21px;
-  padding: 19px;
-  margin-top: 27px;
-}
-
-.info-title {
-  color: var(--pink-dark);
-  font-size: 1rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 9px 0;
-  font-size: .78rem;
-  color: #666;
-  line-height: 1.45;
-}
-
-.info-number {
-  width: 26px;
-  height: 26px;
-  min-width: 26px;
-  border-radius: 50%;
-  background: var(--pink-light);
-  color: var(--pink-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .72rem;
-  font-weight: 800;
-}
-
-/* =========================
    INSTAGRAM
 ========================= */
 
@@ -621,6 +582,7 @@ header {
   border-radius: 13px;
   font-size: .8rem;
   font-weight: 800;
+  cursor: pointer;
 }
 
 /* =========================
@@ -700,12 +662,7 @@ header {
   cursor: pointer;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:420px) {
-
   .options {
     grid-template-columns: repeat(2,1fr);
   }
@@ -742,10 +699,7 @@ header {
 <header>
   <div>
     <div class="brand-name">cuoricino ♡</div>
-
-    <div class="brand-subtitle">
-      con amore, vicino al cuore
-    </div>
+    <div class="brand-subtitle">CON AMORE, VICINO AL CUORE</div>
   </div>
 
   <div class="price-badge" id="totalPrice">
@@ -755,1951 +709,736 @@ header {
 
 <div class="container">
 
-<!-- =========================
-     HERO
-========================= -->
-
+<!-- HERO -->
 <section class="hero">
-
   <div class="hero-heart">♡</div>
-
-  <h1>creá tu pulsera</h1>
-
-  <p>
-    elegí el talle, el color y después<br>
-    armala charm por charm ✨
-  </p>
-
+  <h1>Creá tu Pulsera</h1>
+  <p>Elegí el talle, el color y después<br>armala charm por charm ✨</p>
 </section>
 
-<!-- =========================
-     PASO 1 — TALLE
-========================= -->
-
+<!-- PASO 1 — TALLE -->
 <section class="step">
-
   <div class="step-title">
     <div class="step-number">1</div>
-    elegí el talle de tu pulsera
+    Elegí el talle de tu pulsera
   </div>
 
-  <div class="options">
-
-    <button
-      class="option"
-      onclick="selectSize('xs',14,this)"
-    >
-      xs
+  <div class="options" id="sizeOptions">
+    <button class="option" onclick="selectSize('XS', 14, this)">
+      XS
       <small>14 charms</small>
     </button>
 
-    <button
-      class="option"
-      onclick="selectSize('s',16,this)"
-    >
-      s
+    <button class="option" onclick="selectSize('S', 16, this)">
+      S
       <small>16 charms</small>
     </button>
 
-    <button
-      class="option"
-      onclick="selectSize('m',18,this)"
-    >
-      m
+    <button class="option" onclick="selectSize('M', 18, this)">
+      M
       <small>18 charms</small>
     </button>
 
-    <button
-      class="option"
-      onclick="selectSize('l',20,this)"
-    >
-      l
+    <button class="option" onclick="selectSize('L', 20, this)">
+      L
       <small>20 charms</small>
     </button>
-
   </div>
-
 </section>
 
-<!-- =========================
-     PASO 2 — COLOR
-========================= -->
-
+<!-- PASO 2 — COLOR -->
 <section class="step">
-
   <div class="step-title">
     <div class="step-number">2</div>
-    elegí el color de tu pulsera
+    Elegí el color de tu pulsera
   </div>
 
-  <div class="options color-options">
-
-    <button
-      class="option"
-      onclick="selectColor('silver',this)"
-    >
-      🤍 plateada
+  <div class="options color-options" id="colorOptions">
+    <button class="option" onclick="selectColor('silver', this)">
+      🤍 PLATEADA
     </button>
 
-    <button
-      class="option"
-      onclick="selectColor('gold',this)"
-    >
-      💛 dorada
+    <button class="option" onclick="selectColor('gold', this)">
+      💛 DORADA
     </button>
 
-    <button
-      class="option"
-      onclick="selectColor('mixed',this)"
-    >
-      ✨ intercalada
+    <button class="option" onclick="selectColor('mixed', this)">
+      ✨ INTERCALADA
     </button>
-
   </div>
-
 </section>
 
-<!-- =========================
-     VISUALIZADOR
-========================= -->
-
+<!-- VISUALIZADOR -->
 <section class="visualizer">
-
   <div class="visualizer-title">
-    tu pulsera cuoricino ♡
+    Tu Pulsera Cuoricino ♡
   </div>
 
-  <div
-    class="visualizer-subtitle"
-    id="visualizerSubtitle"
-  >
-    primero elegí un talle
+  <div class="visualizer-subtitle" id="visualizerSubtitle">
+    Primero elegí un talle
   </div>
 
   <div class="bracelet-scroll">
-
-    <div
-      class="bracelet"
-      id="braceletDisplay"
-    >
-      <span class="empty-msg">
-        elegí un talle para comenzar ✨
-      </span>
+    <div class="bracelet" id="braceletDisplay">
+      <span class="empty-msg">Elegí un talle para comenzar ✨</span>
     </div>
-
   </div>
 
   <div class="counter">
-
-    <strong id="filledCount">0</strong>
-    charms elegidos ·
-
-    <strong id="emptyCount">0</strong>
-    espacios vacíos
-
+    <strong id="filledCount">0</strong> Charms elegidos ·
+    <strong id="emptyCount">0</strong> Espacios vacíos
   </div>
-
 </section>
 
-<!-- =========================
-     CATALOGO
-========================= -->
-
+<!-- CATÁLOGO -->
 <h2 class="section-title">
-  agregá tus charms ✨
+  Agregá tus charms ✨
 </h2>
 
 <div class="catalog-grid">
-
   <div class="card">
-
-    <img
-      src="IMG_0214.png"
-      class="card-img"
-      alt="Charm Atardecer"
-    >
-
-    <div class="card-title">
-      Charm Atardecer
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Atardecer',
-        6000,
-        'IMG_0214.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0214.png" class="card-img" alt="Charm Atardecer">
+    <div class="card-title">Charm Atardecer</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Atardecer', 6000, 'IMG_0214.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0221.png"
-      class="card-img"
-      alt="Charm Atardecer Rosa"
-    >
-
-    <div class="card-title">
-      Charm Atardecer Rosa
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Atardecer Rosa',
-        6000,
-        'IMG_0221.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0221.png" class="card-img" alt="Charm Atardecer Rosa">
+    <div class="card-title">Charm Atardecer Rosa</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Atardecer Rosa', 6000, 'IMG_0221.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0218.png"
-      class="card-img"
-      alt="Charm Cámara"
-    >
-
-    <div class="card-title">
-      Charm Cámara
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Cámara',
-        6000,
-        'IMG_0218.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0218.png" class="card-img" alt="Charm Cámara">
+    <div class="card-title">Charm Cámara</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Cámara', 6000, 'IMG_0218.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0220.png"
-      class="card-img"
-      alt="Charm Ibiza"
-    >
-
-    <div class="card-title">
-      Charm Ibiza
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Ibiza',
-        6000,
-        'IMG_0220.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0220.png" class="card-img" alt="Charm Ibiza">
+    <div class="card-title">Charm Ibiza</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Ibiza', 6000, 'IMG_0220.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0236.png"
-      class="card-img"
-      alt="Charm Italia"
-    >
-
-    <div class="card-title">
-      Charm Italia
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Italia',
-        6000,
-        'IMG_0236.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0236.png" class="card-img" alt="Charm Italia">
+    <div class="card-title">Charm Italia</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Italia', 6000, 'IMG_0236.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0219.png"
-      class="card-img"
-      alt="Charm Mar"
-    >
-
-    <div class="card-title">
-      Charm Mar
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Mar',
-        6000,
-        'IMG_0219.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0219.png" class="card-img" alt="Charm Mar">
+    <div class="card-title">Charm Mar</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Mar', 6000, 'IMG_0219.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0215.png"
-      class="card-img"
-      alt="Charm Música"
-    >
-
-    <div class="card-title">
-      Charm Música
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Música',
-        6000,
-        'IMG_0215.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0215.png" class="card-img" alt="Charm Música">
+    <div class="card-title">Charm Música</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Música', 6000, 'IMG_0215.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0216.png"
-      class="card-img"
-      alt="Charm Ola"
-    >
-
-    <div class="card-title">
-      Charm Ola
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Ola',
-        6000,
-        'IMG_0216.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0216.png" class="card-img" alt="Charm Ola">
+    <div class="card-title">Charm Ola</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Ola', 6000, 'IMG_0216.png')">+ Agregar</button>
   </div>
 
-
   <div class="card">
-
-    <img
-      src="IMG_0217.png"
-      class="card-img"
-      alt="Charm Spiderman"
-    >
-
-    <div class="card-title">
-      Charm Spiderman
-    </div>
-
-    <div class="card-price">
-      $6.000
-    </div>
-
-    <button
-      class="btn-add"
-      onclick="addCharm(
-        'Charm Spiderman',
-        6000,
-        'IMG_0217.png'
-      )"
-    >
-      + agregar
-    </button>
-
+    <img src="IMG_0217.png" class="card-img" alt="Charm Spiderman">
+    <div class="card-title">Charm Spiderman</div>
+    <div class="card-price">$6.000</div>
+    <button class="btn-add" onclick="addCharm('Charm Spiderman', 6000, 'IMG_0217.png')">+ Agregar</button>
   </div>
-
 </div>
 
-<!-- =========================
-     RESUMEN
-========================= -->
-
-<section
-  class="cart-summary"
-  id="cartSummary"
-  style="display:none;"
->
-
+<!-- RESUMEN -->
+<section class="cart-summary" id="cartSummary" style="display:none;">
   <div class="cart-summary-title">
-
-    <span>
-      tu pulsera ♡
-    </span>
-
-    <span id="summaryCount">
-      0 charms
-    </span>
-
+    <span>Tu Pulsera ♡</span>
+    <span id="summaryCount">0 charms</span>
   </div>
-
   <div id="cartList"></div>
-
   <div class="total-row">
-
-    <span>
-      total
-    </span>
-
-    <span id="summaryTotal">
-      $10.000
-    </span>
-
+    <span>Total</span>
+    <span id="summaryTotal">$10.000</span>
   </div>
-
 </section>
 
-<!-- =========================
-     INSTAGRAM
-========================= -->
-
+<!-- INSTAGRAM -->
 <section class="instagram-box">
-
   <div class="instagram-title">
-    ¿querés comprar por instagram? ♡
+    ¿Querés comprar por Instagram? ♡
   </div>
-
   <div class="instagram-text">
-    copiá el mensaje y mandanoslo por privado.
+    Copiá el mensaje y mandanoslo por privado.
   </div>
-
-  <div
-    class="message-box"
-    id="instagramMessage"
-  ></div>
-
-  <button
-    class="copy-button"
-    onclick="copyInstagramMessage()"
-    id="copyButton"
-  >
-    📋 copiar mensaje
+  <div class="message-box" id="instagramMessage"></div>
+  <button class="copy-button" onclick="copyInstagramMessage()" id="copyButton">
+    📋 Copiar mensaje
   </button>
-
 </section>
 
-<!-- =========================
-     BOTONES
-========================= -->
-
+<!-- BOTONES -->
 <div class="action-buttons">
-
-  <button
-    class="btn-action btn-whatsapp"
-    onclick="sendWhatsApp()"
-  >
-    💌 finalizar por whatsapp
+  <button class="btn-action btn-whatsapp" onclick="sendWhatsApp()">
+    💌 Finalizar por WhatsApp
   </button>
-
-  <button
-    class="btn-action btn-instagram"
-    onclick="openInstagram()"
-  >
-    📸 ir a instagram
+  <button class="btn-action btn-instagram" onclick="openInstagram()">
+    📸 Ir a Instagram
   </button>
-
 </div>
 
 </div>
 
-<!-- =========================
-     MENÚ MÓVIL
-========================= -->
-
-<div
-  class="charm-menu"
-  id="charmMenu"
->
-
-  <div
-    class="charm-menu-title"
-    id="menuTitle"
-  >
-    charm
-  </div>
-
+<!-- MENÚ MÓVIL / POPUP CHARM -->
+<div class="charm-menu" id="charmMenu">
+  <div class="charm-menu-title" id="menuTitle">Charm</div>
   <div class="menu-buttons">
-
-    <button
-      class="menu-btn"
-      onclick="startMoveMode()"
-    >
-      ↔ mover
-    </button>
-
-    <button
-      class="menu-btn delete"
-      onclick="removeSelected()"
-    >
-      🗑 eliminar
-    </button>
-
-    <button
-      class="menu-btn"
-      onclick="replaceSelected()"
-    >
-      ✨ reemplazar
-    </button>
-
+    <button class="menu-btn" onclick="startMoveMode()">↔ Mover</button>
+    <button class="menu-btn delete" onclick="removeSelected()">🗑 Eliminar</button>
+    <button class="menu-btn" onclick="replaceSelected()">✨ Reemplazar</button>
   </div>
-
-  <button
-    class="menu-close"
-    onclick="closeCharmMenu()"
-  >
-    cerrar
-  </button>
-
+  <button class="menu-close" onclick="closeCharmMenu()">Cerrar</button>
 </div>
 
-<!-- =========================
-     BARRA INFERIOR
-========================= -->
-
+<!-- BARRA INFERIOR -->
 <div class="bottom-bar">
-
-  <button
-    class="btn-clear"
-    onclick="clearBracelet()"
-  >
-    vaciar
+  <button class="btn-clear" onclick="clearBracelet()">Vaciar</button>
+  <button class="btn-submit-main" onclick="sendWhatsApp()">
+    💌 Finalizar ($<span id="bottomTotal">10.000</span>)
   </button>
-
-  <button
-    class="btn-submit-main"
-    onclick="sendWhatsApp()"
-  >
-    💌 finalizar
-    ($<span id="bottomTotal">10.000</span>)
-  </button>
-
 </div>
 
 <script>
-
 /* =====================================================
    CONFIGURACIÓN
 ===================================================== */
-
 const BRACELET_PRICE = 10000;
 const EXTRA_SPACE_PRICE = 1000;
 const MAX_CAPACITY = 20;
 
-/* IMÁGENES DE LOS ESPACIOS VACÍOS */
-
 const EMPTY_SILVER_IMG = 'IMG_0242.png';
 const EMPTY_GOLD_IMG = 'IMG_0240.png';
 
-
 let selectedSize = null;
 let capacity = 0;
-
-let braceletColor = null;
+let braceletColor = 'silver';
 
 let slots = [];
-
-let selectedSlotIndex = null;
-
+let activeTargetIndex = null; // Guardado sostenido para selección y reemplazo
 let movingMode = false;
-
 let replacementMode = false;
-
 let draggedIndex = null;
-
 
 /* =====================================================
    CREAR CHARMS VACÍOS
 ===================================================== */
-
 function createEmptySlot(index) {
-
   let image = EMPTY_SILVER_IMG;
 
-  if(braceletColor === 'gold') {
-
+  if (braceletColor === 'gold') {
     image = EMPTY_GOLD_IMG;
-
-  }
-
-  else if(braceletColor === 'mixed') {
-
-    image =
-      index % 2 === 0
-        ? EMPTY_SILVER_IMG
-        : EMPTY_GOLD_IMG;
-
+  } else if (braceletColor === 'mixed') {
+    image = (index % 2 === 0) ? EMPTY_SILVER_IMG : EMPTY_GOLD_IMG;
   }
 
   return {
-
     name: 'Charm vacío',
-
     price: 0,
-
     img: image,
-
     empty: true
-
   };
-
 }
-
 
 /* =====================================================
    ACTUALIZAR IMÁGENES DE LOS ESPACIOS VACÍOS
 ===================================================== */
-
 function updateEmptyCharmImages() {
-
-  slots.forEach((slot,index) => {
-
-    if(slot.empty) {
-
-      if(braceletColor === 'gold') {
-
+  slots.forEach((slot, index) => {
+    if (slot.empty) {
+      if (braceletColor === 'gold') {
         slot.img = EMPTY_GOLD_IMG;
-
-      }
-
-      else if(braceletColor === 'mixed') {
-
-        slot.img =
-          index % 2 === 0
-            ? EMPTY_SILVER_IMG
-            : EMPTY_GOLD_IMG;
-
-      }
-
-      else {
-
+      } else if (braceletColor === 'mixed') {
+        slot.img = (index % 2 === 0) ? EMPTY_SILVER_IMG : EMPTY_GOLD_IMG;
+      } else {
         slot.img = EMPTY_SILVER_IMG;
-
       }
-
     }
-
   });
-
 }
-
 
 /* =====================================================
    SELECCIONAR TALLE
 ===================================================== */
-
 function selectSize(size, number, button) {
-
   selectedSize = size;
+  capacity = Math.min(number, MAX_CAPACITY);
 
-  capacity = Math.min(
-    number,
-    MAX_CAPACITY
-  );
-
-
-  /*
-    Al elegir otro talle,
-    se desmarca automáticamente
-    el talle anterior.
-  */
-
-  document
-    .querySelectorAll(
-      '.step:first-of-type .option'
-    )
-    .forEach(btn => {
-
-      btn.classList.remove('active');
-
-    });
-
-
+  // Limpiar clases activas en botones de talle inmediatamente
+  const sizeBtns = document.querySelectorAll('#sizeOptions .option');
+  sizeBtns.forEach(btn => btn.classList.remove('active'));
   button.classList.add('active');
 
-
-  /*
-    La pulsera empieza exactamente
-    con la cantidad de espacios
-    correspondientes al talle.
-  */
-
+  // Inicializar arreglo de slots con el talle elegido
   slots = [];
-
-  for(let i = 0; i < capacity; i++) {
-
-    slots.push(
-      createEmptySlot(i)
-    );
-
+  for (let i = 0; i < capacity; i++) {
+    slots.push(createEmptySlot(i));
   }
 
-
   replacementMode = false;
-
+  activeTargetIndex = null;
   closeCharmMenu();
-
   updateUI();
-
 }
-
 
 /* =====================================================
    SELECCIONAR COLOR
 ===================================================== */
-
 function selectColor(color, button) {
-
   braceletColor = color;
 
-
-  /*
-    Se desmarca automáticamente
-    el color anterior.
-  */
-
-  document
-    .querySelectorAll(
-      '.color-options .option'
-    )
-    .forEach(btn => {
-
-      btn.classList.remove('active');
-
-    });
-
-
+  // Limpiar clases activas en botones de color inmediatamente
+  const colorBtns = document.querySelectorAll('#colorOptions .option');
+  colorBtns.forEach(btn => btn.classList.remove('active'));
   button.classList.add('active');
 
-
-  /*
-    SOLAMENTE cambian los charms vacíos.
-
-    Los charms del catálogo conservan
-    sus propias imágenes.
-  */
-
   updateEmptyCharmImages();
-
   updateUI();
-
 }
-
 
 /* =====================================================
-   AGREGAR CHARM
+   AGREGAR / REEMPLAZAR CHARM
 ===================================================== */
-
 function addCharm(name, price, img) {
-
-  if(!selectedSize) {
-
-    alert(
-      'primero elegí el talle de tu pulsera ♡'
-    );
-
+  if (!selectedSize) {
+    alert('Primero elegí el talle de tu pulsera ♡');
     return;
-
   }
-
 
   const newCharm = {
-
     name: name,
-
     price: price,
-
     img: img,
-
     empty: false
-
   };
 
-
-  /*
-    REEMPLAZAR
-
-    Si se activó "reemplazar",
-    el nuevo charm ocupa EXACTAMENTE
-    el lugar seleccionado.
-
-    No agrega un espacio nuevo.
-  */
-
-  if(
-    replacementMode &&
-    selectedSlotIndex !== null
-  ) {
-
-    slots[selectedSlotIndex] =
-      newCharm;
-
+  // Reemplazar si el modo está activo sobre un slot válido
+  if (replacementMode && activeTargetIndex !== null && activeTargetIndex < slots.length) {
+    slots[activeTargetIndex] = newCharm;
     replacementMode = false;
-
-    selectedSlotIndex = null;
-
+    activeTargetIndex = null;
     closeCharmMenu();
-
     updateUI();
-
     return;
-
   }
 
+  // Si no es reemplazo, busca la primera posición vacía
+  const emptyIndex = slots.findIndex(slot => slot.empty);
 
-  /*
-    AGREGAR NORMAL
-
-    Primero busca un espacio vacío.
-  */
-
-  const emptyIndex =
-    slots.findIndex(
-      slot => slot.empty
-    );
-
-
-  if(emptyIndex !== -1) {
-
-    slots[emptyIndex] =
-      newCharm;
-
-  }
-
-  else {
-
-    /*
-      Si ya se llenaron todos los espacios
-      del talle, se agrega UN espacio extra.
-
-      Ese espacio extra suma $1.000
-      al precio final.
-    */
-
-    if(slots.length >= MAX_CAPACITY) {
-
-      alert(
-        'llegaste al máximo de 20 charms ♡'
-      );
-
+  if (emptyIndex !== -1) {
+    slots[emptyIndex] = newCharm;
+  } else {
+    // Si la pulsera está llena de charms del catálogo, permite añadir espacio adicional hasta 20
+    if (slots.length >= MAX_CAPACITY) {
+      alert('Llegaste al máximo de 20 charms ♡');
       return;
-
     }
-
-
     slots.push(newCharm);
-
   }
-
 
   closeCharmMenu();
-
   updateUI();
-
 }
-
 
 /* =====================================================
    ELIMINAR ESPACIO / CHARM
 ===================================================== */
-
 function removeSlot(index) {
-
-  /*
-    Al eliminar, el espacio desaparece.
-  */
-
-  slots.splice(index,1);
-
-  selectedSlotIndex = null;
-
+  slots.splice(index, 1);
+  activeTargetIndex = null;
   replacementMode = false;
-
   closeCharmMenu();
-
   updateUI();
-
 }
-
 
 function removeSelected() {
-
-  if(selectedSlotIndex === null) {
-
-    return;
-
-  }
-
-  removeSlot(selectedSlotIndex);
-
+  if (activeTargetIndex === null) return;
+  removeSlot(activeTargetIndex);
 }
 
-
 /* =====================================================
-   TOCAR CHARM
+   MENÚ DE CHARMS Y CONTROLES
 ===================================================== */
-
 function openCharmMenu(index) {
-
-  selectedSlotIndex = index;
-
+  activeTargetIndex = index;
   movingMode = false;
 
   const slot = slots[index];
-
-
-  document.getElementById(
-    'menuTitle'
-  ).innerText =
-    slot.empty
-      ? 'espacio vacío'
-      : slot.name;
-
-
-  document
-    .getElementById('charmMenu')
-    .classList.add('show');
-
+  document.getElementById('menuTitle').innerText = slot.empty ? 'Espacio vacío' : slot.name;
+  document.getElementById('charmMenu').classList.add('show');
 }
-
 
 function closeCharmMenu() {
-
-  selectedSlotIndex = null;
-
-  movingMode = false;
-
-  document
-    .getElementById('charmMenu')
-    .classList.remove('show');
-
+  document.getElementById('charmMenu').classList.remove('show');
 }
-
-
-/* =====================================================
-   MODO MOVER
-===================================================== */
 
 function startMoveMode() {
-
-  if(selectedSlotIndex === null) {
-
-    return;
-
-  }
-
-
+  if (activeTargetIndex === null) return;
   movingMode = true;
-
-
-  document.getElementById(
-    'menuTitle'
-  ).innerText =
-    'tocá otro lugar para mover el charm ♡';
-
+  document.getElementById('menuTitle').innerText = 'Tocá otro lugar para mover el charm ♡';
 }
-
-
-/* =====================================================
-   REEMPLAZAR
-===================================================== */
 
 function replaceSelected() {
-
-  if(selectedSlotIndex === null) {
-
-    return;
-
-  }
-
+  if (activeTargetIndex === null) return;
 
   replacementMode = true;
-
   movingMode = false;
+  closeCharmMenu();
+  renderBracelet();
 
-
-  document
-    .getElementById('charmMenu')
-    .classList.remove('show');
-
-
-  document
-    .querySelector('.section-title')
-    .scrollIntoView({
-
-      behavior:'smooth',
-
-      block:'start'
-
-    });
-
+  document.querySelector('.section-title').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
 
   setTimeout(() => {
-
-    alert(
-      'elegí un charm del catálogo y va a reemplazar el seleccionado ♡'
-    );
-
-  },300);
-
+    alert('Elegí un charm del catálogo para reemplazar el espacio seleccionado ♡');
+  }, 200);
 }
-
 
 /* =====================================================
    DRAG & DROP
 ===================================================== */
-
-function dragStart(index,event) {
-
+function dragStart(index, event) {
   draggedIndex = index;
-
-  event.dataTransfer.effectAllowed =
-    'move';
-
-  event.dataTransfer.setData(
-    'text/plain',
-    index
-  );
-
-  event.currentTarget.classList.add(
-    'dragging'
-  );
-
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/plain', index);
+  event.currentTarget.classList.add('dragging');
 }
-
 
 function dragEnd(event) {
-
-  event.currentTarget.classList.remove(
-    'dragging'
-  );
-
+  event.currentTarget.classList.remove('dragging');
   draggedIndex = null;
-
-
-  document
-    .querySelectorAll('.slot')
-    .forEach(slot => {
-
-      slot.classList.remove(
-        'drag-over'
-      );
-
-    });
-
+  document.querySelectorAll('.slot').forEach(slot => slot.classList.remove('drag-over'));
 }
-
 
 function allowDrop(event) {
-
   event.preventDefault();
-
-  event.currentTarget.classList.add(
-    'drag-over'
-  );
-
+  event.currentTarget.classList.add('drag-over');
 }
 
-
-function dropSlot(index,event) {
-
+function dropSlot(index, event) {
   event.preventDefault();
+  document.querySelectorAll('.slot').forEach(slot => slot.classList.remove('drag-over'));
 
+  if (draggedIndex === null || draggedIndex === index) return;
 
-  document
-    .querySelectorAll('.slot')
-    .forEach(slot => {
-
-      slot.classList.remove(
-        'drag-over'
-      );
-
-    });
-
-
-  if(
-    draggedIndex === null ||
-    draggedIndex === index
-  ) {
-
-    return;
-
-  }
-
-
-  const temp =
-    slots[draggedIndex];
-
-
-  slots[draggedIndex] =
-    slots[index];
-
-
-  slots[index] =
-    temp;
-
-
-  /*
-    Después de mover, si hay intercalada,
-    se mantienen los vacíos según
-    su posición actual.
-  */
+  const temp = slots[draggedIndex];
+  slots[draggedIndex] = slots[index];
+  slots[index] = temp;
 
   updateEmptyCharmImages();
-
   updateUI();
-
 }
-
 
 /* =====================================================
-   TOQUE PARA MOVER EN CELULAR
+   CLICK / INTERACCIÓN EN SLOT
 ===================================================== */
-
 function handleSlotClick(index) {
-
-  if(
-    movingMode &&
-    selectedSlotIndex !== null
-  ) {
-
-    const temp =
-      slots[selectedSlotIndex];
-
-
-    slots[selectedSlotIndex] =
-      slots[index];
-
-
-    slots[index] =
-      temp;
-
+  if (movingMode && activeTargetIndex !== null) {
+    const temp = slots[activeTargetIndex];
+    slots[activeTargetIndex] = slots[index];
+    slots[index] = temp;
 
     movingMode = false;
-
-    selectedSlotIndex = null;
-
+    activeTargetIndex = null;
     updateEmptyCharmImages();
-
     updateUI();
-
     return;
-
   }
 
-
   openCharmMenu(index);
-
 }
-
 
 /* =====================================================
    RENDERIZAR PULSERA
 ===================================================== */
-
 function renderBracelet() {
-
-  const display =
-    document.getElementById(
-      'braceletDisplay'
-    );
-
-
+  const display = document.getElementById('braceletDisplay');
   display.innerHTML = '';
 
-
-  if(!selectedSize) {
-
-    display.innerHTML =
-      `<span class="empty-msg">
-        elegí un talle para comenzar ✨
-      </span>`;
-
+  if (!selectedSize) {
+    display.innerHTML = '<span class="empty-msg">Elegí un talle para comenzar ✨</span>';
     return;
-
   }
 
+  display.className = 'bracelet';
 
-  /*
-    La cadena SIEMPRE mantiene
-    el mismo color.
-  */
+  slots.forEach((slot, index) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'slot';
+    wrapper.draggable = true;
+    wrapper.dataset.index = index;
 
-  display.className =
-    'bracelet';
-
-
-  slots.forEach(
-    (slot,index) => {
-
-      const wrapper =
-        document.createElement(
-          'div'
-        );
-
-
-      wrapper.className =
-        'slot';
-
-
-      wrapper.draggable = true;
-
-
-      wrapper.dataset.index =
-        index;
-
-
-      wrapper.addEventListener(
-        'dragstart',
-        e =>
-          dragStart(index,e)
-      );
-
-
-      wrapper.addEventListener(
-        'dragend',
-        dragEnd
-      );
-
-
-      wrapper.addEventListener(
-        'dragover',
-        allowDrop
-      );
-
-
-      wrapper.addEventListener(
-        'drop',
-        e =>
-          dropSlot(index,e)
-      );
-
-
-      wrapper.addEventListener(
-        'click',
-        () =>
-          handleSlotClick(index)
-      );
-
-
-      const number =
-        document.createElement(
-          'div'
-        );
-
-
-      number.className =
-        'slot-number';
-
-
-      number.innerText =
-        `${index + 1}`;
-
-
-      const ring =
-        document.createElement(
-          'div'
-        );
-
-
-      ring.className =
-        'slot-ring';
-
-
-      const img =
-        document.createElement(
-          'img'
-        );
-
-
-      img.src =
-        slot.img;
-
-
-      img.alt =
-        slot.name;
-
-
-      if(slot.empty) {
-
-        wrapper.classList.add(
-          'empty'
-        );
-
-      }
-
-
-      wrapper.appendChild(number);
-
-      wrapper.appendChild(ring);
-
-      wrapper.appendChild(img);
-
-      display.appendChild(wrapper);
-
+    if (replacementMode && activeTargetIndex === index) {
+      wrapper.classList.add('replacement-target');
     }
-  );
 
+    wrapper.addEventListener('dragstart', e => dragStart(index, e));
+    wrapper.addEventListener('dragend', dragEnd);
+    wrapper.addEventListener('dragover', allowDrop);
+    wrapper.addEventListener('drop', e => dropSlot(index, e));
+    wrapper.addEventListener('click', () => handleSlotClick(index));
+
+    const number = document.createElement('div');
+    number.className = 'slot-number';
+    number.innerText = `${index + 1}`;
+
+    const ring = document.createElement('div');
+    ring.className = 'slot-ring';
+
+    const img = document.createElement('img');
+    img.src = slot.img;
+    img.alt = slot.name;
+
+    if (slot.empty) {
+      wrapper.classList.add('empty');
+    }
+
+    wrapper.appendChild(number);
+    wrapper.appendChild(ring);
+    wrapper.appendChild(img);
+    display.appendChild(wrapper);
+  });
 }
-
 
 /* =====================================================
-   TOTAL
+   TOTAL PRECIO
 ===================================================== */
-
 function calculateTotal() {
+  let total = BRACELET_PRICE;
 
-  /*
-    $10.000 corresponde al talle 14.
+  const extraSpaces = Math.max(0, slots.length - capacity);
+  total += extraSpaces * EXTRA_SPACE_PRICE;
 
-    Los espacios que forman parte
-    del talle elegido están incluidos
-    en el precio.
-
-    Cada espacio adicional por encima
-    del talle elegido suma $1.000.
-  */
-
-  let total =
-    BRACELET_PRICE;
-
-
-  const extraSpaces =
-    Math.max(
-      0,
-      slots.length - capacity
-    );
-
-
-  total +=
-    extraSpaces *
-    EXTRA_SPACE_PRICE;
-
-
-  /*
-    Cada charm elegido del catálogo
-    se suma aparte.
-  */
-
+  // Solo sumar el costo adicional de los charms elegidos del catálogo
   slots.forEach(slot => {
-
-    if(!slot.empty) {
-
+    if (!slot.empty) {
       total += slot.price;
-
     }
-
   });
 
-
   return total;
-
 }
-
 
 /* =====================================================
    ACTUALIZAR UI
 ===================================================== */
-
 function updateUI() {
-
   updateEmptyCharmImages();
-
   renderBracelet();
 
+  const filled = slots.filter(slot => !slot.empty).length;
+  const empty = slots.filter(slot => slot.empty).length;
 
-  const filled =
-    slots.filter(
-      slot => !slot.empty
-    ).length;
+  document.getElementById('filledCount').innerText = filled;
+  document.getElementById('emptyCount').innerText = empty;
 
+  const total = calculateTotal();
+  const formatted = total.toLocaleString('es-AR');
 
-  const empty =
-    slots.filter(
-      slot => slot.empty
-    ).length;
+  document.getElementById('totalPrice').innerText = '$' + formatted;
+  document.getElementById('bottomTotal').innerText = formatted;
+  document.getElementById('summaryTotal').innerText = '$' + formatted;
 
-
-  document.getElementById(
-    'filledCount'
-  ).innerText =
-    filled;
-
-
-  document.getElementById(
-    'emptyCount'
-  ).innerText =
-    empty;
-
-
-  const total =
-    calculateTotal();
-
-
-  const formatted =
-    total.toLocaleString(
-      'es-AR'
-    );
-
-
-  document.getElementById(
-    'totalPrice'
-  ).innerText =
-    '$' + formatted;
-
-
-  document.getElementById(
-    'bottomTotal'
-  ).innerText =
-    formatted;
-
-
-  document.getElementById(
-    'summaryTotal'
-  ).innerText =
-    '$' + formatted;
-
-
-  if(selectedSize) {
-
-    document.getElementById(
-      'visualizerSubtitle'
-    ).innerText =
-      `talle ${selectedSize.toUpperCase()} · ${capacity} espacios · ${getColorName()}`;
-
+  if (selectedSize) {
+    document.getElementById('visualizerSubtitle').innerText =
+      `Talle ${selectedSize} · ${capacity} espacios · ${getColorName()}`;
+  } else {
+    document.getElementById('visualizerSubtitle').innerText = 'Primero elegí un talle';
   }
-
-  else {
-
-    document.getElementById(
-      'visualizerSubtitle'
-    ).innerText =
-      'primero elegí un talle';
-
-  }
-
 
   updateSummary();
-
   updateInstagramMessage();
-
 }
 
-
 /* =====================================================
-   COLOR
+   NOMBRES DE COLOR
 ===================================================== */
-
 function getColorName() {
-
-  if(braceletColor === 'gold') {
-
-    return 'pulsera dorada ✨';
-
-  }
-
-
-  if(braceletColor === 'mixed') {
-
-    return 'pulsera intercalada ✨';
-
-  }
-
-
-  if(braceletColor === 'silver') {
-
-    return 'pulsera plateada ♡';
-
-  }
-
-
-  return '-';
-
+  if (braceletColor === 'gold') return 'Pulsera Dorada ✨';
+  if (braceletColor === 'mixed') return 'Pulsera Intercalada ✨';
+  return 'Pulsera Plateada ♡';
 }
 
+function getColorSimpleName() {
+  if (braceletColor === 'gold') return 'dorada';
+  if (braceletColor === 'mixed') return 'intercalada';
+  return 'plateada';
+}
 
 /* =====================================================
-   RESUMEN
+   RESUMEN DETALLADO EN PÁGINA
 ===================================================== */
-
 function updateSummary() {
+  const summary = document.getElementById('cartSummary');
+  const list = document.getElementById('cartList');
 
-  const summary =
-    document.getElementById(
-      'cartSummary'
-    );
-
-
-  const list =
-    document.getElementById(
-      'cartList'
-    );
-
-
-  if(!selectedSize) {
-
-    summary.style.display =
-      'none';
-
+  if (!selectedSize) {
+    summary.style.display = 'none';
     return;
-
   }
 
-
-  summary.style.display =
-    'block';
-
-
-  document.getElementById(
-    'summaryCount'
-  ).innerText =
-    `${slots.length} espacios`;
-
-
+  summary.style.display = 'block';
+  document.getElementById('summaryCount').innerText = `${slots.length} espacios`;
   list.innerHTML = '';
 
+  // Línea principal de la pulsera base
+  const baseRow = document.createElement('div');
+  baseRow.className = 'cart-item';
+  baseRow.innerHTML = `
+    <span><strong>Base:</strong> Pulsera ${getColorSimpleName()} (${selectedSize})</span>
+    <span>$10.000</span>
+  `;
+  list.appendChild(baseRow);
 
-  slots.forEach(
-    (slot,index) => {
-
-      const row =
-        document.createElement(
-          'div'
-        );
-
-
-      row.className =
-        'cart-item';
-
-
-      let priceText = '';
-
-
-      /*
-        Los espacios incluidos
-        no suman dinero.
-
-        Los espacios adicionales
-        sí cuestan $1.000.
-      */
-
-      if(slot.empty) {
-
-        if(index >= capacity) {
-
-          priceText =
-            '$1.000';
-
-        }
-
-        else {
-
-          priceText =
-            'incluido';
-
-        }
-
-      }
-
-      else {
-
-        priceText =
-          '$' +
-          slot.price.toLocaleString(
-            'es-AR'
-          );
-
-      }
-
-
+  // Detalle de charms adicionales comprados
+  slots.forEach((slot, index) => {
+    if (!slot.empty) {
+      const row = document.createElement('div');
+      row.className = 'cart-item';
       row.innerHTML = `
-        <span>
-          <strong>${index + 1}.</strong>
-          ${slot.empty ? 'Charm vacío' : slot.name}
-        </span>
-
-        <span>
-          ${priceText}
-        </span>
+        <span><strong>${index + 1}.</strong> ${slot.name}</span>
+        <span>$${slot.price.toLocaleString('es-AR')}</span>
       `;
-
-
       list.appendChild(row);
-
     }
-  );
+  });
 
-
-  /*
-    Si existen espacios extra,
-    mostramos también su información.
-  */
-
-  const extraSpaces =
-    Math.max(
-      0,
-      slots.length - capacity
-    );
-
-
-  if(extraSpaces > 0) {
-
-    const extraRow =
-      document.createElement(
-        'div'
-      );
-
-
-    extraRow.className =
-      'cart-item';
-
-
+  const extraSpaces = Math.max(0, slots.length - capacity);
+  if (extraSpaces > 0) {
+    const extraRow = document.createElement('div');
+    extraRow.className = 'cart-item';
     extraRow.innerHTML = `
-      <span>
-        espacios extra
-      </span>
-
-      <span>
-        $${(
-          extraSpaces *
-          EXTRA_SPACE_PRICE
-        ).toLocaleString('es-AR')}
-      </span>
+      <span>Espacios extra (${extraSpaces})</span>
+      <span>$${(extraSpaces * EXTRA_SPACE_PRICE).toLocaleString('es-AR')}</span>
     `;
-
-
     list.appendChild(extraRow);
-
   }
-
 }
 
-
 /* =====================================================
-   MENSAJE DE PEDIDO
+   MENSAJE DE PEDIDO (WHATSAPP / INSTAGRAM)
 ===================================================== */
-
 function createOrderMessage() {
-
   let charmsText = '';
 
-
-  slots.forEach(
-    (slot,index) => {
-
-      charmsText +=
-        `${index + 1}. `;
-
-
-      if(slot.empty) {
-
-        charmsText +=
-          'Charm vacío';
-
-      }
-
-      else {
-
-        charmsText +=
-          slot.name;
-
-      }
-
-
-      charmsText += '\n';
-
+  slots.forEach((slot, index) => {
+    charmsText += `${index + 1}. `;
+    if (slot.empty) {
+      charmsText += 'Charm vacío';
+    } else {
+      charmsText += slot.name;
     }
-  );
+    charmsText += '\n';
+  });
 
+  const total = calculateTotal();
 
-  const extraSpaces =
-    Math.max(
-      0,
-      slots.length - capacity
-    );
+  return `¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
 
+♡ Pulsera ${getColorSimpleName()} de ${capacity} charms · $10.000
 
-  const total =
-    calculateTotal();
-
-
-  return `¡Holaa! 💗 quiero hacer una compra en Cuoricino ✨
-
-♡ talle: ${
-    selectedSize
-      ? selectedSize.toUpperCase()
-      : '-'
-  }
-
-♡ capacidad: ${capacity} charms
-
-♡ pulsera: ${getColorName()}
-
-♡ charms elegidos:
+♡ Charms elegidos:
 ${charmsText}
-♡ total de espacios: ${slots.length}
+♡ Total: $${total.toLocaleString('es-AR')}
 
-♡ espacios extra: ${extraSpaces}
+Vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
 
-♡ total: $${total.toLocaleString('es-AR')}
-
-vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
-
-¡graciasss! 🫶🏻`;
-
+¡Graciasss! 🫶🏻`;
 }
 
-
 /* =====================================================
-   INSTAGRAM
+   INSTAGRAM / MENSAJES
 ===================================================== */
-
 function updateInstagramMessage() {
+  const box = document.getElementById('instagramMessage');
 
-  const box =
-    document.getElementById(
-      'instagramMessage'
-    );
-
-
-  if(!selectedSize) {
-
+  if (!selectedSize) {
     box.innerText =
-`¡Holaa! 💗 quiero hacer una compra en Cuoricino ✨
-♡ talle:
-♡ pulsera:
-♡ charms que elegí:
+`¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
+♡ Pulsera:
+♡ Charms elegidos:
 
-primero elegí el talle para armar tu pulsera ♡`;
-
+Primero elegí el talle para armar tu pulsera ♡`;
     return;
-
   }
 
-
-  box.innerText =
-    createOrderMessage();
-
+  box.innerText = createOrderMessage();
 }
-
-
-/* =====================================================
-   COPIAR MENSAJE
-===================================================== */
 
 function copyInstagramMessage() {
+  const message = createOrderMessage();
 
-  const message =
-    createOrderMessage();
-
-
-  navigator.clipboard
-    .writeText(message)
+  navigator.clipboard.writeText(message)
     .then(() => {
-
-      const button =
-        document.getElementById(
-          'copyButton'
-        );
-
-
-      const old =
-        button.innerText;
-
-
-      button.innerText =
-        '✓ mensaje copiado';
-
-
-      setTimeout(
-        () => {
-
-          button.innerText =
-            old;
-
-        },
-        1800
-      );
-
+      const button = document.getElementById('copyButton');
+      const old = button.innerText;
+      button.innerText = '✓ Mensaje copiado';
+      setTimeout(() => {
+        button.innerText = old;
+      }, 1800);
     })
-
-
     .catch(() => {
-
-      alert(
-        'no se pudo copiar. mantené presionado el mensaje para copiarlo ♡'
-      );
-
+      alert('No se pudo copiar. Mantené presionado el mensaje para copiarlo ♡');
     });
-
 }
-
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
 
 function sendWhatsApp() {
-
-  if(!selectedSize) {
-
-    alert(
-      'primero elegí el talle de tu pulsera ♡'
-    );
-
+  if (!selectedSize) {
+    alert('Primero elegí el talle de tu pulsera ♡');
     return;
-
   }
 
-
-  const message =
-    createOrderMessage();
-
-
-  const phone =
-    '5493412651141';
-
-
-  window.location.href =
-    `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-
+  const message = createOrderMessage();
+  const phone = '5493412651141';
+  window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
 }
-
-
-/* =====================================================
-   INSTAGRAM
-===================================================== */
 
 function openInstagram() {
-
-  window.location.href =
-    'https://instagram.com/cuoricino_charms';
-
+  window.location.href = 'https://instagram.com/cuoricino_charms';
 }
-
 
 /* =====================================================
    VACIAR PULSERA
 ===================================================== */
-
 function clearBracelet() {
-
-  if(!selectedSize) {
-
-    return;
-
-  }
-
-
-  /*
-    Volvemos exactamente al talle elegido.
-
-    Ejemplo:
-    talle XS = 14 espacios.
-    talle S = 16 espacios.
-    talle M = 18 espacios.
-    talle L = 20 espacios.
-
-    Todos vuelven a estar vacíos.
-  */
+  if (!selectedSize) return;
 
   slots = [];
-
-
-  for(let i = 0; i < capacity; i++) {
-
-    slots.push(
-      createEmptySlot(i)
-    );
-
+  for (let i = 0; i < capacity; i++) {
+    slots.push(createEmptySlot(i));
   }
 
-
   replacementMode = false;
-
+  activeTargetIndex = null;
   closeCharmMenu();
-
   updateUI();
-
 }
 
-
 /* =====================================================
-   INICIO
+   INICIALIZACIÓN
 ===================================================== */
-
 updateUI();
-
 </script>
 
 </body>
