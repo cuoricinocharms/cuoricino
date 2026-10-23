@@ -1211,11 +1211,9 @@ function toggleExtraLink() {
     slots.push(createEmptySlot(slots.length));
   } else {
     hasExtraLink = false;
-    // Si el último es vacío, lo quitamos
     if (slots.length > capacity && slots[slots.length - 1].empty) {
       slots.pop();
     } else {
-      // Si el último no era vacío, quitamos el último elemento de la ranura extra
       slots.pop();
     }
   }
@@ -1251,7 +1249,6 @@ function addCharm(name, price, img) {
     slots[emptyIndex] = newCharm;
   } else {
     if (!hasExtraLink) {
-      // Auto agregar eslabón extra si hay espacio permitido (+1)
       hasExtraLink = true;
       slots.push(newCharm);
     } else {
@@ -1273,7 +1270,6 @@ function scrollToVisualizer() {
 }
 
 function removeSlot(index) {
-  // Si eliminamos dentro de la capacidad base, se convierte en vacío. Si es el eslabón extra, podemos quitarlo si excede capacidad.
   if (index >= capacity) {
     slots.splice(index, 1);
     hasExtraLink = false;
