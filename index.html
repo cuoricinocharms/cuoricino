@@ -3,83 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff6f9">
 <title>Cuoricino - Pulseras Italianas</title>
-
 <style>
 :root {
   --pink-soft: #fff6f9;
   --pink-light: #ffe4ed;
   --pink-main: #f49ab3;
   --pink-dark: #d65b82;
-  --pink-deep: #c94d75;
   --text-color: #333;
-  --text-light: #888;
-  --white: #fff;
-
   --gradient-btn: linear-gradient(135deg,#f6a0b8,#d9678a);
-  --gradient-wsp: linear-gradient(135deg,#e9a5b9,#d65b82);
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
+  font-family: "Segoe UI",Tahoma,sans-serif;
   background: var(--pink-soft);
   color: var(--text-color);
   min-height: 100vh;
-  padding-bottom: 105px;
+  padding-bottom: calc(105px + env(safe-area-inset-bottom));
 }
-
-button {
-  font-family: inherit;
+button,input,textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { opacity: .55; cursor: default; }
+button:focus-visible,input:focus-visible,textarea:focus-visible {
+  outline: 3px solid var(--pink-main);
+  outline-offset: 3px;
 }
-
-.container {
-  width: 92%;
-  max-width: 650px;
-  margin: auto;
-}
-
-/* =========================
-   HEADER
-========================= */
-
+[hidden] { display: none !important; }
+.container { width: 92%; max-width: 650px; margin: auto; }
 header {
-  width: 100%;
   background: rgba(255,255,255,.97);
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   box-shadow: 0 4px 18px rgba(214,91,130,.10);
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
 }
-
 .brand-name {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--pink-dark);
   letter-spacing: 1.5px;
 }
-
 .brand-subtitle {
   font-size: .63rem;
   color: #999;
   letter-spacing: 1.4px;
   margin-top: 2px;
 }
-
 .price-badge {
   background: var(--pink-light);
   color: var(--pink-dark);
@@ -90,38 +71,10 @@ header {
   border: 1px solid #f3c2d1;
   white-space: nowrap;
 }
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-  text-align: center;
-  padding: 34px 10px 20px;
-}
-
-.hero-heart {
-  font-size: 1.6rem;
-  color: var(--pink-main);
-  margin-bottom: 8px;
-}
-
-.hero h1 {
-  font-size: 1.65rem;
-  margin-bottom: 8px;
-  font-weight: 800;
-}
-
-.hero p {
-  font-size: .84rem;
-  color: #8f8f8f;
-  line-height: 1.55;
-}
-
-/* =========================
-   PASOS
-========================= */
-
+.hero { text-align: center; padding: 34px 10px 20px; }
+.hero-heart { font-size: 1.6rem; color: var(--pink-main); margin-bottom: 8px; }
+.hero h1 { font-size: 1.65rem; margin-bottom: 8px; font-weight: 800; }
+.hero p { font-size: .84rem; color: #888; line-height: 1.55; }
 .step {
   background: white;
   border: 1px solid var(--pink-light);
@@ -130,7 +83,6 @@ header {
   margin-bottom: 14px;
   box-shadow: 0 4px 14px rgba(0,0,0,.035);
 }
-
 .step-title {
   font-size: .9rem;
   font-weight: 800;
@@ -140,64 +92,41 @@ header {
   align-items: center;
   gap: 8px;
 }
-
 .step-number {
   width: 27px;
   height: 27px;
   min-width: 27px;
   border-radius: 50%;
   background: var(--pink-light);
-  color: var(--pink-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: .75rem;
-  font-weight: 800;
 }
-
-.options {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 8px;
-}
-
-.color-options {
-  grid-template-columns: repeat(3,1fr);
-}
-
+.options { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+.color-options { grid-template-columns: repeat(3,1fr); }
 .option {
   border: 1px solid #edc2cf;
-  background: #fff;
+  background: white;
   color: var(--pink-dark);
   padding: 11px 7px;
   border-radius: 13px;
   font-size: .76rem;
   font-weight: 800;
-  cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
+  min-height: 44px;
 }
-
 .option small {
   display: block;
-  color: #999;
+  color: #888;
   font-weight: 500;
   margin-top: 3px;
 }
-
 .option.active {
-  background: var(--pink-dark) !important;
-  color: white !important;
-  border-color: var(--pink-dark) !important;
+  background: var(--pink-dark);
+  color: white;
+  border-color: var(--pink-dark);
 }
-
-.option.active small {
-  color: #ffeaf0 !important;
-}
-
-/* =========================
-   VISUALIZADOR
-========================= */
-
+.option.active small { color: #ffeaf0; }
 .visualizer {
   background: white;
   border-radius: 23px;
@@ -206,8 +135,8 @@ header {
   border: 1px solid var(--pink-light);
   box-shadow: 0 5px 20px rgba(214,91,130,.10);
   text-align: center;
+  scroll-margin-top: 100px;
 }
-
 .visualizer-title {
   font-size: .86rem;
   color: var(--pink-dark);
@@ -216,130 +145,69 @@ header {
   font-weight: 800;
   margin-bottom: 5px;
 }
-
 .visualizer-subtitle {
   font-size: .75rem;
-  color: #999;
+  color: #888;
   margin-bottom: 18px;
+  line-height: 1.5;
 }
-
 .bracelet-scroll {
   width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
-  padding: 22px 5px 38px;
+  padding: 15px 5px 20px;
   scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
-
 .bracelet {
-  position: relative;
   display: flex;
   align-items: center;
   width: max-content;
   min-width: 100%;
-  padding: 0 15px;
+  padding: 0 10px;
   min-height: 115px;
 }
-
-.bracelet::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 8px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #fafafa 0%, #a9a9a9 45%, #fff 60%, #888 100%);
-  box-shadow: 0 2px 3px rgba(0,0,0,.15);
-  z-index: 1;
-}
-
-.empty-msg {
-  width: 100%;
-  text-align: center;
-  font-size: .85rem;
-  color: #aaa;
-  padding: 20px 0;
-}
-
-/* =========================
-   SLOT
-========================= */
-
+.empty-msg { width: 100%; font-size: .85rem; color: #888; padding: 20px 0; }
 .slot {
   position: relative;
   width: 61px;
   height: 105px;
   flex-shrink: 0;
-  z-index: 3;
-  cursor: grab;
+  border: 1px solid transparent;
   border-radius: 12px;
-  transition: .15s;
-  touch-action: manipulation;
+  background: transparent;
+  color: #777;
+  touch-action: pan-x pan-y;
 }
-
-.slot.dragging {
-  opacity: .45;
-  transform: scale(.95);
-}
-
-.slot.drag-over {
-  background: rgba(244,154,179,.15);
-}
-
-.slot.replacement-target {
+.slot.selected {
   outline: 2px dashed var(--pink-dark);
   background: rgba(244,154,179,.12);
 }
-
-.slot-ring {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  width: 14px;
-  height: 14px;
-  transform: translateX(-50%);
-  border: 2px solid #999;
-  border-radius: 50%;
-  background: white;
-  z-index: 5;
-}
-
-.slot img {
-  position: absolute;
-  width: 54px;
-  height: 72px;
-  object-fit: contain;
-  left: 3.5px;
-  top: 31px;
-  z-index: 4;
-  filter: drop-shadow(0 3px 4px rgba(0,0,0,.18));
-  transition: .2s;
-}
-
-.slot:hover img {
-  transform: translateY(-3px);
-}
-
-.slot.empty img {
-  opacity: .85;
-}
-
 .slot-number {
   position: absolute;
-  top: -7px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: .53rem;
-  color: #aaa;
-  white-space: nowrap;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: .65rem;
+  color: #888;
 }
-
-/* =========================
-   CONTADOR Y ESLABÓN EXTRA
-========================= */
-
+.slot-image {
+  position: absolute;
+  top: 24px;
+  left: 3px;
+  width: 54px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slot-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,.12));
+}
+.slot-image .image-missing { font-size: .55rem; }
 .counter-box {
   margin-top: 12px;
   display: flex;
@@ -347,141 +215,43 @@ header {
   align-items: center;
   gap: 10px;
 }
-
-.counter {
-  font-size: .78rem;
-  color: #888;
-}
-
-.counter strong {
-  color: var(--pink-dark);
-}
-
-.btn-extra-link {
+.counter { font-size: .78rem; color: #888; }
+.counter strong { color: var(--pink-dark); }
+.hint { font-size: .75rem; color: #888; line-height: 1.5; margin-top: 10px; }
+.btn-extra-link,.copy-button {
   background: var(--pink-light);
   color: var(--pink-dark);
   border: 1px solid #f3c2d1;
-  padding: 8px 14px;
+  padding: 11px 14px;
   border-radius: 14px;
   font-size: .78rem;
   font-weight: 800;
-  cursor: pointer;
-  transition: .2s;
+  min-height: 44px;
 }
-
-.btn-extra-link:hover {
-  background: var(--pink-dark);
-  color: white;
+#status {
+  font-size: .8rem;
+  color: var(--pink-dark);
+  line-height: 1.5;
+  margin-top: 12px;
 }
-
-/* =========================
-   BUSCADOR DE CHARMS
-========================= */
-
-.search-box {
-  margin: 15px 0;
-  text-align: center;
-}
-
+.search-box { margin: 15px 0; }
 .search-input {
   width: 100%;
   padding: 12px 18px;
   border: 1px solid var(--pink-light);
   border-radius: 16px;
-  font-size: .88rem;
-  outline: none;
+  font-size: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,.03);
-  transition: border-color .2s;
 }
-
-.search-input:focus {
-  border-color: var(--pink-dark);
-}
-
-/* =========================
-   MENÚ DEL CHARM
-========================= */
-
-.charm-menu {
-  position: fixed;
-  left: 50%;
-  bottom: 25px;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: 390px;
-  background: white;
-  border: 1px solid var(--pink-light);
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 10px 35px rgba(0,0,0,.18);
-  z-index: 500;
-  display: none;
-}
-
-.charm-menu.show {
-  display: block;
-}
-
-.charm-menu-title {
-  text-align: center;
-  font-size: .85rem;
-  font-weight: 800;
-  color: var(--pink-dark);
-  margin-bottom: 12px;
-}
-
-.menu-buttons {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 7px;
-}
-
-.menu-btn {
-  border: none;
-  background: var(--pink-light);
-  color: var(--pink-dark);
-  padding: 10px 5px;
-  border-radius: 12px;
-  font-size: .7rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.menu-btn.delete {
-  background: #f8eeee;
-  color: #a85b5b;
-}
-
-.menu-close {
-  width: 100%;
-  border: none;
-  background: #f5f2f3;
-  color: #777;
-  padding: 9px;
-  border-radius: 12px;
-  margin-top: 8px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* =========================
-   CATÁLOGO
-========================= */
-
 .section-title {
   font-size: 1.18rem;
   color: var(--pink-dark);
   margin: 28px 0 16px;
   text-align: center;
   font-weight: 800;
+  scroll-margin-top: 100px;
 }
-
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 13px;
-}
-
+.catalog-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; }
 .card {
   background: white;
   border-radius: 19px;
@@ -491,19 +261,19 @@ header {
   border: 1px solid var(--pink-light);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
-
 .card-img {
   width: 100%;
   height: 120px;
-  object-fit: contain;
   border-radius: 12px;
-  background: white;
   margin-bottom: 8px;
   padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.card-img img { width: 100%; height: 100%; object-fit: contain; }
+.image-missing { color: #888; font-size: .75rem; line-height: 1.4; }
 .card-title {
   font-size: .86rem;
   font-weight: 700;
@@ -512,30 +282,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-wrap: anywhere;
 }
-
-.card-price {
-  font-size: .85rem;
-  color: var(--pink-dark);
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
+.card-price { font-size: .85rem; color: var(--pink-dark); font-weight: 800; margin-bottom: 8px; }
 .btn-add {
   background: var(--gradient-btn);
   color: white;
   border: none;
-  padding: 9px;
+  padding: 11px;
   border-radius: 14px;
   font-size: .82rem;
   font-weight: 700;
-  cursor: pointer;
+  margin-top: auto;
+  min-height: 44px;
 }
-
-/* =========================
-   RESUMEN
-========================= */
-
 .cart-summary {
   background: white;
   border-radius: 18px;
@@ -543,7 +303,6 @@ header {
   margin: 25px 0 15px;
   border: 1px solid var(--pink-light);
 }
-
 .cart-summary-title {
   font-size: .9rem;
   font-weight: 700;
@@ -551,17 +310,18 @@ header {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
-
 .cart-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 7px 0;
+  gap: 12px;
+  padding: 9px 0;
   border-bottom: 1px dashed #eee;
   font-size: .8rem;
+  line-height: 1.5;
 }
-
+.cart-item span:last-child { white-space: nowrap; }
 .total-row {
   display: flex;
   justify-content: space-between;
@@ -570,11 +330,6 @@ header {
   font-weight: 800;
   color: var(--pink-dark);
 }
-
-/* =========================
-   INSTAGRAM
-========================= */
-
 .instagram-box {
   background: white;
   border: 1px solid var(--pink-light);
@@ -582,7 +337,6 @@ header {
   padding: 19px;
   margin-top: 18px;
 }
-
 .instagram-title {
   text-align: center;
   color: var(--pink-dark);
@@ -590,78 +344,72 @@ header {
   font-weight: 800;
   margin-bottom: 9px;
 }
-
-.instagram-text {
-  color: #777;
-  font-size: .78rem;
-  line-height: 1.5;
-  text-align: center;
-  margin-bottom: 12px;
-}
-
+.instagram-text { color: #777; font-size: .78rem; line-height: 1.5; text-align: center; margin-bottom: 12px; }
 .message-box {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
   background: var(--pink-soft);
   border: 1px solid var(--pink-light);
   border-radius: 13px;
   padding: 11px;
-  font-size: .70rem;
+  font-size: 16px;
   color: #666;
   line-height: 1.45;
-  white-space: pre-line;
-  max-height: 200px;
-  overflow-y: auto;
   margin-bottom: 10px;
+  -webkit-user-select: text;
+  user-select: text;
 }
-
-.copy-button {
-  width: 100%;
-  border: none;
-  background: var(--pink-light);
-  color: var(--pink-dark);
-  padding: 10px;
-  border-radius: 13px;
-  font-size: .8rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-/* =========================
-   BOTONES
-========================= */
-
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  margin: 20px 0 30px;
-}
-
+.copy-button { width: 100%; }
+#copyStatus { font-size: .78rem; color: var(--pink-dark); margin-top: 8px; line-height: 1.5; }
+.action-buttons { display: flex; flex-direction: column; gap: 11px; margin: 20px 0 30px; }
 .btn-action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
   padding: 14px;
   border-radius: 18px;
   font-size: .93rem;
   font-weight: 800;
   color: white;
   border: none;
-  cursor: pointer;
+  background: linear-gradient(135deg,#e9a5b9,#d65b82);
 }
-
-.btn-whatsapp {
-  background: var(--gradient-wsp);
+.charm-menu {
+  position: fixed;
+  left: 50%;
+  bottom: calc(85px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 390px;
+  background: white;
+  border: 1px solid var(--pink-light);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.18);
+  z-index: 500;
 }
-
-.btn-instagram {
-  background: linear-gradient(135deg,#ed9eb7,#d75c85);
+.charm-menu-title { text-align: center; font-size: .85rem; font-weight: 800; color: var(--pink-dark); margin-bottom: 12px; }
+.menu-buttons { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+.menu-btn {
+  border: none;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  padding: 11px 5px;
+  border-radius: 12px;
+  font-size: .75rem;
+  font-weight: 800;
+  min-height: 44px;
 }
-
-/* =========================
-   BARRA INFERIOR
-========================= */
-
+.menu-btn.delete { background: #f8eeee; color: #a85b5b; }
+.menu-close {
+  width: 100%;
+  border: none;
+  background: #f5f2f3;
+  color: #777;
+  padding: 11px;
+  border-radius: 12px;
+  margin-top: 8px;
+  font-weight: 700;
+}
 .bottom-bar {
   position: fixed;
   bottom: 0;
@@ -669,6 +417,7 @@ header {
   right: 0;
   background: rgba(255,255,255,.97);
   padding: 11px 16px;
+  padding-bottom: calc(11px + env(safe-area-inset-bottom));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -677,971 +426,708 @@ header {
   z-index: 100;
   backdrop-filter: blur(10px);
 }
-
-.btn-clear {
-  background: #f5f0f2;
-  color: #777;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 14px;
-  font-size: .82rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
+.btn-clear { background: #f5f0f2; color: #777; border: none; padding: 12px 15px; border-radius: 14px; font-size: .82rem; font-weight: 700; }
 .btn-submit-main {
-  background: linear-gradient(135deg,#eda0b7,#d65b82);
+  background: var(--gradient-btn);
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 12px 15px;
   border-radius: 16px;
   font-size: .88rem;
   font-weight: 800;
   flex: 1;
-  max-width: 230px;
-  cursor: pointer;
+  max-width: 250px;
 }
-
 @media(max-width:420px) {
-  .options {
-    grid-template-columns: repeat(2,1fr);
-  }
-
-  .color-options {
-    grid-template-columns: repeat(3,1fr);
-  }
-
-  .catalog-grid {
-    gap: 9px;
-  }
-
-  .card {
-    padding: 9px;
-  }
-
-  .card-img {
-    height: 105px;
-  }
-
-  .card-title {
-    font-size: .8rem;
-  }
-
-  .btn-add {
-    font-size: .76rem;
-  }
+  .options { grid-template-columns: repeat(2,1fr); }
+  .color-options { grid-template-columns: repeat(3,1fr); }
+  .catalog-grid { gap: 9px; }
+  .card { padding: 9px; }
+  .card-img { height: 105px; }
+  .card-title { font-size: .8rem; }
+  header { padding: 12px; }
+  .brand-subtitle { letter-spacing: .7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
-
 <body>
-
 <header>
   <div>
     <div class="brand-name">cuoricino ♡</div>
     <div class="brand-subtitle">CON AMORE, VICINO AL CUORE</div>
   </div>
-
-  <div class="price-badge" id="totalPrice">
-    $0
-  </div>
+  <div class="price-badge" id="totalPrice">$0</div>
 </header>
 
-<div class="container">
+<main class="container">
+  <section class="hero">
+    <div class="hero-heart">♡</div>
+    <h1>Creá tu Pulsera</h1>
+    <p>Elegí el talle, el color y después<br>armala charm por charm.</p>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-heart">♡</div>
-  <h1>Creá tu Pulsera</h1>
-  <p>Elegí el talle, el color y después<br>armala charm por charm ✨</p>
-</section>
-
-<!-- PASO 1 — TALLE -->
-<section class="step">
-  <div class="step-title">
-    <div class="step-number">1</div>
-    Elegí el talle de tu pulsera
-  </div>
-
-  <div class="options" id="sizeOptions">
-    <button class="option" onclick="selectSize('Talle 1', 14, this)">
-      Talle 1
-      <small>14 eslabones</small>
-    </button>
-
-    <button class="option" onclick="selectSize('Talle 2', 16, this)">
-      Talle 2
-      <small>16 eslabones</small>
-    </button>
-
-    <button class="option" onclick="selectSize('Talle 3', 18, this)">
-      Talle 3
-      <small>18 eslabones</small>
-    </button>
-
-    <button class="option" onclick="selectSize('Talle 4', 20, this)">
-      Talle 4
-      <small>20 eslabones</small>
-    </button>
-  </div>
-</section>
-
-<!-- PASO 2 — COLOR -->
-<section class="step">
-  <div class="step-title">
-    <div class="step-number">2</div>
-    Elegí el color de tu pulsera
-  </div>
-
-  <div class="options color-options" id="colorOptions">
-    <button class="option active" onclick="selectColor('silver', this)">
-      🤍 PLATEADA
-    </button>
-
-    <button class="option" onclick="selectColor('gold', this)">
-      💛 DORADA
-    </button>
-
-    <button class="option" onclick="selectColor('mixed', this)">
-      ✨ INTERCALADA
-    </button>
-  </div>
-</section>
-
-<!-- VISUALIZADOR -->
-<section class="visualizer" id="visualizerSection">
-  <div class="visualizer-title">
-    Tu Pulsera Cuoricino ♡
-  </div>
-
-  <div class="visualizer-subtitle" id="visualizerSubtitle">
-    Primero elegí un talle
-  </div>
-
-  <div class="bracelet-scroll">
-    <div class="bracelet" id="braceletDisplay">
-      <span class="empty-msg">Elegí un talle para comenzar ✨</span>
+  <section class="step">
+    <h2 class="step-title"><span class="step-number">1</span>Elegí el talle de tu pulsera</h2>
+    <div class="options" id="sizeOptions">
+      <button type="button" class="option" data-size="1" onclick="selectSize(1)">Talle 1<small>14 eslabones</small></button>
+      <button type="button" class="option" data-size="2" onclick="selectSize(2)">Talle 2<small>16 eslabones</small></button>
+      <button type="button" class="option" data-size="3" onclick="selectSize(3)">Talle 3<small>18 eslabones</small></button>
+      <button type="button" class="option" data-size="4" onclick="selectSize(4)">Talle 4<small>20 eslabones</small></button>
     </div>
-  </div>
+  </section>
 
-  <div class="counter-box">
-    <div class="counter">
-      <strong id="filledCount">0</strong> Charms elegidos ·
-      <strong id="emptyCount">0</strong> Espacios vacíos
+  <section class="step">
+    <h2 class="step-title"><span class="step-number">2</span>Elegí el color de tu pulsera</h2>
+    <div class="options color-options" id="colorOptions">
+      <button type="button" class="option active" data-color="silver" onclick="selectColor('silver')">PLATEADA</button>
+      <button type="button" class="option" data-color="gold" onclick="selectColor('gold')">DORADA</button>
+      <button type="button" class="option" data-color="mixed" onclick="selectColor('mixed')">INTERCALADA</button>
     </div>
-    <div id="extraLinkContainer"></div>
+  </section>
+
+  <section class="visualizer" id="visualizerSection">
+    <h2 class="visualizer-title">Tu Pulsera Cuoricino ♡</h2>
+    <p class="visualizer-subtitle" id="visualizerSubtitle">Primero elegí un talle</p>
+    <div class="bracelet-scroll">
+      <div class="bracelet" id="braceletDisplay"></div>
+    </div>
+    <p class="hint">Deslizá para ver todos los eslabones. Tocá un espacio para elegir, mover o reemplazar un charm.</p>
+    <div class="counter-box">
+      <div class="counter">
+        <strong id="filledCount">0</strong> Charms elegidos ·
+        <strong id="emptyCount">0</strong> Espacios vacíos
+      </div>
+      <button type="button" class="btn-extra-link" id="extraButton" onclick="toggleExtra()" hidden>＋ Agregar 1 eslabón extra ($500)</button>
+    </div>
+    <p id="status" role="status"></p>
+    <button type="button" class="menu-close" id="cancelMode" onclick="cancelMode()" hidden>Cancelar selección</button>
+  </section>
+
+  <h2 class="section-title" id="catalogTitle">Agregá tus charms</h2>
+  <div class="search-box">
+    <input type="search" id="searchInput" class="search-input" placeholder="Buscar charm por nombre…" aria-label="Buscar charms por nombre" oninput="filterCharms()">
   </div>
-</section>
+  <div class="catalog-grid" id="catalogGrid"></div>
 
-<!-- CATÁLOGO -->
-<h2 class="section-title">
-  Agregá tus charms ✨
-</h2>
+  <section class="cart-summary" id="cartSummary" hidden>
+    <h2 class="cart-summary-title">
+      <span>Tu Pulsera ♡</span>
+      <span id="summaryCount">0 charms</span>
+    </h2>
+    <div id="cartList"></div>
+    <div class="total-row"><span>Total</span><span id="summaryTotal">$0</span></div>
+  </section>
 
-<div class="search-box">
-  <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar charm por nombre..." oninput="filterCharms()">
-</div>
+  <section class="instagram-box">
+    <h2 class="instagram-title">¿Querés comprar por Instagram? ♡</h2>
+    <p class="instagram-text">Copiá el mensaje y mandanoslo por privado a @cuoricino_charms.</p>
+    <textarea class="message-box" id="instagramMessage" aria-label="Mensaje de tu pedido para copiar" readonly></textarea>
+    <button type="button" class="copy-button" onclick="copyInstagramMessage()" id="copyButton">Copiar mensaje</button>
+    <p id="copyStatus" role="status"></p>
+  </section>
 
-<div class="catalog-grid" id="catalogGrid"></div>
-
-<!-- RESUMEN -->
-<section class="cart-summary" id="cartSummary" style="display:none;">
-  <div class="cart-summary-title">
-    <span>Tu Pulsera ♡</span>
-    <span id="summaryCount">0 charms</span>
+  <div class="action-buttons">
+    <button type="button" class="btn-action" onclick="sendWhatsApp()">Finalizar por WhatsApp</button>
+    <button type="button" class="btn-action" onclick="openInstagram()">Ir a Instagram</button>
   </div>
-  <div id="cartList"></div>
-  <div class="total-row">
-    <span>Total</span>
-    <span id="summaryTotal">$0</span>
-  </div>
-</section>
+  <noscript>Activá JavaScript en tu navegador para personalizar tu pulsera.</noscript>
+</main>
 
-<!-- INSTAGRAM -->
-<section class="instagram-box">
-  <div class="instagram-title">
-    ¿Querés comprar por Instagram? ♡
-  </div>
-  <div class="instagram-text">
-    Copiá el mensaje y mandanoslo por privado.
-  </div>
-  <div class="message-box" id="instagramMessage"></div>
-  <button class="copy-button" onclick="copyInstagramMessage()" id="copyButton">
-    📋 Copiar mensaje
-  </button>
-</section>
-
-<!-- BOTONES -->
-<div class="action-buttons">
-  <button class="btn-action btn-whatsapp" onclick="sendWhatsApp()">
-    💌 Finalizar por WhatsApp
-  </button>
-  <button class="btn-action btn-instagram" onclick="openInstagram()">
-    📸 Ir a Instagram
-  </button>
-</div>
-
-</div>
-
-<!-- MENÚ MÓVIL / POPUP CHARM -->
-<div class="charm-menu" id="charmMenu">
+<div class="charm-menu" id="charmMenu" role="region" aria-labelledby="menuTitle" hidden>
   <div class="charm-menu-title" id="menuTitle">Charm</div>
   <div class="menu-buttons">
-    <button class="menu-btn" onclick="startMoveMode()">↔ Mover</button>
-    <button class="menu-btn delete" onclick="removeSelected()">🗑 Eliminar</button>
-    <button class="menu-btn" onclick="replaceSelected()">✨ Reemplazar</button>
+    <button type="button" class="menu-btn" id="moveButton" onclick="startMove()">↔ Mover</button>
+    <button type="button" class="menu-btn delete" id="removeButton" onclick="removeSelected()">Eliminar</button>
+    <button type="button" class="menu-btn" id="replaceButton" onclick="replaceSelected()">Reemplazar</button>
   </div>
-  <button class="menu-close" onclick="closeCharmMenu()">Cerrar</button>
+  <button type="button" class="menu-close" onclick="cancelMode()">Cerrar</button>
 </div>
 
-<!-- BARRA INFERIOR -->
 <div class="bottom-bar">
-  <button class="btn-clear" onclick="clearBracelet()">Vaciar</button>
-  <button class="btn-submit-main" onclick="sendWhatsApp()">
-    💌 Finalizar ($<span id="bottomTotal">0</span>)
-  </button>
+  <button type="button" class="btn-clear" onclick="clearBracelet()">Vaciar</button>
+  <button type="button" class="btn-submit-main" onclick="sendWhatsApp()">Finalizar (<span id="bottomTotal">$0</span>)</button>
 </div>
 
 <script>
-/* =====================================================
-   LISTADO CON NOMBRES EXACTOS DE ARCHIVOS EN GITHUB
-===================================================== */
-const CHARMS_DATA = [
-  { name: "2 Corazones dorados PR", price: 5000, img: "2 corazones dorado PR.PNG" },
-  { name: "3 Cerezas PR", price: 4000, img: "3 Cerezas PR.PNG" },
-  { name: "3 Corazones P", price: 2000, img: "3 Corazones .PNG" },
-  { name: "6 Corazones colores P", price: 5000, img: "6 corazones colores.PNG" },
-  { name: "Arcoiris amarillo PR", price: 4000, img: "Arcoíris amarillo.PNG" },
-  { name: "Arcoíris Fondo P", price: 3000, img: "Arcoíris Fondo P.PNG" },
-  { name: "Arcoíris Corazón blanco P", price: 3000, img: "Arcoíris corazón blanco P.PNG" },
-  { name: "Ardilla P", price: 2000, img: "Ardilla.PNG" },
-  { name: "Arroba PR", price: 3000, img: "Arroba.PNG" },
-  { name: "Atardecer PR", price: 5000, img: "Atardecer.PNG" },
-  { name: "Auto PR", price: 5000, img: "Auto PR.PNG" },
-  { name: "Avión de papel PR", price: 6000, img: "Avión de papel PR.PNG" },
-  { name: "BFF Arcoiris", price: 2000, img: "Arcoíris amarillo.PNG" },
-  { name: "Beso Rosa P", price: 4000, img: "Beso Rosa P.PNG" },
-  { name: "Bitch P", price: 4000, img: "Bitch.PNG" },
-  { name: "Bola 8 PR", price: 5000, img: "Bola 8 PR.PNG" },
-  { name: "Bolos P", price: 1500, img: "Bolos.PNG" },
-  { name: "Border Collie PR", price: 6000, img: "Border Collie.PNG" },
-  { name: "Cactus DR", price: 5000, img: "Cactus PR.PNG" },
-  { name: "Camara P", price: 5000, img: "Camara .PNG" },
-  { name: "Candado corazones PR", price: 5000, img: "Candado corazones PR.PNG" },
-  { name: "Candado corazón P", price: 4000, img: "Candado corazón.PNG" },
-  { name: "Caniche P", price: 3000, img: "Caniche.PNG" },
-  { name: "Cara Feliz PR", price: 3000, img: "Cara Feliz.PNG" },
-  { name: "Carta Poker PR", price: 4000, img: "Carta Poker.PNG" },
-  { name: "Carta Rosa P", price: 4000, img: "Carta Rosa .PNG" },
-  { name: "Chupetin Corazón P", price: 3000, img: "Chupetin Corazón P.PNG" },
-  { name: "Cocktail PR", price: 5000, img: "Cocktail.PNG" },
-  { name: "Cocktail Rosa y verde P", price: 3000, img: "Cocktail Rosa y verde P.PNG" },
-  { name: "Colectivo P", price: 3000, img: "Colectivo.PNG" },
-  { name: "Corazon Blanco DR", price: 5000, img: "Corazón blanco DR.PNG" },
-  { name: "Corazon Rojo P", price: 3000, img: "Corazón rojo.PNG" },
-  { name: "Corazon Spiderman PR", price: 6000, img: "Corazón Spiderman PR.PNG" },
-  { name: "Corazon az,ver,roj,ros P", price: 3000, img: "Corazón Ros,Ver, Azu,roj.PNG" },
-  { name: "Corazon salud P", price: 3000, img: "Corazón Salud.PNG" },
-  { name: "Corazones Flecha PR", price: 4000, img: "Corazones Flecha PR.PNG" },
-  { name: "Corazones blanco y rosa P", price: 2000, img: "Corazones blanco y rosa .PNG" },
-  { name: "Corazones rosa con rojo P", price: 3000, img: "2 corazones rosa con rojo.PNG" },
-  { name: "Corazones y brillo medio P", price: 3000, img: "2 Corazones con brillo en medi...PNG" },
-  { name: "Corazón Arcoíris P", price: 2000, img: "Corazón Arcoíris.PNG" },
-  { name: "Corazón Conejo P", price: 3000, img: "Corazón Conejo.PNG" },
-  { name: "Corazón Cristo P", price: 3000, img: "Corazón Cristo .PNG" },
-  { name: "Corazón Daughter P", price: 1500, img: "Corazón Daughter P.PNG" },
-  { name: "Corazón Rosa P", price: 3000, img: "Corazón Rosa P.PNG" },
-  { name: "Corazón Superpoderosas PR", price: 4000, img: "Corazón Superpoderosas.PNG" },
-  { name: "Corazón abrazo P", price: 3000, img: "Corazón abrazo P.PNG" },
-  { name: "Corazón alas naranjas P", price: 2000, img: "Corazón alas naranjas P.PNG" },
-  { name: "Corazón flecha P", price: 3000, img: "Corazón flecha .PNG" },
-  { name: "Corazón animal print P", price: 4000, img: "Corazón animal print.PNG" },
-  { name: "Corazón arcoiris P", price: 2000, img: "Corazón arcoíris.PNG" },
-  { name: "Corazón blanco P", price: 3000, img: "Corazón Blanco .PNG" },
-  { name: "Corazón blanco con sombra P", price: 3000, img: "Corazón sombra.PNG" },
-  { name: "Corazón blanco círculos negros P", price: 3000, img: "Corazón blanco círculos negro...PNG" },
-  { name: "Corazón dorado PR", price: 5000, img: "Corazón dorado PR.PNG" },
-  { name: "Corazón espirales rosa P", price: 3000, img: "Corazón espirales rosa .PNG" },
-  { name: "Corazón huellita P", price: 3000, img: "Corazón Huellita .PNG" },
-  { name: "Corazón mordido rosa P", price: 3000, img: "Corazón Mordido Rosa.PNG" },
-  { name: "Corazón negro brillos P", price: 3000, img: "Corazón negro .PNG" },
-  { name: "Corazón rompecabezas P", price: 2000, img: "Corazón rompecabezas.PNG" },
-  { name: "Corazón strass violeta P", price: 1500, img: "Corazón Violeta Brillo.PNG" },
-  { name: "Corgi", price: 6000, img: "Corgi.PNG" },
-  { name: "Corona P", price: 3000, img: "Corona Rolex.PNG" },
-  { name: "Cruz dorada PR", price: 5000, img: "Cruz.PNG" },
-  { name: "Cupido Rosa P", price: 3000, img: "Cupido Rosa .PNG" },
-  { name: "Dado P", price: 3000, img: "Dado.PNG" },
-  { name: "Elefante Hippie Rojo P", price: 3000, img: "Elefante Hippie Rojo .PNG" },
-  { name: "Elefante Hippie Turquesa P", price: 3000, img: "Elefante Hippie Turquesa .PNG" },
-  { name: "Elefante lila P", price: 1500, img: "Elefante lila.PNG" },
-  { name: "Estrella rosa P", price: 4000, img: "Estrella Rosa.PNG" },
-  { name: "Estrella strass PR", price: 6000, img: "Estrella strass.PNG" },
-  { name: "Estrella superpoderosa PR", price: 5000, img: "Estrella súper poderosa.PNG" },
-  { name: "Estrellitas P", price: 2000, img: "Estrellitas.PNG" },
-  { name: "Faith P", price: 3000, img: "Faith .PNG" },
-  { name: "Flor Blanca PR", price: 5000, img: "Flor Blanca .PNG" },
-  { name: "Flor Roja DR", price: 5000, img: "Flor roja DR.PNG" },
-  { name: "Flor Rosa PR", price: 5000, img: "Flor Rosa PR.PNG" },
-  { name: "Flor horizontal P", price: 2000, img: "Flor horizontal.PNG" },
-  { name: "Flor roja circulo PR", price: 5000, img: "Flor roja redonda.PNG" },
-  { name: "Frasco Rosa P", price: 3000, img: "Frasco Rosa P.PNG" },
-  { name: "Frutilla P", price: 3000, img: "Frutilla P.PNG" },
-  { name: "Gatito rosa P", price: 3000, img: "Gatito Rosa.PNG" },
-  { name: "Globo aerostatico P", price: 2000, img: "Globo aerostático .PNG" },
-  { name: "Globos corazón rosa P", price: 3000, img: "Globos Corazón Rosa.PNG" },
-  { name: "Golden PR", price: 6000, img: "Golden.PNG" },
-  { name: "Hámster PR", price: 4000, img: "Hámster .PNG" },
-  { name: "Huellitas PR", price: 5000, img: "Huellitas PR.PNG" },
-  { name: "Husky PR", price: 6000, img: "Husky.PNG" },
-  { name: "I Love you blanco P", price: 4000, img: "I Love you blanco P.PNG" },
-  { name: "I love my boys P", price: 1500, img: "I love my boys.PNG" },
-  { name: "I love my brothers P", price: 1500, img: "I love my brothers.PNG" },
-  { name: "I love ny P", price: 4000, img: "I love NY.PNG" },
-  { name: "Ibiza PR", price: 6000, img: "Ibiza PR.PNG" },
-  { name: "Italia PR", price: 5000, img: "Bandera italia PR.PNG" },
-  { name: "Lengua Stone", price: 5000, img: "Lengua Stone PR.PNG" },
-  { name: "Lengua stone DR", price: 5000, img: "Lengua stone DR.PNG" },
-  { name: "Maceta Corazon P", price: 3000, img: "Maceta Corazon P.PNG" },
-  { name: "Manos Mickey Corazón P", price: 4000, img: "Manos Mickey Corazón P.PNG" },
-  { name: "Mar circular PR", price: 6000, img: "Mar Circular.PNG" },
-  { name: "Margarita petalo P", price: 5000, img: "Margarita.PNG" },
-  { name: "Mariposa Arcoíris P", price: 3000, img: "Mariposa Arcoíris.PNG" },
-  { name: "Mariposa Rosa PR", price: 3000, img: "Mariposa Rosa PR.PNG" },
-  { name: "Mariposa Strass DR", price: 6000, img: "Mariposa Dorada DR.PNG" },
-  { name: "Mariposa azul", price: 3000, img: "Mariposa 1.PNG" },
-  { name: "Mariposa dorada PR", price: 5000, img: "Mariposa Dorada PR.PNG" },
-  { name: "Mariposa violeta P", price: 3000, img: "Mariposa 2.PNG" },
-  { name: "Nota musical rosa P", price: 3000, img: "Nota musical rosa.PNG" },
-  { name: "Ojo turco cuadrado P", price: 4000, img: "Ojo turco cuadrado .PNG" },
-  { name: "Ojo turco pestañas P", price: 2000, img: "Ojo turco prestarás.PNG" },
-  { name: "Ola DR", price: 5000, img: "Ola DR.PNG" },
-  { name: "Ola PR", price: 5000, img: "Ola DR.PNG" },
-  { name: "Osito blanco P", price: 2000, img: "Osito BB blanco.PNG" },
-  { name: "Osito rosa P", price: 3000, img: "Osito rosa.PNG" },
-  { name: "Oveja animada P", price: 2000, img: "Oveja animada.PNG" },
-  { name: "Paisaje Rosa DR", price: 5000, img: "Paisaje rosa DR.PNG" },
-  { name: "Pelota DR", price: 5000, img: "Pelota DR.PNG" },
-  { name: "Pelota PR", price: 5000, img: "Pelota PR.PNG" },
-  { name: "Perfume rosa P", price: 2000, img: "Perfume rosa.PNG" },
-  { name: "Perro fondo amarillo P", price: 3000, img: "Perro fondo amarillo .PNG" },
-  { name: "Pez colores P", price: 3000, img: "Pez colores P.PNG" },
-  { name: "Pez naranja PR", price: 3000, img: "Pez Naranja PR.PNG" },
-  { name: "Pimientos PR", price: 5000, img: "Pimientos.PNG" },
-  { name: "Pingüino PR", price: 5000, img: "Pingüino PR.PNG" },
-  { name: "Pizza PR", price: 4000, img: "Pizza.PNG" },
-  { name: "Piña P", price: 4000, img: "Piña.PNG" },
-  { name: "Playa P", price: 4000, img: "Playa .PNG" },
-  { name: "Pomerania PR", price: 6000, img: "Pomerania.PNG" },
-  { name: "Pug PR", price: 6000, img: "Pug.PNG" },
-  { name: "Rainbow P", price: 2000, img: "Rainbow .PNG" },
-  { name: "Reloj rosa P", price: 3000, img: "Reloj rosa.PNG" },
-  { name: "Saturno azul P", price: 2000, img: "Saturno azul P.PNG" },
-  { name: "Schnauzer PR", price: 6000, img: "Schnauzer.PNG" },
-  { name: "Sol Rojo Palmera P", price: 3000, img: "Sol Rojo Palmera .PNG" },
-  { name: "Sol strass PR", price: 6000, img: "Sol Strass.PNG" },
-  { name: "Tazas Rosa y verde P", price: 3000, img: "Tazas Rosa y verde .PNG" },
-  { name: "Tortuga P", price: 1500, img: "Tortuga.PNG" },
-  { name: "Tres flores P", price: 5000, img: "3 Flores PR.PNG" },
-  { name: "Trébol colores P", price: 3000, img: "Trébol colores .PNG" },
-  { name: "Trébol verde P", price: 3000, img: "Trébol .PNG" },
-  { name: "Turquía P", price: 1500, img: "Turquía .PNG" },
-  { name: "Vela rosa P", price: 3000, img: "Vela Rosa.PNG" },
-  { name: "Velero PR", price: 6000, img: "Velero.PNG" },
-  { name: "Yin Yan DR", price: 5000, img: "Yin Yan Rosa DR.PNG" },
-  { name: "Yin Yan Rosa DR", price: 5000, img: "Yin Yan Rosa DR.PNG" },
-  { name: "Yin Yan Rosa P", price: 5000, img: "Yin Yan Rosa P.PNG" },
-  { name: "Yin Yan Rosa PR", price: 5000, img: "Yin Yan Rosa PR.PNG" }
-];
+"use strict";
 
-/* =====================================================
-   CONFIGURACIÓN Y PRECIOS
-===================================================== */
-const EXTRA_SPACE_PRICE = 500;
-const EMPTY_SILVER_IMG = 'Charm Vacío P.JPG';
-const EMPTY_GOLD_IMG = 'Charm Vacío D.JPG';
+/*
+  Se conservan los 145 productos y sus precios originales.
+  Cada fila contiene: nombre, precio, archivo exacto.
 
-let selectedSize = null;
-let capacity = 0;
-let braceletColor = 'silver';
-let hasExtraLink = false;
+  null significa que no se proporcionó un archivo verificable:
+  - Corazon Spiderman PR
+  - Dado P
+  - Huellitas PR
+  - Corazón blanco círculos negros P: nombre truncado.
 
+  Se conservan las correspondencias ambiguas originales:
+  - BFF Arcoiris / Arcoiris amarillo PR comparten imagen y difieren en precio.
+  - Cactus DR usa Cactus PR.PNG.
+  - Ola PR / Ola DR comparten imagen.
+  - Yin Yan DR / Yin Yan Rosa DR comparten imagen.
+  No se eliminan ni se cambian sus precios sin confirmación.
+
+  Archivos adicionales de la lista sin producto/precio identificable:
+  Bandera italia DR.PNG, Carpe diem .jpg, Cerezas.PNG, Dinero.PNG,
+  Flor rosa fondo verde PR.PNG, Frutillas.PNG, Hongo PR.PNG,
+  Panda.PNG, Rana.PNG, es estrella dorada PR.PNG.
+  No se asignan precios inventados.
+*/
+const products = [
+  ["2 Corazones dorados PR",5000,"2 corazones dorado PR.PNG"],
+  ["3 Cerezas PR",4000,"3 Cerezas PR.PNG"],
+  ["3 Corazones P",2000,"3 Corazones .PNG"],
+  ["6 Corazones colores P",5000,"6 corazones colores.PNG"],
+  ["Arcoiris amarillo PR",4000,"Arcoíris amarillo.PNG"],
+  ["Arcoíris Fondo P",3000,"Arcoíris Fondo P.PNG"],
+  ["Arcoíris Corazón blanco P",3000,"Arcoíris corazón blanco P.PNG"],
+  ["Ardilla P",2000,"Ardilla.PNG"],
+  ["Arroba PR",3000,"Arroba.PNG"],
+  ["Atardecer PR",5000,"Atardecer.PNG"],
+  ["Auto PR",5000,"Auto PR.PNG"],
+  ["Avión de papel PR",6000,"Avión de papel PR.PNG"],
+  ["BFF Arcoiris",2000,"Arcoíris amarillo.PNG"],
+  ["Beso Rosa P",4000,"Beso Rosa P.PNG"],
+  ["Bitch P",4000,"Bitch.PNG"],
+  ["Bola 8 PR",5000,"Bola 8 PR.PNG"],
+  ["Bolos P",1500,"Bolos.PNG"],
+  ["Border Collie PR",6000,"Border Collie.PNG"],
+  ["Cactus DR",5000,"Cactus PR.PNG"],
+  ["Camara P",5000,"Camara .PNG"],
+  ["Candado corazones PR",5000,"Candado corazones PR.PNG"],
+  ["Candado corazón P",4000,"Candado corazón.PNG"],
+  ["Caniche P",3000,"Caniche.PNG"],
+  ["Cara Feliz PR",3000,"Cara Feliz.PNG"],
+  ["Carta Poker PR",4000,"Carta Poker.PNG"],
+  ["Carta Rosa P",4000,"Carta Rosa .PNG"],
+  ["Chupetin Corazón P",3000,"Chupetin Corazón P.PNG"],
+  ["Cocktail PR",5000,"Cocktail.PNG"],
+  ["Cocktail Rosa y verde P",3000,"Cocktail Rosa y verde P.PNG"],
+  ["Colectivo P",3000,"Colectivo.PNG"],
+  ["Corazon Blanco DR",5000,"Corazón blanco DR.PNG"],
+  ["Corazon Rojo P",3000,"Corazón rojo.PNG"],
+  ["Corazon Spiderman PR",6000,null],
+  ["Corazon az,ver,roj,ros P",3000,"Corazón Ros,Ver, Azu,roj.PNG"],
+  ["Corazon salud P",3000,"Corazón Salud.PNG"],
+  ["Corazones Flecha PR",4000,"Corazones Flecha PR.PNG"],
+  ["Corazones blanco y rosa P",2000,"Corazones blanco y rosa .PNG"],
+  ["Corazones rosa con rojo P",3000,"2 corazones rosa con rojo.PNG"],
+  ["Corazones y brillo medio P",3000,"2 Corazones con brillo en medio.PNG"],
+  ["Corazón Arcoíris P",2000,"Corazón Arcoíris.PNG"],
+  ["Corazón Conejo P",3000,"Corazón Conejo.PNG"],
+  ["Corazón Cristo P",3000,"Corazón Cristo .PNG"],
+  ["Corazón Daughter P",1500,"Corazón Daughter P.PNG"],
+  ["Corazón Rosa P",3000,"Corazón Rosa P.PNG"],
+  ["Corazón Superpoderosas PR",4000,"Corazón Superpoderosas.PNG"],
+  ["Corazón abrazo P",3000,"Corazón abrazo P.PNG"],
+  ["Corazón alas naranjas P",2000,"Corazón alas naranjas P.PNG"],
+  ["Corazón flecha P",3000,"Corazón flecha .PNG"],
+  ["Corazón animal print P",4000,"Corazón animal print.PNG"],
+  ["Corazón arcoiris P",2000,"Corazón arcoíris.PNG"],
+  ["Corazón blanco P",3000,"Corazón Blanco .PNG"],
+  ["Corazón blanco con sombra P",3000,"Corazón sombra.PNG"],
+  ["Corazón blanco círculos negros P",3000,null],
+  ["Corazón dorado PR",5000,"Corazón dorado PR.PNG"],
+  ["Corazón espirales rosa P",3000,"Corazón espirales rosa .PNG"],
+  ["Corazón huellita P",3000,"Corazón Huellita .PNG"],
+  ["Corazón mordido rosa P",3000,"Corazón Mordido Rosa.PNG"],
+  ["Corazón negro brillos P",3000,"Corazón negro .PNG"],
+  ["Corazón rompecabezas P",2000,"Corazón rompecabezas.PNG"],
+  ["Corazón strass violeta P",1500,"Corazón Violeta Brillo.PNG"],
+  ["Corgi",6000,"Corgi.PNG"],
+  ["Corona P",3000,"Corona Rolex.PNG"],
+  ["Cruz dorada PR",5000,"Cruz.PNG"],
+  ["Cupido Rosa P",3000,"Cupido Rosa .PNG"],
+  ["Dado P",3000,null],
+  ["Elefante Hippie Rojo P",3000,"Elefante Hippie Rojo .PNG"],
+  ["Elefante Hippie Turquesa P",3000,"Elefante Hippie Turquesa .PNG"],
+  ["Elefante lila P",1500,"Elefante lila.PNG"],
+  ["Estrella rosa P",4000,"Estrella Rosa.PNG"],
+  ["Estrella strass PR",6000,"Estrella strass.PNG"],
+  ["Estrella superpoderosa PR",5000,"Estrella súper poderosa.PNG"],
+  ["Estrellitas P",2000,"Estrellitas.PNG"],
+  ["Faith P",3000,"Faith .PNG"],
+  ["Flor Blanca PR",5000,"Flor Blanca .PNG"],
+  ["Flor Roja DR",5000,"Flor roja DR.PNG"],
+  ["Flor Rosa PR",5000,"Flor Rosa PR.PNG"],
+  ["Flor horizontal P",2000,"Flor horizontal.PNG"],
+  ["Flor roja circulo PR",5000,"Flor roja redonda.PNG"],
+  ["Frasco Rosa P",3000,"Frasco Rosa P.PNG"],
+  ["Frutilla P",3000,"Frutilla P.PNG"],
+  ["Gatito rosa P",3000,"Gatito Rosa.PNG"],
+  ["Globo aerostatico P",2000,"Globo aerostático .PNG"],
+  ["Globos corazón rosa P",3000,"Globos Corazón Rosa.PNG"],
+  ["Golden PR",6000,"Golden.PNG"],
+  ["Hámster PR",4000,"Hámster .PNG"],
+  ["Huellitas PR",5000,null],
+  ["Husky PR",6000,"Husky.PNG"],
+  ["I Love you blanco P",4000,"I Love you blanco P.PNG"],
+  ["I love my boys P",1500,"I love my boys.PNG"],
+  ["I love my brothers P",1500,"I love my brothers.PNG"],
+  ["I love ny P",4000,"I love NY.PNG"],
+  ["Ibiza PR",6000,"Ibiza PR.PNG"],
+  ["Italia PR",5000,"Bandera italia PR.PNG"],
+  ["Lengua Stone",5000,"Lengua Stone PR.PNG"],
+  ["Lengua stone DR",5000,"Lengua stone DR.PNG"],
+  ["Maceta Corazon P",3000,"Maceta Corazon P.PNG"],
+  ["Manos Mickey Corazón P",4000,"Manos Mickey Corazón P.PNG"],
+  ["Mar circular PR",6000,"Mar Circular.PNG"],
+  ["Margarita petalo P",5000,"Margarita.PNG"],
+  ["Mariposa Arcoíris P",3000,"Mariposa Arcoíris.PNG"],
+  ["Mariposa Rosa PR",3000,"Mariposa Rosa PR.PNG"],
+  ["Mariposa Strass DR",6000,"Mariposa Dorada DR.PNG"],
+  ["Mariposa azul",3000,"Mariposa 1.PNG"],
+  ["Mariposa dorada PR",5000,"Mariposa Dorada PR.PNG"],
+  ["Mariposa violeta P",3000,"Mariposa 2.PNG"],
+  ["Nota musical rosa P",3000,"Nota musical rosa.PNG"],
+  ["Ojo turco cuadrado P",4000,"Ojo turco cuadrado .PNG"],
+  ["Ojo turco pestañas P",2000,"Ojo turco prestarás.PNG"],
+  ["Ola DR",5000,"Ola DR.PNG"],
+  ["Ola PR",5000,"Ola DR.PNG"],
+  ["Osito blanco P",2000,"Osito BB blanco.PNG"],
+  ["Osito rosa P",3000,"Osito rosa.PNG"],
+  ["Oveja animada P",2000,"Oveja animada.PNG"],
+  ["Paisaje Rosa DR",5000,"Paisaje rosa DR.PNG"],
+  ["Pelota DR",5000,"Pelota DR.PNG"],
+  ["Pelota PR",5000,"Pelota PR.PNG"],
+  ["Perfume rosa P",2000,"Perfume rosa.PNG"],
+  ["Perro fondo amarillo P",3000,"Perro fondo amarillo .PNG"],
+  ["Pez colores P",3000,"Pez colores P.PNG"],
+  ["Pez naranja PR",3000,"Pez Naranja PR.PNG"],
+  ["Pimientos PR",5000,"Pimientos.PNG"],
+  ["Pingüino PR",5000,"Pingüino PR.PNG"],
+  ["Pizza PR",4000,"Pizza.PNG"],
+  ["Piña P",4000,"Piña.PNG"],
+  ["Playa P",4000,"Playa .PNG"],
+  ["Pomerania PR",6000,"Pomerania.PNG"],
+  ["Pug PR",6000,"Pug.PNG"],
+  ["Rainbow P",2000,"Rainbow .PNG"],
+  ["Reloj rosa P",3000,"Reloj rosa.PNG"],
+  ["Saturno azul P",2000,"Saturno azul P.PNG"],
+  ["Schnauzer PR",6000,"Schnauzer.PNG"],
+  ["Sol Rojo Palmera P",3000,"Sol Rojo Palmera .PNG"],
+  ["Sol strass PR",6000,"Sol Strass.PNG"],
+  ["Tazas Rosa y verde P",3000,"Tazas Rosa y verde .PNG"],
+  ["Tortuga P",1500,"Tortuga.PNG"],
+  ["Tres flores P",5000,"3 Flores PR.PNG"],
+  ["Trébol colores P",3000,"Trébol colores .PNG"],
+  ["Trébol verde P",3000,"Trébol .PNG"],
+  ["Turquía P",1500,"Turquía .PNG"],
+  ["Vela rosa P",3000,"Vela Rosa.PNG"],
+  ["Velero PR",6000,"Velero.PNG"],
+  ["Yin Yan DR",5000,"Yin Yan Rosa DR.PNG"],
+  ["Yin Yan Rosa DR",5000,"Yin Yan Rosa DR.PNG"],
+  ["Yin Yan Rosa P",5000,"Yin Yan Rosa P.PNG"],
+  ["Yin Yan Rosa PR",5000,"Yin Yan Rosa PR.PNG"]
+].map(([name,price,img]) => ({name,price,img}));
+
+const sizes = [14,16,18,20];
+let size = 0;
+let color = "silver";
+let extra = false;
 let slots = [];
-let activeTargetIndex = null;
-let movingMode = false;
-let replacementMode = false;
-let draggedIndex = null;
+let target = null;
+let mode = "";
+let dragged = null;
 
-function buildImageUrl(filename) {
-  return encodeURIComponent(filename);
+const $ = id => document.getElementById(id);
+const money = n => "$" + n.toLocaleString("es-AR");
+const normalize = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+const colorName = () => ({silver:"plateada",gold:"dorada",mixed:"intercalada"}[color]);
+const base = () => size ? (color === "silver" ? 8000 : 10000) + (size > 2 ? 500 : 0) : 0;
+const chosen = () => slots.filter(x => x !== null).map(id => products[id]);
+const total = () => base() + (extra ? 500 : 0) + chosen().reduce((sum,p) => sum + p.price,0);
+
+function element(tag,cls,text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
 }
 
-/* =====================================================
-   PRECIO BASE DE LA PULSERA
-===================================================== */
-function getBaseBraceletPrice() {
-  if (!selectedSize) return 0;
-
-  if (braceletColor === 'silver') {
-    if (selectedSize === 'Talle 1' || selectedSize === 'Talle 2') {
-      return 8000;
-    } else {
-      return 8500;
-    }
-  } else {
-    if (selectedSize === 'Talle 1' || selectedSize === 'Talle 2') {
-      return 10000;
-    } else {
-      return 10500;
-    }
-  }
+function button(text,fn,cls = "") {
+  const b = element("button",cls,text);
+  b.type = "button";
+  b.onclick = fn;
+  return b;
 }
 
-/* =====================================================
-   CREAR CHARM VACÍO
-===================================================== */
-function createEmptySlot(index) {
-  let image = EMPTY_SILVER_IMG;
-  let name = "Charm Vacio P";
-
-  if (braceletColor === 'gold') {
-    image = EMPTY_GOLD_IMG;
-    name = "Charm Vacio D";
-  } else if (braceletColor === 'mixed') {
-    if (index % 2 === 0) {
-      image = EMPTY_SILVER_IMG;
-      name = "Charm Vacio P";
-    } else {
-      image = EMPTY_GOLD_IMG;
-      name = "Charm Vacio D";
-    }
-  }
-
-  return {
-    name: name,
-    price: 0,
-    img: image,
-    empty: true
+function imageBox(filename,name,cls) {
+  const box = element("div",cls);
+  const fallback = () => {
+    box.replaceChildren(element("span","image-missing","Imagen no disponible"));
   };
-}
-
-function updateEmptyCharmImages() {
-  slots.forEach((slot, index) => {
-    if (slot.empty) {
-      if (braceletColor === 'gold') {
-        slot.img = EMPTY_GOLD_IMG;
-        slot.name = "Charm Vacio D";
-      } else if (braceletColor === 'mixed') {
-        slot.img = (index % 2 === 0) ? EMPTY_SILVER_IMG : EMPTY_GOLD_IMG;
-        slot.name = (index % 2 === 0) ? "Charm Vacio P" : "Charm Vacio D";
-      } else {
-        slot.img = EMPTY_SILVER_IMG;
-        slot.name = "Charm Vacio P";
-      }
-    }
-  });
-}
-
-/* =====================================================
-   RENDERIZAR CATÁLOGO
-===================================================== */
-function renderCatalog(charms) {
-  const grid = document.getElementById('catalogGrid');
-  grid.innerHTML = '';
-
-  charms.forEach(charm => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <img src="${buildImageUrl(charm.img)}" class="card-img" alt="${charm.name}" onerror="this.src='https://via.placeholder.com/120x120?text=Cuoricino'">
-      <div class="card-title">${charm.name}</div>
-      <div class="card-price">$${charm.price.toLocaleString('es-AR')}</div>
-      <button class="btn-add" onclick="addCharm('${charm.name.replace(/'/g, "\\'")}', ${charm.price}, '${charm.img.replace(/'/g, "\\'")}')">+ Agregar</button>
-    `;
-    grid.appendChild(card);
-  });
+  if (!filename) {
+    fallback();
+    return box;
+  }
+  const img = new Image();
+  img.alt = name;
+  img.loading = "lazy";
+  img.draggable = false;
+  img.onerror = fallback;
+  img.src = "./" + encodeURIComponent(filename);
+  box.append(img);
+  return box;
 }
 
 function filterCharms() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = CHARMS_DATA.filter(c => c.name.toLowerCase().includes(query));
-  renderCatalog(filtered);
-}
+  const grid = $("catalogGrid");
+  grid.replaceChildren();
+  const query = normalize($("searchInput").value);
 
-/* =====================================================
-   SELECCIÓN Y ESLABÓN EXTRA
-===================================================== */
-function selectSize(size, number, button) {
-  selectedSize = size;
-  capacity = number;
-  hasExtraLink = false;
-
-  const sizeBtns = document.querySelectorAll('#sizeOptions .option');
-  sizeBtns.forEach(btn => btn.classList.remove('active'));
-  button.classList.add('active');
-
-  slots = [];
-  for (let i = 0; i < capacity; i++) {
-    slots.push(createEmptySlot(i));
-  }
-
-  replacementMode = false;
-  activeTargetIndex = null;
-  closeCharmMenu();
-  updateUI();
-}
-
-function selectColor(color, button) {
-  braceletColor = color;
-
-  const colorBtns = document.querySelectorAll('#colorOptions .option');
-  colorBtns.forEach(btn => btn.classList.remove('active'));
-  button.classList.add('active');
-
-  updateEmptyCharmImages();
-  updateUI();
-}
-
-function toggleExtraLink() {
-  if (!selectedSize) return;
-
-  if (!hasExtraLink) {
-    if (slots.length >= capacity + 1) return;
-    hasExtraLink = true;
-    slots.push(createEmptySlot(slots.length));
-  } else {
-    hasExtraLink = false;
-    // Si el último es vacío, lo quitamos
-    if (slots.length > capacity && slots[slots.length - 1].empty) {
-      slots.pop();
-    } else {
-      // Si el último no era vacío, quitamos el último elemento de la ranura extra
-      slots.pop();
-    }
-  }
-  updateUI();
-}
-
-function addCharm(name, price, img) {
-  if (!selectedSize) {
-    alert('Primero elegí el talle de tu pulsera ♡');
-    return;
-  }
-
-  const newCharm = {
-    name: name,
-    price: price,
-    img: img,
-    empty: false
-  };
-
-  if (replacementMode && activeTargetIndex !== null && activeTargetIndex < slots.length) {
-    slots[activeTargetIndex] = newCharm;
-    replacementMode = false;
-    activeTargetIndex = null;
-    closeCharmMenu();
-    updateUI();
-    scrollToVisualizer();
-    return;
-  }
-
-  const emptyIndex = slots.findIndex(slot => slot.empty);
-
-  if (emptyIndex !== -1) {
-    slots[emptyIndex] = newCharm;
-  } else {
-    if (!hasExtraLink) {
-      // Auto agregar eslabón extra si hay espacio permitido (+1)
-      hasExtraLink = true;
-      slots.push(newCharm);
-    } else {
-      alert('Llegaste al máximo de eslabones posibles (incluyendo 1 eslabón extra) ♡');
-      return;
-    }
-  }
-
-  closeCharmMenu();
-  updateUI();
-  scrollToVisualizer();
-}
-
-function scrollToVisualizer() {
-  document.getElementById('visualizerSection').scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
+  products.forEach((p,id) => {
+    if (!normalize(p.name).includes(query)) return;
+    const card = element("article","card");
+    card.append(
+      imageBox(p.img,p.name,"card-img"),
+      element("h3","card-title",p.name),
+      element("p","card-price",money(p.price)),
+      button("+ Agregar",() => addCharm(id),"btn-add")
+    );
+    grid.append(card);
   });
+
+  if (!grid.children.length) {
+    grid.append(element("p","","No encontramos charms con ese nombre."));
+  }
 }
 
-function removeSlot(index) {
-  // Si eliminamos dentro de la capacidad base, se convierte en vacío. Si es el eslabón extra, podemos quitarlo si excede capacidad.
-  if (index >= capacity) {
-    slots.splice(index, 1);
-    hasExtraLink = false;
-  } else {
-    slots[index] = createEmptySlot(index);
+function hideMenu() {
+  $("charmMenu").hidden = true;
+}
+
+function resetMode() {
+  target = null;
+  mode = "";
+  dragged = null;
+  hideMenu();
+}
+
+function selectSize(n) {
+  if (size === n) return;
+  if (chosen().length && !confirm("Cambiar el talle vacía el diseño actual. ¿Continuar?")) return;
+  size = n;
+  extra = false;
+  slots = Array(sizes[n - 1]).fill(null);
+  resetMode();
+  update();
+}
+
+function selectColor(c) {
+  color = c;
+  update();
+}
+
+function toggleExtra() {
+  if (!size) return;
+
+  if (extra && slots[slots.length - 1] !== null) {
+    alert("Primero eliminá el charm del eslabón extra.");
+    return;
   }
-  activeTargetIndex = null;
-  replacementMode = false;
-  closeCharmMenu();
-  updateUI();
+
+  if (extra) {
+    slots.pop();
+    extra = false;
+  } else {
+    slots.push(null);
+    extra = true;
+  }
+
+  resetMode();
+  update();
+}
+
+function addCharm(id) {
+  if (!size) {
+    alert("Primero elegí el talle de tu pulsera ♡");
+    return;
+  }
+  if (!products[id] || !Number.isFinite(products[id].price)) return;
+
+  const i = mode === "replace" && target !== null ? target : slots.indexOf(null);
+
+  if (i < 0) {
+    alert(extra
+      ? "La pulsera está completa. Podés reemplazar un charm."
+      : "La pulsera está completa. Podés reemplazar un charm o agregar un eslabón extra con el botón."
+    );
+    return;
+  }
+
+  slots[i] = id;
+  resetMode();
+  update();
+  scrollBracelet();
 }
 
 function removeSelected() {
-  if (activeTargetIndex === null) return;
-  removeSlot(activeTargetIndex);
+  if (target === null) return;
+  slots[target] = null;
+  resetMode();
+  update();
 }
 
-function openCharmMenu(index) {
-  activeTargetIndex = index;
-  movingMode = false;
+function moveSlots(a,b) {
+  if (!Number.isInteger(a) || !Number.isInteger(b) ||
+      a < 0 || b < 0 || a >= slots.length || b >= slots.length) return;
 
-  const slot = slots[index];
-  document.getElementById('menuTitle').innerText = slot.empty ? 'Espacio vacío' : slot.name;
-  document.getElementById('charmMenu').classList.add('show');
+  [slots[a],slots[b]] = [slots[b],slots[a]];
+  resetMode();
+  update();
 }
 
-function closeCharmMenu() {
-  document.getElementById('charmMenu').classList.remove('show');
+function slotClick(i) {
+  if (mode === "move" && target !== null) {
+    moveSlots(target,i);
+    return;
+  }
+  target = i;
+  mode = "";
+  showMenu(i);
+  setStatus("");
+  updateBracelet();
 }
 
-function startMoveMode() {
-  if (activeTargetIndex === null) return;
-  movingMode = true;
-  document.getElementById('menuTitle').innerText = 'Tocá otro lugar para mover el charm ♡';
+function showMenu(i) {
+  $("menuTitle").textContent = slots[i] === null
+    ? "Espacio " + (i + 1)
+    : products[slots[i]].name;
+  $("moveButton").disabled = slots[i] === null;
+  $("removeButton").disabled = slots[i] === null;
+  $("replaceButton").textContent = slots[i] === null ? "Elegir charm" : "Reemplazar";
+  $("charmMenu").hidden = false;
+}
+
+function startMove() {
+  if (target === null || slots[target] === null) return;
+  mode = "move";
+  hideMenu();
+  updateBracelet();
+  setStatus("Tocá el destino para mover el charm. Si está ocupado, se intercambian.");
 }
 
 function replaceSelected() {
-  if (activeTargetIndex === null) return;
-
-  replacementMode = true;
-  movingMode = false;
-  closeCharmMenu();
-  renderBracelet();
-
-  document.querySelector('.section-title').scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
-
-  setTimeout(() => {
-    alert('Elegí un charm del catálogo para reemplazar el espacio seleccionado ♡');
-  }, 200);
+  if (target === null) return;
+  mode = "replace";
+  hideMenu();
+  updateBracelet();
+  setStatus("Elegí un charm del catálogo para este espacio.");
+  $("catalogTitle").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function dragStart(index, event) {
-  draggedIndex = index;
-  event.dataTransfer.effectAllowed = 'move';
-  event.dataTransfer.setData('text/plain', index);
-  event.currentTarget.classList.add('dragging');
+function cancelMode() {
+  resetMode();
+  update();
 }
 
-function dragEnd(event) {
-  event.currentTarget.classList.remove('dragging');
-  draggedIndex = null;
-  document.querySelectorAll('.slot').forEach(slot => slot.classList.remove('drag-over'));
+function setStatus(text) {
+  $("status").textContent = text;
+  $("cancelMode").hidden = !mode;
 }
 
-function allowDrop(event) {
-  event.preventDefault();
-  event.currentTarget.classList.add('drag-over');
-}
-
-function dropSlot(index, event) {
-  event.preventDefault();
-  document.querySelectorAll('.slot').forEach(slot => slot.classList.remove('drag-over'));
-
-  if (draggedIndex === null || draggedIndex === index) return;
-
-  const temp = slots[draggedIndex];
-  slots[draggedIndex] = slots[index];
-  slots[index] = temp;
-
-  updateEmptyCharmImages();
-  updateUI();
-}
-
-function handleSlotClick(index) {
-  if (movingMode && activeTargetIndex !== null) {
-    const temp = slots[activeTargetIndex];
-    slots[activeTargetIndex] = slots[index];
-    slots[index] = temp;
-
-    movingMode = false;
-    activeTargetIndex = null;
-    updateEmptyCharmImages();
-    updateUI();
-    return;
-  }
-
-  openCharmMenu(index);
-}
-
-/* =====================================================
-   RENDERIZAR PULSERA
-===================================================== */
-function renderBracelet() {
-  const display = document.getElementById('braceletDisplay');
-  display.innerHTML = '';
-
-  if (!selectedSize) {
-    display.innerHTML = '<span class="empty-msg">Elegí un talle para comenzar ✨</span>';
-    return;
-  }
-
-  display.className = 'bracelet';
-
-  slots.forEach((slot, index) => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'slot';
-    wrapper.draggable = true;
-    wrapper.dataset.index = index;
-
-    if (replacementMode && activeTargetIndex === index) {
-      wrapper.classList.add('replacement-target');
-    }
-
-    wrapper.addEventListener('dragstart', e => dragStart(index, e));
-    wrapper.addEventListener('dragend', dragEnd);
-    wrapper.addEventListener('dragover', allowDrop);
-    wrapper.addEventListener('drop', e => dropSlot(index, e));
-    wrapper.addEventListener('click', () => handleSlotClick(index));
-
-    const number = document.createElement('div');
-    number.className = 'slot-number';
-    number.innerText = `${index + 1}`;
-
-    const ring = document.createElement('div');
-    ring.className = 'slot-ring';
-
-    const img = document.createElement('img');
-    img.src = buildImageUrl(slot.img);
-    img.alt = slot.name;
-    img.setAttribute('onerror', "this.src='https://via.placeholder.com/120x120?text=Cuoricino'");
-
-    if (slot.empty) {
-      wrapper.classList.add('empty');
-    }
-
-    wrapper.appendChild(number);
-    wrapper.appendChild(ring);
-    wrapper.appendChild(img);
-    display.appendChild(wrapper);
-  });
-}
-
-function calculateTotal() {
-  let total = getBaseBraceletPrice();
-
-  if (hasExtraLink) {
-    total += EXTRA_SPACE_PRICE;
-  }
-
-  slots.forEach(slot => {
-    if (!slot.empty) {
-      total += slot.price;
-    }
-  });
-
-  return total;
-}
-
-function updateUI() {
-  updateEmptyCharmImages();
-  renderBracelet();
-
-  const filled = slots.filter(slot => !slot.empty).length;
-  const empty = slots.filter(slot => slot.empty).length;
-
-  document.getElementById('filledCount').innerText = filled;
-  document.getElementById('emptyCount').innerText = empty;
-
-  const extraContainer = document.getElementById('extraLinkContainer');
-  if (selectedSize) {
-    extraContainer.innerHTML = `
-      <button class="btn-extra-link" onclick="toggleExtraLink()">
-        ${hasExtraLink ? '✓ Quitar eslabón extra (-$500)' : '+ Agregar 1 eslabón extra ($500)'}
-      </button>
-    `;
-  } else {
-    extraContainer.innerHTML = '';
-  }
-
-  const total = calculateTotal();
-  const formatted = total.toLocaleString('es-AR');
-
-  document.getElementById('totalPrice').innerText = '$' + formatted;
-  document.getElementById('bottomTotal').innerText = formatted;
-  document.getElementById('summaryTotal').innerText = '$' + formatted;
-
-  if (selectedSize) {
-    document.getElementById('visualizerSubtitle').innerText =
-      `${selectedSize} (${capacity} eslabones) · ${slots.length} espacios · ${getColorName()}`;
-  } else {
-    document.getElementById('visualizerSubtitle').innerText = 'Primero elegí un talle';
-  }
-
-  updateSummary();
-  updateInstagramMessage();
-}
-
-function getColorName() {
-  if (braceletColor === 'gold') return 'Pulsera Dorada ✨';
-  if (braceletColor === 'mixed') return 'Pulsera Intercalada ✨';
-  return 'Pulsera Plateada ♡';
-}
-
-function getColorSimpleName() {
-  if (braceletColor === 'gold') return 'dorada';
-  if (braceletColor === 'mixed') return 'intercalada';
-  return 'plateada';
-}
-
-function updateSummary() {
-  const summary = document.getElementById('cartSummary');
-  const list = document.getElementById('cartList');
-
-  if (!selectedSize) {
-    summary.style.display = 'none';
-    return;
-  }
-
-  summary.style.display = 'block';
-  document.getElementById('summaryCount').innerText = `${slots.length} eslabones`;
-  list.innerHTML = '';
-
-  const basePrice = getBaseBraceletPrice();
-
-  const baseRow = document.createElement('div');
-  baseRow.className = 'cart-item';
-  baseRow.innerHTML = `
-    <span><strong>Base:</strong> Pulsera ${getColorSimpleName()} (${selectedSize} - ${capacity} eslabones)</span>
-    <span>$${basePrice.toLocaleString('es-AR')}</span>
-  `;
-  list.appendChild(baseRow);
-
-  slots.forEach((slot, index) => {
-    if (!slot.empty) {
-      const row = document.createElement('div');
-      row.className = 'cart-item';
-      row.innerHTML = `
-        <span><strong>${index + 1}.</strong> ${slot.name}</span>
-        <span>$${slot.price.toLocaleString('es-AR')}</span>
-      `;
-      list.appendChild(row);
-    }
-  });
-
-  if (hasExtraLink) {
-    const extraRow = document.createElement('div');
-    extraRow.className = 'cart-item';
-    extraRow.innerHTML = `
-      <span>1 Eslabón extra vacío</span>
-      <span>$500</span>
-    `;
-    list.appendChild(extraRow);
-  }
-}
-
-function createOrderMessage() {
-  let charmsText = '';
-  let count = 1;
-
-  slots.forEach((slot) => {
-    if (!slot.empty) {
-      charmsText += `${count}. ${slot.name}\n`;
-      count++;
-    }
-  });
-
-  if (hasExtraLink) {
-    charmsText += `${count}. Eslabón extra vacío\n`;
-  }
-
-  const total = calculateTotal();
-  const basePrice = getBaseBraceletPrice();
-
-  return `¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
-
-♡ Pulsera ${getColorSimpleName()} (${selectedSize} - ${capacity} eslabones)${hasExtraLink ? ' + 1 eslabón extra' : ''} · Base: $${basePrice.toLocaleString('es-AR')}
-
-♡ Charms elegidos:
-${charmsText || 'Ninguno todavía\n'}
-♡ Total: $${total.toLocaleString('es-AR')}
-
-Vi toda la información en la página y quería consultar por la disponibilidad y cómo puedo realizar la compra 💌
-
-¡Graciasss! 🫶🏻`;
-}
-
-function updateInstagramMessage() {
-  const box = document.getElementById('instagramMessage');
-
-  if (!selectedSize) {
-    box.innerText =
-`¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
-♡ Pulsera:
-♡ Charms elegidos:
-
-Primero elegí el talle para armar tu pulsera ♡`;
-    return;
-  }
-
-  box.innerText = createOrderMessage();
-}
-
-function copyInstagramMessage() {
-  const message = createOrderMessage();
-
-  navigator.clipboard.writeText(message)
-    .then(() => {
-      const button = document.getElementById('copyButton');
-      const old = button.innerText;
-      button.innerText = '✓ Mensaje copiado';
-      setTimeout(() => {
-        button.innerText = old;
-      }, 1800);
-    })
-    .catch(() => {
-      alert('No se pudo copiar. Mantené presionado el mensaje para copiarlo ♡');
-    });
-}
-
-function sendWhatsApp() {
-  if (!selectedSize) {
-    alert('Primero elegí el talle de tu pulsera ♡');
-    return;
-  }
-
-  const message = createOrderMessage();
-  const phone = '5493412651141';
-  window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-}
-
-function openInstagram() {
-  window.location.href = 'https://instagram.com/cuoricino_charms';
+function scrollBracelet() {
+  $("visualizerSection").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
 function clearBracelet() {
-  if (!selectedSize) return;
-
-  hasExtraLink = false;
-  slots = [];
-  for (let i = 0; i < capacity; i++) {
-    slots.push(createEmptySlot(i));
-  }
-
-  replacementMode = false;
-  activeTargetIndex = null;
-  closeCharmMenu();
-  updateUI();
+  if (!size) return;
+  if (chosen().length && !confirm("¿Querés vaciar tu pulsera?")) return;
+  extra = false;
+  slots = Array(sizes[size - 1]).fill(null);
+  resetMode();
+  update();
 }
 
-/* =====================================================
-   INICIALIZACIÓN
-===================================================== */
-renderCatalog(CHARMS_DATA);
-updateUI();
-</script>
+function extraLabel() {
+  return "Eslabón extra" + (extra && slots[slots.length - 1] === null ? " vacío" : "");
+}
 
+function createOrderMessage() {
+  if (!size) return "";
+
+  const lines = [
+    "¡Holaa! Quiero hacer una compra en Cuoricino",
+    "♡ Pulsera " + colorName(),
+    "♡ Talle " + size + " — " + sizes[size - 1] + " eslabones",
+    "♡ Precio base: " + money(base())
+  ];
+
+  if (extra) lines.push("♡ " + extraLabel() + ": $500");
+
+  const items = chosen();
+
+  if (items.length) {
+    lines.push("♡ Charms elegidos:");
+    items.forEach((p,i) => {
+      lines.push((i + 1) + ". " + p.name + " — " + money(p.price));
+    });
+  } else {
+    lines.push("♡ Pulsera sin charms adicionales");
+  }
+
+  lines.push(
+    "♡ Total: " + money(total()),
+    "¡Quería consultar por la disponibilidad y cómo puedo realizar la compra!",
+    "¡Graciasss!"
+  );
+  return lines.join("\n");
+}
+
+function updateBracelet() {
+  const box = $("braceletDisplay");
+  box.replaceChildren();
+
+  if (!size) {
+    box.append(element("p","empty-msg","Elegí un talle para comenzar"));
+    return;
+  }
+
+  slots.forEach((id,i) => {
+    const gold = color === "gold" || (color === "mixed" && i % 2 === 1);
+    const p = id === null ? null : products[id];
+    const isExtra = i === sizes[size - 1];
+
+    const b = button("",() => slotClick(i),"slot" + (target === i ? " selected" : ""));
+    b.setAttribute(
+      "aria-label",
+      "Espacio " + (i + 1) + (isExtra ? " extra" : "") + ": " + (p ? p.name : "vacío")
+    );
+
+    b.append(
+      element("span","slot-number",String(i + 1) + (isExtra ? " +" : "")),
+      imageBox(
+        p ? p.img : (gold ? "Charm Vacío D.JPG" : "Charm Vacío P.JPG"),
+        p ? p.name : "Eslabón " + (gold ? "dorado" : "plateado"),
+        "slot-image"
+      )
+    );
+
+    b.draggable = p !== null;
+
+    b.ondragstart = e => {
+      dragged = i;
+      e.dataTransfer.setData("text/plain",String(i));
+      e.dataTransfer.effectAllowed = "move";
+    };
+    b.ondragover = e => e.preventDefault();
+    b.ondrop = e => {
+      e.preventDefault();
+      if (dragged !== null) moveSlots(dragged,i);
+    };
+    b.ondragend = () => { dragged = null; };
+
+    box.append(b);
+  });
+}
+
+function update() {
+  updateBracelet();
+  setStatus(mode === "move"
+    ? "Tocá el destino para mover el charm. Si está ocupado, se intercambian."
+    : mode === "replace"
+      ? "Elegí un charm del catálogo para este espacio."
+      : ""
+  );
+
+  document.querySelectorAll("[data-size]").forEach(b => {
+    const active = Number(b.dataset.size) === size;
+    b.classList.toggle("active",active);
+    b.setAttribute("aria-pressed",String(active));
+  });
+
+  document.querySelectorAll("[data-color]").forEach(b => {
+    const active = b.dataset.color === color;
+    b.classList.toggle("active",active);
+    b.setAttribute("aria-pressed",String(active));
+  });
+
+  $("visualizerSubtitle").textContent = size
+    ? "Talle " + size + " · " + sizes[size - 1] + " eslabones" +
+      (extra ? " + 1 extra" : "") + " · Pulsera " + colorName()
+    : "Primero elegí un talle";
+
+  $("filledCount").textContent = chosen().length;
+  $("emptyCount").textContent = slots.filter(x => x === null).length;
+
+  $("extraButton").hidden = !size;
+  $("extraButton").textContent = extra
+    ? "Quitar eslabón extra (−$500)"
+    : "＋ Agregar 1 eslabón extra ($500)";
+
+  ["totalPrice","bottomTotal","summaryTotal"].forEach(id => {
+    $(id).textContent = money(total());
+  });
+
+  $("cartSummary").hidden = !size;
+  $("cartList").replaceChildren();
+
+  const row = (label,price) => {
+    const r = element("div","cart-item");
+    r.append(element("span","",label),element("span","",money(price)));
+    $("cartList").append(r);
+  };
+
+  if (size) {
+    row(
+      "Pulsera " + colorName() + " · Talle " + size +
+      " — " + sizes[size - 1] + " eslabones",
+      base()
+    );
+    chosen().forEach((p,i) => row((i + 1) + ". " + p.name,p.price));
+    if (extra) row(extraLabel(),500);
+  }
+
+  $("summaryCount").textContent = chosen().length + " charms";
+  $("instagramMessage").value = createOrderMessage() ||
+    "Primero elegí el talle para armar tu pulsera ♡";
+  $("copyButton").disabled = !size;
+  $("copyStatus").textContent = "";
+}
+
+async function copyInstagramMessage() {
+  if (!size) return;
+  const box = $("instagramMessage");
+  box.value = createOrderMessage();
+
+  try {
+    if (!navigator.clipboard || !window.isSecureContext) throw new Error("manual");
+    await navigator.clipboard.writeText(box.value);
+    $("copyStatus").textContent = "✓ Mensaje copiado";
+  } catch (e) {
+    box.focus();
+    box.select();
+    box.setSelectionRange(0,box.value.length);
+    $("copyStatus").textContent =
+      "Mantené presionado el texto seleccionado y elegí Copiar.";
+  }
+}
+
+function sendWhatsApp() {
+  if (!size) {
+    alert("Primero elegí el talle de tu pulsera ♡");
+    return;
+  }
+  window.location.href =
+    "https://api.whatsapp.com/send?phone=5493412651141&text=" +
+    encodeURIComponent(createOrderMessage());
+}
+
+function openInstagram() {
+  window.location.href = "https://instagram.com/cuoricino_charms";
+}
+
+document.addEventListener("keydown",e => {
+  if (e.key === "Escape") cancelMode();
+});
+
+filterCharms();
+update();
+</script>
 </body>
 </html>
