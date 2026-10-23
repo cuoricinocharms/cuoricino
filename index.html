@@ -250,15 +250,7 @@ header {
   transform: translateY(-50%);
   height: 8px;
   border-radius: 20px;
-
-  background: linear-gradient(
-    180deg,
-    #fafafa 0%,
-    #a9a9a9 45%,
-    #fff 60%,
-    #888 100%
-  );
-
+  background: linear-gradient(180deg, #fafafa 0%, #a9a9a9 45%, #fff 60%, #888 100%);
   box-shadow: 0 2px 3px rgba(0,0,0,.15);
   z-index: 1;
 }
@@ -342,6 +334,30 @@ header {
   font-size: .53rem;
   color: #aaa;
   white-space: nowrap;
+}
+
+/* =========================
+   BUSCADOR DE CHARMS
+========================= */
+
+.search-box {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 18px;
+  border: 1px solid var(--pink-light);
+  border-radius: 16px;
+  font-size: .88rem;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.03);
+  transition: border-color .2s;
+}
+
+.search-input:focus {
+  border-color: var(--pink-dark);
 }
 
 /* =========================
@@ -703,7 +719,7 @@ header {
   </div>
 
   <div class="price-badge" id="totalPrice">
-    $10.000
+    $0
   </div>
 </header>
 
@@ -724,24 +740,24 @@ header {
   </div>
 
   <div class="options" id="sizeOptions">
-    <button class="option" onclick="selectSize('XS', 14, this)">
-      XS
-      <small>14 charms</small>
+    <button class="option" onclick="selectSize('Talle 1', 14, this)">
+      Talle 1
+      <small>14 eslabones</small>
     </button>
 
-    <button class="option" onclick="selectSize('S', 16, this)">
-      S
-      <small>16 charms</small>
+    <button class="option" onclick="selectSize('Talle 2', 16, this)">
+      Talle 2
+      <small>16 eslabones</small>
     </button>
 
-    <button class="option" onclick="selectSize('M', 18, this)">
-      M
-      <small>18 charms</small>
+    <button class="option" onclick="selectSize('Talle 3', 18, this)">
+      Talle 3
+      <small>18 eslabones</small>
     </button>
 
-    <button class="option" onclick="selectSize('L', 20, this)">
-      L
-      <small>20 charms</small>
+    <button class="option" onclick="selectSize('Talle 4', 20, this)">
+      Talle 4
+      <small>20 eslabones</small>
     </button>
   </div>
 </section>
@@ -754,7 +770,7 @@ header {
   </div>
 
   <div class="options color-options" id="colorOptions">
-    <button class="option" onclick="selectColor('silver', this)">
+    <button class="option active" onclick="selectColor('silver', this)">
       🤍 PLATEADA
     </button>
 
@@ -795,70 +811,11 @@ header {
   Agregá tus charms ✨
 </h2>
 
-<div class="catalog-grid">
-  <div class="card">
-    <img src="IMG_0214.png" class="card-img" alt="Charm Atardecer">
-    <div class="card-title">Charm Atardecer</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Atardecer', 6000, 'IMG_0214.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0221.png" class="card-img" alt="Charm Atardecer Rosa">
-    <div class="card-title">Charm Atardecer Rosa</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Atardecer Rosa', 6000, 'IMG_0221.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0218.png" class="card-img" alt="Charm Cámara">
-    <div class="card-title">Charm Cámara</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Cámara', 6000, 'IMG_0218.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0220.png" class="card-img" alt="Charm Ibiza">
-    <div class="card-title">Charm Ibiza</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Ibiza', 6000, 'IMG_0220.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0236.png" class="card-img" alt="Charm Italia">
-    <div class="card-title">Charm Italia</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Italia', 6000, 'IMG_0236.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0219.png" class="card-img" alt="Charm Mar">
-    <div class="card-title">Charm Mar</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Mar', 6000, 'IMG_0219.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0215.png" class="card-img" alt="Charm Música">
-    <div class="card-title">Charm Música</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Música', 6000, 'IMG_0215.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0216.png" class="card-img" alt="Charm Ola">
-    <div class="card-title">Charm Ola</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Ola', 6000, 'IMG_0216.png')">+ Agregar</button>
-  </div>
-
-  <div class="card">
-    <img src="IMG_0217.png" class="card-img" alt="Charm Spiderman">
-    <div class="card-title">Charm Spiderman</div>
-    <div class="card-price">$6.000</div>
-    <button class="btn-add" onclick="addCharm('Charm Spiderman', 6000, 'IMG_0217.png')">+ Agregar</button>
-  </div>
+<div class="search-box">
+  <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar charm por nombre..." oninput="filterCharms()">
 </div>
+
+<div class="catalog-grid" id="catalogGrid"></div>
 
 <!-- RESUMEN -->
 <section class="cart-summary" id="cartSummary" style="display:none;">
@@ -869,7 +826,7 @@ header {
   <div id="cartList"></div>
   <div class="total-row">
     <span>Total</span>
-    <span id="summaryTotal">$10.000</span>
+    <span id="summaryTotal">$0</span>
   </div>
 </section>
 
@@ -914,45 +871,229 @@ header {
 <div class="bottom-bar">
   <button class="btn-clear" onclick="clearBracelet()">Vaciar</button>
   <button class="btn-submit-main" onclick="sendWhatsApp()">
-    💌 Finalizar ($<span id="bottomTotal">10.000</span>)
+    💌 Finalizar ($<span id="bottomTotal">0</span>)
   </button>
 </div>
 
 <script>
 /* =====================================================
-   CONFIGURACIÓN
+   LISTADO DE CHARMS (142 ITEMS)
 ===================================================== */
-const BRACELET_PRICE = 10000;
-const EXTRA_SPACE_PRICE = 1000;
-const MAX_CAPACITY = 20;
+const CHARMS_DATA = [
+  { name: "2 Corazones dorados PR", price: 5000, img: "2 Corazones dorados PR.png" },
+  { name: "3 Cerezas PR", price: 4000, img: "3 Cerezas PR.png" },
+  { name: "3 Corazones P", price: 2000, img: "3 Corazones P.png" },
+  { name: "6 Corazones colores P", price: 5000, img: "6 Corazones colores P.png" },
+  { name: "Arcoiris amarillo PR", price: 4000, img: "Arcoiris amarillo PR.png" },
+  { name: "Arcoíris Fondo P", price: 3000, img: "Arcoíris Fondo P.png" },
+  { name: "Arcoíris Corazón blanco P", price: 3000, img: "Arcoíris Corazón blanco P.png" },
+  { name: "Ardilla P", price: 2000, img: "Ardilla P.png" },
+  { name: "Arroba PR", price: 3000, img: "Arroba PR.png" },
+  { name: "Atardecer PR", price: 5000, img: "Atardecer PR.png" },
+  { name: "Auto PR", price: 5000, img: "Auto PR.png" },
+  { name: "Avión de papel PR", price: 6000, img: "Avión de papel PR.png" },
+  { name: "BFF Arcoiris", price: 2000, img: "BFF Arcoiris.png" },
+  { name: "Beso Rosa P", price: 4000, img: "Beso Rosa P.png" },
+  { name: "Bitch P", price: 4000, img: "Bitch P.png" },
+  { name: "Bola 8 PR", price: 5000, img: "Bola 8 PR.png" },
+  { name: "Bolos P", price: 1500, img: "Bolos P.png" },
+  { name: "Border Collie PR", price: 6000, img: "Border Collie PR.png" },
+  { name: "Cactus DR", price: 5000, img: "Cactus DR.png" },
+  { name: "Camara P", price: 5000, img: "Camara P.png" },
+  { name: "Candado corazones PR", price: 5000, img: "Candado corazones PR.png" },
+  { name: "Candado corazón P", price: 4000, img: "Candado corazón P.png" },
+  { name: "Caniche P", price: 3000, img: "Caniche P.png" },
+  { name: "Cara Feliz PR", price: 3000, img: "Cara Feliz PR.png" },
+  { name: "Carta Poker PR", price: 4000, img: "Carta Poker PR.png" },
+  { name: "Carta Rosa P", price: 4000, img: "Carta Rosa P.png" },
+  { name: "Carta pocker PR", price: 4000, img: "Carta pocker PR.png" },
+  { name: "Charm Vacio D", price: 500, img: "Charm Vacio D.png" },
+  { name: "Charm Vacio P", price: 500, img: "Charm Vacio P.png" },
+  { name: "Chupetin Corazón P", price: 3000, img: "Chupetin Corazón P.png" },
+  { name: "Cocktail PR", price: 5000, img: "Cocktail PR.png" },
+  { name: "Cocktail Rosa y verde P", price: 3000, img: "Cocktail Rosa y verde P.png" },
+  { name: "Colectivo P", price: 3000, img: "Colectivo P.png" },
+  { name: "Corazon Blanco DR", price: 5000, img: "Corazon Blanco DR.png" },
+  { name: "Corazon Rojo P", price: 3000, img: "Corazon Rojo P.png" },
+  { name: "Corazon Spiderman PR", price: 6000, img: "Corazon Spiderman PR.png" },
+  { name: "Corazon az,ver,roj,ros P", price: 3000, img: "Corazon az,ver,roj,ros P.png" },
+  { name: "Corazon salud P", price: 3000, img: "Corazon salud P.png" },
+  { name: "Corazones Flecha PR", price: 4000, img: "Corazones Flecha PR.png" },
+  { name: "Corazones blanco y rosa P", price: 2000, img: "Corazones blanco y rosa P.png" },
+  { name: "Corazones rosa con rojo P", price: 3000, img: "Corazones rosa con rojo P.png" },
+  { name: "Corazones y brillo medio P", price: 3000, img: "Corazones y brillo medio P.png" },
+  { name: "Corazón Arcoíris P", price: 2000, img: "Corazón Arcoíris P.png" },
+  { name: "Corazón Conejo P", price: 3000, img: "Corazón Conejo P.png" },
+  { name: "Corazón Cristo P", price: 3000, img: "Corazón Cristo P.png" },
+  { name: "Corazón Daughter P", price: 1500, img: "Corazón Daughter P.png" },
+  { name: "Corazón Rosa P", price: 3000, img: "Corazón Rosa P.png" },
+  { name: "Corazón Superpoderosas PR", price: 4000, img: "Corazón Superpoderosas PR.png" },
+  { name: "Corazón abrazo P", price: 3000, img: "Corazón abrazo P.png" },
+  { name: "Corazón alas naranjas P", price: 2000, img: "Corazón alas naranjas P.png" },
+  { name: "Corazón flecha P", price: 3000, img: "Corazón flecha P.png" },
+  { name: "Corazón animal print P", price: 4000, img: "Corazón animal print P.png" },
+  { name: "Corazón arcoiris P", price: 2000, img: "Corazón arcoiris P.png" },
+  { name: "Corazón blanco P", price: 3000, img: "Corazón blanco P.png" },
+  { name: "Corazón blanco con sombra P", price: 3000, img: "Corazón blanco con sombra P.png" },
+  { name: "Corazón blanco círculos negros P", price: 3000, img: "Corazón blanco círculos negros P.png" },
+  { name: "Corazón dorado PR", price: 5000, img: "Corazón dorado PR.png" },
+  { name: "Corazón espirales rosa P", price: 3000, img: "Corazón espirales rosa P.png" },
+  { name: "Corazón huellita P", price: 3000, img: "Corazón huellita P.png" },
+  { name: "Corazón mordido rosa P", price: 3000, img: "Corazón mordido rosa P.png" },
+  { name: "Corazón negro brillos P", price: 3000, img: "Corazón negro brillos P.png" },
+  { name: "Corazón rompecabezas P", price: 2000, img: "Corazón rompecabezas P.png" },
+  { name: "Corazón strass violeta P", price: 1500, img: "Corazón strass violeta P.png" },
+  { name: "Corgi", price: 6000, img: "Corgi.png" },
+  { name: "Corona P", price: 3000, img: "Corona P.png" },
+  { name: "Cruz dorada PR", price: 5000, img: "Cruz dorada PR.png" },
+  { name: "Cupido Rosa P", price: 3000, img: "Cupido Rosa P.png" },
+  { name: "Dado P", price: 3000, img: "Dado P.png" },
+  { name: "Elefante Hippie Rojo P", price: 3000, img: "Elefante Hippie Rojo P.png" },
+  { name: "Elefante Hippie Turquesa P", price: 3000, img: "Elefante Hippie Turquesa P.png" },
+  { name: "Elefante lila P", price: 1500, img: "Elefante lila P.png" },
+  { name: "Estrella rosa P", price: 4000, img: "Estrella rosa P.png" },
+  { name: "Estrella strass PR", price: 6000, img: "Estrella strass PR.png" },
+  { name: "Estrella superpoderosa PR", price: 5000, img: "Estrella superpoderosa PR.png" },
+  { name: "Estrellitas P", price: 2000, img: "Estrellitas P.png" },
+  { name: "Faith P", price: 3000, img: "Faith P.png" },
+  { name: "Flor Blanca PR", price: 5000, img: "Flor Blanca PR.png" },
+  { name: "Flor Roja DR", price: 5000, img: "Flor Roja DR.png" },
+  { name: "Flor Rosa PR", price: 5000, img: "Flor Rosa PR.png" },
+  { name: "Flor horizontal P", price: 2000, img: "Flor horizontal P.png" },
+  { name: "Flor roja circulo PR", price: 5000, img: "Flor roja circulo PR.png" },
+  { name: "Frasco Rosa P", price: 3000, img: "Frasco Rosa P.png" },
+  { name: "Frutilla P", price: 3000, img: "Frutilla P.png" },
+  { name: "Gatito rosa P", price: 3000, img: "Gatito rosa P.png" },
+  { name: "Globo aerostatico P", price: 2000, img: "Globo aerostatico P.png" },
+  { name: "Globos corazón rosa P", price: 3000, img: "Globos corazón rosa P.png" },
+  { name: "Golden PR", price: 6000, img: "Golden PR.png" },
+  { name: "Hámster PR", price: 4000, img: "Hámster PR.png" },
+  { name: "Huellitas PR", price: 5000, img: "Huellitas PR.png" },
+  { name: "Husky PR", price: 6000, img: "Husky PR.png" },
+  { name: "I Love you blanco P", price: 4000, img: "I Love you blanco P.png" },
+  { name: "I love my boys P", price: 1500, img: "I love my boys P.png" },
+  { name: "I love my brothers P", price: 1500, img: "I love my brothers P.png" },
+  { name: "I love ny P", price: 4000, img: "I love ny P.png" },
+  { name: "Ibiza PR", price: 6000, img: "Ibiza PR.png" },
+  { name: "Italia PR", price: 5000, img: "Italia PR.png" },
+  { name: "Lengua Stone", price: 5000, img: "Lengua Stone.png" },
+  { name: "Lengua stone DR", price: 5000, img: "Lengua stone DR.png" },
+  { name: "Maceta Corazon P", price: 3000, img: "Maceta Corazon P.png" },
+  { name: "Manos Mickey Corazón P", price: 4000, img: "Manos Mickey Corazón P.png" },
+  { name: "Mar circular PR", price: 6000, img: "Mar circular PR.png" },
+  { name: "Margarita petalo P", price: 5000, img: "Margarita petalo P.png" },
+  { name: "Mariposa Arcoíris P", price: 3000, img: "Mariposa Arcoíris P.png" },
+  { name: "Mariposa Rosa PR", price: 3000, img: "Mariposa Rosa PR.png" },
+  { name: "Mariposa Strass DR", price: 6000, img: "Mariposa Strass DR.png" },
+  { name: "Mariposa azul", price: 3000, img: "Mariposa azul.png" },
+  { name: "Mariposa dorada PR", price: 5000, img: "Mariposa dorada PR.png" },
+  { name: "Mariposa violeta P", price: 3000, img: "Mariposa violeta P.png" },
+  { name: "Nota musical rosa P", price: 3000, img: "Nota musical rosa P.png" },
+  { name: "Ojo turco cuadrado P", price: 4000, img: "Ojo turco cuadrado P.png" },
+  { name: "Ojo turco pestañas P", price: 2000, img: "Ojo turco pestañas P.png" },
+  { name: "Ola DR", price: 5000, img: "Ola DR.png" },
+  { name: "Ola PR", price: 5000, img: "Ola PR.png" },
+  { name: "Osito blanco P", price: 2000, img: "Osito blanco P.png" },
+  { name: "Osito rosa P", price: 3000, img: "Osito rosa P.png" },
+  { name: "Oveja animada P", price: 2000, img: "Oveja animada P.png" },
+  { name: "Paisaje Rosa DR", price: 5000, img: "Paisaje Rosa DR.png" },
+  { name: "Pelota DR", price: 5000, img: "Pelota DR.png" },
+  { name: "Pelota PR", price: 5000, img: "Pelota PR.png" },
+  { name: "Perfume rosa P", price: 2000, img: "Perfume rosa P.png" },
+  { name: "Perro fondo amarillo P", price: 3000, img: "Perro fondo amarillo P.png" },
+  { name: "Pez colores P", price: 3000, img: "Pez colores P.png" },
+  { name: "Pez naranja PR", price: 3000, img: "Pez naranja PR.png" },
+  { name: "Pimientos PR", price: 5000, img: "Pimientos PR.png" },
+  { name: "Pingüino PR", price: 5000, img: "Pingüino PR.png" },
+  { name: "Pizza PR", price: 4000, img: "Pizza PR.png" },
+  { name: "Piña P", price: 4000, img: "Piña P.png" },
+  { name: "Playa P", price: 4000, img: "Playa P.png" },
+  { name: "Pomerania PR", price: 6000, img: "Pomerania PR.png" },
+  { name: "Pug PR", price: 6000, img: "Pug PR.png" },
+  { name: "Rainbow P", price: 2000, img: "Rainbow P.png" },
+  { name: "Reloj rosa P", price: 3000, img: "Reloj rosa P.png" },
+  { name: "Saturno azul P", price: 2000, img: "Saturno azul P.png" },
+  { name: "Saturno azul PR", price: 4000, img: "Saturno azul PR.png" },
+  { name: "Schnauzer PR", price: 6000, img: "Schnauzer PR.png" },
+  { name: "Sol Rojo Palmera P", price: 3000, img: "Sol Rojo Palmera P.png" },
+  { name: "Sol strass PR", price: 6000, img: "Sol strass PR.png" },
+  { name: "Tazas Rosa y verde P", price: 3000, img: "Tazas Rosa y verde P.png" },
+  { name: "Tortuga P", price: 1500, img: "Tortuga P.png" },
+  { name: "Tres flores P", price: 5000, img: "Tres flores P.png" },
+  { name: "Trébol colores P", price: 3000, img: "Trébol colores P.png" },
+  { name: "Trébol verde P", price: 3000, img: "Trébol verde P.png" },
+  { name: "Turquía P", price: 1500, img: "Turquía P.png" },
+  { name: "Vela rosa P", price: 3000, img: "Vela rosa P.png" },
+  { name: "Velero PR", price: 6000, img: "Velero PR.png" },
+  { name: "Yin Yan DR", price: 5000, img: "Yin Yan DR.png" },
+  { name: "Yin Yan Rosa DR", price: 5000, img: "Yin Yan Rosa DR.png" },
+  { name: "Yin Yan Rosa P", price: 5000, img: "Yin Yan Rosa P.png" },
+  { name: "Yin Yan Rosa PR", price: 5000, img: "Yin Yan Rosa PR.png" }
+];
 
-const EMPTY_SILVER_IMG = 'IMG_0242.png';
-const EMPTY_GOLD_IMG = 'IMG_0240.png';
+/* =====================================================
+   CONFIGURACIÓN Y PRECIOS
+===================================================== */
+const EXTRA_SPACE_PRICE = 500;
+const MAX_CAPACITY = 22;
+
+const EMPTY_SILVER_IMG = 'Charm Vacio P.png';
+const EMPTY_GOLD_IMG = 'Charm Vacio D.png';
 
 let selectedSize = null;
 let capacity = 0;
 let braceletColor = 'silver';
 
 let slots = [];
-let activeTargetIndex = null; // Guardado sostenido para selección y reemplazo
+let activeTargetIndex = null;
 let movingMode = false;
 let replacementMode = false;
 let draggedIndex = null;
 
 /* =====================================================
-   CREAR CHARMS VACÍOS
+   CÁLCULO DEL PRECIO BASE DE LA PULSERA
+===================================================== */
+function getBaseBraceletPrice() {
+  if (!selectedSize) return 0;
+
+  if (braceletColor === 'silver') {
+    if (selectedSize === 'Talle 1' || selectedSize === 'Talle 2') {
+      return 8000;
+    } else {
+      return 8500; // Talle 3 y 4
+    }
+  } else {
+    // Dorada o Intercalada
+    if (selectedSize === 'Talle 1' || selectedSize === 'Talle 2') {
+      return 10000;
+    } else {
+      return 10500; // Talle 3 y 4
+    }
+  }
+}
+
+/* =====================================================
+   CREAR CHARM VACÍO SÚPER ADAPTATIVO AL COLOR
 ===================================================== */
 function createEmptySlot(index) {
   let image = EMPTY_SILVER_IMG;
+  let name = "Charm Vacio P";
 
   if (braceletColor === 'gold') {
     image = EMPTY_GOLD_IMG;
+    name = "Charm Vacio D";
   } else if (braceletColor === 'mixed') {
-    image = (index % 2 === 0) ? EMPTY_SILVER_IMG : EMPTY_GOLD_IMG;
+    if (index % 2 === 0) {
+      image = EMPTY_SILVER_IMG;
+      name = "Charm Vacio P";
+    } else {
+      image = EMPTY_GOLD_IMG;
+      name = "Charm Vacio D";
+    }
   }
 
   return {
-    name: 'Charm vacío',
+    name: name,
     price: 0,
     img: image,
     empty: true
@@ -960,35 +1101,62 @@ function createEmptySlot(index) {
 }
 
 /* =====================================================
-   ACTUALIZAR IMÁGENES DE LOS ESPACIOS VACÍOS
+   ACTUALIZAR CHARMS VACÍOS CUANDO CAMBIA EL COLOR
 ===================================================== */
 function updateEmptyCharmImages() {
   slots.forEach((slot, index) => {
     if (slot.empty) {
       if (braceletColor === 'gold') {
         slot.img = EMPTY_GOLD_IMG;
+        slot.name = "Charm Vacio D";
       } else if (braceletColor === 'mixed') {
         slot.img = (index % 2 === 0) ? EMPTY_SILVER_IMG : EMPTY_GOLD_IMG;
+        slot.name = (index % 2 === 0) ? "Charm Vacio P" : "Charm Vacio D";
       } else {
         slot.img = EMPTY_SILVER_IMG;
+        slot.name = "Charm Vacio P";
       }
     }
   });
 }
 
 /* =====================================================
-   SELECCIONAR TALLE
+   RENDERIZAR CATÁLOGO DE CHARMS
+===================================================== */
+function renderCatalog(charms) {
+  const grid = document.getElementById('catalogGrid');
+  grid.innerHTML = '';
+
+  charms.forEach(charm => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${charm.img}" class="card-img" alt="${charm.name}" onerror="this.src='https://via.placeholder.com/120x120?text=Charm'">
+      <div class="card-title">${charm.name}</div>
+      <div class="card-price">$${charm.price.toLocaleString('es-AR')}</div>
+      <button class="btn-add" onclick="addCharm('${charm.name.replace(/'/g, "\\'")}', ${charm.price}, '${charm.img.replace(/'/g, "\\'")}')">+ Agregar</button>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterCharms() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = CHARMS_DATA.filter(c => c.name.toLowerCase().includes(query));
+  renderCatalog(filtered);
+}
+
+/* =====================================================
+   SELECCIONAR TALLE Y COLOR
 ===================================================== */
 function selectSize(size, number, button) {
   selectedSize = size;
-  capacity = Math.min(number, MAX_CAPACITY);
+  capacity = number;
 
-  // Limpiar clases activas en botones de talle inmediatamente
   const sizeBtns = document.querySelectorAll('#sizeOptions .option');
   sizeBtns.forEach(btn => btn.classList.remove('active'));
   button.classList.add('active');
 
-  // Inicializar arreglo de slots con el talle elegido
   slots = [];
   for (let i = 0; i < capacity; i++) {
     slots.push(createEmptySlot(i));
@@ -1000,13 +1168,9 @@ function selectSize(size, number, button) {
   updateUI();
 }
 
-/* =====================================================
-   SELECCIONAR COLOR
-===================================================== */
 function selectColor(color, button) {
   braceletColor = color;
 
-  // Limpiar clases activas en botones de color inmediatamente
   const colorBtns = document.querySelectorAll('#colorOptions .option');
   colorBtns.forEach(btn => btn.classList.remove('active'));
   button.classList.add('active');
@@ -1031,7 +1195,6 @@ function addCharm(name, price, img) {
     empty: false
   };
 
-  // Reemplazar si el modo está activo sobre un slot válido
   if (replacementMode && activeTargetIndex !== null && activeTargetIndex < slots.length) {
     slots[activeTargetIndex] = newCharm;
     replacementMode = false;
@@ -1041,15 +1204,13 @@ function addCharm(name, price, img) {
     return;
   }
 
-  // Si no es reemplazo, busca la primera posición vacía
   const emptyIndex = slots.findIndex(slot => slot.empty);
 
   if (emptyIndex !== -1) {
     slots[emptyIndex] = newCharm;
   } else {
-    // Si la pulsera está llena de charms del catálogo, permite añadir espacio adicional hasta 20
     if (slots.length >= MAX_CAPACITY) {
-      alert('Llegaste al máximo de 20 charms ♡');
+      alert('Llegaste al máximo de eslabones posibles ♡');
       return;
     }
     slots.push(newCharm);
@@ -1076,7 +1237,7 @@ function removeSelected() {
 }
 
 /* =====================================================
-   MENÚ DE CHARMS Y CONTROLES
+   MENÚ Y DRAG & DROP
 ===================================================== */
 function openCharmMenu(index) {
   activeTargetIndex = index;
@@ -1115,9 +1276,6 @@ function replaceSelected() {
   }, 200);
 }
 
-/* =====================================================
-   DRAG & DROP
-===================================================== */
 function dragStart(index, event) {
   draggedIndex = index;
   event.dataTransfer.effectAllowed = 'move';
@@ -1150,9 +1308,6 @@ function dropSlot(index, event) {
   updateUI();
 }
 
-/* =====================================================
-   CLICK / INTERACCIÓN EN SLOT
-===================================================== */
 function handleSlotClick(index) {
   if (movingMode && activeTargetIndex !== null) {
     const temp = slots[activeTargetIndex];
@@ -1209,6 +1364,9 @@ function renderBracelet() {
     const img = document.createElement('img');
     img.src = slot.img;
     img.alt = slot.name;
+    img.onerror = function() {
+      this.src = 'https://via.placeholder.com/54x72?text=Charm';
+    };
 
     if (slot.empty) {
       wrapper.classList.add('empty');
@@ -1225,12 +1383,11 @@ function renderBracelet() {
    TOTAL PRECIO
 ===================================================== */
 function calculateTotal() {
-  let total = BRACELET_PRICE;
+  let total = getBaseBraceletPrice();
 
   const extraSpaces = Math.max(0, slots.length - capacity);
   total += extraSpaces * EXTRA_SPACE_PRICE;
 
-  // Solo sumar el costo adicional de los charms elegidos del catálogo
   slots.forEach(slot => {
     if (!slot.empty) {
       total += slot.price;
@@ -1262,7 +1419,7 @@ function updateUI() {
 
   if (selectedSize) {
     document.getElementById('visualizerSubtitle').innerText =
-      `Talle ${selectedSize} · ${capacity} espacios · ${getColorName()}`;
+      `${selectedSize} (${capacity} eslabones) · ${slots.length} espacios · ${getColorName()}`;
   } else {
     document.getElementById('visualizerSubtitle').innerText = 'Primero elegí un talle';
   }
@@ -1271,9 +1428,6 @@ function updateUI() {
   updateInstagramMessage();
 }
 
-/* =====================================================
-   NOMBRES DE COLOR
-===================================================== */
 function getColorName() {
   if (braceletColor === 'gold') return 'Pulsera Dorada ✨';
   if (braceletColor === 'mixed') return 'Pulsera Intercalada ✨';
@@ -1299,19 +1453,19 @@ function updateSummary() {
   }
 
   summary.style.display = 'block';
-  document.getElementById('summaryCount').innerText = `${slots.length} espacios`;
+  document.getElementById('summaryCount').innerText = `${slots.length} eslabones`;
   list.innerHTML = '';
 
-  // Línea principal de la pulsera base
+  const basePrice = getBaseBraceletPrice();
+
   const baseRow = document.createElement('div');
   baseRow.className = 'cart-item';
   baseRow.innerHTML = `
-    <span><strong>Base:</strong> Pulsera ${getColorSimpleName()} (${selectedSize})</span>
-    <span>$10.000</span>
+    <span><strong>Base:</strong> Pulsera ${getColorSimpleName()} (${selectedSize} - ${capacity} eslabones)</span>
+    <span>$${basePrice.toLocaleString('es-AR')}</span>
   `;
   list.appendChild(baseRow);
 
-  // Detalle de charms adicionales comprados
   slots.forEach((slot, index) => {
     if (!slot.empty) {
       const row = document.createElement('div');
@@ -1329,7 +1483,7 @@ function updateSummary() {
     const extraRow = document.createElement('div');
     extraRow.className = 'cart-item';
     extraRow.innerHTML = `
-      <span>Espacios extra (${extraSpaces})</span>
+      <span>Eslabones extra (${extraSpaces})</span>
       <span>$${(extraSpaces * EXTRA_SPACE_PRICE).toLocaleString('es-AR')}</span>
     `;
     list.appendChild(extraRow);
@@ -1337,7 +1491,7 @@ function updateSummary() {
 }
 
 /* =====================================================
-   MENSAJE DE PEDIDO (WHATSAPP / INSTAGRAM)
+   MENSAJE DE PEDIDO
 ===================================================== */
 function createOrderMessage() {
   let charmsText = '';
@@ -1345,7 +1499,7 @@ function createOrderMessage() {
   slots.forEach((slot, index) => {
     charmsText += `${index + 1}. `;
     if (slot.empty) {
-      charmsText += 'Charm vacío';
+      charmsText += (slot.name || 'Charm vacío');
     } else {
       charmsText += slot.name;
     }
@@ -1353,10 +1507,11 @@ function createOrderMessage() {
   });
 
   const total = calculateTotal();
+  const basePrice = getBaseBraceletPrice();
 
   return `¡Holaa! 💗 Quiero hacer una compra en Cuoricino ✨
 
-♡ Pulsera ${getColorSimpleName()} de ${capacity} charms · $10.000
+♡ Pulsera ${getColorSimpleName()} (${selectedSize} - ${capacity} eslabones) · $${basePrice.toLocaleString('es-AR')}
 
 ♡ Charms elegidos:
 ${charmsText}
@@ -1367,9 +1522,6 @@ Vi toda la información en la página y quería consultar por la disponibilidad 
 ¡Graciasss! 🫶🏻`;
 }
 
-/* =====================================================
-   INSTAGRAM / MENSAJES
-===================================================== */
 function updateInstagramMessage() {
   const box = document.getElementById('instagramMessage');
 
@@ -1418,9 +1570,6 @@ function openInstagram() {
   window.location.href = 'https://instagram.com/cuoricino_charms';
 }
 
-/* =====================================================
-   VACIAR PULSERA
-===================================================== */
 function clearBracelet() {
   if (!selectedSize) return;
 
@@ -1438,6 +1587,7 @@ function clearBracelet() {
 /* =====================================================
    INICIALIZACIÓN
 ===================================================== */
+renderCatalog(CHARMS_DATA);
 updateUI();
 </script>
 
