@@ -877,6 +877,30 @@ header {
 
 <script>
 /* =====================================================
+   SISTEMA INTELIGENTE DE CARGA DE IMÁGENES
+===================================================== */
+function handleImageError(imgElement, originalFilename) {
+  const step = imgElement.dataset.imgStep || "0";
+
+  if (step === "0") {
+    // Intento 1: Quitar tildes y acentos
+    imgElement.dataset.imgStep = "1";
+    imgElement.src = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  } else if (step === "1") {
+    // Intento 2: Cambiar espacios por guiones y quitar tildes
+    imgElement.dataset.imgStep = "2";
+    imgElement.src = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+  } else if (step === "2") {
+    // Intento 3: Todo en minúsculas con guiones
+    imgElement.dataset.imgStep = "3";
+    imgElement.src = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-").toLowerCase();
+  } else {
+    // Si no existe ninguna variante, muestra una imagen genérica para no romper el diseño
+    imgElement.src = 'https://via.placeholder.com/120x120?text=Cuoricino';
+  }
+}
+
+/* =====================================================
    LISTADO DE CHARMS (142 ITEMS)
 ===================================================== */
 const CHARMS_DATA = [
@@ -1060,20 +1084,19 @@ function getBaseBraceletPrice() {
     if (selectedSize === 'Talle 1' || selectedSize === 'Talle 2') {
       return 8000;
     } else {
-      return 8500; // Talle 3 y 4
+      return 8500;
     }
   } else {
-    // Dorada o Intercalada
     if (selectedSize === 'Talle 1' || selectedSize === 'Talle 2') {
       return 10000;
     } else {
-      return 10500; // Talle 3 y 4
+      return 10500;
     }
   }
 }
 
 /* =====================================================
-   CREAR CHARM VACÍO SÚPER ADAPTATIVO AL COLOR
+   CREAR CHARM VACÍO
 ===================================================== */
 function createEmptySlot(index) {
   let image = EMPTY_SILVER_IMG;
@@ -1100,9 +1123,6 @@ function createEmptySlot(index) {
   };
 }
 
-/* =====================================================
-   ACTUALIZAR CHARMS VACÍOS CUANDO CAMBIA EL COLOR
-===================================================== */
 function updateEmptyCharmImages() {
   slots.forEach((slot, index) => {
     if (slot.empty) {
@@ -1121,7 +1141,7 @@ function updateEmptyCharmImages() {
 }
 
 /* =====================================================
-   RENDERIZAR CATÁLOGO DE CHARMS
+   RENDERIZAR CATÁLOGO
 ===================================================== */
 function renderCatalog(charms) {
   const grid = document.getElementById('catalogGrid');
@@ -1131,7 +1151,7 @@ function renderCatalog(charms) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      <img src="${charm.img}" class="card-img" alt="${charm.name}" onerror="this.src='https://via.placeholder.com/120x120?text=Charm'">
+      <img src="${charm.img}" class="card-img" alt="${charm.name}" onerror="handleImageError(this, '${charm.img.replace(/'/g, "\\'")}')">
       <div class="card-title">${charm.name}</div>
       <div class="card-price">$${charm.price.toLocaleString('es-AR')}</div>
       <button class="btn-add" onclick="addCharm('${charm.name.replace(/'/g, "\\'")}', ${charm.price}, '${charm.img.replace(/'/g, "\\'")}')">+ Agregar</button>
@@ -1147,7 +1167,7 @@ function filterCharms() {
 }
 
 /* =====================================================
-   SELECCIONAR TALLE Y COLOR
+   SELECCIÓN
 ===================================================== */
 function selectSize(size, number, button) {
   selectedSize = size;
@@ -1179,9 +1199,6 @@ function selectColor(color, button) {
   updateUI();
 }
 
-/* =====================================================
-   AGREGAR / REEMPLAZAR CHARM
-===================================================== */
 function addCharm(name, price, img) {
   if (!selectedSize) {
     alert('Primero elegí el talle de tu pulsera ♡');
@@ -1220,9 +1237,6 @@ function addCharm(name, price, img) {
   updateUI();
 }
 
-/* =====================================================
-   ELIMINAR ESPACIO / CHARM
-===================================================== */
 function removeSlot(index) {
   slots.splice(index, 1);
   activeTargetIndex = null;
@@ -1236,9 +1250,6 @@ function removeSelected() {
   removeSlot(activeTargetIndex);
 }
 
-/* =====================================================
-   MENÚ Y DRAG & DROP
-===================================================== */
 function openCharmMenu(index) {
   activeTargetIndex = index;
   movingMode = false;
@@ -1364,9 +1375,7 @@ function renderBracelet() {
     const img = document.createElement('img');
     img.src = slot.img;
     img.alt = slot.name;
-    img.onerror = function() {
-      this.src = 'https://via.placeholder.com/54x72?text=Charm';
-    };
+    img.setAttribute('onerror', `handleImageError(this, '${slot.img.replace(/'/g, "\\'")}')`);
 
     if (slot.empty) {
       wrapper.classList.add('empty');
@@ -1379,9 +1388,6 @@ function renderBracelet() {
   });
 }
 
-/* =====================================================
-   TOTAL PRECIO
-===================================================== */
 function calculateTotal() {
   let total = getBaseBraceletPrice();
 
@@ -1397,9 +1403,6 @@ function calculateTotal() {
   return total;
 }
 
-/* =====================================================
-   ACTUALIZAR UI
-===================================================== */
 function updateUI() {
   updateEmptyCharmImages();
   renderBracelet();
@@ -1440,9 +1443,6 @@ function getColorSimpleName() {
   return 'plateada';
 }
 
-/* =====================================================
-   RESUMEN DETALLADO EN PÁGINA
-===================================================== */
 function updateSummary() {
   const summary = document.getElementById('cartSummary');
   const list = document.getElementById('cartList');
@@ -1490,9 +1490,6 @@ function updateSummary() {
   }
 }
 
-/* =====================================================
-   MENSAJE DE PEDIDO
-===================================================== */
 function createOrderMessage() {
   let charmsText = '';
 
@@ -1566,7 +1563,7 @@ function sendWhatsApp() {
   window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
 }
 
-function openInstagram() {
+openInstagram = function() {
   window.location.href = 'https://instagram.com/cuoricino_charms';
 }
 
