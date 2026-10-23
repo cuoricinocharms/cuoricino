@@ -84,6 +84,8 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
 .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,.97); padding: 11px 16px; padding-bottom: calc(11px + env(safe-area-inset-bottom)); display: flex; justify-content: space-between; align-items: center; gap: 10px; box-shadow: 0 -4px 15px rgba(0,0,0,.08); z-index: 100; backdrop-filter: blur(10px); }
 .btn-clear { background: #f5f0f2; color: #777; border: none; padding: 12px 15px; border-radius: 14px; font-size: .82rem; font-weight: 700; }
 .btn-submit-main { background: var(--gradient-btn); color: white; border: none; padding: 12px 15px; border-radius: 16px; font-size: .88rem; font-weight: 800; flex: 1; max-width: 250px; }
+.stock-badge { align-self: center; background: #ffe4ed; color: #a93d61; border: 1px solid #f3c2d1; border-radius: 20px; padding: 5px 12px; margin-bottom: 8px; font-size: .7rem; font-weight: 800; letter-spacing: 1px; }
+.btn-add:disabled { background: #eee7ea; color: #84737a; opacity: 1; cursor: not-allowed; }
 @media(max-width:420px) {
   .options { grid-template-columns: repeat(2,1fr); }
   .color-options { grid-template-columns: repeat(3,1fr); }
@@ -201,12 +203,10 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
 "use strict";
 
 /*
-  Rutas verificadas contra los archivos reales del repositorio.
-  GitHub almacena los nombres con tildes en Unicode NFD.
-  imageBox aplica NFD antes de codificar la URL, sin cambiar archivos.
-  Los eslabones vacíos existentes son Charm Vacío D.JPG y Charm Vacío P.JPG.
-  Spiderman, Dado y Huellitas no tienen archivo identificado: se conservan.
-  Se conservan nombres, precios y variantes del catálogo original.
+  Los nombres de archivo del repositorio usan Unicode NFD.
+  imageBox convierte los nombres antes de generar sus rutas.
+  Los eslabones vacíos usan los nuevos archivos PNG.
+  Dado, Spiderman y Huellitas fueron retirados.
 */
 const products = [
   ["2 Corazones dorados PR",5000,"2 corazones dorado PR.PNG"],
@@ -241,7 +241,6 @@ const products = [
   ["Colectivo P",3000,"Colectivo.PNG"],
   ["Corazon Blanco DR",5000,"Corazón blanco DR.PNG"],
   ["Corazon Rojo P",3000,"Corazón rojo.PNG"],
-  ["Corazon Spiderman PR",6000,null],
   ["Corazon az,ver,roj,ros P",3000,"Corazón Ros,Ver, Azu,roj.PNG"],
   ["Corazon salud P",3000,"Corazón Salud.PNG"],
   ["Corazones Flecha PR",4000,"Corazones Flecha PR.PNG"],
@@ -273,7 +272,6 @@ const products = [
   ["Corona P",3000,"Corona Rolex.PNG"],
   ["Cruz dorada PR",5000,"Cruz.PNG"],
   ["Cupido Rosa P",3000,"Cupido Rosa .PNG"],
-  ["Dado P",3000,null],
   ["Elefante Hippie Rojo P",3000,"Elefante Hippie Rojo .PNG"],
   ["Elefante Hippie Turquesa P",3000,"Elefante Hippie Turquesa .PNG"],
   ["Elefante lila P",1500,"Elefante lila.PNG"],
@@ -294,7 +292,6 @@ const products = [
   ["Globos corazón rosa P",3000,"Globos Corazón Rosa.PNG"],
   ["Golden PR",6000,"Golden.PNG"],
   ["Hámster PR",4000,"Hámster .PNG"],
-  ["Huellitas PR",5000,null],
   ["Husky PR",6000,"Husky.PNG"],
   ["I Love you blanco P",4000,"I Love you blanco P.PNG"],
   ["I love my boys P",1500,"I love my boys.PNG"],
@@ -356,6 +353,17 @@ const products = [
   ["Yin Yan Rosa PR",5000,"Yin Yan Rosa PR.PNG"]
 ].map(([name,price,img]) => ({name,price,img}));
 
+const SOLD_OUT = new Set([
+  "Mar circular PR",
+  "Corazón Cristo P",
+  "Ojo turco cuadrado P",
+  "Yin Yan Rosa P"
+]);
+
+products.forEach(p => {
+  p.soldOut = SOLD_OUT.has(p.name);
+});
+
 const sizes = [14,16,18,20];
 let size = 0;
 let color = "silver";
@@ -389,6 +397,7 @@ function button(text,fn,cls = "") {
 
 function imageBox(filename,name,cls) {
   const box = element("div",cls);
+
   const fallback = () => {
     box.replaceChildren(element("span","image-missing","Imagen no disponible"));
   };
@@ -403,11 +412,6 @@ function imageBox(filename,name,cls) {
   img.loading = "lazy";
   img.draggable = false;
   img.onerror = fallback;
-
-  /*
-    Los archivos del repositorio usan Unicode NFD.
-    Esta conversión conserva mayúsculas, espacios y extensiones.
-  */
   img.src = "./" + encodeURIComponent(filename.normalize("NFD"));
 
   box.append(img);
@@ -421,13 +425,27 @@ function filterCharms() {
 
   products.forEach((p,id) => {
     if (!normalize(p.name).includes(query)) return;
+
     const card = element("article","card");
+    const addButton = button(
+      p.soldOut ? "Agotado" : "+ Agregar",
+      () => addCharm(id),
+      "btn-add"
+    );
+
+    addButton.disabled = p.soldOut;
+
+    if (p.soldOut) {
+      card.append(element("span","stock-badge","AGOTADO"));
+    }
+
     card.append(
       imageBox(p.img,p.name,"card-img"),
       element("h3","card-title",p.name),
       element("p","card-price",money(p.price)),
-      button("+ Agregar",() => addCharm(id),"btn-add")
+      addButton
     );
+
     grid.append(card);
   });
 
@@ -449,7 +467,10 @@ function resetMode() {
 
 function selectSize(n) {
   if (size === n) return;
-  if (chosen().length && !confirm("Cambiar el talle vacía el diseño actual. ¿Continuar?")) return;
+
+  if (chosen().length && !confirm("Cambiar el talle vacía el diseño actual. ¿Continuar?")) {
+    return;
+  }
 
   size = n;
   extra = false;
@@ -488,7 +509,13 @@ function addCharm(id) {
     alert("Primero elegí el talle de tu pulsera ♡");
     return;
   }
+
   if (!products[id] || !Number.isFinite(products[id].price)) return;
+
+  if (products[id].soldOut) {
+    alert("Este charm está agotado por el momento ♡");
+    return;
+  }
 
   const i = mode === "replace" && target !== null
     ? target
@@ -517,7 +544,9 @@ function removeSelected() {
 
 function moveSlots(a,b) {
   if (!Number.isInteger(a) || !Number.isInteger(b) ||
-      a < 0 || b < 0 || a >= slots.length || b >= slots.length) return;
+      a < 0 || b < 0 || a >= slots.length || b >= slots.length) {
+    return;
+  }
 
   [slots[a],slots[b]] = [slots[b],slots[a]];
   resetMode();
@@ -541,9 +570,13 @@ function showMenu(i) {
   $("menuTitle").textContent = slots[i] === null
     ? "Espacio " + (i + 1)
     : products[slots[i]].name;
+
   $("moveButton").disabled = slots[i] === null;
   $("removeButton").disabled = slots[i] === null;
-  $("replaceButton").textContent = slots[i] === null ? "Elegir charm" : "Reemplazar";
+  $("replaceButton").textContent = slots[i] === null
+    ? "Elegir charm"
+    : "Reemplazar";
+
   $("charmMenu").hidden = false;
 }
 
@@ -563,7 +596,10 @@ function replaceSelected() {
   hideMenu();
   updateBracelet();
   setStatus("Elegí un charm del catálogo para este espacio.");
-  $("catalogTitle").scrollIntoView({behavior:"smooth",block:"start"});
+  $("catalogTitle").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 
 function cancelMode() {
@@ -577,12 +613,18 @@ function setStatus(text) {
 }
 
 function scrollBracelet() {
-  $("visualizerSection").scrollIntoView({behavior:"smooth",block:"start"});
+  $("visualizerSection").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 
 function clearBracelet() {
   if (!size) return;
-  if (chosen().length && !confirm("¿Querés vaciar tu pulsera?")) return;
+
+  if (chosen().length && !confirm("¿Querés vaciar tu pulsera?")) {
+    return;
+  }
 
   extra = false;
   slots = Array(sizes[size - 1]).fill(null);
@@ -591,7 +633,8 @@ function clearBracelet() {
 }
 
 function extraLabel() {
-  return "Eslabón extra" + (extra && slots[slots.length - 1] === null ? " vacío" : "");
+  return "Eslabón extra" +
+    (extra && slots[slots.length - 1] === null ? " vacío" : "");
 }
 
 function createOrderMessage() {
@@ -604,7 +647,9 @@ function createOrderMessage() {
     "♡ Precio base: " + money(base())
   ];
 
-  if (extra) lines.push("♡ " + extraLabel() + ": $500");
+  if (extra) {
+    lines.push("♡ " + extraLabel() + ": $500");
+  }
 
   const items = chosen();
 
@@ -640,17 +685,23 @@ function updateBracelet() {
     const p = id === null ? null : products[id];
     const isExtra = i === sizes[size - 1];
 
-    const b = button("",() => slotClick(i),"slot" + (target === i ? " selected" : ""));
+    const b = button(
+      "",
+      () => slotClick(i),
+      "slot" + (target === i ? " selected" : "")
+    );
 
     b.setAttribute(
       "aria-label",
-      "Espacio " + (i + 1) + (isExtra ? " extra" : "") + ": " + (p ? p.name : "vacío")
+      "Espacio " + (i + 1) +
+      (isExtra ? " extra" : "") +
+      ": " + (p ? p.name : "vacío")
     );
 
     b.append(
       element("span","slot-number",String(i + 1) + (isExtra ? " +" : "")),
       imageBox(
-        p ? p.img : (gold ? "Charm Vacío D.JPG" : "Charm Vacío P.JPG"),
+        p ? p.img : (gold ? "Charm Vacío D.PNG" : "Charm Vacío P.PNG"),
         p ? p.name : "Eslabón " + (gold ? "dorado" : "plateado"),
         "slot-image"
       )
@@ -723,10 +774,12 @@ function update() {
 
   const row = (label,price) => {
     const r = element("div","cart-item");
+
     r.append(
       element("span","",label),
       element("span","",money(price))
     );
+
     $("cartList").append(r);
   };
 
@@ -737,14 +790,20 @@ function update() {
       base()
     );
 
-    chosen().forEach((p,i) => row((i + 1) + ". " + p.name,p.price));
+    chosen().forEach((p,i) => {
+      row((i + 1) + ". " + p.name,p.price);
+    });
 
-    if (extra) row(extraLabel(),500);
+    if (extra) {
+      row(extraLabel(),500);
+    }
   }
 
   $("summaryCount").textContent = chosen().length + " charms";
+
   $("instagramMessage").value = createOrderMessage() ||
     "Primero elegí el talle para armar tu pulsera ♡";
+
   $("copyButton").disabled = !size;
   $("copyStatus").textContent = "";
 }
@@ -759,12 +818,14 @@ async function copyInstagramMessage() {
     if (!navigator.clipboard || !window.isSecureContext) {
       throw new Error("manual");
     }
+
     await navigator.clipboard.writeText(box.value);
     $("copyStatus").textContent = "✓ Mensaje copiado";
   } catch (e) {
     box.focus();
     box.select();
     box.setSelectionRange(0,box.value.length);
+
     $("copyStatus").textContent =
       "Mantené presionado el texto seleccionado y elegí Copiar.";
   }
