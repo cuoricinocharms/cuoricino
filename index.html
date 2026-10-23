@@ -877,25 +877,27 @@ header {
 
 <script>
 /* =====================================================
-   SISTEMA INTELIGENTE DE CARGA DE IMÁGENES
+   MANEJO INTELIGENTE DE RUTAS DE IMÁGENES
 ===================================================== */
+function buildImageUrl(filename) {
+  // Convierte los espacios y caracteres especiales a formato URL seguro (ej: %20)
+  return encodeURIComponent(filename);
+}
+
 function handleImageError(imgElement, originalFilename) {
   const step = imgElement.dataset.imgStep || "0";
 
   if (step === "0") {
-    // Intento 1: Quitar tildes y acentos
+    // Intento 1: Quitar tildes
     imgElement.dataset.imgStep = "1";
-    imgElement.src = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const noAccents = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    imgElement.src = buildImageUrl(noAccents);
   } else if (step === "1") {
-    // Intento 2: Cambiar espacios por guiones y quitar tildes
+    // Intento 2: Nombre en minúsculas
     imgElement.dataset.imgStep = "2";
-    imgElement.src = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
-  } else if (step === "2") {
-    // Intento 3: Todo en minúsculas con guiones
-    imgElement.dataset.imgStep = "3";
-    imgElement.src = originalFilename.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-").toLowerCase();
+    imgElement.src = buildImageUrl(originalFilename.toLowerCase());
   } else {
-    // Si no existe ninguna variante, muestra una imagen genérica para no romper el diseño
+    // Si no la encuentra, coloca marcador de posición
     imgElement.src = 'https://via.placeholder.com/120x120?text=Cuoricino';
   }
 }
@@ -1075,7 +1077,7 @@ let replacementMode = false;
 let draggedIndex = null;
 
 /* =====================================================
-   CÁLCULO DEL PRECIO BASE DE LA PULSERA
+   PRECIO BASE DE LA PULSERA
 ===================================================== */
 function getBaseBraceletPrice() {
   if (!selectedSize) return 0;
@@ -1150,8 +1152,10 @@ function renderCatalog(charms) {
   charms.forEach(charm => {
     const card = document.createElement('div');
     card.className = 'card';
+    const safeUrl = buildImageUrl(charm.img);
+
     card.innerHTML = `
-      <img src="${charm.img}" class="card-img" alt="${charm.name}" onerror="handleImageError(this, '${charm.img.replace(/'/g, "\\'")}')">
+      <img src="${safeUrl}" class="card-img" alt="${charm.name}" onerror="handleImageError(this, '${charm.img.replace(/'/g, "\\'")}')">
       <div class="card-title">${charm.name}</div>
       <div class="card-price">$${charm.price.toLocaleString('es-AR')}</div>
       <button class="btn-add" onclick="addCharm('${charm.name.replace(/'/g, "\\'")}', ${charm.price}, '${charm.img.replace(/'/g, "\\'")}')">+ Agregar</button>
@@ -1373,7 +1377,7 @@ function renderBracelet() {
     ring.className = 'slot-ring';
 
     const img = document.createElement('img');
-    img.src = slot.img;
+    img.src = buildImageUrl(slot.img);
     img.alt = slot.name;
     img.setAttribute('onerror', `handleImageError(this, '${slot.img.replace(/'/g, "\\'")}')`);
 
@@ -1563,7 +1567,7 @@ function sendWhatsApp() {
   window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
 }
 
-openInstagram = function() {
+function openInstagram() {
   window.location.href = 'https://instagram.com/cuoricino_charms';
 }
 
