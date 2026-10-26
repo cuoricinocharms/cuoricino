@@ -862,5 +862,194 @@ document.addEventListener("keydown",e => {
 filterCharms();
 update();
 </script>
+  <script>
+(() => {
+  "use strict";
+  if (document.getElementById("cuoricinoMejoras")) return;
+
+  const style = document.createElement("style");
+  style.id = "cuoricinoMejoras";
+  style.textContent = `
+    .cuori-info {
+      color: #777;
+      font-size: .82rem;
+      line-height: 1.65;
+    }
+    .cuori-info p + p { margin-top: 10px; }
+    .cuori-guide {
+      margin-top: 14px;
+      border-top: 1px solid var(--pink-light);
+      padding-top: 10px;
+    }
+    .cuori-guide summary {
+      cursor: pointer;
+      color: var(--pink-dark);
+      font-weight: 800;
+      padding: 8px 0;
+    }
+    .cuori-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      text-align: left;
+    }
+    .cuori-guide th, .cuori-guide td {
+      padding: 7px;
+      border-bottom: 1px solid var(--pink-light);
+    }
+    .cuori-save {
+      color: #888;
+      font-size: .75rem;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+  `;
+  document.head.append(style);
+
+  const guide = document.createElement("details");
+  guide.className = "cuori-guide cuori-info";
+  guide.innerHTML = `
+    <summary>Guía de talles ♡</summary>
+    <p>
+      1 eslabón = 1 cm. Medí la circunferencia de tu muñeca
+      con una cinta métrica para saber tu talle.
+      Si no tenés una, usá un hilo y después medilo con una regla.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Talle</th>
+          <th scope="col">Eslabones</th>
+          <th scope="col">Medida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>14</td><td>14 cm</td></tr>
+        <tr><th scope="row">2</th><td>16</td><td>16 cm</td></tr>
+        <tr><th scope="row">3</th><td>18</td><td>18 cm</td></tr>
+        <tr><th scope="row">4</th><td>20</td><td>20 cm</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Si necesitás un talle intermedio, podés sumar un eslabón extra.
+      Por ejemplo, para 17 cm elegí el talle 2 y tocá
+      “Agregar 1 eslabón extra”.
+    </p>
+  `;
+  $("sizeOptions").after(guide);
+
+  const saveStatus = document.createElement("p");
+  saveStatus.className = "cuori-save";
+  saveStatus.setAttribute("role", "status");
+  $("status").before(saveStatus);
+
+  const purchase = document.createElement("section");
+  purchase.className = "instagram-box";
+  purchase.setAttribute("aria-labelledby", "cuoriPurchaseTitle");
+  purchase.innerHTML = `
+    <h2 class="instagram-title" id="cuoriPurchaseTitle">
+      Información de compra ♡
+    </h2>
+    <div class="cuori-info">
+      <p>
+        Para confirmar tu pedido, te vamos a pedir una seña del 50%.
+        También podés abonar la totalidad si querés.
+        Si abonás la seña, el resto lo pagás cuando te entreguemos
+        tu pulsera 💗
+      </p>
+      <p>
+        Entregamos en los micros el 3 de noviembre
+        o a partir de esa fecha.
+      </p>
+    </div>
+  `;
+
+  const payment = document.createElement("p");
+  purchase.querySelector(".cuori-info").append(payment);
+  document.querySelector(".instagram-box").before(purchase);
+
+  const key = "cuoricino-bracelet-v1";
+  let removedUnavailable = false;
+
+  function save() {
+    try {
+      localStorage.setItem(key, JSON.stringify({
+        version: 1,
+        size,
+        color,
+        extra,
+        slots: slots.map(id =>
+          id === null ? null : products[id].img
+        )
+      }));
+
+      saveStatus.textContent = removedUnavailable
+        ? "Recuperamos tu pulsera. Quitamos los charms que ya no están disponibles; podés elegir otros ♡"
+        : "Tu pulsera se guarda automáticamente en este navegador para que puedas seguir después ♡";
+    } catch (e) {
+      saveStatus.textContent =
+        "No pudimos guardar el diseño en este navegador. Mantené esta página abierta para conservarlo.";
+    }
+  }
+
+  function restore() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(key));
+
+      if (
+        !saved ||
+        saved.version !== 1 ||
+        !Number.isInteger(saved.size) ||
+        saved.size < 1 ||
+        saved.size > 4 ||
+        !["silver", "gold", "mixed"].includes(saved.color) ||
+        typeof saved.extra !== "boolean" ||
+        !Array.isArray(saved.slots) ||
+        saved.slots.length !==
+          sizes[saved.size - 1] + Number(saved.extra)
+      ) return;
+
+      const restoredSlots = saved.slots.map(img => {
+        if (img === null) return null;
+
+        const id = products.findIndex(p => p.img === img);
+
+        if (id < 0 || products[id].soldOut) {
+          removedUnavailable = true;
+          return null;
+        }
+
+        return id;
+      });
+
+      size = saved.size;
+      color = saved.color;
+      extra = saved.extra;
+      slots = restoredSlots;
+    } catch (e) {
+      // Un diseño inválido no impide usar la página.
+    }
+  }
+
+  const previousUpdate = update;
+
+  update = function() {
+    previousUpdate();
+
+    payment.hidden = !size;
+    payment.textContent = size
+      ? "Seña del 50%: " + money(total() / 2) +
+        ". También podés abonar la totalidad: " + money(total()) +
+        ". Si elegís la seña, el saldo al entregar es de " +
+        money(total() / 2) + "."
+      : "";
+
+    save();
+  };
+
+  restore();
+  update();
+})();
+</script>
 </body>
 </html>
