@@ -209,6 +209,14 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
   Dado, Spiderman y Huellitas fueron retirados.
 */
 const products = [
+  ["Dinero",3000,"Dinero.PNG"],
+  ["Bandera Italia DR",6000,"Bandera italia DR.PNG"],
+  ["Carpe diem",2000,"Carpe diem .jpg"],
+  ["Cerezas",5000,"Cerezas.PNG"],
+  ["Rana",4000,"Rana.PNG"],
+  ["Hongo PR",4000,"Hongo PR.PNG"],
+  ["Estrella dorada PR",5000,"Estrella dorada PR.PNG"],
+  ["Flor rosa fondo verde PR",5000,"Flor rosa fondo verde PR.PNG"],
   ["2 Corazones dorados PR",5000,"2 corazones dorado PR.PNG"],
   ["3 Cerezas PR",4000,"3 Cerezas PR.PNG"],
   ["3 Corazones P",2000,"3 Corazones .PNG"],
@@ -352,6 +360,7 @@ const products = [
 ].map(([name,price,img]) => ({name,price,img}));
 
 const SOLD_OUT = new Set([
+  "Bandera Italia DR", 
   "Mar circular PR",
   "Corazón Cristo P",
   "Ojo turco cuadrado P",
@@ -367,6 +376,7 @@ const SOLD_OUT = new Set([
   "Avión de papel PR",
   "Sol strass PR",
   "Lengua Stone"
+  
 ]);
 
 products.forEach(p => {
