@@ -99,12 +99,20 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior: auto; }
 }
+.info-details { margin-top: 14px; border-top: 1px solid var(--pink-light); padding-top: 12px; }
+.info-details summary { color: var(--pink-dark); font-size: .85rem; font-weight: 800; cursor: pointer; padding: 8px 0; }
+.info-copy { font-size: .82rem; color: #777; line-height: 1.65; }
+.info-copy p + p { margin-top: 10px; }
+.size-guide { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .82rem; text-align: left; }
+.size-guide th,.size-guide td { padding: 8px; border-bottom: 1px solid var(--pink-light); }
+.size-guide th { color: var(--pink-dark); }
+.save-note { font-size: .75rem; color: #888; line-height: 1.5; margin-top: 12px; }
 </style>
 </head>
 <body>
 <header>
   <div>
-    <div class="brand-name">cuoricino ♡</div>
+    <div class="brand-name">cuoricino â¡</div>
     <div class="brand-subtitle">CON AMORE, VICINO AL CUORE</div>
   </div>
   <div class="price-badge" id="totalPrice">$0</div>
@@ -112,23 +120,39 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
 
 <main class="container">
   <section class="hero">
-    <div class="hero-heart">♡</div>
-    <h1>Creá tu Pulsera</h1>
-    <p>Elegí el talle, el color y después<br>armala charm por charm.</p>
+    <div class="hero-heart">â¡</div>
+    <h1>CreÃ¡ tu Pulsera</h1>
+    <p>ElegÃ­ el talle, el color y despuÃ©s<br>armala charm por charm.</p>
   </section>
 
   <section class="step">
-    <h2 class="step-title"><span class="step-number">1</span>Elegí el talle de tu pulsera</h2>
+    <h2 class="step-title"><span class="step-number">1</span>ElegÃ­ el talle de tu pulsera</h2>
     <div class="options" id="sizeOptions">
       <button type="button" class="option" data-size="1" onclick="selectSize(1)">Talle 1<small>14 eslabones</small></button>
       <button type="button" class="option" data-size="2" onclick="selectSize(2)">Talle 2<small>16 eslabones</small></button>
       <button type="button" class="option" data-size="3" onclick="selectSize(3)">Talle 3<small>18 eslabones</small></button>
       <button type="button" class="option" data-size="4" onclick="selectSize(4)">Talle 4<small>20 eslabones</small></button>
     </div>
+    <details class="info-details">
+      <summary>Â¿CÃ³mo sÃ© mi talle? â¡</summary>
+      <div class="info-copy">
+        <p>1 eslabÃ³n = 1 cm. MedÃ­ la circunferencia de tu muÃ±eca con una cinta mÃ©trica para saber tu talle. Si no tenÃ©s una, usÃ¡ un hilo y despuÃ©s medilo con una regla.</p>
+        <table class="size-guide">
+          <thead><tr><th scope="col">Talle</th><th scope="col">Eslabones</th><th scope="col">Medida</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1</th><td>14</td><td>14 cm</td></tr>
+            <tr><th scope="row">2</th><td>16</td><td>16 cm</td></tr>
+            <tr><th scope="row">3</th><td>18</td><td>18 cm</td></tr>
+            <tr><th scope="row">4</th><td>20</td><td>20 cm</td></tr>
+          </tbody>
+        </table>
+        <p>Â¿NecesitÃ¡s un talle intermedio? PodÃ©s sumar un eslabÃ³n extra. Por ejemplo, para 17 cm elegÃ­ el talle 2 y tocÃ¡ âAgregar 1 eslabÃ³n extraâ.</p>
+      </div>
+    </details>
   </section>
 
   <section class="step">
-    <h2 class="step-title"><span class="step-number">2</span>Elegí el color de tu pulsera</h2>
+    <h2 class="step-title"><span class="step-number">2</span>ElegÃ­ el color de tu pulsera</h2>
     <div class="options color-options" id="colorOptions">
       <button type="button" class="option active" data-color="silver" onclick="selectColor('silver')">PLATEADA</button>
       <button type="button" class="option" data-color="gold" onclick="selectColor('gold')">DORADA</button>
@@ -137,41 +161,51 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
   </section>
 
   <section class="visualizer" id="visualizerSection">
-    <h2 class="visualizer-title">Tu Pulsera Cuoricino ♡</h2>
-    <p class="visualizer-subtitle" id="visualizerSubtitle">Primero elegí un talle</p>
+    <h2 class="visualizer-title">Tu Pulsera Cuoricino â¡</h2>
+    <p class="visualizer-subtitle" id="visualizerSubtitle">Primero elegÃ­ un talle</p>
     <div class="bracelet-scroll">
       <div class="bracelet" id="braceletDisplay"></div>
     </div>
-    <p class="hint">Deslizá para ver todos los eslabones. Tocá un espacio para elegir, mover o reemplazar un charm.</p>
+    <p class="hint">DeslizÃ¡ para ver todos los eslabones. TocÃ¡ un espacio para elegir, mover o reemplazar un charm.</p>
     <div class="counter-box">
       <div class="counter">
-        <strong id="filledCount">0</strong> Charms elegidos ·
-        <strong id="emptyCount">0</strong> Espacios vacíos
+        <strong id="filledCount">0</strong> Charms elegidos Â·
+        <strong id="emptyCount">0</strong> Espacios vacÃ­os
       </div>
-      <button type="button" class="btn-extra-link" id="extraButton" onclick="toggleExtra()" hidden>＋ Agregar 1 eslabón extra ($500)</button>
+      <button type="button" class="btn-extra-link" id="extraButton" onclick="toggleExtra()" hidden>ï¼ Agregar 1 eslabÃ³n extra ($500)</button>
     </div>
+    <p class="save-note" id="saveStatus" role="status"></p>
     <p id="status" role="status"></p>
-    <button type="button" class="menu-close" id="cancelMode" onclick="cancelMode()" hidden>Cancelar selección</button>
+    <button type="button" class="menu-close" id="cancelMode" onclick="cancelMode()" hidden>Cancelar selecciÃ³n</button>
   </section>
 
-  <h2 class="section-title" id="catalogTitle">Agregá tus charms</h2>
+  <h2 class="section-title" id="catalogTitle">AgregÃ¡ tus charms</h2>
   <div class="search-box">
-    <input type="search" id="searchInput" class="search-input" placeholder="Buscar charm por nombre…" aria-label="Buscar charms por nombre" oninput="filterCharms()">
+    <input type="search" id="searchInput" class="search-input" placeholder="Buscar charm por nombreâ¦" aria-label="Buscar charms por nombre" oninput="filterCharms()">
   </div>
   <div class="catalog-grid" id="catalogGrid"></div>
 
   <section class="cart-summary" id="cartSummary" hidden>
     <h2 class="cart-summary-title">
-      <span>Tu Pulsera ♡</span>
+      <span>Tu Pulsera â¡</span>
       <span id="summaryCount">0 charms</span>
     </h2>
     <div id="cartList"></div>
     <div class="total-row"><span>Total</span><span id="summaryTotal">$0</span></div>
   </section>
 
+  <section class="instagram-box" aria-labelledby="purchaseTitle">
+    <h2 class="instagram-title" id="purchaseTitle">InformaciÃ³n de compra â¡</h2>
+    <div class="info-copy">
+      <p>Para confirmar tu pedido, te vamos a pedir una seÃ±a del 50%. TambiÃ©n podÃ©s abonar la totalidad si querÃ©s; si no, el resto lo abonÃ¡s cuando te entreguemos tu pulsera ð</p>
+      <p id="paymentAmounts" hidden></p>
+      <p>Entregamos en los micros el 3 de noviembre o a partir de esa fecha.</p>
+    </div>
+  </section>
+
   <section class="instagram-box">
-    <h2 class="instagram-title">¿Querés comprar por Instagram? ♡</h2>
-    <p class="instagram-text">Copiá el mensaje y mandanoslo por privado a @cuoricino_charms.</p>
+    <h2 class="instagram-title">Â¿QuerÃ©s comprar por Instagram? â¡</h2>
+    <p class="instagram-text">CopiÃ¡ el mensaje y mandanoslo por privado a @cuoricino_charms.</p>
     <textarea class="message-box" id="instagramMessage" aria-label="Mensaje de tu pedido para copiar" readonly></textarea>
     <button type="button" class="copy-button" onclick="copyInstagramMessage()" id="copyButton">Copiar mensaje</button>
     <p id="copyStatus" role="status"></p>
@@ -181,13 +215,13 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
     <button type="button" class="btn-action" onclick="sendWhatsApp()">Finalizar por WhatsApp</button>
     <button type="button" class="btn-action" onclick="openInstagram()">Ir a Instagram</button>
   </div>
-  <noscript>Activá JavaScript en tu navegador para personalizar tu pulsera.</noscript>
+  <noscript>ActivÃ¡ JavaScript en tu navegador para personalizar tu pulsera.</noscript>
 </main>
 
 <div class="charm-menu" id="charmMenu" role="region" aria-labelledby="menuTitle" hidden>
   <div class="charm-menu-title" id="menuTitle">Charm</div>
   <div class="menu-buttons">
-    <button type="button" class="menu-btn" id="moveButton" onclick="startMove()">↔ Mover</button>
+    <button type="button" class="menu-btn" id="moveButton" onclick="startMove()">â Mover</button>
     <button type="button" class="menu-btn delete" id="removeButton" onclick="removeSelected()">Eliminar</button>
     <button type="button" class="menu-btn" id="replaceButton" onclick="replaceSelected()">Reemplazar</button>
   </div>
@@ -205,7 +239,7 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
 /*
   Los nombres de archivo del repositorio usan Unicode NFD.
   imageBox convierte los nombres antes de generar sus rutas.
-  Los eslabones vacíos usan los nuevos archivos PNG.
+  Los eslabones vacÃ­os usan los nuevos archivos PNG.
   Dado, Spiderman y Huellitas fueron retirados.
 */
 const products = [
@@ -213,15 +247,15 @@ const products = [
   ["3 Cerezas PR",4000,"3 Cerezas PR.PNG"],
   ["3 Corazones P",2000,"3 Corazones .PNG"],
   ["6 Corazones colores P",5000,"6 corazones colores.PNG"],
-  ["Arcoiris amarillo PR",4000,"Arcoíris amarillo.PNG"],
-  ["Arcoíris Fondo P",3000,"Arcoíris Fondo P.PNG"],
-  ["Arcoíris Corazón blanco P",3000,"Arcoíris corazón blanco P.PNG"],
+  ["Arcoiris amarillo PR",4000,"ArcoÃ­ris amarillo.PNG"],
+  ["ArcoÃ­ris Fondo P",3000,"ArcoÃ­ris Fondo P.PNG"],
+  ["ArcoÃ­ris CorazÃ³n blanco P",3000,"ArcoÃ­ris corazÃ³n blanco P.PNG"],
   ["Ardilla P",2000,"Ardilla.PNG"],
   ["Arroba PR",3000,"Arroba.PNG"],
   ["Atardecer PR",5000,"Atardecer.PNG"],
   ["Auto PR",5000,"Auto PR.PNG"],
-  ["Avión de papel PR",6000,"Avión de papel PR.PNG"],
-  ["BFF Arcoiris",2000,"Arcoíris amarillo.PNG"],
+  ["AviÃ³n de papel PR",6000,"AviÃ³n de papel PR.PNG"],
+  ["BFF Arcoiris",2000,"ArcoÃ­ris amarillo.PNG"],
   ["Beso Rosa P",4000,"Beso Rosa P.PNG"],
   ["Bitch P",4000,"Bitch.PNG"],
   ["Bola 8 PR",5000,"Bola 8 PR.PNG"],
@@ -230,44 +264,44 @@ const products = [
   ["Cactus DR",5000,"Cactus PR.PNG"],
   ["Camara P",5000,"Camara .PNG"],
   ["Candado corazones PR",5000,"Candado corazones PR.PNG"],
-  ["Candado corazón P",4000,"Candado corazón.PNG"],
+  ["Candado corazÃ³n P",4000,"Candado corazÃ³n.PNG"],
   ["Caniche P",3000,"Caniche.PNG"],
   ["Cara Feliz PR",3000,"Cara Feliz.PNG"],
   ["Carta Poker PR",4000,"Carta Poker.PNG"],
   ["Carta Rosa P",4000,"Carta Rosa .PNG"],
-  ["Chupetin Corazón P",3000,"Chupetin Corazón P.PNG"],
+  ["Chupetin CorazÃ³n P",3000,"Chupetin CorazÃ³n P.PNG"],
   ["Cocktail PR",5000,"Cocktail.PNG"],
   ["Cocktail Rosa y verde P",3000,"Cocktail Rosa y verde P.PNG"],
   ["Colectivo P",3000,"Colectivo.PNG"],
-  ["Corazon Blanco DR",5000,"Corazón blanco DR.PNG"],
-  ["Corazon Rojo P",3000,"Corazón rojo.PNG"],
-  ["Corazon az,ver,roj,ros P",3000,"Corazón Ros,Ver, Azu,roj.PNG"],
-  ["Corazon salud P",3000,"Corazón Salud.PNG"],
+  ["Corazon Blanco DR",5000,"CorazÃ³n blanco DR.PNG"],
+  ["Corazon Rojo P",3000,"CorazÃ³n rojo.PNG"],
+  ["Corazon az,ver,roj,ros P",3000,"CorazÃ³n Ros,Ver, Azu,roj.PNG"],
+  ["Corazon salud P",3000,"CorazÃ³n Salud.PNG"],
   ["Corazones Flecha PR",4000,"Corazones Flecha PR.PNG"],
   ["Corazones blanco y rosa P",2000,"Corazones blanco y rosa .PNG"],
   ["Corazones rosa con rojo P",3000,"2 corazones rosa con rojo.PNG"],
   ["Corazones y brillo medio P",3000,"2 Corazones con brillo en medio.PNG"],
-  ["Corazón Arcoíris P",2000,"Corazón Arcoíris.PNG"],
-  ["Corazón Conejo P",3000,"Corazón Conejo.PNG"],
-  ["Corazón Cristo P",3000,"Corazón Cristo .PNG"],
-  ["Corazón Daughter P",1500,"Corazón Daughter P.PNG"],
-  ["Corazón Rosa P",3000,"Corazón Rosa P.PNG"],
-  ["Corazón Superpoderosas PR",4000,"Corazón Superpoderosas.PNG"],
-  ["Corazón abrazo P",3000,"Corazón abrazo P.PNG"],
-  ["Corazón alas naranjas P",2000,"Corazón alas naranjas P.PNG"],
-  ["Corazón flecha P",3000,"Corazón flecha .PNG"],
-  ["Corazón animal print P",4000,"Corazón animal print.PNG"],
-  ["Corazón arcoiris P",2000,"Corazón arcoíris.PNG"],
-  ["Corazón blanco P",3000,"Corazón Blanco .PNG"],
-  ["Corazón blanco con sombra P",3000,"Corazón sombra.PNG"],
-  ["Corazón blanco círculos negros P",3000,"Corazón blanco círculos negros.PNG"],
-  ["Corazón dorado PR",5000,"Corazón dorado PR.PNG"],
-  ["Corazón espirales rosa P",3000,"Corazón espirales rosa .PNG"],
-  ["Corazón huellita P",3000,"Corazón Huellita .PNG"],
-  ["Corazón mordido rosa P",3000,"Corazón Mordido Rosa.PNG"],
-  ["Corazón negro brillos P",3000,"Corazón negro .PNG"],
-  ["Corazón rompecabezas P",2000,"Corazón rompecabezas.PNG"],
-  ["Corazón strass violeta P",1500,"Corazón Violeta Brillo.PNG"],
+  ["CorazÃ³n ArcoÃ­ris P",2000,"CorazÃ³n ArcoÃ­ris.PNG"],
+  ["CorazÃ³n Conejo P",3000,"CorazÃ³n Conejo.PNG"],
+  ["CorazÃ³n Cristo P",3000,"CorazÃ³n Cristo .PNG"],
+  ["CorazÃ³n Daughter P",1500,"CorazÃ³n Daughter P.PNG"],
+  ["CorazÃ³n Rosa P",3000,"CorazÃ³n Rosa P.PNG"],
+  ["CorazÃ³n Superpoderosas PR",4000,"CorazÃ³n Superpoderosas.PNG"],
+  ["CorazÃ³n abrazo P",3000,"CorazÃ³n abrazo P.PNG"],
+  ["CorazÃ³n alas naranjas P",2000,"CorazÃ³n alas naranjas P.PNG"],
+  ["CorazÃ³n flecha P",3000,"CorazÃ³n flecha .PNG"],
+  ["CorazÃ³n animal print P",4000,"CorazÃ³n animal print.PNG"],
+  ["CorazÃ³n arcoiris P",2000,"CorazÃ³n arcoÃ­ris.PNG"],
+  ["CorazÃ³n blanco P",3000,"CorazÃ³n Blanco .PNG"],
+  ["CorazÃ³n blanco con sombra P",3000,"CorazÃ³n sombra.PNG"],
+  ["CorazÃ³n blanco cÃ­rculos negros P",3000,"CorazÃ³n blanco cÃ­rculos negros.PNG"],
+  ["CorazÃ³n dorado PR",5000,"CorazÃ³n dorado PR.PNG"],
+  ["CorazÃ³n espirales rosa P",3000,"CorazÃ³n espirales rosa .PNG"],
+  ["CorazÃ³n huellita P",3000,"CorazÃ³n Huellita .PNG"],
+  ["CorazÃ³n mordido rosa P",3000,"CorazÃ³n Mordido Rosa.PNG"],
+  ["CorazÃ³n negro brillos P",3000,"CorazÃ³n negro .PNG"],
+  ["CorazÃ³n rompecabezas P",2000,"CorazÃ³n rompecabezas.PNG"],
+  ["CorazÃ³n strass violeta P",1500,"CorazÃ³n Violeta Brillo.PNG"],
   ["Corgi PR",6000,"Corgi.PNG"],
   ["Corona P",3000,"Corona Rolex.PNG"],
   ["Cruz dorada PR",5000,"Cruz.PNG"],
@@ -277,7 +311,7 @@ const products = [
   ["Elefante lila P",1500,"Elefante lila.PNG"],
   ["Estrella rosa P",4000,"Estrella Rosa.PNG"],
   ["Estrella strass PR",6000,"Estrella strass.PNG"],
-  ["Estrella superpoderosa PR",5000,"Estrella súper poderosa.PNG"],
+  ["Estrella superpoderosa PR",5000,"Estrella sÃºper poderosa.PNG"],
   ["Estrellitas P",2000,"Estrellitas.PNG"],
   ["Faith P",3000,"Faith .PNG"],
   ["Flor Blanca PR",5000,"Flor Blanca .PNG"],
@@ -288,10 +322,10 @@ const products = [
   ["Frasco Rosa P",3000,"Frasco Rosa P.PNG"],
   ["Frutilla P",3000,"Frutilla P.PNG"],
   ["Gatito rosa P",3000,"Gatito Rosa.PNG"],
-  ["Globo aerostatico P",2000,"Globo aerostático .PNG"],
-  ["Globos corazón rosa P",3000,"Globos Corazón Rosa.PNG"],
+  ["Globo aerostatico P",2000,"Globo aerostÃ¡tico .PNG"],
+  ["Globos corazÃ³n rosa P",3000,"Globos CorazÃ³n Rosa.PNG"],
   ["Golden PR",6000,"Golden.PNG"],
-  ["Hámster PR",4000,"Hámster .PNG"],
+  ["HÃ¡mster PR",4000,"HÃ¡mster .PNG"],
   ["Husky PR",6000,"Husky.PNG"],
   ["I Love you blanco P",4000,"I Love you blanco P.PNG"],
   ["I love my boys P",1500,"I love my boys.PNG"],
@@ -302,10 +336,10 @@ const products = [
   ["Lengua Stone",5000,"Lengua Stone PR.PNG"],
   ["Lengua stone DR",5000,"Lengua stone DR.PNG"],
   ["Maceta Corazon P",3000,"Maceta Corazon P.PNG"],
-  ["Manos Mickey Corazón P",4000,"Manos Mickey Corazón P.PNG"],
+  ["Manos Mickey CorazÃ³n P",4000,"Manos Mickey CorazÃ³n P.PNG"],
   ["Mar circular PR",6000,"Mar Circular.PNG"],
   ["Margarita petalo P",5000,"Margarita.PNG"],
-  ["Mariposa Arcoíris P",3000,"Mariposa Arcoíris.PNG"],
+  ["Mariposa ArcoÃ­ris P",3000,"Mariposa ArcoÃ­ris.PNG"],
   ["Mariposa Rosa PR",3000,"Mariposa Rosa PR.PNG"],
   ["Mariposa Strass DR",6000,"Mariposa Dorada DR.PNG"],
   ["Mariposa azul",3000,"Mariposa 1.PNG"],
@@ -313,7 +347,7 @@ const products = [
   ["Mariposa violeta P",3000,"Mariposa 2.PNG"],
   ["Nota musical rosa P",3000,"Nota musical rosa.PNG"],
   ["Ojo turco cuadrado P",4000,"Ojo turco cuadrado .PNG"],
-  ["Ojo turco pestañas P",2000,"Ojo turco prestarás.PNG"],
+  ["Ojo turco pestaÃ±as P",2000,"Ojo turco prestarÃ¡s.PNG"],
   ["Ola DR",5000,"Ola DR.PNG"],
   ["Osito blanco P",2000,"Osito BB blanco.PNG"],
   ["Osito rosa P",3000,"Osito rosa.PNG"],
@@ -326,12 +360,12 @@ const products = [
   ["Pez colores P",3000,"Pez colores P.PNG"],
   ["Pez naranja PR",3000,"Pez Naranja PR.PNG"],
   ["Pimientos PR",5000,"Pimientos.PNG"],
-  ["Pingüino PR",5000,"Pingüino PR.PNG"],
+  ["PingÃ¼ino PR",5000,"PingÃ¼ino PR.PNG"],
   ["Pizza PR",4000,"Pizza.PNG"],
-  ["Piña P",4000,"Piña.PNG"],
+  ["PiÃ±a P",4000,"PiÃ±a.PNG"],
   ["Playa P",4000,"Playa .PNG"],
   ["Pomerania PR",6000,"Pomerania.PNG"],
-  ["Bulldog Francés PR",6000,"Pug.PNG"],
+  ["Bulldog FrancÃ©s PR",6000,"Pug.PNG"],
   ["Rainbow P",2000,"Rainbow .PNG"],
   ["Reloj rosa P",3000,"Reloj rosa.PNG"],
   ["Saturno azul P",2000,"Saturno azul P.PNG"],
@@ -341,9 +375,9 @@ const products = [
   ["Tazas Rosa y verde P",3000,"Tazas Rosa y verde .PNG"],
   ["Tortuga P",1500,"Tortuga.PNG"],
   ["Tres flores P",5000,"3 Flores PR.PNG"],
-  ["Trébol colores P",3000,"Trébol colores .PNG"],
-  ["Trébol verde P",3000,"Trébol .PNG"],
-  ["Turquía P",1500,"Turquía .PNG"],
+  ["TrÃ©bol colores P",3000,"TrÃ©bol colores .PNG"],
+  ["TrÃ©bol verde P",3000,"TrÃ©bol .PNG"],
+  ["TurquÃ­a P",1500,"TurquÃ­a .PNG"],
   ["Vela rosa P",3000,"Vela Rosa.PNG"],
   ["Velero PR",6000,"Velero.PNG"],
   ["Yin Yan DR",5000,"Yin Yan Rosa DR.PNG"],
@@ -353,18 +387,18 @@ const products = [
 
 const SOLD_OUT = new Set([
   "Mar circular PR",
-  "Corazón Cristo P",
+  "CorazÃ³n Cristo P",
   "Ojo turco cuadrado P",
   "Yin Yan Rosa P",
   "Sol strass PR",
   "Estrella strass PR",
-  "Corazón huellita P",
+  "CorazÃ³n huellita P",
   "I love ny P",
   "Flor horizontal P",
-  "Corazón animal print P",
+  "CorazÃ³n animal print P",
   "Estrellitas P",
   "Bola 8 PR",
-  "Avión de papel PR",
+  "AviÃ³n de papel PR",
   "Sol strass PR",
   "Lengua Stone"
 ]);
@@ -389,6 +423,50 @@ const colorName = () => ({silver:"plateada",gold:"dorada",mixed:"intercalada"}[c
 const base = () => size ? (color === "silver" ? 8000 : 10000) + (size > 2 ? 500 : 0) : 0;
 const chosen = () => slots.filter(x => x !== null).map(id => products[id]);
 const total = () => base() + (extra ? 500 : 0) + chosen().reduce((sum,p) => sum + p.price,0);
+
+
+const DESIGN_KEY = "cuoricino-bracelet-v1";
+let restoredNotice = "";
+
+function saveDesign() {
+  try {
+    localStorage.setItem(DESIGN_KEY, JSON.stringify({
+      version: 1, size, color, extra,
+      slots: slots.map(id => id === null ? null : products[id].img)
+    }));
+    $("saveStatus").textContent = restoredNotice ||
+      "Tu pulsera se guarda automÃ¡ticamente en este navegador para que puedas seguir despuÃ©s â¡";
+  } catch (e) {
+    $("saveStatus").textContent = "No pudimos guardar tu pulsera en este navegador. MantenÃ© esta pÃ¡gina abierta para conservar tu diseÃ±o.";
+  }
+}
+
+function restoreDesign() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(DESIGN_KEY));
+    if (!saved || saved.version !== 1 ||
+        !Number.isInteger(saved.size) || saved.size < 1 || saved.size > 4 ||
+        !["silver","gold","mixed"].includes(saved.color) ||
+        typeof saved.extra !== "boolean" || !Array.isArray(saved.slots) ||
+        saved.slots.length !== sizes[saved.size - 1] + Number(saved.extra)) return;
+    let removed = false;
+    const restored = saved.slots.map(img => {
+      if (img === null) return null;
+      const id = products.findIndex(p => p.img === img);
+      if (id < 0 || products[id].soldOut) { removed = true; return null; }
+      return id;
+    });
+    size = saved.size;
+    color = saved.color;
+    extra = saved.extra;
+    slots = restored;
+    restoredNotice = removed
+      ? "Recuperamos tu pulsera. Quitamos los charms que ya no estÃ¡n disponibles; podÃ©s elegir otros â¡"
+      : "Recuperamos tu pulsera guardada en este navegador â¡";
+  } catch (e) {
+    // Un diseÃ±o invÃ¡lido o el almacenamiento bloqueado no impiden usar el catÃ¡logo.
+  }
+}
 
 function element(tag,cls,text) {
   const e = document.createElement(tag);
@@ -477,7 +555,7 @@ function resetMode() {
 function selectSize(n) {
   if (size === n) return;
 
-  if (chosen().length && !confirm("Cambiar el talle vacía el diseño actual. ¿Continuar?")) {
+  if (chosen().length && !confirm("Cambiar el talle vacÃ­a el diseÃ±o actual. Â¿Continuar?")) {
     return;
   }
 
@@ -497,7 +575,7 @@ function toggleExtra() {
   if (!size) return;
 
   if (extra && slots[slots.length - 1] !== null) {
-    alert("Primero eliminá el charm del eslabón extra.");
+    alert("Primero eliminÃ¡ el charm del eslabÃ³n extra.");
     return;
   }
 
@@ -515,14 +593,14 @@ function toggleExtra() {
 
 function addCharm(id) {
   if (!size) {
-    alert("Primero elegí el talle de tu pulsera ♡");
+    alert("Primero elegÃ­ el talle de tu pulsera â¡");
     return;
   }
 
   if (!products[id] || !Number.isFinite(products[id].price)) return;
 
   if (products[id].soldOut) {
-    alert("Este charm está agotado por el momento ♡");
+    alert("Este charm estÃ¡ agotado por el momento â¡");
     return;
   }
 
@@ -532,8 +610,8 @@ function addCharm(id) {
 
   if (i < 0) {
     alert(extra
-      ? "La pulsera está completa. Podés reemplazar un charm."
-      : "La pulsera está completa. Podés reemplazar un charm o agregar un eslabón extra con el botón."
+      ? "La pulsera estÃ¡ completa. PodÃ©s reemplazar un charm."
+      : "La pulsera estÃ¡ completa. PodÃ©s reemplazar un charm o agregar un eslabÃ³n extra con el botÃ³n."
     );
     return;
   }
@@ -595,7 +673,7 @@ function startMove() {
   mode = "move";
   hideMenu();
   updateBracelet();
-  setStatus("Tocá el destino para mover el charm. Si está ocupado, se intercambian.");
+  setStatus("TocÃ¡ el destino para mover el charm. Si estÃ¡ ocupado, se intercambian.");
 }
 
 function replaceSelected() {
@@ -604,7 +682,7 @@ function replaceSelected() {
   mode = "replace";
   hideMenu();
   updateBracelet();
-  setStatus("Elegí un charm del catálogo para este espacio.");
+  setStatus("ElegÃ­ un charm del catÃ¡logo para este espacio.");
   $("catalogTitle").scrollIntoView({
     behavior: "smooth",
     block: "start"
@@ -631,7 +709,7 @@ function scrollBracelet() {
 function clearBracelet() {
   if (!size) return;
 
-  if (chosen().length && !confirm("¿Querés vaciar tu pulsera?")) {
+  if (chosen().length && !confirm("Â¿QuerÃ©s vaciar tu pulsera?")) {
     return;
   }
 
@@ -642,39 +720,39 @@ function clearBracelet() {
 }
 
 function extraLabel() {
-  return "Eslabón extra" +
-    (extra && slots[slots.length - 1] === null ? " vacío" : "");
+  return "EslabÃ³n extra" +
+    (extra && slots[slots.length - 1] === null ? " vacÃ­o" : "");
 }
 
 function createOrderMessage() {
   if (!size) return "";
 
   const lines = [
-    "¡Holaa! Quiero hacer una compra en Cuoricino",
-    "♡ Pulsera " + colorName(),
-    "♡ Talle " + size + " — " + sizes[size - 1] + " eslabones",
-    "♡ Precio base: " + money(base())
+    "Â¡Holaa! Quiero hacer una compra en Cuoricino",
+    "â¡ Pulsera " + colorName(),
+    "â¡ Talle " + size + " â " + sizes[size - 1] + " eslabones",
+    "â¡ Precio base: " + money(base())
   ];
 
   if (extra) {
-    lines.push("♡ " + extraLabel() + ": $500");
+    lines.push("â¡ " + extraLabel() + ": $500");
   }
 
   const items = chosen();
 
   if (items.length) {
-    lines.push("♡ Charms elegidos:");
+    lines.push("â¡ Charms elegidos:");
     items.forEach((p,i) => {
-      lines.push((i + 1) + ". " + p.name + " — " + money(p.price));
+      lines.push((i + 1) + ". " + p.name + " â " + money(p.price));
     });
   } else {
-    lines.push("♡ Pulsera sin charms adicionales");
+    lines.push("â¡ Pulsera sin charms adicionales");
   }
 
   lines.push(
-    "♡ Total: " + money(total()),
-    "¡Quería consultar por la disponibilidad y cómo puedo realizar la compra!",
-    "¡Graciasss!"
+    "â¡ Total: " + money(total()),
+    "Â¡QuerÃ­a consultar por la disponibilidad y cÃ³mo puedo realizar la compra!",
+    "Â¡Graciasss!"
   );
 
   return lines.join("\n");
@@ -685,7 +763,7 @@ function updateBracelet() {
   box.replaceChildren();
 
   if (!size) {
-    box.append(element("p","empty-msg","Elegí un talle para comenzar"));
+    box.append(element("p","empty-msg","ElegÃ­ un talle para comenzar"));
     return;
   }
 
@@ -704,14 +782,14 @@ function updateBracelet() {
       "aria-label",
       "Espacio " + (i + 1) +
       (isExtra ? " extra" : "") +
-      ": " + (p ? p.name : "vacío")
+      ": " + (p ? p.name : "vacÃ­o")
     );
 
     b.append(
       element("span","slot-number",String(i + 1) + (isExtra ? " +" : "")),
       imageBox(
-        p ? p.img : (gold ? "Charm Vacío D.PNG" : "Charm Vacío P.PNG"),
-        p ? p.name : "Eslabón " + (gold ? "dorado" : "plateado"),
+        p ? p.img : (gold ? "Charm VacÃ­o D.PNG" : "Charm VacÃ­o P.PNG"),
+        p ? p.name : "EslabÃ³n " + (gold ? "dorado" : "plateado"),
         "slot-image"
       )
     );
@@ -741,11 +819,16 @@ function updateBracelet() {
 
 function update() {
   updateBracelet();
+  saveDesign();
+  $("paymentAmounts").hidden = !size;
+  $("paymentAmounts").textContent = size
+    ? "SeÃ±a del 50%: " + money(total() / 2) + ". Si preferÃ­s abonar la totalidad: " + money(total()) + "."
+    : "";
 
   setStatus(mode === "move"
-    ? "Tocá el destino para mover el charm. Si está ocupado, se intercambian."
+    ? "TocÃ¡ el destino para mover el charm. Si estÃ¡ ocupado, se intercambian."
     : mode === "replace"
-      ? "Elegí un charm del catálogo para este espacio."
+      ? "ElegÃ­ un charm del catÃ¡logo para este espacio."
       : ""
   );
 
@@ -762,17 +845,17 @@ function update() {
   });
 
   $("visualizerSubtitle").textContent = size
-    ? "Talle " + size + " · " + sizes[size - 1] + " eslabones" +
-      (extra ? " + 1 extra" : "") + " · Pulsera " + colorName()
-    : "Primero elegí un talle";
+    ? "Talle " + size + " Â· " + sizes[size - 1] + " eslabones" +
+      (extra ? " + 1 extra" : "") + " Â· Pulsera " + colorName()
+    : "Primero elegÃ­ un talle";
 
   $("filledCount").textContent = chosen().length;
   $("emptyCount").textContent = slots.filter(x => x === null).length;
 
   $("extraButton").hidden = !size;
   $("extraButton").textContent = extra
-    ? "Quitar eslabón extra (−$500)"
-    : "＋ Agregar 1 eslabón extra ($500)";
+    ? "Quitar eslabÃ³n extra (â$500)"
+    : "ï¼ Agregar 1 eslabÃ³n extra ($500)";
 
   ["totalPrice","bottomTotal","summaryTotal"].forEach(id => {
     $(id).textContent = money(total());
@@ -794,8 +877,8 @@ function update() {
 
   if (size) {
     row(
-      "Pulsera " + colorName() + " · Talle " + size +
-      " — " + sizes[size - 1] + " eslabones",
+      "Pulsera " + colorName() + " Â· Talle " + size +
+      " â " + sizes[size - 1] + " eslabones",
       base()
     );
 
@@ -811,7 +894,7 @@ function update() {
   $("summaryCount").textContent = chosen().length + " charms";
 
   $("instagramMessage").value = createOrderMessage() ||
-    "Primero elegí el talle para armar tu pulsera ♡";
+    "Primero elegÃ­ el talle para armar tu pulsera â¡";
 
   $("copyButton").disabled = !size;
   $("copyStatus").textContent = "";
@@ -829,20 +912,20 @@ async function copyInstagramMessage() {
     }
 
     await navigator.clipboard.writeText(box.value);
-    $("copyStatus").textContent = "✓ Mensaje copiado";
+    $("copyStatus").textContent = "â Mensaje copiado";
   } catch (e) {
     box.focus();
     box.select();
     box.setSelectionRange(0,box.value.length);
 
     $("copyStatus").textContent =
-      "Mantené presionado el texto seleccionado y elegí Copiar.";
+      "MantenÃ© presionado el texto seleccionado y elegÃ­ Copiar.";
   }
 }
 
 function sendWhatsApp() {
   if (!size) {
-    alert("Primero elegí el talle de tu pulsera ♡");
+    alert("Primero elegÃ­ el talle de tu pulsera â¡");
     return;
   }
 
@@ -859,6 +942,7 @@ document.addEventListener("keydown",e => {
   if (e.key === "Escape") cancelMode();
 });
 
+restoreDesign();
 filterCharms();
 update();
 </script>
