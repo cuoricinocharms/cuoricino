@@ -196,7 +196,7 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
 
 <div class="bottom-bar">
   <button type="button" class="btn-clear" onclick="clearBracelet()">Vaciar</button>
-  <button type="button" class="btn-submit-main" onclick="openInstagram()">Finalizar (<span id="bottomTotal">$0</span>)</button>
+  
 </div>
 
 <script>
@@ -805,7 +805,7 @@ function update() {
     ? "Quitar eslabón extra (−$500)"
     : "＋ Agregar 1 eslabón extra ($500)";
 
-  ["totalPrice","bottomTotal","summaryTotal"].forEach(id => {
+  ["totalPrice","summaryTotal"].forEach(id => {
     $(id).textContent = money(total());
   });
 
