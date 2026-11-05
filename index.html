@@ -289,9 +289,9 @@ const $ = id => document.getElementById(id);
 const money = n => "$" + n.toLocaleString("es-AR");
 const normalize = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 const colorName = () => ({silver:"plateada",gold:"dorada",mixed:"intercalada"}[color]);
-const base = () => size ? (color === "silver" ? 8000 : 10000) + (size > 2 ? 500 : 0) : 0;
-const chosen = () => slots.filter(x => x !== null).map(id => products[id]);
-const total = () => base() + (extra ? 500 : 0) + chosen().reduce((sum,p) => sum + p.price,0);
+let base = () => size ? (color === "silver" ? 8000 : 10000) + (size > 2 ? 500 : 0) : 0;
+let chosen = () => slots.filter(x => x !== null).map(id => products[id]);
+let total = () => base() + (extra ? 500 : 0) + chosen().reduce((sum,p) => sum + p.price,0);
 
 function element(tag,cls,text) {
   const e = document.createElement(tag);
