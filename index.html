@@ -942,5 +942,283 @@ update();
   update();
 })();
 </script>
+  <script>
+(() => {
+  let soloCharms = false;
+  let charmsSueltos = [];
+  const storageKey = "cuoricino-solo-charms-v1";
+
+  const selector = document.createElement("section");
+  selector.className = "step";
+  selector.innerHTML = `
+    <h2 class="step-title">¿Qué querés comprar? ♡</h2>
+    <div class="options"
+         style="grid-template-columns:repeat(2,1fr)">
+      <button type="button" class="option active"
+              id="comprarConPulsera">
+        Con pulsera
+        <small>Base + charms a elección</small>
+      </button>
+      <button type="button" class="option"
+              id="comprarSoloCharms">
+        Solo charms
+        <small>Sin pulsera base</small>
+      </button>
+    </div>
+  `;
+
+  document.querySelector(".hero").after(selector);
+
+  const talleSection = $("sizeOptions").closest("section");
+  const colorSection = $("colorOptions").closest("section");
+  const visualizerTitle =
+    document.querySelector(".visualizer-title");
+  const visualizerHint =
+    document.querySelector("#visualizerSection .hint");
+  const counter =
+    document.querySelector("#visualizerSection .counter");
+  const summaryTitle =
+    document.querySelector(".cart-summary-title span");
+
+  const original = {
+    chosen,
+    base,
+    total,
+    addCharm,
+    update,
+    updateBracelet,
+    clearBracelet,
+    createOrderMessage,
+    copyInstagramMessage
+  };
+
+  chosen = function() {
+    return soloCharms
+      ? charmsSueltos.map(id => products[id])
+      : original.chosen();
+  };
+
+  base = function() {
+    return soloCharms ? 0 : original.base();
+  };
+
+  total = function() {
+    return soloCharms
+      ? chosen().reduce((sum, p) => sum + p.price, 0)
+      : original.total();
+  };
+
+  function guardarCharms() {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify({
+        soloCharms,
+        imagenes: charmsSueltos.map(id => products[id].img)
+      }));
+    } catch (e) {}
+  }
+
+  function cambiarCompra(solo) {
+    soloCharms = solo;
+    resetMode();
+    update();
+  }
+
+  $("comprarConPulsera").onclick =
+    () => cambiarCompra(false);
+
+  $("comprarSoloCharms").onclick =
+    () => cambiarCompra(true);
+
+  addCharm = function(id) {
+    if (!soloCharms) {
+      original.addCharm(id);
+      return;
+    }
+
+    if (!products[id] || products[id].soldOut) return;
+
+    charmsSueltos.push(id);
+    update();
+  };
+
+  updateBracelet = function() {
+    if (!soloCharms) {
+      original.updateBracelet();
+      return;
+    }
+
+    const box = $("braceletDisplay");
+    box.replaceChildren();
+
+    if (!charmsSueltos.length) {
+      box.append(element(
+        "p",
+        "empty-msg",
+        "Agregá tus charms desde el catálogo ♡"
+      ));
+      return;
+    }
+
+    charmsSueltos.forEach((id, i) => {
+      const p = products[id];
+
+      const charm = button("", () => {
+        charmsSueltos.splice(i, 1);
+        update();
+      }, "slot");
+
+      charm.setAttribute(
+        "aria-label",
+        "Eliminar " + p.name + " del pedido"
+      );
+
+      charm.append(
+        element("span", "slot-number", String(i + 1)),
+        imageBox(p.img, p.name, "slot-image")
+      );
+
+      box.append(charm);
+    });
+  };
+
+  clearBracelet = function() {
+    if (!soloCharms) {
+      original.clearBracelet();
+      return;
+    }
+
+    if (
+      charmsSueltos.length &&
+      !confirm("¿Querés vaciar tu selección de charms?")
+    ) return;
+
+    charmsSueltos = [];
+    update();
+  };
+
+  createOrderMessage = function() {
+    if (!soloCharms) {
+      return original.createOrderMessage();
+    }
+
+    if (!charmsSueltos.length) return "";
+
+    const lines = [
+      "¡Holaa! Quiero hacer una compra en Cuoricino",
+      "♡ Solo charms, sin pulsera base",
+      "♡ Charms elegidos:"
+    ];
+
+    chosen().forEach((p, i) => {
+      lines.push((i + 1) + ". " + p.name);
+    });
+
+    lines.push(
+      "¡Quería consultar por la disponibilidad y cómo puedo realizar la compra!",
+      "¡Graciasss!"
+    );
+
+    return lines.join("\n");
+  };
+
+  copyInstagramMessage = async function() {
+    if (!soloCharms) {
+      return original.copyInstagramMessage();
+    }
+
+    if (!charmsSueltos.length) return;
+
+    const box = $("instagramMessage");
+    box.value = createOrderMessage();
+
+    try {
+      await navigator.clipboard.writeText(box.value);
+      $("copyStatus").textContent = "✓ Mensaje copiado";
+    } catch (e) {
+      box.focus();
+      box.select();
+      box.setSelectionRange(0, box.value.length);
+      $("copyStatus").textContent =
+        "Mantené presionado el texto y elegí Copiar.";
+    }
+  };
+
+  update = function() {
+    original.update();
+
+    talleSection.hidden = soloCharms;
+    colorSection.hidden = soloCharms;
+
+    $("comprarConPulsera").classList.toggle(
+      "active", !soloCharms
+    );
+    $("comprarSoloCharms").classList.toggle(
+      "active", soloCharms
+    );
+
+    $("comprarConPulsera").setAttribute(
+      "aria-pressed", String(!soloCharms)
+    );
+    $("comprarSoloCharms").setAttribute(
+      "aria-pressed", String(soloCharms)
+    );
+
+    visualizerTitle.textContent = soloCharms
+      ? "Tus charms Cuoricino ♡"
+      : "Tu Pulsera Cuoricino ♡";
+
+    summaryTitle.textContent = soloCharms
+      ? "Tus charms ♡"
+      : "Tu Pulsera ♡";
+
+    counter.hidden = soloCharms;
+
+    visualizerHint.textContent = soloCharms
+      ? "Podés agregar varios del mismo. Tocá un charm de tu selección para eliminarlo."
+      : "Deslizá para ver todos los eslabones. Tocá un espacio para elegir, mover o reemplazar un charm.";
+
+    if (soloCharms) {
+      $("extraButton").hidden = true;
+      $("visualizerSubtitle").textContent =
+        "Elegí tus charms sin comprar una pulsera base";
+
+      $("cartSummary").hidden = !charmsSueltos.length;
+      $("cartList").replaceChildren();
+
+      chosen().forEach((p, i) => {
+        const row = element("div", "cart-item");
+        row.append(
+          element("span", "", (i + 1) + ". " + p.name),
+          element("span", "", money(p.price))
+        );
+        $("cartList").append(row);
+      });
+
+      $("instagramMessage").value =
+        createOrderMessage() ||
+        "Agregá al menos un charm para preparar tu pedido ♡";
+
+      $("copyButton").disabled = !charmsSueltos.length;
+    }
+
+    guardarCharms();
+  };
+
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(storageKey)
+    );
+
+    if (saved && Array.isArray(saved.imagenes)) {
+      soloCharms = saved.soloCharms === true;
+      charmsSueltos = saved.imagenes
+        .map(img => products.findIndex(p => p.img === img))
+        .filter(id => id >= 0 && !products[id].soldOut);
+    }
+  } catch (e) {}
+
+  update();
+})();
+</script>
 </body>
 </html>
