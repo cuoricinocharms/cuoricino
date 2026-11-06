@@ -114,7 +114,7 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
   <section class="hero">
     <div class="hero-heart">♡</div>
     <h1>Creá tu Pulsera</h1>
-    <p>Elegí el talle, el color y después<br>armala charm por charm.</p>
+   <p>Elegí el talle de tu pulsera plateada<br>y armala charm por charm.</p>
   </section>
 
   <section class="step">
@@ -131,8 +131,7 @@ header { background: rgba(255,255,255,.97); padding: 15px 20px; display: flex; a
     <h2 class="step-title"><span class="step-number">2</span>Elegí el color de tu pulsera</h2>
     <div class="options color-options" id="colorOptions">
       <button type="button" class="option active" data-color="silver" onclick="selectColor('silver')">PLATEADA</button>
-      <button type="button" class="option" data-color="gold" onclick="selectColor('gold')">DORADA</button>
-      <button type="button" class="option" data-color="mixed" onclick="selectColor('mixed')">INTERCALADA</button>
+    
     </div>
   </section>
 
@@ -914,7 +913,7 @@ update();
       });
 
       size = saved.size;
-      color = saved.color;
+      color = "silver";
       extra = saved.extra;
       slots = restoredSlots;
     } catch (e) {
